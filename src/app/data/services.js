@@ -60,7 +60,7 @@ export const coreServices = [
           "We assist in structuring and executing private placements, including preferential allotments and institutional issuances, ensuring timely capital infusion and compliance with regulatory requirements.",
         extra:
           "Our process covers documentation, approvals, filings, allotment, and post-issue compliances.",
-        image: "/private.png",
+        image: "/Private.png",
       },
       {
         title: "Qualified Institutional Placement (QIP) Support",
@@ -117,7 +117,7 @@ export const coreServices = [
           "Our M&A practice is built on deep expertise in executing exclusive mandates across acquisitions, divestitures, mergers, joint ventures, strategic alliances, and takeover advisory.",
         extra:
           "We provide end-to-end transaction support, combining strategic insight with robust execution capabilities.",
-        image: "/merger.png",
+        image: "/Merger.png",
       },
       {
         title: "Buybacks",
@@ -129,7 +129,7 @@ export const coreServices = [
         title: "Public Offers",
         description:
           "As a SEBI Registered Category I Merchant Banker, we act as Manager to Open Offers under SEBI (SAST) Regulations, managing the entire regulatory and execution process with precision and transparency.",
-        image: "/Publicoffer.png",
+        image: "/PublicOffer.png",
       },
       {
         title: "ESOP Advisory",
@@ -180,7 +180,7 @@ export const coreServices = [
           "Ensure compliance with Companies Act, SEBI regulations, and Ind AS",
           "Strengthen corporate governance and transparency",
         ],
-        image: "/ESOPADVISORY.png",
+        image: "/ESOPAdvisory.png",
       },
       {
         title: "Our ESOP Advisory Services",

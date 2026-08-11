@@ -21,6 +21,7 @@ import {
   ArrowLeft,
   Sparkles,
   ShieldCheck,
+  AudioLines,
 } from "lucide-react";
 
 const REPLY_META = {
@@ -42,10 +43,81 @@ function typingDelayFor(flow) {
   return Math.min(1400, Math.max(550, chars * 12));
 }
 
+/* ============================================================
+  GLOBAL SPEECH ENGINE
+  A single shared controller so "speak page" and "speak this
+  message" both drive the same Pause/Play/Stop bar consistently.
+  ============================================================ */
+function useSpeechEngine() {
+  const [isSpeaking, setIsSpeaking] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
+  const [activeSourceId, setActiveSourceId] = useState(null); // "page" | message id | null
+  const utterRef = useRef(null);
+
+  const speak = useCallback((text, sourceId) => {
+    if (typeof window === "undefined" || !window.speechSynthesis) return;
+    if (!text || !text.trim()) return;
+
+    window.speechSynthesis.cancel();
+
+    const utter = new SpeechSynthesisUtterance(text);
+    utter.rate = 1;
+    utter.pitch = 1;
+    utter.onend = () => {
+      setIsSpeaking(false);
+      setIsPaused(false);
+      setActiveSourceId(null);
+    };
+    utter.onerror = () => {
+      setIsSpeaking(false);
+      setIsPaused(false);
+      setActiveSourceId(null);
+    };
+    utterRef.current = utter;
+
+    window.speechSynthesis.speak(utter);
+    setIsSpeaking(true);
+    setIsPaused(false);
+    setActiveSourceId(sourceId);
+  }, []);
+
+  const pause = useCallback(() => {
+    if (typeof window === "undefined") return;
+    if (window.speechSynthesis.speaking && !window.speechSynthesis.paused) {
+      window.speechSynthesis.pause();
+      setIsPaused(true);
+    }
+  }, []);
+
+  const resume = useCallback(() => {
+    if (typeof window === "undefined") return;
+    if (window.speechSynthesis.paused) {
+      window.speechSynthesis.resume();
+      setIsPaused(false);
+    }
+  }, []);
+
+  const stop = useCallback(() => {
+    if (typeof window === "undefined") return;
+    window.speechSynthesis.cancel();
+    setIsSpeaking(false);
+    setIsPaused(false);
+    setActiveSourceId(null);
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      if (typeof window !== "undefined" && window.speechSynthesis) {
+        window.speechSynthesis.cancel();
+      }
+    };
+  }, []);
+
+  return { isSpeaking, isPaused, activeSourceId, speak, pause, resume, stop };
+}
+
 export default function VoiceWidget() {
   const [chatOpen, setChatOpen] = useState(false);
-  const [isPaused, setIsPaused] = useState(false);
-  const [isSpeaking, setIsSpeaking] = useState(false);
   const [showCallout, setShowCallout] = useState(true);
   const [accessibilityOpen, setAccessibilityOpen] = useState(false);
   const [toolbarVisible, setToolbarVisible] = useState(true);
@@ -59,6 +131,8 @@ export default function VoiceWidget() {
   const [monochrome, setMonochrome] = useState(false);
 
   const [targetMissing, setTargetMissing] = useState(false);
+
+  const speech = useSpeechEngine();
 
   const getTarget = useCallback(() => {
     const el = document.getElementById("page-content");
@@ -93,45 +167,22 @@ export default function VoiceWidget() {
     target.classList.toggle("a11y-mono", monochrome);
   }, [fontSize, lineHeight, readableFont, letterSpacing, lightContrast, highContrast, monochrome, getTarget]);
 
-  const speakPage = () => {
-    if (typeof window === "undefined" || !window.speechSynthesis) return;
-    window.speechSynthesis.cancel();
+  // "Speak" button -> reads the whole page from start to end
+  const handleSpeakPage = () => {
     const page = getTarget() || document.body;
-    const text = page.innerText.slice(0, 800);
-    if (!text.trim()) return;
-    const utter = new SpeechSynthesisUtterance(text);
-    utter.onend = () => {
-      setIsSpeaking(false);
-      setIsPaused(false);
-    };
-    window.speechSynthesis.speak(utter);
-    setIsSpeaking(true);
-    setIsPaused(false);
+    const text = page.innerText.slice(0, 1600);
+    speech.speak(text, "page");
   };
 
-  const handleSpeak = () => speakPage();
-  const handlePause = () => {
-    if (typeof window === "undefined") return;
-    if (window.speechSynthesis.speaking && !window.speechSynthesis.paused) {
-      window.speechSynthesis.pause();
-      setIsPaused(true);
-    }
-  };
+  const handlePause = () => speech.pause();
   const handlePlayResume = () => {
-    if (typeof window === "undefined") return;
-    if (window.speechSynthesis.paused) {
-      window.speechSynthesis.resume();
-      setIsPaused(false);
-    } else if (!isSpeaking) {
-      speakPage();
+    if (speech.isPaused) {
+      speech.resume();
+    } else if (!speech.isSpeaking) {
+      handleSpeakPage();
     }
   };
-  const handleStop = () => {
-    if (typeof window === "undefined") return;
-    window.speechSynthesis.cancel();
-    setIsSpeaking(false);
-    setIsPaused(false);
-  };
+  const handleStop = () => speech.stop();
 
   const handleResetA11y = () => {
     setFontSize(0);
@@ -211,9 +262,13 @@ export default function VoiceWidget() {
           0%, 100% { opacity: 0.55; }
           50% { opacity: 1; }
         }
-        @keyframes shimmer {
-          0% { background-position: -200% 0; }
-          100% { background-position: 200% 0; }
+        @keyframes barIn {
+          from { opacity: 0; transform: translateY(8px) scale(0.96); }
+          to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        @keyframes speakBars {
+          0%, 100% { height: 4px; }
+          50% { height: 12px; }
         }
         .chat-msg-in {
           animation: chatBubbleIn 0.32s cubic-bezier(0.16, 1, 0.3, 1) both;
@@ -223,6 +278,12 @@ export default function VoiceWidget() {
         }
         .chat-panel-in {
           animation: panelReveal 0.32s cubic-bezier(0.16, 1, 0.3, 1) both;
+        }
+        .voice-bar-in {
+          animation: barIn 0.28s cubic-bezier(0.16, 1, 0.3, 1) both;
+        }
+        .speak-bar {
+          animation: speakBars 0.9s ease-in-out infinite;
         }
         .chat-scrollbar::-webkit-scrollbar {
           width: 5px;
@@ -237,9 +298,8 @@ export default function VoiceWidget() {
         .chat-scrollbar::-webkit-scrollbar-thumb:hover {
           background: rgba(15, 58, 102, 0.28);
         }
-        .reply-shimmer {
-          position: relative;
-          overflow: hidden;
+        .speakable-msg {
+          cursor: pointer;
         }
       `}</style>
 
@@ -288,47 +348,20 @@ export default function VoiceWidget() {
       )}
 
       <div
-        className="fixed bottom-6 right-6 flex flex-col items-end gap-2 sm:gap-3 voice-widget"
+        className="fixed bottom-6 right-6 flex flex-col items-end gap-2.5 sm:gap-3 voice-widget"
         style={{ display: toolbarVisible ? "flex" : "none", zIndex: 2147483000 }}
       >
-        {/* Speak / Pause / Play / Stop control bar */}
-        <div className="flex items-center gap-1.5 sm:gap-2 bg-[#0f3a66]/95 backdrop-blur-md rounded-2xl pl-1.5 sm:pl-2 pr-1.5 sm:pr-2 py-1.5 sm:py-2 shadow-[0_8px_30px_-8px_rgba(15,58,102,0.55)] ring-1 ring-white/10">
-          <button
-            onClick={handleSpeak}
-            className="flex items-center gap-1 sm:gap-1.5 bg-white text-slate-900 text-xs sm:text-sm font-semibold px-2 sm:px-3 py-1.5 rounded-xl hover:bg-slate-50 active:scale-95 transition"
-          >
-            <Volume2 size={14} strokeWidth={2.25} className="text-orange-500 sm:w-[16px] sm:h-[16px]" />
-            Speak
-          </button>
-
-          <button
-            onClick={handlePause}
-            className={`flex items-center justify-center w-7 h-7 sm:w-9 sm:h-9 rounded-full transition active:scale-95 ${
-              isPaused ? "bg-orange-500 text-white" : "bg-white text-[#0f3a66] hover:bg-slate-50"
-            }`}
-            aria-label="Pause"
-          >
-            <Pause size={13} strokeWidth={2.25} fill="currentColor" className="sm:w-[15px] sm:h-[15px]" />
-          </button>
-
-          <button
-            onClick={handlePlayResume}
-            className={`flex items-center justify-center w-7 h-7 sm:w-9 sm:h-9 rounded-full transition active:scale-95 ${
-              isSpeaking && !isPaused ? "bg-orange-500 text-white" : "bg-white text-[#0f3a66] hover:bg-slate-50"
-            }`}
-            aria-label="Play"
-          >
-            <Play size={13} strokeWidth={2.25} fill="currentColor" className="sm:w-[15px] sm:h-[15px]" />
-          </button>
-
-          <button
-            onClick={handleStop}
-            className="flex items-center justify-center w-7 h-7 sm:w-9 sm:h-9 rounded-full bg-white text-[#0f3a66] hover:bg-slate-50 active:scale-95 transition"
-            aria-label="Stop"
-          >
-            <Square size={11} strokeWidth={2.25} fill="currentColor" className="sm:w-[13px] sm:h-[13px]" />
-          </button>
-        </div>
+        {/* Modern voice control pill — collapses to icon-only once chat is open */}
+        <VoiceControlBar
+          compact={chatOpen}
+          isSpeaking={speech.isSpeaking}
+          isPaused={speech.isPaused}
+          activeSourceId={speech.activeSourceId}
+          onSpeak={handleSpeakPage}
+          onPause={handlePause}
+          onPlay={handlePlayResume}
+          onStop={handleStop}
+        />
 
         {/* Chatbot launcher + callout */}
         <div className="flex items-center gap-2">
@@ -371,10 +404,112 @@ export default function VoiceWidget() {
           </button>
         </div>
 
-        {chatOpen && <ChatPanel onClose={() => setChatOpen(false)} />}
+        {chatOpen && (
+          <ChatPanel
+            onClose={() => setChatOpen(false)}
+            speech={speech}
+          />
+        )}
       </div>
     </>,
     document.body
+  );
+}
+
+/* ============================================================
+  VOICE CONTROL BAR — modern floating pill
+  - Full mode: labeled "Speak" pill + 3 icon buttons in one track
+  - Compact mode (chat open): shrinks to a small icon cluster so
+    it never collides with the chat header
+  ============================================================ */
+function VoiceControlBar({ compact, isSpeaking, isPaused, activeSourceId, onSpeak, onPause, onPlay, onStop }) {
+  const active = isSpeaking || isPaused;
+  const readingPage = activeSourceId === "page";
+
+  return (
+    <div
+      className={`voice-bar-in flex items-center gap-1 bg-white/90 backdrop-blur-xl rounded-full shadow-[0_10px_34px_-10px_rgba(15,58,102,0.45)] ring-1 ring-slate-200/70 transition-all duration-300 ${
+        compact ? "px-1.5 py-1.5" : "px-2 py-2"
+      }`}
+    >
+      {!compact && (
+        <button
+          onClick={onSpeak}
+          className={`flex items-center gap-1.5 text-xs sm:text-[13px] font-semibold px-3 sm:px-3.5 py-2 rounded-full transition-all active:scale-95 ${
+            readingPage && active
+              ? "bg-[#0f3a66] text-white shadow-inner"
+              : "bg-slate-100 text-[#0f3a66] hover:bg-slate-200"
+          }`}
+          title="Read the whole page"
+        >
+          {readingPage && active ? (
+            <span className="flex items-end gap-[2px] h-3" aria-hidden="true">
+              <span className="w-[2.5px] bg-orange-400 rounded-full speak-bar" style={{ animationDelay: "0ms" }} />
+              <span className="w-[2.5px] bg-orange-400 rounded-full speak-bar" style={{ animationDelay: "150ms" }} />
+              <span className="w-[2.5px] bg-orange-400 rounded-full speak-bar" style={{ animationDelay: "300ms" }} />
+            </span>
+          ) : (
+            <Volume2 size={14} strokeWidth={2.25} className="text-orange-500" />
+          )}
+          Speak
+        </button>
+      )}
+
+      <div className={`flex items-center gap-1 ${!compact ? "border-l border-slate-200 pl-1.5 ml-0.5" : ""}`}>
+        {compact && (
+          <button
+            onClick={onSpeak}
+            className={`flex items-center justify-center w-8 h-8 rounded-full transition active:scale-95 ${
+              readingPage && active ? "bg-[#0f3a66] text-white" : "bg-slate-100 text-[#0f3a66] hover:bg-slate-200"
+            }`}
+            aria-label="Read page"
+            title="Read the whole page"
+          >
+            <Volume2 size={13} strokeWidth={2.25} className={readingPage && active ? "text-orange-300" : "text-orange-500"} />
+          </button>
+        )}
+
+        <button
+          onClick={onPause}
+          disabled={!isSpeaking || isPaused}
+          className={`flex items-center justify-center rounded-full transition active:scale-95 disabled:opacity-35 disabled:cursor-not-allowed ${
+            compact ? "w-8 h-8" : "w-8 h-8 sm:w-9 sm:h-9"
+          } ${
+            isPaused ? "bg-orange-500 text-white" : "bg-slate-100 text-[#0f3a66] hover:bg-slate-200"
+          }`}
+          aria-label="Pause"
+          title="Pause"
+        >
+          <Pause size={13} strokeWidth={2.4} fill="currentColor" />
+        </button>
+
+        <button
+          onClick={onPlay}
+          disabled={isSpeaking && !isPaused}
+          className={`flex items-center justify-center rounded-full transition active:scale-95 disabled:opacity-35 disabled:cursor-not-allowed ${
+            compact ? "w-8 h-8" : "w-8 h-8 sm:w-9 sm:h-9"
+          } ${
+            isSpeaking && !isPaused ? "bg-orange-500 text-white" : "bg-slate-100 text-[#0f3a66] hover:bg-slate-200"
+          }`}
+          aria-label="Play"
+          title={isPaused ? "Resume" : "Play"}
+        >
+          <Play size={13} strokeWidth={2.4} fill="currentColor" />
+        </button>
+
+        <button
+          onClick={onStop}
+          disabled={!active}
+          className={`flex items-center justify-center rounded-full bg-slate-100 text-[#0f3a66] hover:bg-slate-200 transition active:scale-95 disabled:opacity-35 disabled:cursor-not-allowed ${
+            compact ? "w-8 h-8" : "w-8 h-8 sm:w-9 sm:h-9"
+          }`}
+          aria-label="Stop"
+          title="Stop"
+        >
+          <Square size={11} strokeWidth={2.4} fill="currentColor" />
+        </button>
+      </div>
+    </div>
   );
 }
 
@@ -940,13 +1075,15 @@ function AccessibilityPanel({
 }
 
 /* ============================================================
-  CHAT PANEL — redesigned: premium fintech look
-  - Deep navy header with fine grid texture + verified badge
-  - Glass message bubbles, refined shadows, softer radii
-  - Cleaner quick-reply chips with icon chips
-  - Rounded pill input with focus glow
+  CHAT PANEL
+  - Every AI message and every user message is clickable to
+    speak just that text.
+  - A small speaker icon appears on hover/tap on each bubble.
+  - The header no longer carries its own play controls — the
+    single shared VoiceControlBar handles everything, so nothing
+    overlaps.
   ============================================================ */
-function ChatPanel({ onClose }) {
+function ChatPanel({ onClose, speech }) {
   const [message, setMessage] = useState("");
   const [isTyping, setIsTyping] = useState(false);
   const scrollRef = useRef(null);
@@ -991,8 +1128,9 @@ function ChatPanel({ onClose }) {
     const delay = typingDelayFor(flow);
 
     timeoutRef.current = setTimeout(() => {
+      const aiId = `ai-${Date.now()}`;
       const aiMsg = {
-        id: `ai-${Date.now()}`,
+        id: aiId,
         from: "ai",
         lines: flow.text,
         time: getTime(),
@@ -1000,6 +1138,10 @@ function ChatPanel({ onClose }) {
       };
       setIsTyping(false);
       setMessages((prev) => [...prev, aiMsg]);
+
+      // Auto-read the new bot reply aloud
+      const spokenText = flow.text.map((l) => l.text).join(". ");
+      speech.speak(spokenText, aiId);
     }, delay);
   };
 
@@ -1009,12 +1151,23 @@ function ChatPanel({ onClose }) {
   const handleRefresh = () => {
     clearTimeout(timeoutRef.current);
     setIsTyping(false);
+    speech.stop();
     setMessages((prev) => prev.slice(0, 1));
+  };
+
+  const speakMessage = (id, text) => {
+    if (speech.activeSourceId === id && speech.isSpeaking && !speech.isPaused) {
+      speech.pause();
+    } else if (speech.activeSourceId === id && speech.isPaused) {
+      speech.resume();
+    } else {
+      speech.speak(text, id);
+    }
   };
 
   return (
     <div className="chat-panel-in fixed bottom-20 sm:bottom-24 right-4 sm:right-6 w-[calc(100vw-2rem)] sm:w-[400px] h-[540px] sm:h-[640px] max-w-[400px] rounded-[22px] sm:rounded-[26px] shadow-[0_30px_70px_-15px_rgba(6,20,38,0.55)] ring-1 ring-black/[0.06] overflow-hidden flex flex-col relative bg-[#f7f9fc] voice-widget">
-      {/* Header */}
+      {/* Header — clean, no controls crammed in */}
       <div
         className="relative z-10 px-4 sm:px-5 pt-4 sm:pt-5 pb-4 sm:pb-5 flex items-center justify-between shrink-0 overflow-hidden"
         style={{
@@ -1090,81 +1243,125 @@ function ChatPanel({ onClose }) {
             "radial-gradient(circle at 15% 8%, rgba(18,69,122,0.05), transparent 45%), radial-gradient(circle at 85% 92%, rgba(249,115,22,0.04), transparent 40%)",
         }}
       >
-        {messages.map((msg) =>
-          msg.from === "ai" ? (
-            <div key={msg.id} className="chat-msg-in">
-              <div className="flex items-start gap-2 sm:gap-2.5">
-                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-gradient-to-br from-[#164f8a] to-[#081b32] text-white text-[10px] sm:text-[11px] font-bold flex items-center justify-center shrink-0 ring-1 ring-black/5 shadow-sm">
-                  AI
-                </div>
-                <div className="bg-white rounded-2xl rounded-tl-md px-4 py-3 max-w-[255px] sm:max-w-[290px] shadow-[0_4px_20px_-6px_rgba(15,23,42,0.10)] ring-1 ring-slate-100">
-                  {msg.lines.map((line, i) => (
-                    <p
-                      key={i}
-                      className={
-                        line.bold
-                          ? "text-slate-900 text-[13px] sm:text-sm font-semibold tracking-tight"
-                          : `text-slate-600 text-[13px] sm:text-sm leading-relaxed ${i > 0 ? "mt-1.5 sm:mt-2" : ""}`
-                      }
-                    >
-                      {line.text}
-                    </p>
-                  ))}
-                </div>
-              </div>
-              <p className="text-slate-400 text-[10px] sm:text-[11px] mt-1.5 ml-9 sm:ml-[42px] font-medium">
-                {msg.time}
-              </p>
+        {messages.map((msg) => {
+          const isActiveHere = speech.activeSourceId === msg.id;
+          const speaking = isActiveHere && speech.isSpeaking && !speech.isPaused;
 
-              {msg.replies && msg.replies.length > 0 && (
-                <div className="grid grid-cols-2 gap-1.5 sm:gap-2 mt-3 ml-9 sm:ml-[42px] max-w-[266px] sm:max-w-[300px]">
-                  {msg.replies.map((reply) => {
-                    const meta = REPLY_META[reply];
-                    const Icon = meta?.icon || Sparkles;
-                    const isNav = Boolean(meta);
-                    return (
-                      <button
-                        key={reply}
-                        onClick={() => handleQuickReply(reply)}
-                        disabled={isTyping}
-                        className={`group relative flex items-center gap-2 rounded-[14px] px-2.5 py-2.5 text-left transition-all duration-150 active:scale-[0.97] disabled:opacity-40 disabled:pointer-events-none ${
-                          isNav
-                            ? "bg-white ring-1 ring-slate-200/80 hover:ring-[#12457a]/30 hover:shadow-[0_6px_16px_-4px_rgba(15,58,102,0.18)]"
-                            : "col-span-2 bg-gradient-to-r from-orange-50 to-white ring-1 ring-orange-200/70 hover:ring-orange-300 hover:shadow-[0_6px_16px_-4px_rgba(249,115,22,0.18)]"
-                        }`}
+          if (msg.from === "ai") {
+            const fullText = msg.lines.map((l) => l.text).join(". ");
+            return (
+              <div key={msg.id} className="chat-msg-in">
+                <div className="flex items-start gap-2 sm:gap-2.5">
+                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-gradient-to-br from-[#164f8a] to-[#081b32] text-white text-[10px] sm:text-[11px] font-bold flex items-center justify-center shrink-0 ring-1 ring-black/5 shadow-sm">
+                    AI
+                  </div>
+                  <button
+                    onClick={() => speakMessage(msg.id, fullText)}
+                    className={`speakable-msg group relative text-left bg-white rounded-2xl rounded-tl-md px-4 py-3 max-w-[255px] sm:max-w-[290px] shadow-[0_4px_20px_-6px_rgba(15,23,42,0.10)] ring-1 transition-all ${
+                      isActiveHere ? "ring-[#12457a]/40 shadow-[0_4px_20px_-4px_rgba(18,69,122,0.25)]" : "ring-slate-100 hover:ring-slate-200"
+                    }`}
+                    title="Tap to hear this message"
+                  >
+                    {msg.lines.map((line, i) => (
+                      <p
+                        key={i}
+                        className={
+                          line.bold
+                            ? "text-slate-900 text-[13px] sm:text-sm font-semibold tracking-tight pr-5"
+                            : `text-slate-600 text-[13px] sm:text-sm leading-relaxed pr-5 ${i > 0 ? "mt-1.5 sm:mt-2" : ""}`
+                        }
                       >
-                        {isNav ? (
-                          <span
-                            className={`flex items-center justify-center w-6 h-6 sm:w-7 sm:h-7 rounded-[10px] bg-gradient-to-br ${meta.tint} text-white shrink-0 shadow-sm group-hover:scale-105 transition`}
-                          >
-                            <Icon size={13} strokeWidth={2.25} />
-                          </span>
-                        ) : (
-                          <span className="flex items-center justify-center w-6 h-6 rounded-full bg-orange-500 text-white shrink-0 shadow-sm">
-                            <Icon size={12} strokeWidth={2.5} />
-                          </span>
-                        )}
-                        <span className="text-[11.5px] sm:text-xs font-medium text-slate-700 leading-snug group-hover:text-slate-900">
-                          {reply}
-                        </span>
-                      </button>
-                    );
-                  })}
+                        {line.text}
+                      </p>
+                    ))}
+                    <span
+                      className={`absolute top-2.5 right-2.5 flex items-center justify-center w-5 h-5 rounded-full transition-all ${
+                        isActiveHere
+                          ? "bg-[#0f3a66] text-white opacity-100"
+                          : "bg-slate-100 text-slate-400 opacity-0 group-hover:opacity-100"
+                      }`}
+                    >
+                      {speaking ? (
+                        <AudioLines size={11} strokeWidth={2.4} />
+                      ) : (
+                        <Volume2 size={11} strokeWidth={2.4} />
+                      )}
+                    </span>
+                  </button>
                 </div>
-              )}
-            </div>
-          ) : (
-            <div key={msg.id} className="flex flex-col items-end chat-msg-in">
-              <div className="bg-gradient-to-br from-[#164f8a] to-[#081b32] text-white rounded-2xl rounded-tr-md px-4 py-2.5 sm:py-3 max-w-[230px] sm:max-w-[270px] shadow-[0_6px_18px_-6px_rgba(8,27,50,0.5)]">
-                <p className="text-[13px] sm:text-sm leading-relaxed">{msg.text}</p>
+                <p className="text-slate-400 text-[10px] sm:text-[11px] mt-1.5 ml-9 sm:ml-[42px] font-medium">
+                  {msg.time}
+                </p>
+
+                {msg.replies && msg.replies.length > 0 && (
+                  <div className="grid grid-cols-2 gap-1.5 sm:gap-2 mt-3 ml-9 sm:ml-[42px] max-w-[266px] sm:max-w-[300px]">
+                    {msg.replies.map((reply) => {
+                      const meta = REPLY_META[reply];
+                      const Icon = meta?.icon || Sparkles;
+                      const isNav = Boolean(meta);
+                      return (
+                        <button
+                          key={reply}
+                          onClick={() => handleQuickReply(reply)}
+                          disabled={isTyping}
+                          className={`group relative flex items-center gap-2 rounded-[14px] px-2.5 py-2.5 text-left transition-all duration-150 active:scale-[0.97] disabled:opacity-40 disabled:pointer-events-none ${
+                            isNav
+                              ? "bg-white ring-1 ring-slate-200/80 hover:ring-[#12457a]/30 hover:shadow-[0_6px_16px_-4px_rgba(15,58,102,0.18)]"
+                              : "col-span-2 bg-gradient-to-r from-orange-50 to-white ring-1 ring-orange-200/70 hover:ring-orange-300 hover:shadow-[0_6px_16px_-4px_rgba(249,115,22,0.18)]"
+                          }`}
+                        >
+                          {isNav ? (
+                            <span
+                              className={`flex items-center justify-center w-6 h-6 sm:w-7 sm:h-7 rounded-[10px] bg-gradient-to-br ${meta.tint} text-white shrink-0 shadow-sm group-hover:scale-105 transition`}
+                            >
+                              <Icon size={13} strokeWidth={2.25} />
+                            </span>
+                          ) : (
+                            <span className="flex items-center justify-center w-6 h-6 rounded-full bg-orange-500 text-white shrink-0 shadow-sm">
+                              <Icon size={12} strokeWidth={2.5} />
+                            </span>
+                          )}
+                          <span className="text-[11.5px] sm:text-xs font-medium text-slate-700 leading-snug group-hover:text-slate-900">
+                            {reply}
+                          </span>
+                        </button>
+                      );
+                    })}
+                  </div>
+                )}
               </div>
+            );
+          }
+
+          return (
+            <div key={msg.id} className="flex flex-col items-end chat-msg-in">
+              <button
+                onClick={() => speakMessage(msg.id, msg.text)}
+                className={`group relative text-left bg-gradient-to-br from-[#164f8a] to-[#081b32] text-white rounded-2xl rounded-tr-md px-4 py-2.5 sm:py-3 max-w-[230px] sm:max-w-[270px] shadow-[0_6px_18px_-6px_rgba(8,27,50,0.5)] transition-all ${
+                  isActiveHere ? "ring-2 ring-orange-400/70" : ""
+                }`}
+                title="Tap to hear this message"
+              >
+                <p className="text-[13px] sm:text-sm leading-relaxed pr-5">{msg.text}</p>
+                <span
+                  className={`absolute top-2.5 right-2.5 flex items-center justify-center w-5 h-5 rounded-full transition-all ${
+                    isActiveHere ? "bg-white/20 text-white opacity-100" : "bg-white/10 text-white/70 opacity-0 group-hover:opacity-100"
+                  }`}
+                >
+                  {speaking ? (
+                    <AudioLines size={11} strokeWidth={2.4} />
+                  ) : (
+                    <Volume2 size={11} strokeWidth={2.4} />
+                  )}
+                </span>
+              </button>
               <p className="text-slate-400 text-[10px] sm:text-[11px] mt-1.5 mr-1 flex items-center gap-1 font-medium">
                 {msg.time}
                 <span className="text-sky-600" aria-hidden="true">✓✓</span>
               </p>
             </div>
-          )
-        )}
+          );
+        })}
 
         {/* Typing indicator */}
         {isTyping && (

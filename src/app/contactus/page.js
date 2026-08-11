@@ -25,6 +25,14 @@ const OFFICES = [
     email: "info@aksan.in",
     mapQuery: "28/27 Parvathy Apartments, Damodaran Street, T Nagar, Chennai",
   },
+  {
+    label: "Branch Office",
+    icon: Building2,
+    address: "Office No. 104, 1st Floor, The Summit Business Bay, (Opp. Movie Max Theatre) Off Western Express Highway, Andheri (East), Mumbai - 400093, Maharashtra, India",
+    phone: "+91 93602 67233",
+    email: "info@aksan.in",
+    mapQuery: "The Summit Business Bay, Western Express Highway, Andheri East, Mumbai",
+  },
 ];
 
 const SUBJECTS = [
@@ -108,7 +116,6 @@ export default function ContactUs() {
           alt=""
           className="absolute inset-0 h-full w-full object-cover mix-blend-luminosity opacity-40"
         />
-       
 
         <div className="relative z-10 mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8 py-24 md:py-32">
           <motion.p
@@ -402,8 +409,7 @@ export default function ContactUs() {
                   </span>
                 </div>
 
-                
-                  <a href={"https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(office.mapQuery)}
+                <a href={"https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(office.mapQuery)}
                   target="_blank"
                   rel="noreferrer"
                   className="mt-5 inline-flex items-center gap-2 rounded-lg px-4 py-2.5 text-sm font-semibold text-white transition-transform hover:-translate-y-0.5"

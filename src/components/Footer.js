@@ -20,6 +20,16 @@ const contactCards = [
     type: "text",
   },
   {
+    icon: MapPin,
+    title: "Branch Office",
+    lines: [
+      "Office No. 104, 1st Floor, The Summit",
+      "Business Bay, Off Western Express Highway,",
+      "Andheri (East), Mumbai - 400093.",
+    ],
+    type: "text",
+  },
+  {
     icon: Mail,
     title: "Email Us",
     lines: ["info@aksan.in"],
@@ -108,7 +118,7 @@ export default function Footer() {
 
       <div className="relative z-10 w-full max-w-[1400px] mx-auto px-4 xs:px-5 sm:px-6 md:px-8 lg:px-10 xl:px-8 pt-8 xs:pt-10 sm:pt-14 md:pt-16 lg:pt-16">
         {/* Contact cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 xs:gap-4 sm:gap-5 mb-8 xs:mb-10 sm:mb-12 lg:mb-14">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 xs:gap-4 sm:gap-5 mb-8 xs:mb-10 sm:mb-12 lg:mb-14">
           {contactCards.map((card) => (
             <div
               key={card.title}

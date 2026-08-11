@@ -7,42 +7,202 @@ export const metadata = {
     "Access Draft Red Herring Prospectus documents of companies managed by AKSAN Capital.",
 };
 
-// Replace `href` values with the real document / view-page links.
-// href values point at the PDFs already sitting in /public — adjust the
-// leading path (e.g. "/documents/...") if you move them into a subfolder.
+// Replace `href` values with the real document links (PDFs in /public).
+// Replace `logo` values with actual logo image paths in /public/logos/ (or set to null to show initials).
 const drhpDocuments = [
-  { id: 1, name: "ABS Marine Services Limited", href: "/ABSMarine_DRHP.pdf" },
+  {
+    id: 1,
+    name: "Phantom Digital Effects Limited",
+    logo: "/client/phantom.png",
+    listingDate: "21-10-2022",
+    listingExchange: "NSE Emerge",
+    ipoSize: "29.10",
+    ipoPrice: "315.00",
+    href: "/PhantomDigital_DRHP.pdf",
+  },
   {
     id: 2,
+    name: "Krishca Strapping Solutions Limited",
+    logo: "/client/krishca.png",
+    listingDate: "26-05-2023",
+    listingExchange: "NSE Emerge",
+    ipoSize: "17.93",
+    ipoPrice: "118.00",
+    href: "/KrishcaStrapping_DRHP.pdf",
+  },
+  {
+    id: 3,
     name: "Basilic Fly Studio Limited",
+    logo: "/client/basilicfly.png",
+    listingDate: "11-09-2023",
+    listingExchange: "NSE Emerge",
+    ipoSize: "66.35",
+    ipoPrice: "295.00",
     href: "/Draft-red-herring-prospectus-Basilic-Fly-Studio-Limited.pdf",
   },
-  { id: 3, name: "AFCOM Holdings Limited", href: "/DRHP AFCOM final_20240326113515.pdf" },
-  { id: 4, name: "AVP Infracon Limited", href: "/DRHP_AVP-Infracon-limited_final.pdf" },
-  { id: 5, name: "Emerald Tyre Manufacturers Limited", href: "/DRHP_Emerald_Final.pdf" },
-  { id: 6, name: "Freshara Agro Exports Limited", href: "/FresharaAgroExportsLimited_DRHP.pdf" },
-  { id: 7, name: "Krishca Strapping Solutions Limited", href: "/KrishcaStrapping_DRHP.pdf" },
-  { id: 8, name: "Phantom Digital Effects Limited", href: "/PhantomDigital_DRHP.pdf" },
+  {
+    id: 4,
+    name: "ROX Hi-Tech Limited",
+    logo: "/logos/rox.png",
+    listingDate: "16-11-2023",
+    listingExchange: "NSE Emerge",
+    ipoSize: "54.49",
+    ipoPrice: "135.00",
+    href: "/ROX Hi-Tech Limited DRHP.pdf",
+  },
+  {
+    id: 5,
+    name: "Supreme Power Equipment Limited",
+    logo: "/logos/supreme.png",
+    listingDate: "29-12-2023",
+    listingExchange: "NSE Emerge",
+    ipoSize: "46.67",
+    ipoPrice: "98.00",
+    href: "/SupremePower_DRHP.pdf",
+  },
+  {
+    id: 6,
+    name: "Thaai Casting Limited",
+    logo: "/logos/thaai.png",
+    listingDate: "23-02-2024",
+    listingExchange: "NSE Emerge",
+    ipoSize: "47.20",
+    ipoPrice: "185.90",
+    href: "/ThaaiCasting_DRHP.pdf",
+  },
+  {
+    id: 7,
+    name: "AVP Infracon Limited",
+    logo: "/client/avp.png",
+    listingDate: "20-03-2024",
+    listingExchange: "NSE Emerge",
+    ipoSize: "52.34",
+    ipoPrice: "79.00",
+    href: "/DRHP_AVP-Infracon-limited_final.pdf",
+  },
+  {
+    id: 8,
+    name: "ABS Marine Services Limited",
+    logo: "/client/abs.png",
+    listingDate: "21-05-2024",
+    listingExchange: "NSE Emerge",
+    ipoSize: "96.29",
+    ipoPrice: "294.00",
+    href: "/ABSMarine_DRHP.pdf",
+  },
   {
     id: 9,
-    name: "Happy Square Outsourcing Services Limited",
+    name: "Sathlokhar Synergys E&C Global Limited",
+    logo: "/logos/sathlokhar.png",
+    listingDate: "06-08-2024",
+    listingExchange: "NSE Emerge",
+    ipoSize: "92.93",
+    ipoPrice: "260.00",
+    href: "/SathlokharSynergys_DRHP.pdf",
+  },
+  {
+    id: 10,
+    name: "AFCOM Holdings Limited",
+    logo: "/client/afcom.png",
+    listingDate: "09-08-2024",
+    listingExchange: "BSE Emerge",
+    ipoSize: "73.83",
+    ipoPrice: "205.00",
+    href: "/DRHP AFCOM final_20240326113515.pdf",
+  },
+  {
+    id: 11,
+    name: "Freshara Agro Exports Limited",
+    logo: "/client/freshara.png",
+    listingDate: "24-10-2024",
+    listingExchange: "BSE Emerge",
+    ipoSize: "73.83",
+    ipoPrice: "135.00",
+    href: "/FresharaAgroExportsLimited_DRHP.pdf",
+  },
+  {
+    id: 12,
+    name: "Emerald Tyre Manufacturers Limited",
+    logo: "/client/emerald.png",
+    listingDate: "12-12-2024",
+    listingExchange: "NSE Emerge",
+    ipoSize: "49.26",
+    ipoPrice: "180.00",
+    href: "/DRHP_Emerald_Final.pdf",
+  },
+  {
+    id: 13,
+    name: "Happy Square Outsourcing Services Limited (White Force)",
+    logo: "/logos/whiteforce.png",
+    listingDate: "10-07-2025",
+    listingExchange: "NSE Emerge",
+    ipoSize: "24.24",
+    ipoPrice: "77.00",
     href: "/Registration_30012025182411_DRHP_HappySquare.pdf",
   },
-  { id: 10, name: "ROX Hi-Tech Limited", href: "/ROX Hi-Tech Limited DRHP.pdf" },
-  { id: 11, name: "Sathlokhar Synergys E&C Global Limited", href: "/SathlokharSynergys_DRHP.pdf" },
 ];
 
-function DocumentIcon() {
+function CalendarIcon() {
   return (
-    <svg viewBox="0 0 24 24" fill="none" className="h-6 w-6 text-[#0B1B3A]">
+    <svg viewBox="0 0 24 24" fill="none" className="h-[15px] w-[15px] text-slate-400 flex-none">
+      <rect x="3.5" y="4.5" width="17" height="16" rx="2" stroke="currentColor" strokeWidth="1.6" />
+      <path d="M3.5 9h17" stroke="currentColor" strokeWidth="1.6" />
+      <path d="M8 2.5v4M16 2.5v4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+function ExchangeIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className="h-[15px] w-[15px] text-slate-400 flex-none">
       <path
-        d="M7 3h7l5 5v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z"
+        d="M4 7h13M17 7l-3-3M17 7l-3 3M20 17H7M7 17l3-3M7 17l3 3"
         stroke="currentColor"
         strokeWidth="1.6"
+        strokeLinecap="round"
         strokeLinejoin="round"
       />
-      <path d="M14 3v5h5" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" />
-      <path d="M9 12h6M9 15h6M9 18h3" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+function SizeIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className="h-[15px] w-[15px] text-slate-400 flex-none">
+      <path
+        d="M3 12a9 9 0 1 0 18 0 9 9 0 0 0-18 0Z"
+        stroke="currentColor"
+        strokeWidth="1.6"
+      />
+      <path d="M12 7v5l3.5 2" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+function PriceIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className="h-[15px] w-[15px] text-slate-400 flex-none">
+      <path
+        d="M12 3v18M16.5 6.5H9.75a2.75 2.75 0 0 0 0 5.5h4.5a2.75 2.75 0 0 1 0 5.5H7"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+function DownloadIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className="h-4 w-4">
+      <path
+        d="M12 3v12m0 0-4-4m4 4 4-4M5 19h14"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
     </svg>
   );
 }
@@ -57,29 +217,72 @@ function InfoIcon() {
   );
 }
 
-function DocumentCard({ index, name, href }) {
+function DocumentCard({ index, doc }) {
   return (
-    <div className="flex items-center justify-between gap-4 rounded-lg border border-l-4 border-slate-100 border-l-orange-500 bg-white p-5 shadow-sm">
-      <div className="flex items-start gap-4">
-        <span className="flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-blue-50">
-          <DocumentIcon />
+    <div className="flex flex-col rounded-xl border border-slate-200 bg-white p-5 shadow-sm transition hover:shadow-md">
+      <div className="flex items-start justify-between gap-3">
+        <span className="flex h-7 w-7 flex-none items-center justify-center rounded-full bg-[#0B1B3A] text-xs font-semibold text-white">
+          {String(index).padStart(2, "0")}
         </span>
-        <div>
-          <p className="text-sm font-semibold text-[#0B1B3A] sm:text-[15px]">
-            {index}. {name}
-          </p>
-          <p className="mt-1 text-sm text-slate-500">Draft Red Herring Prospectus</p>
-          <p className="text-xs text-slate-400">Published for Investor Reference</p>
+      </div>
+
+      <div className="mt-3 flex h-16 items-center justify-center">
+        {doc.logo ? (
+          <div className="relative h-14 w-full">
+            <Image
+              src={doc.logo}
+              alt={doc.name}
+              fill
+              className="object-contain"
+              sizes="200px"
+            />
+          </div>
+        ) : (
+          <span className="flex h-12 w-12 items-center justify-center rounded-full bg-blue-50 text-sm font-bold text-[#0B1B3A]">
+            {doc.name.charAt(0)}
+          </span>
+        )}
+      </div>
+
+      <p className="mt-3 text-center text-sm font-semibold leading-snug text-[#0B1B3A] min-h-[40px]">
+        {doc.name}
+      </p>
+
+      <div className="mt-4 space-y-2 border-t border-slate-100 pt-4 text-xs text-slate-600">
+        <div className="flex items-center justify-between gap-2">
+          <span className="flex items-center gap-1.5 text-slate-400">
+            <CalendarIcon /> Listing Date
+          </span>
+          <span className="font-medium text-slate-700">{doc.listingDate}</span>
+        </div>
+        <div className="flex items-center justify-between gap-2">
+          <span className="flex items-center gap-1.5 text-slate-400">
+            <ExchangeIcon /> Listing Exchange
+          </span>
+          <span className="font-medium text-slate-700">{doc.listingExchange}</span>
+        </div>
+        <div className="flex items-center justify-between gap-2">
+          <span className="flex items-center gap-1.5 text-slate-400">
+            <SizeIcon /> IPO Size (in Crs.)
+          </span>
+          <span className="font-medium text-slate-700">{doc.ipoSize}</span>
+        </div>
+        <div className="flex items-center justify-between gap-2">
+          <span className="flex items-center gap-1.5 text-slate-400">
+            <PriceIcon /> IPO Price (₹)
+          </span>
+          <span className="font-medium text-slate-700">{doc.ipoPrice}</span>
         </div>
       </div>
 
       <Link
-        href={href}
+        href={doc.href}
         target="_blank"
         rel="noopener noreferrer"
-        className="flex-none rounded-md border border-[#0B1B3A] px-4 py-1.5 text-sm font-medium text-[#0B1B3A] transition hover:bg-[#0B1B3A] hover:text-white"
+        className="mt-5 flex items-center justify-center gap-2 rounded-md border border-[#0B1B3A] py-2 text-xs font-semibold uppercase tracking-wide text-[#0B1B3A] transition hover:bg-[#0B1B3A] hover:text-white"
       >
-        VIEW
+        <DownloadIcon />
+        View Document
       </Link>
     </div>
   );
@@ -98,7 +301,7 @@ export default function DRHPPage() {
             priority
             className="object-cover object-right"
           />
-<div className="absolute inset-0 bg-gradient-to-r from-[#0B1B3A]/80 via-[#0B1B3A]/60 to-[#0B1B3A]/10" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0B1B3A]/80 via-[#0B1B3A]/60 to-[#0B1B3A]/10" />
         </div>
 
         <div className="relative z-10 w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 pb-12 sm:pb-16 lg:pb-20 mb-10">
@@ -144,23 +347,23 @@ export default function DRHPPage() {
         </div>
       </section>
 
-      {/* ===== Available DRHP Documents ===== */}
+      {/* ===== Our DRHP Documents ===== */}
       <section className="bg-slate-50 px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
-        <div className="max-w-[1350px] mx-auto">
+        <div className="max-w-[1400px] mx-auto">
           <div className="text-center">
             <h2 className="text-2xl sm:text-3xl font-bold text-[#152249]">
-              Available DRHP Documents
+              Our DRHP Documents
             </h2>
             <span className="mx-auto mt-3 block h-1 w-14 bg-orange-500 rounded-full" />
             <p className="mx-auto mt-4 max-w-xl text-sm text-slate-500 sm:text-base">
-              Browse and download the available Draft Red Herring Prospectus
-              documents published for companies advised by AKSAN Capital.
+              Browse and download the Draft Red Herring Prospectus documents
+              of companies advised by AKSAN Capital.
             </p>
           </div>
 
-          <div className="mt-10 grid grid-cols-1 gap-5 md:grid-cols-2">
-            {drhpDocuments.map((doc) => (
-              <DocumentCard key={doc.id} index={doc.id} name={doc.name} href={doc.href} />
+          <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {drhpDocuments.map((doc, i) => (
+              <DocumentCard key={doc.id} index={i + 1} doc={doc} />
             ))}
           </div>
 

@@ -164,14 +164,7 @@ export default function Navbar() {
           )}
         </ul>
 
-        {/* CTA button (desktop) */}
-        <Link
-          href="/investor-login"
-          className="hidden lg:inline-flex items-center gap-2 bg-white text-slate-900 font-medium text-[12px] px-5 py-2.5 rounded-md hover:bg-slate-100 transition"
-        >
-          Investor Login
-          <span aria-hidden="true">→</span>
-        </Link>
+       
 
         {/* Mobile menu toggle — animated hamburger to X */}
         <button
@@ -311,17 +304,7 @@ export default function Navbar() {
             ))}
           </ul>
 
-          {/* CTA pinned near bottom */}
-          <div className="mt-auto px-5 pt-4 pb-6 border-t border-white/10">
-            <Link
-              href="/investor-login"
-              className="w-full inline-flex items-center justify-center gap-2 bg-white text-slate-900 font-semibold text-[13px] px-5 py-3.5 rounded-xl active:scale-[0.98] hover:bg-slate-100 transition-all shadow-lg shadow-black/20"
-              onClick={() => setMobileOpen(false)}
-            >
-              Investor Login
-              <span aria-hidden="true">→</span>
-            </Link>
-          </div>
+         
         </div>
       </div>
     </header>

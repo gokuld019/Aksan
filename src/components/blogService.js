@@ -13,7 +13,7 @@ export async function getPublishedBlogs({ page = 1, per_page = 12 } = {}) {
   const token = getToken();
 
   try {
-    const res = await fetch(`${API_BASE_URL}/admin/blogs?${params.toString()}`, {
+    const res = await fetch(`${API_BASE_URL}/public/blogs?${params.toString()}`, {
       method: 'GET',
       headers: {
         Accept: 'application/json',
@@ -30,7 +30,7 @@ export async function getPublishedBlogs({ page = 1, per_page = 12 } = {}) {
 export async function getBlogBySlug(slug) {
   const token = getToken();
   try {
-    const res = await fetch(`${API_BASE_URL}/admin/blogs?per_page=100&page=1`, {
+    const res = await fetch(`${API_BASE_URL}/public/blogs?per_page=100&page=1`, {
       method: 'GET',
       headers: {
         Accept: 'application/json',
@@ -61,7 +61,7 @@ export async function getAllBlogs({ status = 'all', search = '', per_page = 15, 
   params.append('page', page);
 
   try {
-    const res = await fetch(`${API_BASE_URL}/admin/blogs?${params.toString()}`, {
+    const res = await fetch(`${API_BASE_URL}/public/blogs?${params.toString()}`, {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${token}`,
@@ -79,7 +79,7 @@ export async function getAllBlogs({ status = 'all', search = '', per_page = 15, 
 export async function getBlogById(id) {
   const token = getToken();
   try {
-    const res = await fetch(`${API_BASE_URL}/admin/blogs/${id}`, {
+    const res = await fetch(`${API_BASE_URL}/public/blogs/${id}`, {
       method: 'GET',
       headers: {
         Accept: 'application/json',
@@ -95,7 +95,7 @@ export async function getBlogById(id) {
 export async function createBlog(formData) {
   const token = getToken();
   try {
-    const res = await fetch(`${API_BASE_URL}/admin/blogs`, {
+    const res = await fetch(`${API_BASE_URL}/public/blogs`, {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${token}`,
@@ -114,7 +114,7 @@ export async function updateBlog(id, formData) {
   formData.append('_method', 'PUT');
 
   try {
-    const res = await fetch(`${API_BASE_URL}/admin/blogs/${id}`, {
+    const res = await fetch(`${API_BASE_URL}/public/blogs/${id}`, {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${token}`,
@@ -131,7 +131,7 @@ export async function updateBlog(id, formData) {
 export async function updateBlogStatus(id, status) {
   const token = getToken();
   try {
-    const res = await fetch(`${API_BASE_URL}/admin/blogs/${id}`, {
+    const res = await fetch(`${API_BASE_URL}/public/blogs/${id}`, {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${token}`,
@@ -149,7 +149,7 @@ export async function updateBlogStatus(id, status) {
 export async function deleteBlog(id) {
   const token = getToken();
   try {
-    const res = await fetch(`${API_BASE_URL}/admin/blogs/${id}`, {
+    const res = await fetch(`${API_BASE_URL}/public/blogs/${id}`, {
       method: 'DELETE',
       headers: {
         Authorization: `Bearer ${token}`,

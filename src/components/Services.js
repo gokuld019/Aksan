@@ -28,7 +28,7 @@ const notoSans = Noto_Sans({
 });
 
 const highlightServices = [
-  { icon: Target, title: "IPO Advisory", desc: "Unlocking growth through public markets for SME companies." },
+  { icon: Target, title: "IPO", desc: "Unlocking growth through public markets for SME companies." },
   { icon: BarChart3, title: "Rights Issue", desc: "Capital infusion without debt for listed companies." },
   { icon: ShieldCheck, title: "Preferential Allotment", desc: "Efficient, targeted capital raising for listed companies." },
   { icon: Clock, title: "Follow-on Public Offer", desc: "Leveraging public markets for continued growth." },
@@ -42,7 +42,7 @@ const stats = [
 ];
 
 const services = [
-  { icon: Target, title: "IPO Advisory", desc: "We guide SME companies through every stage of the IPO journey — from assessing readiness and structuring the offering to due diligence, regulatory compliance, and post-listing advisory." },
+  { icon: Target, title: "IPO", desc: "We guide SME companies through every stage of the IPO journey — from assessing readiness and structuring the offering to due diligence, regulatory compliance, and post-listing advisory." },
   { icon: TrendingUp, title: "Rights Issue Advisory", desc: "We help listed companies raise capital through Rights Issues with regulatory precision — from strategic planning and SEBI documentation to underwriting and compliance management." },
   { icon: Shield, title: "Preferential Allotment", desc: "We guide listed companies through Preferential Allotments — from valuation and investor identification to due diligence, documentation, and post-allotment compliance." },
   { icon: PieChart, title: "Follow-on Public Offer", desc: "We support listed companies raising capital through FPOs — covering business assessment, due diligence, capital structuring, DRHP documentation, and investor outreach." },
