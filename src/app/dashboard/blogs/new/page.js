@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { createBlog } from '@/services/blogService';
+import { createBlog } from '@/components/blogService';
 
 export default function NewBlogPage() {
   const router = useRouter();

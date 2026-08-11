@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { getAllBlogs, deleteBlog, updateBlogStatus } from '@/services/blogService';
+import { getAllBlogs, deleteBlog, updateBlogStatus } from '@/components/blogService';
 
 export default function DashboardBlogsPage() {
   const [blogs, setBlogs] = useState([]);
