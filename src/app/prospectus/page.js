@@ -235,7 +235,7 @@ export default function RHPPage() {
           }}
         />
         <img
-          src="/rhp-banner.png"
+          src="/prospectus.png"
           alt=""
           className="absolute inset-0 h-full w-full object-cover mix-blend-luminosity opacity-40"
         />

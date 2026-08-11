@@ -20,11 +20,9 @@ import {
   AlertTriangle,
   ArrowLeft,
   Sparkles,
+  ShieldCheck,
 } from "lucide-react";
 
-// Icon + accent per top-level topic / nav chip. Falls back to Sparkles
-// for any reply label that isn't a known topic (individual FAQ
-// questions render as plain text chips without an icon).
 const REPLY_META = {
   "About Aksan": { icon: Building2, tint: "from-sky-500 to-sky-600" },
   Fundraising: { icon: TrendingUp, tint: "from-emerald-500 to-emerald-600" },
@@ -36,25 +34,9 @@ const REPLY_META = {
   "Our services": { icon: ArrowLeft, tint: "from-slate-500 to-slate-600" },
 };
 
-/* ============================================================
-  Accessibility settings live here so BOTH the fab button and
-  the panel can read/write them, and so `document.documentElement`
-  actually gets the classes/vars applied to the real page.
-
-  NOTE ON FONT SCALING: this now uses literal pixel offsets
-  (e.g. "+3" means +3px added to whatever an element's base
-  font-size already is), applied via calc(1em + Npx). This is
-  deliberately NOT a percentage/em multiplier — multiplying em
-  values compounds unpredictably on deeply nested elements,
-  and the UI label promises "px", so the behavior needs to
-  actually be px.
-  ============================================================ */
 const FONT_PX_STEPS = { "-2": -2, "-1": -1, 0: 0, 1: 1, 2: 2, 3: 3, 4: 4 };
 const LINE_HEIGHTS = { "-2": 1.15, "-1": 1.3, 0: 1.5, 1: 1.65, 2: 1.8, 3: 1.95, 4: 2.1 };
 
-// How long the "typing…" indicator shows before the bot's answer
-// appears, scaled a bit by reply length so short answers don't
-// linger and long answers don't feel instant/fake.
 function typingDelayFor(flow) {
   const chars = (flow.text || []).reduce((n, l) => n + (l.text?.length || 0), 0);
   return Math.min(1400, Math.max(550, chars * 12));
@@ -68,7 +50,6 @@ export default function VoiceWidget() {
   const [accessibilityOpen, setAccessibilityOpen] = useState(false);
   const [toolbarVisible, setToolbarVisible] = useState(true);
 
-  // accessibility state, applied globally via useEffect below
   const [fontSize, setFontSize] = useState(0);
   const [lineHeight, setLineHeight] = useState(0);
   const [readableFont, setReadableFont] = useState(false);
@@ -79,21 +60,6 @@ export default function VoiceWidget() {
 
   const [targetMissing, setTargetMissing] = useState(false);
 
-  // Resolves the real page container. NEVER falls back to document.body —
-  // the widget is portaled onto document.body too, so scaling/recoloring
-  // body would also scale/recolor the widget itself (this was the root
-  // cause of "+1 font size only grew the button"). If #page-content is
-  // missing, settings simply won't apply — fix that on the layout side
-  // rather than working around it here.
-  //
-  // IMPORTANT: your root layout MUST wrap page children like this:
-  //   <body>
-  //     <div id="page-content">{children}</div>
-  //     <VoiceWidget />
-  //   </body>
-  // If High Contrast / Font Size / etc. visibly do nothing, check the
-  // browser console for the warning below — it means #page-content
-  // isn't in the DOM yet.
   const getTarget = useCallback(() => {
     const el = document.getElementById("page-content");
     if (!el && !targetMissing) {
@@ -107,7 +73,6 @@ export default function VoiceWidget() {
     return el;
   }, [targetMissing]);
 
-  // Apply all accessibility settings in a single effect to ensure consistency
   useEffect(() => {
     const target = getTarget();
     if (!target) return;
@@ -231,22 +196,54 @@ export default function VoiceWidget() {
 
         /* ---- Chat widget motion & typing indicator ---- */
         @keyframes chatBubbleIn {
-          from { opacity: 0; transform: translateY(8px) scale(0.98); }
+          from { opacity: 0; transform: translateY(10px) scale(0.97); }
           to { opacity: 1; transform: translateY(0) scale(1); }
         }
         @keyframes typingDot {
-          0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+          0%, 60%, 100% { transform: translateY(0); opacity: 0.35; }
           30% { transform: translateY(-4px); opacity: 1; }
         }
+        @keyframes panelReveal {
+          from { opacity: 0; transform: translateY(16px) scale(0.96); }
+          to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        @keyframes pulseGlow {
+          0%, 100% { opacity: 0.55; }
+          50% { opacity: 1; }
+        }
+        @keyframes shimmer {
+          0% { background-position: -200% 0; }
+          100% { background-position: 200% 0; }
+        }
         .chat-msg-in {
-          animation: chatBubbleIn 0.28s cubic-bezier(0.16, 1, 0.3, 1) both;
+          animation: chatBubbleIn 0.32s cubic-bezier(0.16, 1, 0.3, 1) both;
         }
         .typing-dot {
           animation: typingDot 1.1s ease-in-out infinite;
         }
+        .chat-panel-in {
+          animation: panelReveal 0.32s cubic-bezier(0.16, 1, 0.3, 1) both;
+        }
+        .chat-scrollbar::-webkit-scrollbar {
+          width: 5px;
+        }
+        .chat-scrollbar::-webkit-scrollbar-track {
+          background: transparent;
+        }
+        .chat-scrollbar::-webkit-scrollbar-thumb {
+          background: rgba(15, 58, 102, 0.15);
+          border-radius: 999px;
+        }
+        .chat-scrollbar::-webkit-scrollbar-thumb:hover {
+          background: rgba(15, 58, 102, 0.28);
+        }
+        .reply-shimmer {
+          position: relative;
+          overflow: hidden;
+        }
       `}</style>
 
-      {/* Bottom-left accessibility icon - Exact size from screenshot */}
+      {/* Bottom-left accessibility icon */}
       <button
         onClick={() => setAccessibilityOpen((v) => !v)}
         className="group fixed bottom-6 left-6 flex items-center justify-center w-[50px] h-[50px] rounded-[14px] hover:rounded-full bg-[linear-gradient(150deg,var(--primary-blue),var(--navy-950))] shadow-lg hover:shadow-[0_8px_30px_rgba(10,42,77,0.5)] hover:scale-105 transition-all duration-300 ease-in-out voice-widget"
@@ -359,6 +356,11 @@ export default function VoiceWidget() {
             className="relative flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[linear-gradient(145deg,#12457a,#0a2a4d)] shadow-[0_10px_30px_-8px_rgba(10,42,77,0.6)] hover:scale-105 active:scale-95 transition overflow-hidden p-0 shrink-0 ring-1 ring-white/10"
             aria-label="Open chatbot"
           >
+            <span
+              className="absolute inset-0 rounded-full ring-2 ring-orange-400/40"
+              style={{ animation: "pulseGlow 2.4s ease-in-out infinite" }}
+              aria-hidden="true"
+            />
             <Image
               src="/chatbot.webp"
               alt="Chat with Aksan AI"
@@ -377,11 +379,7 @@ export default function VoiceWidget() {
 }
 
 /* ============================================================
-  BOT FLOW — built directly from the client's approved FAQ
-  list. Structure is: a root "menu" of topic categories, each
-  category shows its questions as quick replies, each question
-  shows its exact approved answer plus a "Back to Topics" reply
-  so the user can keep browsing without retyping.
+  BOT FLOW — unchanged from client-approved FAQ content
   ============================================================ */
 const TOPICS = [
   "About Aksan",
@@ -638,11 +636,7 @@ function getTime() {
 }
 
 /* ============================================================
-  ACCESSIBILITY PANEL — modernized visual treatment:
-  glass/blur panel, layered elevation shadow, gradient hero
-  with ambient glow accents, uppercase tracked section labels,
-  card-style module groups with hover/active micro-interactions,
-  and a gradient CTA for Reset Settings.
+  ACCESSIBILITY PANEL — unchanged
   ============================================================ */
 function AccessibilityPanel({
   onClose,
@@ -760,7 +754,6 @@ function AccessibilityPanel({
         style={{ zIndex: 2147483001 }}
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Top bar */}
         <div className="flex items-center justify-between px-5 sm:px-6 pt-5 sm:pt-6 shrink-0">
           <button className="flex items-center gap-1.5 bg-slate-100/80 hover:bg-slate-200/80 text-slate-700 text-xs sm:text-[13px] font-semibold rounded-full px-3.5 sm:px-4 py-2 transition-colors">
             English
@@ -777,14 +770,12 @@ function AccessibilityPanel({
           </button>
         </div>
 
-        {/* Hero banner */}
         <div
           className="relative mx-4 sm:mx-5 mt-3 sm:mt-4 rounded-[20px] sm:rounded-[24px] px-5 sm:px-6 py-6 sm:py-7 flex flex-col items-center text-center overflow-hidden shrink-0"
           style={{
             background: "linear-gradient(135deg, #0a2440 0%, #0f3a66 50%, #164f8a 100%)",
           }}
         >
-          {/* subtle radial glow accents */}
           <div
             className="pointer-events-none absolute -top-10 -right-10 w-40 h-40 rounded-full opacity-30 blur-2xl"
             style={{ background: "radial-gradient(circle, #fb923c, transparent 70%)" }}
@@ -814,7 +805,6 @@ function AccessibilityPanel({
           </p>
         </div>
 
-        {/* Body */}
         <div className="px-4 sm:px-5 py-4 sm:py-5 overflow-y-auto flex-1 [scrollbar-width:thin]">
           <div className="bg-slate-50/70 rounded-2xl p-3.5 sm:p-4 mb-3.5 sm:mb-4 ring-1 ring-slate-100">
             <h3 className="text-slate-400 font-bold text-[10px] sm:text-[11px] tracking-widest uppercase mb-2.5 sm:mb-3 px-0.5">
@@ -949,6 +939,13 @@ function AccessibilityPanel({
   );
 }
 
+/* ============================================================
+  CHAT PANEL — redesigned: premium fintech look
+  - Deep navy header with fine grid texture + verified badge
+  - Glass message bubbles, refined shadows, softer radii
+  - Cleaner quick-reply chips with icon chips
+  - Rounded pill input with focus glow
+  ============================================================ */
 function ChatPanel({ onClose }) {
   const [message, setMessage] = useState("");
   const [isTyping, setIsTyping] = useState(false);
@@ -960,8 +957,8 @@ function ChatPanel({ onClose }) {
       id: "welcome",
       from: "ai",
       lines: [
-        { bold: true, text: "Hi! I'm Aksan AI 👋" },
-        { text: "How can I help you today? Pick a topic below to get started." },
+        { bold: true, text: "Welcome to Aksan AI" },
+        { text: "I can help with fundraising, IPO advisory, valuation, due diligence and more. Pick a topic to get started." },
       ],
       time: getTime(),
       replies: TOPICS,
@@ -1016,48 +1013,67 @@ function ChatPanel({ onClose }) {
   };
 
   return (
-    <div className="fixed bottom-20 sm:bottom-24 right-4 sm:right-6 w-[calc(100vw-2rem)] sm:w-[380px] h-[520px] sm:h-[620px] max-w-[380px] rounded-2xl sm:rounded-[28px] shadow-[0_25px_60px_-15px_rgba(10,42,77,0.45)] ring-1 ring-black/5 overflow-hidden flex flex-col relative bg-white voice-widget">
-      {/* Background pattern image behind the message thread */}
-      <div className="absolute inset-0 opacity-[0.12] pointer-events-none">
-        <Image src="/chatbot-bg.webp" alt="" fill className="object-cover object-bottom" />
-      </div>
-
+    <div className="chat-panel-in fixed bottom-20 sm:bottom-24 right-4 sm:right-6 w-[calc(100vw-2rem)] sm:w-[400px] h-[540px] sm:h-[640px] max-w-[400px] rounded-[22px] sm:rounded-[26px] shadow-[0_30px_70px_-15px_rgba(6,20,38,0.55)] ring-1 ring-black/[0.06] overflow-hidden flex flex-col relative bg-[#f7f9fc] voice-widget">
       {/* Header */}
       <div
-        className="relative z-10 px-4 py-3.5 flex items-center justify-between shrink-0"
+        className="relative z-10 px-4 sm:px-5 pt-4 sm:pt-5 pb-4 sm:pb-5 flex items-center justify-between shrink-0 overflow-hidden"
         style={{
-          background:
-            "linear-gradient(120deg, var(--primary-blue-dark, #0a2a4d), var(--primary-blue, #0f3a66) 55%, var(--navy-700, #12457a) 120%)",
+          background: "linear-gradient(135deg, #081b32 0%, #0d3462 48%, #12457a 100%)",
         }}
       >
-        <div className="flex items-center gap-2.5 sm:gap-3">
+        {/* subtle grid texture */}
+        <div
+          className="pointer-events-none absolute inset-0 opacity-[0.06]"
+          style={{
+            backgroundImage:
+              "linear-gradient(rgba(255,255,255,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.6) 1px, transparent 1px)",
+            backgroundSize: "22px 22px",
+          }}
+        />
+        <div
+          className="pointer-events-none absolute -top-16 -right-10 w-44 h-44 rounded-full opacity-25 blur-3xl"
+          style={{ background: "radial-gradient(circle, #fb923c, transparent 70%)" }}
+        />
+
+        <div className="relative flex items-center gap-3 min-w-0">
+          <div className="relative w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/10 ring-1 ring-white/20 flex items-center justify-center shrink-0 overflow-hidden">
+            <Image
+              src="/chatbot.webp"
+              alt="Aksan AI"
+              width={40}
+              height={40}
+              className="w-full h-full object-cover"
+            />
+          </div>
+          <div className="min-w-0">
+            <div className="flex items-center gap-1.5">
+              <p className="text-white font-semibold text-sm sm:text-[15px] tracking-tight truncate">
+                Aksan AI Advisor
+              </p>
+              <ShieldCheck size={13} className="text-sky-300 shrink-0" strokeWidth={2.4} />
+            </div>
+            <span className="flex items-center gap-1.5 text-emerald-300/90 text-[10px] sm:text-[11px] font-medium">
+              <span className="relative flex w-1.5 h-1.5">
+                <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 animate-ping" />
+                <span className="relative inline-flex rounded-full h-full w-full bg-emerald-400" />
+              </span>
+              Online — typically replies instantly
+            </span>
+          </div>
+        </div>
+
+        <div className="relative flex items-center gap-1.5 sm:gap-2 shrink-0">
           <button
             onClick={handleRefresh}
-            className="w-7 h-7 sm:w-8 sm:h-8 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-white shrink-0 transition"
+            className="w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center rounded-full bg-white/[0.08] hover:bg-white/[0.16] text-white/90 transition"
             aria-label="Restart chat"
+            title="Restart conversation"
           >
             <RotateCcw size={14} strokeWidth={2.25} />
           </button>
-          <div className="relative h-7 sm:h-9 w-[100px] sm:w-[130px] shrink-0">
-            <Image
-              src="/aksan-logo.webp"
-              alt="AKSAN Capital Advisory Private Limited"
-              fill
-              className="object-contain object-left"
-            />
-          </div>
-        </div>
-        <div className="flex items-center gap-2 sm:gap-3">
-          <span className="flex items-center gap-1.5 text-white/90 text-[10px] sm:text-xs whitespace-nowrap">
-            <span className="relative flex w-1.5 h-1.5 sm:w-2 sm:h-2">
-              <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 animate-ping" />
-              <span className="relative inline-flex rounded-full h-full w-full bg-emerald-400" />
-            </span>
-            Online now
-          </span>
           <button
             onClick={onClose}
-            className="w-7 h-7 sm:w-8 sm:h-8 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-white shrink-0 transition"
+            className="w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center rounded-full bg-white/[0.08] hover:bg-white/[0.16] text-white/90 transition"
             aria-label="Close chat"
           >
             <X size={14} strokeWidth={2.25} />
@@ -1068,23 +1084,27 @@ function ChatPanel({ onClose }) {
       {/* Messages */}
       <div
         ref={scrollRef}
-        className="relative z-10 bg-slate-50/70 px-3.5 sm:px-5 py-4 sm:py-5 flex-1 overflow-y-auto flex flex-col gap-3.5 sm:gap-4"
+        className="chat-scrollbar relative z-10 px-3.5 sm:px-5 py-4 sm:py-5 flex-1 overflow-y-auto flex flex-col gap-4 sm:gap-5"
+        style={{
+          backgroundImage:
+            "radial-gradient(circle at 15% 8%, rgba(18,69,122,0.05), transparent 45%), radial-gradient(circle at 85% 92%, rgba(249,115,22,0.04), transparent 40%)",
+        }}
       >
         {messages.map((msg) =>
           msg.from === "ai" ? (
             <div key={msg.id} className="chat-msg-in">
-              <div className="flex items-start gap-2 sm:gap-3">
-                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-gradient-to-br from-[#12457a] to-[#0a2a4d] text-white text-[10px] sm:text-xs font-bold flex items-center justify-center shrink-0 ring-1 ring-white/20">
+              <div className="flex items-start gap-2 sm:gap-2.5">
+                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-gradient-to-br from-[#164f8a] to-[#081b32] text-white text-[10px] sm:text-[11px] font-bold flex items-center justify-center shrink-0 ring-1 ring-black/5 shadow-sm">
                   AI
                 </div>
-                <div className="bg-white rounded-2xl rounded-tl-md px-3.5 sm:px-4 py-2.5 sm:py-3 max-w-[250px] sm:max-w-[290px] shadow-[0_2px_12px_-2px_rgba(15,23,42,0.08)] ring-1 ring-slate-100">
+                <div className="bg-white rounded-2xl rounded-tl-md px-4 py-3 max-w-[255px] sm:max-w-[290px] shadow-[0_4px_20px_-6px_rgba(15,23,42,0.10)] ring-1 ring-slate-100">
                   {msg.lines.map((line, i) => (
                     <p
                       key={i}
                       className={
                         line.bold
-                          ? "text-slate-900 text-xs sm:text-sm font-semibold"
-                          : `text-slate-600 text-xs sm:text-sm leading-relaxed ${i > 0 ? "mt-1.5 sm:mt-2" : ""}`
+                          ? "text-slate-900 text-[13px] sm:text-sm font-semibold tracking-tight"
+                          : `text-slate-600 text-[13px] sm:text-sm leading-relaxed ${i > 0 ? "mt-1.5 sm:mt-2" : ""}`
                       }
                     >
                       {line.text}
@@ -1092,10 +1112,12 @@ function ChatPanel({ onClose }) {
                   ))}
                 </div>
               </div>
-              <p className="text-slate-400 text-[10px] sm:text-xs mt-1.5 sm:mt-2 ml-9 sm:ml-11">{msg.time}</p>
+              <p className="text-slate-400 text-[10px] sm:text-[11px] mt-1.5 ml-9 sm:ml-[42px] font-medium">
+                {msg.time}
+              </p>
 
               {msg.replies && msg.replies.length > 0 && (
-                <div className="grid grid-cols-2 gap-1.5 sm:gap-2 mt-2.5 sm:mt-3 ml-9 sm:ml-11 max-w-[260px] sm:max-w-[300px]">
+                <div className="grid grid-cols-2 gap-1.5 sm:gap-2 mt-3 ml-9 sm:ml-[42px] max-w-[266px] sm:max-w-[300px]">
                   {msg.replies.map((reply) => {
                     const meta = REPLY_META[reply];
                     const Icon = meta?.icon || Sparkles;
@@ -1105,20 +1127,24 @@ function ChatPanel({ onClose }) {
                         key={reply}
                         onClick={() => handleQuickReply(reply)}
                         disabled={isTyping}
-                        className={`group relative flex items-center gap-1.5 rounded-xl px-2.5 py-2 text-left transition-all duration-150 active:scale-[0.97] disabled:opacity-40 disabled:pointer-events-none ${
+                        className={`group relative flex items-center gap-2 rounded-[14px] px-2.5 py-2.5 text-left transition-all duration-150 active:scale-[0.97] disabled:opacity-40 disabled:pointer-events-none ${
                           isNav
-                            ? "bg-white ring-1 ring-slate-200 hover:ring-transparent hover:shadow-md"
-                            : "col-span-2 bg-white ring-1 ring-slate-200 hover:ring-blue-900/40 hover:bg-blue-50/60"
+                            ? "bg-white ring-1 ring-slate-200/80 hover:ring-[#12457a]/30 hover:shadow-[0_6px_16px_-4px_rgba(15,58,102,0.18)]"
+                            : "col-span-2 bg-gradient-to-r from-orange-50 to-white ring-1 ring-orange-200/70 hover:ring-orange-300 hover:shadow-[0_6px_16px_-4px_rgba(249,115,22,0.18)]"
                         }`}
                       >
-                        {isNav && (
+                        {isNav ? (
                           <span
-                            className={`flex items-center justify-center w-6 h-6 rounded-lg bg-gradient-to-br ${meta.tint} text-white shrink-0 group-hover:scale-105 transition`}
+                            className={`flex items-center justify-center w-6 h-6 sm:w-7 sm:h-7 rounded-[10px] bg-gradient-to-br ${meta.tint} text-white shrink-0 shadow-sm group-hover:scale-105 transition`}
                           >
                             <Icon size={13} strokeWidth={2.25} />
                           </span>
+                        ) : (
+                          <span className="flex items-center justify-center w-6 h-6 rounded-full bg-orange-500 text-white shrink-0 shadow-sm">
+                            <Icon size={12} strokeWidth={2.5} />
+                          </span>
                         )}
-                        <span className="text-[11px] sm:text-xs font-medium text-slate-700 leading-snug group-hover:text-slate-900">
+                        <span className="text-[11.5px] sm:text-xs font-medium text-slate-700 leading-snug group-hover:text-slate-900">
                           {reply}
                         </span>
                       </button>
@@ -1129,24 +1155,24 @@ function ChatPanel({ onClose }) {
             </div>
           ) : (
             <div key={msg.id} className="flex flex-col items-end chat-msg-in">
-              <div className="bg-gradient-to-br from-[#12457a] to-[#0a2a4d] text-white rounded-2xl rounded-tr-md px-3.5 sm:px-4 py-2.5 sm:py-3 max-w-[230px] sm:max-w-[270px] shadow-sm">
-                <p className="text-xs sm:text-sm leading-relaxed">{msg.text}</p>
+              <div className="bg-gradient-to-br from-[#164f8a] to-[#081b32] text-white rounded-2xl rounded-tr-md px-4 py-2.5 sm:py-3 max-w-[230px] sm:max-w-[270px] shadow-[0_6px_18px_-6px_rgba(8,27,50,0.5)]">
+                <p className="text-[13px] sm:text-sm leading-relaxed">{msg.text}</p>
               </div>
-              <p className="text-slate-400 text-[10px] sm:text-xs mt-1.5 sm:mt-2 mr-1 flex items-center gap-1">
+              <p className="text-slate-400 text-[10px] sm:text-[11px] mt-1.5 mr-1 flex items-center gap-1 font-medium">
                 {msg.time}
-                <span className="text-blue-900" aria-hidden="true">✓</span>
+                <span className="text-sky-600" aria-hidden="true">✓✓</span>
               </p>
             </div>
           )
         )}
 
-        {/* Typing indicator — shown while the bot "composes" its reply */}
+        {/* Typing indicator */}
         {isTyping && (
-          <div className="flex items-start gap-2 sm:gap-3 chat-msg-in">
-            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-gradient-to-br from-[#12457a] to-[#0a2a4d] text-white text-[10px] sm:text-xs font-bold flex items-center justify-center shrink-0 ring-1 ring-white/20">
+          <div className="flex items-start gap-2 sm:gap-2.5 chat-msg-in">
+            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-gradient-to-br from-[#164f8a] to-[#081b32] text-white text-[10px] sm:text-[11px] font-bold flex items-center justify-center shrink-0 ring-1 ring-black/5 shadow-sm">
               AI
             </div>
-            <div className="bg-white rounded-2xl rounded-tl-md px-4 py-3 flex items-center gap-1 shadow-[0_2px_12px_-2px_rgba(15,23,42,0.08)] ring-1 ring-slate-100">
+            <div className="bg-white rounded-2xl rounded-tl-md px-4 py-3 flex items-center gap-1.5 shadow-[0_4px_20px_-6px_rgba(15,23,42,0.10)] ring-1 ring-slate-100">
               <span className="w-1.5 h-1.5 rounded-full bg-slate-400 typing-dot" style={{ animationDelay: "0ms" }} />
               <span className="w-1.5 h-1.5 rounded-full bg-slate-400 typing-dot" style={{ animationDelay: "150ms" }} />
               <span className="w-1.5 h-1.5 rounded-full bg-slate-400 typing-dot" style={{ animationDelay: "300ms" }} />
@@ -1156,28 +1182,28 @@ function ChatPanel({ onClose }) {
       </div>
 
       {/* Input */}
-      <div className="relative z-10 px-3.5 sm:px-4 py-3 border-t border-slate-100 flex items-center gap-2 shrink-0 bg-white">
+      <div className="relative z-10 px-3.5 sm:px-4 py-3 sm:py-3.5 border-t border-slate-200/70 flex items-center gap-2 shrink-0 bg-white">
         <input
           type="text"
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           onKeyDown={(e) => e.key === "Enter" && handleSend()}
-          placeholder="Type your message..."
+          placeholder="Ask about fundraising, IPO, valuation..."
           disabled={isTyping}
-          className="flex-1 border border-slate-200 rounded-full px-4 py-2.5 text-xs sm:text-sm outline-none focus:border-blue-900 focus:ring-2 focus:ring-blue-900/10 transition disabled:bg-slate-50 disabled:text-slate-400"
+          className="flex-1 border border-slate-200 bg-slate-50/70 rounded-full px-4 py-2.5 text-[13px] sm:text-sm outline-none focus:border-[#12457a]/50 focus:bg-white focus:ring-4 focus:ring-[#12457a]/[0.08] transition-all disabled:bg-slate-50 disabled:text-slate-400 placeholder:text-slate-400"
         />
         <button
           onClick={handleSend}
           disabled={!message.trim() || isTyping}
-          className="flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-br from-[#12457a] to-[#0a2a4d] text-white shrink-0 disabled:opacity-40 active:scale-90 transition"
+          className="flex items-center justify-center w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-gradient-to-br from-[#164f8a] to-[#081b32] text-white shrink-0 disabled:opacity-40 hover:shadow-[0_6px_18px_-4px_rgba(8,27,50,0.5)] active:scale-90 transition-all"
           aria-label="Send message"
         >
           <Send size={16} strokeWidth={2.25} />
         </button>
       </div>
 
-      <p className="relative z-10 text-center text-[10px] sm:text-xs text-slate-400 pb-2.5 sm:pb-3 bg-white shrink-0">
-        Powered by <span className="text-orange-500 font-medium">Aksan AI</span> ⚡
+      <p className="relative z-10 text-center text-[10px] sm:text-[11px] text-slate-400 pb-2.5 sm:pb-3 bg-white shrink-0 font-medium">
+        Secured & Powered by <span className="text-orange-500 font-semibold">Aksan AI</span>
       </p>
     </div>
   );

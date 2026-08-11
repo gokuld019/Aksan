@@ -128,7 +128,7 @@ export default function InvestorGrievanceRedressalPage() {
   return (
     <main className="bg-white" style={{ fontFamily: "'Noto Sans', sans-serif" }}>
       {/* Hero with Parallax - Full Width Dark Banner */}
-      <section ref={heroRef} className="relative overflow-hidden min-h-[600px] lg:min-h-[700px] flex items-center bg-[#0b1a3a]">
+      <section ref={heroRef} className="relative overflow-hidden min-h-[600px] lg:min-h-[520px] flex items-center bg-[#0b1a3a]">
         {/* Background Image with Parallax */}
         <motion.div 
           style={{ y: heroImageY }}

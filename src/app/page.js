@@ -18,7 +18,7 @@ export default function Home() {
       <Hero />
       <Services />
       <TrackRecord />
-      <AboutAksan />
+      {/* <AboutAksan /> */}
       <WhyAksan />
       <BoardOfDirectors />
       <MarketInsights />

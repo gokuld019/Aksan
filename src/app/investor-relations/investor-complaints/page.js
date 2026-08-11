@@ -134,7 +134,7 @@ export default function InvestorComplaintsPage() {
       {/* Hero — full-width fill banner */}
       <section
         ref={heroRef}
-        className="relative w-full min-h-[420px] sm:min-h-[520px] lg:min-h-[600px] flex items-center overflow-hidden bg-[#0b1a3a]"
+        className="relative w-full min-h-[420px] sm:min-h-[520px] lg:min-h-[520px] flex items-center overflow-hidden bg-[#0b1a3a]"
       >
         <motion.div style={{ y: imageY, scale: imageScale }} className="absolute inset-0 z-0">
           <Image

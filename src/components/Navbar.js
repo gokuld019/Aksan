@@ -29,7 +29,7 @@ const navLinks = [
     ],
   },
   { label: "GALLERY", href: "/Gallery" },
-  { label: "BLOGS", href: "/blogs" },
+  { label: "BLOGS", href: "/BlogsPage" },
   { label: "CONTACT US", href: "/contactus" },
 ];
 
