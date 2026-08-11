@@ -1,4 +1,4 @@
-const API_BASE_URL = 'https://api.crazystory.in/api';
+const API_BASE_URL = 'https://aksan.athmamind.com/';
 
 function getToken() {
   return typeof window !== 'undefined' ? localStorage.getItem('token') : null;

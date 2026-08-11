@@ -428,8 +428,8 @@ export default function About() {
                     {role}
                   </p>
                   <div className="flex items-center gap-1.5 text-xs text-gray-500">
-                    <Briefcase size={13} strokeWidth={2} />
-                    <span>{experience}</span>
+                    {/* <Briefcase size={13} strokeWidth={2} /> */}
+                    {/* <span>{experience}</span> */}
                   </div>
 
                   <a href={linkedin}

@@ -148,6 +148,15 @@ const fadeUp = {
   }),
 };
 
+function DetailRow({ label, value }) {
+  return (
+    <div className="flex items-center justify-between gap-3">
+      <span className="text-slate-400 whitespace-nowrap">{label}</span>
+      <span className="font-medium text-slate-700 text-right">{value}</span>
+    </div>
+  );
+}
+
 function DocumentCard({ doc, index }) {
   return (
     <motion.div
@@ -157,29 +166,29 @@ function DocumentCard({ doc, index }) {
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}
       whileHover={{ y: -4, boxShadow: "0 16px 32px -10px rgba(15,42,92,0.18)" }}
-      className="relative bg-white rounded-xl border border-slate-100 shadow-sm p-5 flex flex-col"
+      className="relative flex h-full flex-col rounded-xl border border-slate-100 bg-white p-6 pt-7 shadow-sm"
     >
       {/* Number badge */}
       <span
-        className="absolute -top-3 -left-3 flex items-center justify-center w-8 h-8 rounded-lg text-white text-xs font-bold"
+        className="absolute -top-3 -left-3 flex h-8 w-8 items-center justify-center rounded-lg text-xs font-bold text-white"
         style={{ backgroundColor: NAVY }}
       >
         {doc.number}
       </span>
 
-      {/* Logo + name */}
-      <div className="flex items-center gap-3 mb-4 mt-1">
-        <div className="relative w-10 h-10 shrink-0 rounded-md overflow-hidden bg-slate-50 flex items-center justify-center">
+      {/* Logo + name — fixed heights so every card lines up */}
+      <div className="flex items-start gap-3.5">
+        <div className="relative flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-md bg-slate-50">
           <Image
             src={doc.logo}
             alt={doc.name}
-            width={40}
-            height={40}
-            className="object-contain"
+            fill
+            className="object-contain p-1.5"
+            sizes="44px"
           />
         </div>
         <h3
-          className="text-sm font-bold leading-tight"
+          className="min-h-[36px] text-sm font-bold leading-snug pt-1"
           style={{ color: NAVY, fontFamily: "'Noto Sans', sans-serif" }}
         >
           {doc.name}
@@ -187,30 +196,22 @@ function DocumentCard({ doc, index }) {
       </div>
 
       {/* Details */}
-      <div className="space-y-2 text-xs text-slate-500 mb-5" style={{ fontFamily: "'Noto Sans', sans-serif" }}>
-        <div className="flex items-center justify-between">
-          <span>Listing Date:</span>
-          <span className="font-medium text-slate-700">{doc.listingDate}</span>
-        </div>
-        <div className="flex items-center justify-between">
-          <span>Listing Exchange:</span>
-          <span className="font-medium text-slate-700">{doc.listingExchange}</span>
-        </div>
-        <div className="flex items-center justify-between">
-          <span>IPO Size (in Cr.):</span>
-          <span className="font-medium text-slate-700">{doc.ipoSize}</span>
-        </div>
-        <div className="flex items-center justify-between">
-          <span>IPO Price:</span>
-          <span className="font-medium text-slate-700">{doc.ipoPrice}</span>
-        </div>
+      <div
+        className="mt-5 space-y-2.5 border-t border-slate-100 pt-4 text-xs leading-relaxed text-slate-500"
+        style={{ fontFamily: "'Noto Sans', sans-serif" }}
+      >
+        <DetailRow label="Listing Date" value={doc.listingDate} />
+        <DetailRow label="Listing Exchange" value={doc.listingExchange} />
+        <DetailRow label="IPO Size (in Cr.)" value={doc.ipoSize} />
+        <DetailRow label="IPO Price" value={doc.ipoPrice} />
       </div>
 
-      {/* View document button */}
-      <a href={doc.documentUrl}
+      {/* View document button — pinned to bottom of card */}
+      <a
+        href={doc.documentUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="mt-auto inline-flex items-center justify-center gap-2 rounded-lg py-2.5 text-xs font-semibold text-white transition-transform hover:-translate-y-0.5"
+        className="mt-6 inline-flex items-center justify-center gap-2 rounded-lg py-2.5 text-xs font-semibold text-white transition-transform hover:-translate-y-0.5"
         style={{ backgroundColor: NAVY, fontFamily: "'Noto Sans', sans-serif" }}
       >
         View Document
@@ -222,7 +223,7 @@ function DocumentCard({ doc, index }) {
 
 export default function RHPPage() {
   return (
-    <main className="w-full bg-white" style={{ fontFamily: "'Noto Sans', sans-serif" }}>
+    <main className={`w-full bg-white ${notoSans.className}`}>
       {/* Hero Section */}
       <section className="relative overflow-hidden">
         <div
@@ -240,14 +241,14 @@ export default function RHPPage() {
           className="absolute inset-0 h-full w-full object-cover mix-blend-luminosity opacity-40"
         />
 
-        <div className="relative z-10 mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8 py-20 md:py-28">
+        <div className="relative z-10 mx-auto max-w-[1400px] px-4 py-20 sm:px-6 md:py-28 lg:px-8">
           {/* Breadcrumb */}
           <motion.p
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="mb-6 text-xs text-slate-300"
+            className="mb-6 text-xs tracking-wide text-slate-300"
           >
             Home <span className="mx-1.5">›</span> RHP
           </motion.p>
@@ -257,7 +258,7 @@ export default function RHPPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.05 }}
-            className="max-w-xl text-4xl font-bold leading-tight text-white md:text-5xl"
+            className="max-w-xl text-4xl font-bold leading-[1.15] text-white md:text-5xl"
           >
             Red Herring{" "}
             <span style={{ color: ORANGE }}>Prospectus (RHP)</span>
@@ -268,7 +269,7 @@ export default function RHPPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="mt-5 max-w-md text-sm leading-relaxed text-slate-300 md:text-base"
+            className="mt-5 max-w-md text-sm leading-[1.8] text-slate-300 md:text-base"
           >
             Access the Red Herring Prospectus documents of companies managed by
             AKSAN Capital. These documents contain the final offer details
@@ -279,13 +280,13 @@ export default function RHPPage() {
       </section>
 
       {/* Understanding RHP */}
-      <section className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8 -mt-10 relative z-20 pb-4">
+      <section className="relative z-20 mx-auto -mt-10 max-w-[1400px] px-4 pb-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="rounded-2xl border border-slate-100 bg-white p-6 shadow-xl shadow-slate-900/5 md:p-8 flex gap-5 items-start"
+          className="flex items-start gap-5 rounded-2xl border border-slate-100 bg-white p-6 shadow-xl shadow-slate-900/5 md:p-8"
         >
           <span
             className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full"
@@ -294,10 +295,10 @@ export default function RHPPage() {
             <FileText size={20} />
           </span>
           <div>
-            <h2 className="text-lg font-bold mb-2" style={{ color: NAVY }}>
+            <h2 className="mb-2.5 text-lg font-bold leading-snug" style={{ color: NAVY }}>
               Understanding RHP
             </h2>
-            <p className="text-sm leading-relaxed text-slate-500">
+            <p className="text-sm leading-[1.8] text-slate-500">
               The Red Herring Prospectus (RHP) is the final offer document
               filed with SEBI after incorporating all regulatory observations.
               It contains comprehensive information about the company, its
@@ -310,18 +311,18 @@ export default function RHPPage() {
       </section>
 
       {/* Documents Grid */}
-      <section className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8 py-16">
-        <div className="mb-10 text-center">
-          <h2 className="text-2xl font-bold md:text-3xl mb-2" style={{ color: NAVY }}>
+      <section className="mx-auto max-w-[1400px] px-4 py-16 sm:px-6 lg:px-8">
+        <div className="mx-auto mb-12 max-w-xl text-center">
+          <h2 className="mb-2.5 text-2xl font-bold leading-snug md:text-3xl" style={{ color: NAVY }}>
             Our RHP Documents
           </h2>
-          <p className="text-sm text-slate-500 max-w-xl mx-auto">
+          <p className="text-sm leading-relaxed text-slate-500">
             Browse and download the Red Herring Prospectus documents of
-            companies advised by AKSAN Capital
+            companies advised by AKSAN Capital.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 pt-3">
+        <div className="grid grid-cols-1 gap-8 pt-3 sm:grid-cols-2 lg:grid-cols-3">
           {rhpDocuments.map((doc, i) => (
             <DocumentCard key={doc.number} doc={doc} index={i} />
           ))}
@@ -329,13 +330,13 @@ export default function RHPPage() {
       </section>
 
       {/* Investor Information Notice */}
-      <section className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8 pb-20">
+      <section className="mx-auto max-w-[1400px] px-4 pb-20 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="rounded-2xl border border-slate-100 p-6 flex items-start gap-4"
+          className="flex items-start gap-4 rounded-2xl border border-slate-100 p-6"
           style={{ backgroundColor: "#F4F7FC" }}
         >
           <span
@@ -345,10 +346,10 @@ export default function RHPPage() {
             <Info size={16} />
           </span>
           <div>
-            <h3 className="text-sm font-bold mb-1" style={{ color: NAVY }}>
+            <h3 className="mb-1.5 text-sm font-bold leading-snug" style={{ color: NAVY }}>
               Investor Information
             </h3>
-            <p className="text-xs leading-relaxed text-slate-500">
+            <p className="text-xs leading-[1.8] text-slate-500">
               These documents are published for informational and regulatory
               reference only. Investors are encouraged to read the respective
               Red Herring Prospectus carefully before making any investment

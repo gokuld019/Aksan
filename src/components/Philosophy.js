@@ -25,7 +25,7 @@ export default function OurPhilosophy() {
   return (
     <section
       ref={sectionRef}
-      className={`relative py-[8vw] sm:py-20 md:py-24 lg:py-24 overflow-hidden ${notoSans.className}`}
+      className={`relative py-12 sm:py-16 md:py-20 lg:py-24 overflow-hidden ${notoSans.className}`}
     >
       <motion.video
         autoPlay
@@ -48,14 +48,14 @@ export default function OurPhilosophy() {
 
       <motion.div
         style={{ y: textY }}
-        className="relative z-10 max-w-4xl mx-auto px-[5vw] sm:px-6 lg:px-6 text-center"
+        className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
       >
         <motion.p
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-          className="text-orange-500 font-semibold text-[2.6vw] sm:text-sm lg:text-sm tracking-widest mb-[3.5vw] sm:mb-5 lg:mb-6"
+          className="text-orange-500 font-semibold text-xs sm:text-sm lg:text-sm tracking-widest mb-3 sm:mb-4 lg:mb-6"
         >
           OUR PHILOSOPHY
         </motion.p>
@@ -65,7 +65,7 @@ export default function OurPhilosophy() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
-          className="font-serif text-white text-[4.4vw] sm:text-xl md:text-2xl lg:text-xl xl:text-2xl 2xl:text-3xl leading-relaxed mb-[6vw] sm:mb-10 lg:mb-10"
+          className="text-white text-base sm:text-lg md:text-xl lg:text-xl xl:text-2xl leading-relaxed mb-6 sm:mb-8 lg:mb-10"
         >
           We aim to create a meaningful impact on your life with our holistic
           financial solution. Our vision resonates with the idea of
@@ -80,7 +80,7 @@ export default function OurPhilosophy() {
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: 0.3 }}
           whileHover={{ scale: 1.04 }}
           whileTap={{ scale: 0.97 }}
-          className="inline-flex items-center gap-[1.5vw] bg-white text-blue-900 font-semibold text-[3vw] sm:text-sm lg:text-sm px-[5vw] sm:px-6 lg:px-6 py-[3vw] sm:py-3 lg:py-3 rounded-md hover:bg-slate-100 transition"
+          className="inline-flex items-center gap-2 bg-white text-blue-900 font-semibold text-sm sm:text-sm px-5 sm:px-6 lg:px-6 py-2.5 sm:py-3 lg:py-3 rounded-md hover:bg-slate-100 transition"
         >
           Book Appointment <span aria-hidden="true">→</span>
         </motion.button>

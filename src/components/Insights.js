@@ -23,7 +23,6 @@ function readTime(content = '') {
   return Math.max(1, Math.round(words / 200));
 }
 
-// Format date to match the insight card format
 function formatDate(dateString) {
   if (!dateString) return '';
   const date = new Date(dateString);
@@ -34,19 +33,15 @@ function formatDate(dateString) {
   });
 }
 
-// Get category from meta_data or default
 function getCategory(blog) {
   return blog.meta_data?.tags?.[0] || 'INSIGHT';
 }
 
-// Get thumbnail from multiple sources
 function getThumbnail(blog) {
-  // If featured_image exists, use it
   if (blog.featured_image) {
     return blog.featured_image;
   }
   
-  // Fallback to manual mapping
   const THUMBNAIL_MAP = {
     'sme-ipo-vs-mainboard-ipo-which-one-fits-your-business': '/blog/b1.png',
     'common-financial-challenges-faced-by-smes-and-how-to-overcome-them': '/blog/b2.png',
@@ -56,7 +51,6 @@ function getThumbnail(blog) {
   return THUMBNAIL_MAP[blog.slug] || '/default-blog.jpg';
 }
 
-// Fallback insights in case API fails
 const fallbackInsights = [
   {
     id: '1',
@@ -112,7 +106,6 @@ export default function MarketInsights() {
           const blogList = result.data.data.filter(b => b.status === 'published');
           
           if (blogList.length > 0) {
-            // Map API data to insight format
             const mappedInsights = blogList.map(blog => ({
               id: blog.id,
               category: getCategory(blog).toUpperCase(),
@@ -126,11 +119,9 @@ export default function MarketInsights() {
             
             setInsights(mappedInsights);
           } else {
-            // No blogs found, use fallback
             setInsights(fallbackInsights);
           }
         } else {
-          // API failed, use fallback
           setInsights(fallbackInsights);
           setError(true);
         }
@@ -149,179 +140,137 @@ export default function MarketInsights() {
   return (
     <section
       ref={sectionRef}
-      className={`w-full py-[clamp(2.5rem,6vw,5rem)] ${notoSans.className}`}
+      className={`w-full py-12 sm:py-16 md:py-20 lg:py-24 ${notoSans.className}`}
       style={{
         background: "linear-gradient(120deg, #0B2A4D 0%, #0F3A66 55%, #12457A 100%)",
       }}
     >
-      <div
-        className="mx-auto grid grid-cols-1 items-center gap-[clamp(2rem,4vw,2.5rem)] lg:grid-cols-3"
-        style={{
-          maxWidth: "min(1400px, 96vw)",
-          paddingLeft: "clamp(1rem, 3vw, 1.5rem)",
-          paddingRight: "clamp(1rem, 3vw, 1.5rem)",
-        }}
-      >
-        {/* Left: Heading + CTA */}
-        <motion.div
-          style={{ y: textY }}
-          className="text-center lg:col-span-1 lg:text-left"
-        >
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.4 }}
-            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-            className="mb-3 font-semibold tracking-wide text-orange-500"
-            style={{ fontSize: "clamp(0.75rem, 1vw, 0.875rem)" }}
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12 items-start">
+          
+          {/* Left: Heading + CTA */}
+          <motion.div
+            style={{ y: textY }}
+            className="lg:col-span-1"
           >
-            MARKET INSIGHTS
-          </motion.p>
-
-          <motion.h2
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.4 }}
-            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
-            className="mb-6 font-bold leading-tight text-white sm:mb-8"
-            style={{ fontSize: "clamp(1.5rem, 3.2vw, 2.25rem)" }}
-          >
-            Stay Informed.
-            <br className="hidden sm:block" />
-            Stay Ahead.
-          </motion.h2>
-
-          <Link href="/BlogsPage">
-            <motion.button
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.4 }}
-              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
-              whileHover={{ scale: 1.04 }}
-              whileTap={{ scale: 0.97 }}
-              className="inline-flex items-center gap-2 rounded-md bg-white font-semibold text-blue-900 transition hover:bg-slate-100"
-              style={{
-                fontSize: "clamp(0.75rem, 1vw, 0.875rem)",
-                padding: "clamp(0.625rem, 1.5vw, 0.75rem) clamp(1.25rem, 2.5vw, 1.5rem)",
-              }}
-            >
-              VIEW ALL INSIGHTS <span aria-hidden="true">→</span>
-            </motion.button>
-          </Link>
-        </motion.div>
-
-        {/* Right: Insight cards */}
-        <div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:col-span-2 lg:grid-cols-3"
-          style={{ gap: "clamp(1rem, 2vw, 1.5rem)" }}
-        >
-          {loading ? (
-            // Loading skeletons
-            Array.from({ length: 3 }).map((_, index) => (
-              <div
-                key={index}
-                className="flex flex-col overflow-hidden rounded-xl bg-white shadow-lg"
+            <div className="text-center lg:text-left">
+              <motion.p
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.4 }}
+                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                className="text-orange-500 font-semibold text-xs sm:text-sm tracking-widest mb-2 sm:mb-3"
               >
-                <div className="animate-pulse">
+                MARKET INSIGHTS
+              </motion.p>
+
+              <motion.h2
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.4 }}
+                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
+                className="text-2xl sm:text-3xl md:text-4xl font-bold leading-tight text-white mb-4 sm:mb-6"
+              >
+                Stay Informed.
+                <br className="hidden sm:block" />
+                Stay Ahead.
+              </motion.h2>
+
+              <Link href="/BlogsPage">
+                <motion.button
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.4 }}
+                  transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
+                  whileHover={{ scale: 1.04 }}
+                  whileTap={{ scale: 0.97 }}
+                  className="inline-flex items-center justify-center gap-2 bg-white text-blue-900 font-semibold text-sm px-5 py-2.5 rounded-md hover:bg-slate-100 transition w-full sm:w-auto"
+                >
+                  VIEW ALL INSIGHTS <span aria-hidden="true">→</span>
+                </motion.button>
+              </Link>
+            </div>
+          </motion.div>
+
+          {/* Right: Insight cards */}
+          <div className="lg:col-span-2">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6">
+              {loading ? (
+                // Loading skeletons
+                Array.from({ length: 3 }).map((_, index) => (
                   <div
-                    className="bg-gray-300"
-                    style={{ height: "clamp(7.5rem, 16vw, 9.5rem)" }}
-                  />
-                  <div
-                    className="flex flex-1 flex-col space-y-3"
-                    style={{ padding: "clamp(1rem, 2vw, 1.25rem)" }}
+                    key={index}
+                    className="flex flex-col overflow-hidden rounded-xl bg-white shadow-lg animate-pulse"
                   >
-                    <div className="h-4 bg-gray-300 rounded w-1/3" />
-                    <div className="h-6 bg-gray-300 rounded w-4/5" />
-                    <div className="space-y-2">
-                      <div className="h-4 bg-gray-300 rounded w-full" />
-                      <div className="h-4 bg-gray-300 rounded w-2/3" />
+                    <div className="h-40 sm:h-44 md:h-48 bg-gray-300" />
+                    <div className="flex flex-1 flex-col space-y-3 p-4 sm:p-5">
+                      <div className="h-3 bg-gray-300 rounded w-1/3" />
+                      <div className="h-5 bg-gray-300 rounded w-4/5" />
+                      <div className="space-y-2">
+                        <div className="h-3 bg-gray-300 rounded w-full" />
+                        <div className="h-3 bg-gray-300 rounded w-2/3" />
+                      </div>
                     </div>
                   </div>
-                </div>
-              </div>
-            ))
-          ) : (
-            insights.slice(0, 3).map((insight, i) => (
-              <Link href={`/blog/${insight.slug}`} key={insight.id || i}>
-                <motion.div
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.3 }}
-                  transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: i * 0.15 }}
-                  whileHover={{ y: -6 }}
-                  className="flex flex-col overflow-hidden rounded-xl bg-white shadow-lg transition-shadow duration-300 hover:shadow-2xl cursor-pointer"
-                >
-                  <div
-                    className="group relative w-full overflow-hidden"
-                    style={{ height: "clamp(7.5rem, 16vw, 9.5rem)" }}
-                  >
-                    <Image
-                      src={insight.image || '/default-blog.jpg'}
-                      alt={insight.title}
-                      fill
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
-                      onError={(e) => {
-                        // Fallback if image fails to load
-                        e.target.src = '/default-blog.jpg';
-                      }}
-                    />
-                    <span
-                      className="absolute left-2 top-2 rounded bg-white/90 font-bold tracking-wide text-blue-900 sm:left-3 sm:top-3"
-                      style={{
-                        fontSize: "clamp(0.5625rem, 0.9vw, 0.625rem)",
-                        padding: "clamp(0.125rem, 0.4vw, 0.25rem) clamp(0.5rem, 1vw, 0.625rem)",
-                      }}
+                ))
+              ) : (
+                insights.slice(0, 3).map((insight, i) => (
+                  <Link href={`/blog/${insight.slug}`} key={insight.id || i}>
+                    <motion.div
+                      initial={{ opacity: 0, y: 30 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, amount: 0.3 }}
+                      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: i * 0.15 }}
+                      whileHover={{ y: -6 }}
+                      className="flex flex-col overflow-hidden rounded-xl bg-white shadow-lg transition-all duration-300 hover:shadow-2xl cursor-pointer h-full"
                     >
-                      {insight.category}
-                    </span>
-                  </div>
+                      <div className="relative w-full h-40 sm:h-44 md:h-48 overflow-hidden">
+                        <Image
+                          src={insight.image || '/default-blog.jpg'}
+                          alt={insight.title}
+                          fill
+                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                          className="object-cover transition-transform duration-500 group-hover:scale-105"
+                          onError={(e) => {
+                            e.target.src = '/default-blog.jpg';
+                          }}
+                        />
+                        <span className="absolute left-3 top-3 bg-white/90 text-blue-900 font-bold text-[10px] tracking-wider px-2.5 py-1 rounded">
+                          {insight.category}
+                        </span>
+                      </div>
 
-                  <div
-                    className="flex flex-1 flex-col"
-                    style={{ padding: "clamp(1rem, 2vw, 1.25rem)" }}
-                  >
-                    <p
-                      className="mb-1.5 text-slate-400 sm:mb-2"
-                      style={{ fontSize: "clamp(0.625rem, 0.9vw, 0.75rem)" }}
-                    >
-                      {insight.date}
-                    </p>
-                    <h3
-                      className="mb-1.5 font-bold leading-snug text-slate-900 sm:mb-2 line-clamp-2"
-                      style={{ fontSize: "clamp(0.8125rem, 1vw, 0.875rem)" }}
-                    >
-                      {insight.title}
-                    </h3>
-                    <p
-                      className="leading-relaxed text-slate-500 line-clamp-2"
-                      style={{ fontSize: "clamp(0.6875rem, 1vw, 0.75rem)" }}
-                    >
-                      {insight.desc}
-                    </p>
-                    {insight.readTime && (
-                      <p
-                        className="mt-2 text-slate-400"
-                        style={{ fontSize: "clamp(0.5625rem, 0.7vw, 0.625rem)" }}
-                      >
-                        {insight.readTime} min read
-                      </p>
-                    )}
-                  </div>
-                </motion.div>
-              </Link>
-            ))
-          )}
+                      <div className="flex flex-col flex-1 p-4 sm:p-5">
+                        <p className="text-slate-400 text-[10px] sm:text-xs mb-1.5 sm:mb-2">
+                          {insight.date}
+                        </p>
+                        <h3 className="text-sm sm:text-base font-bold text-slate-900 leading-snug mb-1.5 sm:mb-2 line-clamp-2">
+                          {insight.title}
+                        </h3>
+                        <p className="text-xs sm:text-sm text-slate-500 leading-relaxed line-clamp-2 flex-1">
+                          {insight.desc}
+                        </p>
+                        {insight.readTime && (
+                          <p className="text-[10px] sm:text-xs text-slate-400 mt-2">
+                            {insight.readTime} min read
+                          </p>
+                        )}
+                      </div>
+                    </motion.div>
+                  </Link>
+                ))
+              )}
+            </div>
+          </div>
         </div>
+
+        {/* Show error message if API failed but we're using fallback */}
+        {error && !loading && (
+          <div className="text-center mt-4 text-white/50 text-xs">
+            Showing sample insights while we fetch the latest updates.
+          </div>
+        )}
       </div>
-
-      {/* Show error message if API failed but we're using fallback */}
-      {error && !loading && (
-        <div className="text-center mt-4 text-white/50 text-xs">
-          Showing sample insights while we fetch the latest updates.
-        </div>
-      )}
     </section>
   );
 }

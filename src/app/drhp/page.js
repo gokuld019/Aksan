@@ -43,7 +43,7 @@ const drhpDocuments = [
   {
     id: 4,
     name: "ROX Hi-Tech Limited",
-    logo: "/logos/rox.png",
+    logo: "/client/rox.png",
     listingDate: "16-11-2023",
     listingExchange: "NSE Emerge",
     ipoSize: "54.49",
@@ -93,7 +93,7 @@ const drhpDocuments = [
   {
     id: 9,
     name: "Sathlokhar Synergys E&C Global Limited",
-    logo: "/logos/sathlokhar.png",
+    logo: "/client/sathlokar.png",
     listingDate: "06-08-2024",
     listingExchange: "NSE Emerge",
     ipoSize: "92.93",
@@ -133,7 +133,7 @@ const drhpDocuments = [
   {
     id: 13,
     name: "Happy Square Outsourcing Services Limited (White Force)",
-    logo: "/logos/whiteforce.png",
+    logo: "/client/whiteforce.png",
     listingDate: "10-07-2025",
     listingExchange: "NSE Emerge",
     ipoSize: "24.24",
@@ -209,7 +209,7 @@ function DownloadIcon() {
 
 function InfoIcon() {
   return (
-    <svg viewBox="0 0 24 24" fill="none" className="h-5 w-5 text-blue-600">
+    <svg viewBox="0 0 24 24" fill="none" className="h-5 w-5 text-blue-600 flex-none">
       <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.6" />
       <path d="M12 11v5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
       <circle cx="12" cy="8" r="1" fill="currentColor" />
@@ -217,69 +217,66 @@ function InfoIcon() {
   );
 }
 
+function DetailRow({ icon, label, value }) {
+  return (
+    <div className="flex items-center justify-between gap-3">
+      <span className="flex items-center gap-1.5 text-slate-400 whitespace-nowrap">
+        {icon}
+        {label}
+      </span>
+      <span className="font-medium text-slate-700 text-right">{value}</span>
+    </div>
+  );
+}
+
 function DocumentCard({ index, doc }) {
   return (
-    <div className="flex flex-col rounded-xl border border-slate-200 bg-white p-5 shadow-sm transition hover:shadow-md">
-      <div className="flex items-start justify-between gap-3">
+    <div className="flex h-full flex-col rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition hover:shadow-md">
+      {/* Index badge */}
+      <div className="flex items-center justify-between">
         <span className="flex h-7 w-7 flex-none items-center justify-center rounded-full bg-[#0B1B3A] text-xs font-semibold text-white">
           {String(index).padStart(2, "0")}
         </span>
       </div>
 
-      <div className="mt-3 flex h-16 items-center justify-center">
+      {/* Logo — fixed, uniform box for every card */}
+      <div className="mt-4 flex h-16 w-full items-center justify-center">
         {doc.logo ? (
-          <div className="relative h-14 w-full">
+          <div className="relative h-full w-full max-w-[140px]">
             <Image
               src={doc.logo}
               alt={doc.name}
               fill
               className="object-contain"
-              sizes="200px"
+              sizes="140px"
             />
           </div>
         ) : (
-          <span className="flex h-12 w-12 items-center justify-center rounded-full bg-blue-50 text-sm font-bold text-[#0B1B3A]">
+          <span className="flex h-14 w-14 items-center justify-center rounded-full bg-blue-50 text-base font-bold text-[#0B1B3A]">
             {doc.name.charAt(0)}
           </span>
         )}
       </div>
 
-      <p className="mt-3 text-center text-sm font-semibold leading-snug text-[#0B1B3A] min-h-[40px]">
+      {/* Company name — fixed height so cards line up regardless of name length */}
+      <p className="mt-4 flex min-h-[44px] items-center justify-center text-center text-sm font-semibold leading-snug text-[#0B1B3A]">
         {doc.name}
       </p>
 
-      <div className="mt-4 space-y-2 border-t border-slate-100 pt-4 text-xs text-slate-600">
-        <div className="flex items-center justify-between gap-2">
-          <span className="flex items-center gap-1.5 text-slate-400">
-            <CalendarIcon /> Listing Date
-          </span>
-          <span className="font-medium text-slate-700">{doc.listingDate}</span>
-        </div>
-        <div className="flex items-center justify-between gap-2">
-          <span className="flex items-center gap-1.5 text-slate-400">
-            <ExchangeIcon /> Listing Exchange
-          </span>
-          <span className="font-medium text-slate-700">{doc.listingExchange}</span>
-        </div>
-        <div className="flex items-center justify-between gap-2">
-          <span className="flex items-center gap-1.5 text-slate-400">
-            <SizeIcon /> IPO Size (in Crs.)
-          </span>
-          <span className="font-medium text-slate-700">{doc.ipoSize}</span>
-        </div>
-        <div className="flex items-center justify-between gap-2">
-          <span className="flex items-center gap-1.5 text-slate-400">
-            <PriceIcon /> IPO Price (₹)
-          </span>
-          <span className="font-medium text-slate-700">{doc.ipoPrice}</span>
-        </div>
+      {/* Details */}
+      <div className="mt-5 space-y-3 border-t border-slate-100 pt-4 text-xs leading-relaxed text-slate-600">
+        <DetailRow icon={<CalendarIcon />} label="Listing Date" value={doc.listingDate} />
+        <DetailRow icon={<ExchangeIcon />} label="Listing Exchange" value={doc.listingExchange} />
+        <DetailRow icon={<SizeIcon />} label="IPO Size (in Crs.)" value={doc.ipoSize} />
+        <DetailRow icon={<PriceIcon />} label="IPO Price (₹)" value={doc.ipoPrice} />
       </div>
 
+      {/* CTA pinned to bottom via mt-auto so buttons align across the row */}
       <Link
         href={doc.href}
         target="_blank"
         rel="noopener noreferrer"
-        className="mt-5 flex items-center justify-center gap-2 rounded-md border border-[#0B1B3A] py-2 text-xs font-semibold uppercase tracking-wide text-[#0B1B3A] transition hover:bg-[#0B1B3A] hover:text-white"
+        className="mt-6 flex items-center justify-center gap-2 rounded-md border border-[#0B1B3A] py-2.5 text-xs font-semibold uppercase tracking-wide text-[#0B1B3A] transition hover:bg-[#0B1B3A] hover:text-white"
       >
         <DownloadIcon />
         View Document
@@ -292,7 +289,7 @@ export default function DRHPPage() {
   return (
     <main style={{ fontFamily: "'Noto Sans', sans-serif" }}>
       {/* ===== Hero ===== */}
-      <section className="relative w-full min-h-[420px] sm:min-h-[520px] flex items-end overflow-hidden bg-[#0B1B3A]">
+      <section className="relative flex min-h-[420px] w-full items-end overflow-hidden bg-[#0B1B3A] sm:min-h-[520px]">
         <div className="absolute inset-0">
           <Image
             src="/drhp.png"
@@ -304,18 +301,18 @@ export default function DRHPPage() {
           <div className="absolute inset-0 bg-gradient-to-r from-[#0B1B3A]/80 via-[#0B1B3A]/60 to-[#0B1B3A]/10" />
         </div>
 
-        <div className="relative z-10 w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 pb-12 sm:pb-16 lg:pb-20 mb-10">
+        <div className="relative z-10 mx-auto mb-10 w-full max-w-[1400px] px-4 pb-12 sm:px-6 sm:pb-16 lg:px-8 lg:pb-20">
           <div className="max-w-2xl">
-            <span className="text-orange-500 font-semibold text-sm tracking-[0.15em] uppercase block mb-3">
+            <span className="mb-3 block text-sm font-semibold uppercase tracking-[0.15em] text-orange-500">
               Offer Documents
             </span>
-            <h1 className="text-3xl sm:text-4xl lg:text-[2.5rem] font-bold text-white leading-[1.08] mb-4">
+            <h1 className="mb-4 text-3xl font-bold leading-[1.15] text-white sm:text-4xl lg:text-[2.5rem]">
               Draft Red Herring
               <br />
               <span className="text-orange-500">Prospectus (DRHP)</span>
             </h1>
-            <span className="block h-1 w-14 bg-orange-500 rounded-full mb-5" />
-            <p className="text-sm sm:text-[15px] text-slate-300/90 leading-relaxed max-w-xl">
+            <span className="mb-5 block h-1 w-14 rounded-full bg-orange-500" />
+            <p className="max-w-xl text-sm leading-relaxed text-slate-300/90 sm:text-[15px]">
               Access the Draft Red Herring Prospectus documents of companies
               managed by AKSAN Capital. These documents provide preliminary
               information submitted during the IPO process and are made
@@ -326,15 +323,15 @@ export default function DRHPPage() {
       </section>
 
       {/* ===== Understanding DRHP ===== */}
-      <section className="bg-white px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
-        <div className="max-w-[1400px] mx-auto">
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-2xl sm:text-3xl font-bold text-[#152249]">
+      <section className="bg-white px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
+        <div className="mx-auto max-w-[1400px]">
+          <div className="mx-auto max-w-3xl text-center">
+            <h2 className="text-2xl font-bold leading-snug text-[#152249] sm:text-3xl">
               Understanding DRHP
             </h2>
-            <span className="mx-auto mt-3 block h-1 w-14 bg-orange-500 rounded-full" />
+            <span className="mx-auto mt-3 block h-1 w-14 rounded-full bg-orange-500" />
 
-            <p className="mt-6 text-sm leading-relaxed text-slate-500 sm:text-base">
+            <p className="mx-auto mt-6 max-w-2xl text-sm leading-[1.8] text-slate-500 sm:text-base">
               The Draft Red Herring Prospectus (DRHP) is a preliminary offer
               document filed with SEBI before launching an Initial Public
               Offering (IPO). It contains essential information about the
@@ -348,32 +345,32 @@ export default function DRHPPage() {
       </section>
 
       {/* ===== Our DRHP Documents ===== */}
-      <section className="bg-slate-50 px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
-        <div className="max-w-[1400px] mx-auto">
+      <section className="bg-slate-50 px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
+        <div className="mx-auto max-w-[1400px]">
           <div className="text-center">
-            <h2 className="text-2xl sm:text-3xl font-bold text-[#152249]">
+            <h2 className="text-2xl font-bold leading-snug text-[#152249] sm:text-3xl">
               Our DRHP Documents
             </h2>
-            <span className="mx-auto mt-3 block h-1 w-14 bg-orange-500 rounded-full" />
-            <p className="mx-auto mt-4 max-w-xl text-sm text-slate-500 sm:text-base">
+            <span className="mx-auto mt-3 block h-1 w-14 rounded-full bg-orange-500" />
+            <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-slate-500 sm:text-base">
               Browse and download the Draft Red Herring Prospectus documents
               of companies advised by AKSAN Capital.
             </p>
           </div>
 
-          <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {drhpDocuments.map((doc, i) => (
               <DocumentCard key={doc.id} index={i + 1} doc={doc} />
             ))}
           </div>
 
-          <div className="mt-8 flex items-start gap-4 rounded-lg border border-blue-100 bg-blue-50 p-6">
-            <span className="mt-0.5 flex-none">
-              <InfoIcon />
-            </span>
+          <div className="mt-10 flex items-start gap-4 rounded-lg border border-blue-100 bg-blue-50 p-6">
+            <InfoIcon />
             <div>
-              <p className="text-sm font-semibold text-[#0B1B3A]">Investor Information</p>
-              <p className="mt-1 text-sm leading-relaxed text-slate-500">
+              <p className="text-sm font-semibold leading-snug text-[#0B1B3A]">
+                Investor Information
+              </p>
+              <p className="mt-1.5 text-sm leading-[1.8] text-slate-500">
                 These documents are published for informational and regulatory
                 reference only. Investors are encouraged to read the respective
                 Draft Red Herring Prospectus carefully before making any

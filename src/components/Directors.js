@@ -65,7 +65,7 @@ export default function BoardOfDirectors() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.4 }}
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: 0.05 }}
-            className="text-orange-500 font-semibold text-[10px] xs:text-[11px] sm:text-xs md:text-sm tracking-wide mb-2 xs:mb-2.5 sm:mb-3"
+            className="text-orange-500 font-semibold text-[10px] xs:text-[11px] sm:text-xs md:text-sm tracking-[0.15em] uppercase mb-2 xs:mb-2.5 sm:mb-3"
           >
             Board of Directors
           </motion.p>
@@ -93,28 +93,55 @@ export default function BoardOfDirectors() {
             outcomes for every project we undertake.
           </motion.p>
 
+          {/* Modern Stats Section - Updated */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.4 }}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
-            className="flex gap-6 xs:gap-8 sm:gap-10 md:gap-16 mb-6 xs:mb-7 sm:mb-8 md:mb-10 justify-center lg:justify-start"
+            className="flex gap-8 xs:gap-10 sm:gap-12 md:gap-16 mb-6 xs:mb-7 sm:mb-8 md:mb-10 justify-center lg:justify-start"
           >
-            <div>
-              <p className="text-lg xs:text-xl sm:text-2xl md:text-3xl font-bold text-blue-900">
-                20<span className="text-orange-500">+</span>
-              </p>
-              <p className="text-slate-500 text-[10px] xs:text-[11px] sm:text-xs md:text-sm mt-0.5 sm:mt-1">
-                Years of Combined Experience
-              </p>
+            {/* Stat 1 */}
+            <div className="relative">
+              <div className="flex items-baseline gap-0.5">
+                <p className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl font-extrabold text-blue-900 leading-none tracking-tight">
+                  20
+                </p>
+                <span className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-4xl xl:text-5xl font-extrabold text-orange-500 leading-none">
+                  +
+                </span>
+              </div>
+              <div className="mt-1.5 xs:mt-2 sm:mt-2.5">
+                <p className="text-slate-600 text-[10px] xs:text-[11px] sm:text-xs md:text-sm font-medium leading-tight">
+                  Years of Combined
+                </p>
+                <p className="text-slate-600 text-[10px] xs:text-[11px] sm:text-xs md:text-sm font-medium leading-tight">
+                  Experience
+                </p>
+              </div>
             </div>
-            <div>
-              <p className="text-lg xs:text-xl sm:text-2xl md:text-3xl font-bold text-blue-900">
-                100<span className="text-orange-500">+</span>
-              </p>
-              <p className="text-slate-500 text-[10px] xs:text-[11px] sm:text-xs md:text-sm mt-0.5 sm:mt-1">
-                Projects Delivered Successfully
-              </p>
+
+            {/* Divider */}
+            <div className="w-px bg-orange-200/60 self-stretch"></div>
+
+            {/* Stat 2 */}
+            <div className="relative">
+              <div className="flex items-baseline gap-0.5">
+                <p className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl font-extrabold text-blue-900 leading-none tracking-tight">
+                  100
+                </p>
+                <span className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-4xl xl:text-5xl font-extrabold text-orange-500 leading-none">
+                  +
+                </span>
+              </div>
+              <div className="mt-1.5 xs:mt-2 sm:mt-2.5">
+                <p className="text-slate-600 text-[10px] xs:text-[11px] sm:text-xs md:text-sm font-medium leading-tight">
+                  Projects Delivered
+                </p>
+                <p className="text-slate-600 text-[10px] xs:text-[11px] sm:text-xs md:text-sm font-medium leading-tight">
+                  Successfully
+                </p>
+              </div>
             </div>
           </motion.div>
 
