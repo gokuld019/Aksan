@@ -75,14 +75,15 @@ export async function getAllBlogs({ status = 'all', search = '', per_page = 15, 
 }
 
 // For admin - get blog by ID with auth
-export async function getAdminBlogById(id) {
+// For admin - get blog by ID
+export async function getBlogById(id) {
   const token = getToken();
   try {
     const res = await fetch(`${API_BASE_URL}/admin/blogs/${id}`, {
       method: 'GET',
       headers: {
-        Authorization: `Bearer ${token}`,
-        Accept: 'application/json'
+        Accept: 'application/json',
+        ...(token && { Authorization: `Bearer ${token}` })
       }
     });
     return await res.json();
