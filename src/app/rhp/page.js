@@ -20,7 +20,7 @@ const rhpDocuments = [
   {
     number: "01",
     name: "Phantom Digital Effects Limited",
-    logo: "/rhp/phantom-logo.png",
+    logo: "/client/phantom.png",
     listingDate: "31-10-2022",
     listingExchange: "NSE Emerge",
     ipoSize: "29.10",
@@ -30,7 +30,7 @@ const rhpDocuments = [
   {
     number: "02",
     name: "Krishca Strapping Solutions Limited",
-    logo: "/rhp/krishca-logo.png",
+    logo: "/client/krishca.png",
     listingDate: "26-05-2023",
     listingExchange: "NSE Emerge",
     ipoSize: "17.93",
@@ -40,7 +40,7 @@ const rhpDocuments = [
   {
     number: "03",
     name: "Basilic Fly Studio Limited",
-    logo: "/rhp/basilic-logo.png",
+    logo: "/client/basilicfly.png",
     listingDate: "11-09-2023",
     listingExchange: "NSE Emerge",
     ipoSize: "66.35",
@@ -49,8 +49,8 @@ const rhpDocuments = [
   },
   {
     number: "04",
-    name: "Fox Rin Hi-tech Limited",
-    logo: "/rhp/fox-logo.png",
+    name: "Rox Rin Hi-tech Limited",
+    logo: "/client/rox.jpg",
     listingDate: "16-11-2023",
     listingExchange: "NSE Emerge",
     ipoSize: "54.49",
@@ -60,7 +60,7 @@ const rhpDocuments = [
   {
     number: "05",
     name: "Supreme Power Equipment Limited",
-    logo: "/rhp/supreme-logo.png",
+    logo: "/client/spel.jpg",
     listingDate: "29-12-2023",
     listingExchange: "NSE Emerge",
     ipoSize: "46.67",
@@ -70,7 +70,7 @@ const rhpDocuments = [
   {
     number: "06",
     name: "Thaai Casting Limited",
-    logo: "/rhp/thaai-logo.png",
+    logo: "/client/thaicasting.jpg",
     listingDate: "23-02-2024",
     listingExchange: "NSE Emerge",
     ipoSize: "47.20",
@@ -80,7 +80,7 @@ const rhpDocuments = [
   {
     number: "07",
     name: "AVP Infracon Limited",
-    logo: "/rhp/avp-logo.png",
+    logo: "/client/avp.png",
     listingDate: "28-03-2024",
     listingExchange: "NSE Emerge",
     ipoSize: "52.34",
@@ -90,7 +90,7 @@ const rhpDocuments = [
   {
     number: "08",
     name: "ABS Marine Limited",
-    logo: "/rhp/abs-logo.png",
+    logo: "/client/abs.png",
     listingDate: "21-05-2024",
     listingExchange: "NSE Emerge",
     ipoSize: "56.29",
@@ -100,7 +100,7 @@ const rhpDocuments = [
   {
     number: "09",
     name: "Sathlokar Synergys E & C Global Limited",
-    logo: "/rhp/sathlokar-logo.png",
+    logo: "/client/sathlokar.png",
     listingDate: "06-08-2024",
     listingExchange: "NSE Emerge",
     ipoSize: "92.93",
@@ -110,7 +110,7 @@ const rhpDocuments = [
   {
     number: "10",
     name: "Afcom Holdings Limited",
-    logo: "/rhp/afcom-logo.png",
+    logo: "/client/afcom.png",
     listingDate: "09-08-2024",
     listingExchange: "BSE Emerge",
     ipoSize: "22.15",
@@ -120,7 +120,7 @@ const rhpDocuments = [
   {
     number: "11",
     name: "Freshara Agro Exports Limited",
-    logo: "/rhp/freshara-logo.png",
+    logo: "/client/freshara.png",
     listingDate: "24-10-2024",
     listingExchange: "NSE Emerge",
     ipoSize: "73.83",
@@ -130,7 +130,7 @@ const rhpDocuments = [
   {
     number: "12",
     name: "Emerald Tyre Manufacturers Limited",
-    logo: "/rhp/emerald-logo.png",
+    logo: "/client/emerald.png",
     listingDate: "12-12-2024",
     listingExchange: "NSE Emerge",
     ipoSize: "49.26",

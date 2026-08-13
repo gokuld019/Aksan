@@ -2,7 +2,6 @@
 
 import { useRef } from "react";
 import Image from "next/image";
-import { Noto_Sans } from "next/font/google";
 import { motion, useScroll, useTransform } from "framer-motion";
 import {
   Target,
@@ -20,12 +19,6 @@ import {
   Handshake,
   Globe,
 } from "lucide-react";
-
-const notoSans = Noto_Sans({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  display: "swap",
-});
 
 const highlightServices = [
   { icon: Target, title: "IPO", desc: "Unlocking growth through public markets for SME companies." },
@@ -79,7 +72,7 @@ export default function Services() {
   const aboutImageY = useTransform(aboutProgress, [0, 1], ["-6%", "6%"]);
 
   return (
-    <section className={`bg-white ${notoSans.className}`}>
+    <section className="bg-white">
       {/* Highlight bar */}
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 pt-8 sm:pt-12 md:pt-16 relative z-20">
         <motion.div
@@ -88,7 +81,9 @@ export default function Services() {
           whileInView="show"
           viewport={{ once: true, amount: 0.25 }}
           className="rounded-2xl shadow-xl overflow-hidden"
-          style={{ background: "linear-gradient(90deg, #0B1A3A, #061225)" }}
+          style={{
+            background: "linear-gradient(135deg, #0B1A33 0%, #10254A 40%, #0F3A66 75%, #0E4A7A 100%)",
+          }}
         >
           <div className="grid grid-cols-1 md:grid-cols-5">
             {/* Services Grid - 4 columns */}

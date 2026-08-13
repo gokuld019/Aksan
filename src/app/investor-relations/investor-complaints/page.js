@@ -149,7 +149,7 @@ export default function InvestorComplaintsPage() {
 
         <div className="relative z-10 w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 py-16 sm:py-20 lg:py-24">
           <div className="max-w-2xl">
-            <motion.nav
+            {/* <motion.nav
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
@@ -171,7 +171,7 @@ export default function InvestorComplaintsPage() {
                 <li aria-hidden="true">&rsaquo;</li>
                 <li className="text-orange-400 font-medium">Investor Complaints</li>
               </ol>
-            </motion.nav>
+            </motion.nav> */}
 
             <h1 className="text-3xl sm:text-4xl lg:text-[2.75rem] font-bold text-white leading-tight" style={{ fontFamily: "'Noto Sans', sans-serif" }}>
               <AnimatedWords text="Investor Complaints" />

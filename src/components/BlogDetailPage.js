@@ -129,15 +129,6 @@ export default function BlogDetailPage() {
         )}
 
         <div className="relative max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10">
-          {/* Breadcrumb */}
-          {/* <div className="flex items-center gap-2 text-xs text-white/50 mb-4">
-            <Link href="/" className="hover:text-orange-400 transition-colors">Home</Link>
-            <ChevronRight className="w-3 h-3" />
-            <Link href="/BlogsPage" className="hover:text-orange-400 transition-colors">Blogs</Link>
-            <ChevronRight className="w-3 h-3" />
-            <span className="text-white/70 truncate max-w-[200px]">{blog.title}</span>
-          </div> */}
-
           <div className="flex flex-wrap items-center gap-3 mb-3">
             <span className="inline-flex items-center gap-1.5 bg-orange-500/20 backdrop-blur-sm text-orange-400 font-semibold text-[10px] sm:text-xs tracking-wider uppercase px-3 py-1.5 rounded-full border border-orange-500/30">
               <Sparkles className="w-3 h-3" />
@@ -149,22 +140,13 @@ export default function BlogDetailPage() {
             </span>
           </div>
 
-          <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-white leading-[1.15] mb-4 max-w-4xl">
+          <h1 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-white leading-[1.15] mb-4 max-w-4xl">
             {blog.title}
           </h1>
 
           <div className="w-14 h-1 bg-gradient-to-r from-orange-500 to-orange-400 rounded-full mb-5" />
 
           <div className="flex flex-wrap items-center gap-4 sm:gap-6 text-sm text-slate-300">
-            {/* <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-full bg-gradient-to-br from-orange-500 to-orange-400 flex items-center justify-center text-white font-bold text-xs shadow-lg shadow-orange-500/25">
-                {authorName.charAt(0).toUpperCase()}
-              </div>
-              <div>
-                <p className="text-white font-medium text-sm">{authorName}</p>
-                <p className="text-white/40 text-[10px] tracking-wider">AUTHOR</p>
-              </div>
-            </div> */}
             <div className="hidden sm:block w-px h-8 bg-white/10" />
             <div className="flex items-center gap-2 text-white/50">
               <Calendar className="w-4 h-4" />
@@ -248,24 +230,6 @@ export default function BlogDetailPage() {
               dangerouslySetInnerHTML={{ __html: blog.content }}
             />
 
-            {/* Author Bio Section */}
-            {/* <div className="mt-12 pt-10 border-t border-gray-200">
-              <div className="flex items-start gap-5 p-6 bg-gradient-to-r from-gray-50 to-white rounded-xl border border-gray-100">
-                <div className="w-14 h-14 rounded-full bg-gradient-to-br from-orange-500 to-orange-400 flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-orange-500/20 shrink-0">
-                  {authorName.charAt(0).toUpperCase()}
-                </div>
-                <div>
-                  <h4 className="text-sm font-bold text-[#0b1a3a] flex items-center gap-2">
-                    {authorName}
-                    <span className="text-[10px] font-normal text-gray-400">• Author</span>
-                  </h4>
-                  <p className="text-xs text-gray-500 mt-1 leading-relaxed">
-                    Expert in equity advisory and IPO consulting with years of experience in the financial markets.
-                  </p>
-                </div>
-              </div>
-            </div> */}
-
             {/* Tags */}
             {blog.meta_data?.tags?.length > 0 && (
               <div className="mt-8 pt-6 border-t border-gray-200">
@@ -286,8 +250,8 @@ export default function BlogDetailPage() {
             )}
           </div>
 
-          {/* Sidebar */}
-          <div className="lg:col-span-1 space-y-6">
+          {/* Sidebar - now sticky */}
+          <div className="lg:col-span-1 space-y-6 lg:sticky lg:top-24 lg:self-start">
             {/* Quick Summary Card */}
             <div className="bg-gradient-to-br from-[#0b1a3a] to-[#0f2044] rounded-xl p-6 text-white">
               <h4 className="text-xs font-semibold tracking-wider uppercase text-orange-400 mb-4 flex items-center gap-2">

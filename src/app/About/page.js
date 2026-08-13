@@ -12,6 +12,7 @@ import {
   Trophy,
   Briefcase,
   ArrowRight,
+  Award,
 } from "lucide-react";
 import { Noto_Sans } from "next/font/google";
 
@@ -39,6 +40,8 @@ const features = [
   { icon: ShieldCheck, label: "SEBI Registered" },
   { icon: Landmark, label: "Merchant Banking" },
   { icon: TrendingUp, label: "Capital Expertise" },
+    { icon: Award, label: "Regulatory Excellence" },
+
 ];
 
 const values = [
@@ -62,52 +65,57 @@ const values = [
   },
 ];
 
-const leadership = [
-  { name: "Nirmal K", role: "Senior - Financial Analyst", experience: "Team", linkedin: "#", photo: "/team/nirmal-k.png" },
-  { name: "Vidit Madhusudan Gupta", role: "Principal Consultant", experience: "Leadership", linkedin: "#", photo: "/team/vidit-madhusudan-gupta.png" },
-  { name: "Natarajan B", role: "Sr. Exe - CS - Trainee", experience: "Team", linkedin: "#", photo: "/team/natarajan-b.png" },
-  { name: "Badrinarayan S", role: "Jr. Financial Analyst", experience: "Team", linkedin: "#", photo: "/team/badrinarayan-s.png" },
-  { name: "Jhanani M", role: "Jr. Exe - CS - Trainee", experience: "Team", linkedin: "#", photo: "/team/jhanani-m.png" },
-  { name: "Viduthalai S", role: "GM - Financial Analyst", experience: "Management", linkedin: "#", photo: "/team/viduthalai-s.png" },
-  { name: "Shajathali S", role: "Associate Company Secretary", experience: "Team", linkedin: "#", photo: "/team/shajathali-s.png" },
-  { name: "Pinky Naveen H", role: "AGM - Financial Analyst", experience: "Management", linkedin: "#", photo: "/team/pinky-naveen-h.png" },
-  { name: "Narayanan G", role: "Senior GM - Financial Analyst", experience: "Management", linkedin: "#", photo: "/team/narayanan-g.png" },
-  { name: "Pugazhendhi P", role: "Senior - Financial Analyst", experience: "Team", linkedin: "#", photo: "/team/pugazhendhi-p.png" },
-  { name: "Indira AK", role: "AGM - Accounts & Finance", experience: "Management", linkedin: "#", photo: "/team/indira-ak.png" },
-  { name: "Satheesh Srinivasan", role: "Jr. Financial Analyst", experience: "Team", linkedin: "#", photo: "/team/satheesh-srinivasan.png" },
-  { name: "Sudarsana Rao K", role: "Admin Assistant", experience: "Support", linkedin: "#", photo: "/team/sudarsana-rao-k.png" },
-  { name: "Rajinikanth E S", role: "Managing Director | CEO | Principal Officer", experience: "Leadership", linkedin: "#", photo: "/team/rajinikanth-e-s.png" },
+const ceo = {
+  name: "Rajinikanth E S",
+  role: "Managing Director | CEO | Principal Officer",
+  bio: "Visionary leader with deep expertise in capital markets and strategic advisory. Driving responsible growth and long-term value creation for our clients and stakeholders.",
+  tags: [
+    { icon: Briefcase, label: "Leadership" },
+    { icon: TrendingUp, label: "Capital Markets" },
+    { icon: Target, label: "Strategy" },
+  ],
+  linkedin: "#",
+  photo: "/team/rajiniganth-es.jpeg",
+};
 
-  // { name: "Piyush Chandra Srivastava", role: "Associate Vice President", experience: "Leadership", linkedin: "#", photo: "/team/piyush-chandra-srivastava.jpg" },
-  // { name: "Preeti Ankit Dedhiya", role: "Associate Vice President", experience: "Leadership", linkedin: "#", photo: "/team/preeti-ankit-dedhiya.jpg" },
-
-  // { name: "Sai Krishna S", role: "AGM - Company Secretary", experience: "Management", linkedin: "#", photo: "/team/sai-krishna-s.jpg" },
-  // { name: "Khushboo Hanswal", role: "CS cum Compliance Officer", experience: "Management", linkedin: "#", photo: "/team/khushboo-hanswal.jpg" },
-  // { name: "Nesapriyan A", role: "Chief Financial Officer", experience: "Management", linkedin: "#", photo: "/team/nesapriyan-a.jpg" },
-
-  // { name: "Santhoshkumar K", role: "Manager - IT & Admin", experience: "Team", linkedin: "#", photo: "/team/santhoshkumar-k.jpg" },
-  // { name: "Narendran C", role: "Sr. Exe - CS - Trainee", experience: "Team", linkedin: "#", photo: "/team/narendran-c.jpg" },
-  // { name: "Thanuja U", role: "Executive - Finance and Accounts", experience: "Team", linkedin: "#", photo: "/team/thanuja-u.jpg" },
-  // { name: "Aishwarya S", role: "Executive Assistant - MD", experience: "Team", linkedin: "#", photo: "/team/aishwarya-s.jpg" },
-  // { name: "Manikandan K", role: "Driver", experience: "Support", linkedin: "#", photo: "/team/manikandan-k.jpg" },
-  // { name: "Vijayalakshmi", role: "Housekeeper", experience: "Support", linkedin: "#", photo: "/team/vijayalakshmi.jpg" },
-  // { name: "Vanitha", role: "Housekeeper", experience: "Support", linkedin: "#", photo: "/team/vanitha.jpg" },
+const coreTeam = [
+  { name: "Nirmal K", role: "Senior - Financial Analyst", linkedin: "#", photo: "/team/nirmal-k.png" },
+  { name: "Vidit Madhusudan Gupta", role: "Principal Consultant", linkedin: "#", photo: "/team/vidit-madhusudan-gupta.png" },
+  { name: "Natarajan B", role: "Sr. Exe - CS - Trainee", linkedin: "#", photo: "/team/natarajan-b.png" },
+  { name: "Badrinarayan S", role: "Jr. Financial Analyst", linkedin: "#", photo: "/team/badrinarayan-s.png" },
+  { name: "Jhanani M", role: "Jr. Exe - CS - Trainee", linkedin: "#", photo: "/team/jhanani-m.png" },
+  { name: "Viduthalai S", role: "GM - Financial Analyst", linkedin: "#", photo: "/team/viduthalai-s.png" },
+  { name: "Shajathali S", role: "Associate Company Secretary", linkedin: "#", photo: "/team/shajathali-s.png" },
+  { name: "Pinky Naveen H", role: "AGM - Financial Analyst", linkedin: "#", photo: "/team/pinky-naveen-h.png" },
+  { name: "Narayanan G", role: "Senior GM - Financial Analyst", linkedin: "#", photo: "/team/narayanan-g.png" },
+  { name: "Pugazhendhi P", role: "Senior - Financial Analyst", linkedin: "#", photo: "/team/pugazhendhi-p.png" },
+  { name: "Indira AK", role: "AGM - Accounts & Finance", linkedin: "#", photo: "/team/indira-ak.png" },
+  { name: "Satheesh Srinivasan", role: "Jr. Financial Analyst", linkedin: "#", photo: "/team/satheesh-srinivasan.png" },
+  { name: "Sudarsana Rao K", role: "Admin Assistant", linkedin: "#", photo: "/team/sudarsana-rao-k.png" },
+  { name: "Preeti", role: "Team Member", linkedin: "#", photo: "/team/preeti.png" },
+  { name: "Khushboo", role: "Team Member", linkedin: "#", photo: "/team/kushboo.png" },
+  { name: "Piyush", role: "Team Member", linkedin: "#", photo: "/team/piyush.png" },
+  { name: "Nesapriyan", role: "Team Member", linkedin: "#", photo: "/team/nesapriyan.png" },
+  { name: "Aishwarya", role: "Team Member", linkedin: "#", photo: "/team/aishwarya.png" },
+  { name: "Sai Krishna", role: "Team Member", linkedin: "#", photo: "/team/sai-krishna.png" },
+  { name: "Narendran", role: "Team Member", linkedin: "#", photo: "/team/narendran.png" },
+  { name: "Santhosh Kumar", role: "Team Member", linkedin: "#", photo: "/team/santhosh.png" },
 ];
 
 // ---------- Animation variants ----------
 const fadeUp = {
-  hidden: { opacity: 0, y: 40 },
+  hidden: { opacity: 0, y: 32 },
   visible: (i = 0) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: i * 0.08 },
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: i * 0.07 },
   }),
 };
 
 const staggerContainer = {
   hidden: {},
   visible: {
-    transition: { staggerChildren: 0.12 },
+    transition: { staggerChildren: 0.1 },
   },
 };
 
@@ -167,25 +175,25 @@ export default function About() {
   const ctaImageY = useTransform(ctaProgress, [0, 1], ["-12%", "12%"]);
 
   return (
-    <div className={`${notoSans.className} overflow-hidden`}>
+    <div className={`${notoSans.className} overflow-hidden bg-[#0b1a3a]`}>
       {/* Section 1: About Hero */}
       <section
         ref={heroRef}
-        className="w-full bg-white min-h-[600px] lg:min-h-[700px] flex items-stretch relative overflow-hidden mt-20"
+        className="w-full bg-white min-h-[560px] sm:min-h-[600px] lg:min-h-[700px] flex items-stretch relative overflow-hidden mt-10"
       >
         <div className="w-full flex items-stretch">
-          <div className="max-w-[1400px] mx-auto w-full flex items-stretch px-4 sm:px-6 lg:px-8">
+          <div className="max-w-[1400px] mx-auto w-full flex items-stretch px-5 sm:px-6 lg:px-8">
             <div className="grid lg:grid-cols-2 gap-0 items-stretch w-full">
-              <div className="flex items-center py-16 lg:py-20 xl:py-24">
+              <div className="flex items-center py-12 sm:py-16 lg:py-20 xl:py-24">
                 <div className="max-w-xl">
                   <motion.div
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true, amount: 0.8 }}
                     transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                    className="flex items-center gap-3 mb-5"
+                    className="flex items-center gap-3 mb-4 sm:mb-5"
                   >
-                    <span className="text-orange-600 font-semibold text-sm tracking-wide uppercase">
+                    <span className="text-orange-600 font-semibold text-xs sm:text-sm tracking-[0.08em] uppercase">
                       About Aksan
                     </span>
                     <motion.span
@@ -197,7 +205,7 @@ export default function About() {
                     />
                   </motion.div>
 
-                  <h2 className="text-4xl sm:text-5xl font-extrabold leading-tight mb-6">
+                  <h2 className="text-[28px] leading-[1.2] sm:text-4xl sm:leading-[1.18] lg:text-5xl lg:leading-[1.12] font-extrabold tracking-tight mb-5 sm:mb-6">
                     <AnimatedWords
                       text="Building Trust."
                       className="text-[#152249]"
@@ -214,7 +222,7 @@ export default function About() {
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true, amount: 0.3 }}
-                    className="space-y-4 text-gray-600 text-[15px] leading-relaxed"
+                    className="space-y-4 text-gray-600 text-[14px] sm:text-[15px] leading-[1.75] sm:leading-[1.8] tracking-[0.005em]"
                   >
                     <motion.p variants={fadeUp} custom={0}>
                       At AKSAN, we are a{" "}
@@ -248,30 +256,31 @@ export default function About() {
                     </motion.p>
                   </motion.div>
 
-                  <motion.div
-                    variants={staggerContainer}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, amount: 0.3 }}
-                    className="flex flex-wrap gap-4 mt-10"
-                  >
-                    {features.map(({ icon: Icon, label }, i) => (
-                      <motion.div
-                        key={label}
-                        variants={fadeUp}
-                        custom={i}
-                        whileHover={{ y: -4, transition: { duration: 0.2 } }}
-                        className="flex items-center gap-3 border border-gray-200 rounded-xl px-4 py-3 min-w-[150px]"
-                      >
-                        <span className="flex items-center justify-center w-9 h-9 rounded-full bg-orange-50 text-orange-600">
-                          <Icon size={18} strokeWidth={2} />
-                        </span>
-                        <span className="text-sm font-semibold text-gray-900 leading-tight">
-                          {label}
-                        </span>
-                      </motion.div>
-                    ))}
-                  </motion.div>
+                 <motion.div
+  variants={staggerContainer}
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true, amount: 0.3 }}
+  className="grid grid-cols-2 gap-3 sm:gap-4 mt-8 sm:mt-10"
+>
+  {features.map(({ icon: Icon, label }, i) => (
+    <motion.div
+      key={label}
+      variants={fadeUp}
+      custom={i}
+      whileHover={{ y: -4, transition: { duration: 0.2 } }}
+      className="flex items-center gap-2.5 sm:gap-3 border border-gray-200 rounded-xl px-3.5 sm:px-4 py-2.5 sm:py-3 min-w-0"
+    >
+      <span className="flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 shrink-0 rounded-full bg-orange-50 text-orange-600">
+        <Icon size={16} className="sm:hidden" strokeWidth={2} />
+        <Icon size={18} className="hidden sm:block" strokeWidth={2} />
+      </span>
+      <span className="text-[13px] sm:text-sm font-semibold text-gray-900 leading-snug">
+        {label}
+      </span>
+    </motion.div>
+  ))}
+</motion.div>
                 </div>
               </div>
 
@@ -280,7 +289,7 @@ export default function About() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                className="relative w-full min-h-[400px] lg:min-h-full overflow-hidden lg:absolute lg:right-0 lg:top-0 lg:w-1/2 lg:h-full"
+                className="relative w-full min-h-[260px] sm:min-h-[360px] lg:min-h-full overflow-hidden rounded-2xl lg:rounded-none mb-8 lg:mb-0 lg:absolute lg:right-0 lg:top-0 lg:w-1/2 lg:h-full"
               >
                 <motion.div
                   style={{ y: heroImageY, scale: heroImageScale }}
@@ -302,19 +311,19 @@ export default function About() {
       </section>
 
       {/* Section 2: What Drives Us */}
-      <section className="w-full bg-slate-50 py-20 px-4 sm:px-6 lg:px-8">
+      <section className="w-full bg-slate-50 py-14 sm:py-20 px-5 sm:px-6 lg:px-8">
         <div className="max-w-[1400px] mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.6 }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="text-center mb-14"
+            className="text-center mb-10 sm:mb-14"
           >
-            <span className="text-orange-600 font-semibold text-sm tracking-wide uppercase">
+            <span className="text-orange-600 font-semibold text-xs sm:text-sm tracking-[0.08em] uppercase">
               What Drives Us
             </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#152249] mt-3 mb-4">
+            <h2 className="text-[26px] leading-[1.25] sm:text-4xl sm:leading-tight font-extrabold text-[#152249] mt-3 mb-4 px-2">
               <AnimatedWords text="The Principles Behind Our Success" />
             </h2>
             <motion.span
@@ -331,7 +340,7 @@ export default function About() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
-            className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6"
           >
             {values.map(({ icon: Icon, title, description }, i) => (
               <motion.div
@@ -343,22 +352,23 @@ export default function About() {
                   boxShadow: "0 20px 40px -12px rgba(21,34,73,0.15)",
                   transition: { duration: 0.3, ease: "easeOut" },
                 }}
-                className="bg-white rounded-2xl shadow-sm border border-gray-100 px-8 py-10 flex flex-col items-center text-center"
+                className="bg-white rounded-2xl shadow-sm border border-gray-100 px-6 sm:px-8 py-8 sm:py-10 flex flex-col items-center text-center"
               >
                 <motion.span
                   whileHover={{ rotate: 8, scale: 1.08 }}
                   transition={{ duration: 0.3 }}
-                  className="flex items-center justify-center w-16 h-16 rounded-full bg-[#152249] mb-6"
+                  className="flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#152249] mb-5 sm:mb-6"
                 >
-                  <Icon size={28} className="text-orange-500" strokeWidth={2} />
+                  <Icon size={24} className="text-orange-500 sm:hidden" strokeWidth={2} />
+                  <Icon size={28} className="text-orange-500 hidden sm:block" strokeWidth={2} />
                 </motion.span>
-                <h3 className="text-lg font-bold text-[#152249] mb-3">
+                <h3 className="text-base sm:text-lg font-bold text-[#152249] mb-2.5 sm:mb-3">
                   {title}
                 </h3>
-                <p className="text-sm text-gray-500 leading-relaxed">
+                <p className="text-[13.5px] sm:text-sm text-gray-500 leading-[1.7]">
                   {description}
                 </p>
-                <span className="block h-0.5 w-8 bg-orange-600 rounded-full mt-6" />
+                <span className="block h-0.5 w-8 bg-orange-600 rounded-full mt-5 sm:mt-6" />
               </motion.div>
             ))}
           </motion.div>
@@ -366,20 +376,22 @@ export default function About() {
       </section>
 
       {/* Section 3: Meet Our Leadership */}
-      <section className="w-full bg-white py-20 px-4 sm:px-6 lg:px-8">
+      <section className="w-full bg-slate-50 py-14 sm:py-20 px-5 sm:px-6 lg:px-8">
         <div className="max-w-[1400px] mx-auto">
+
+          {/* Heading */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.6 }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="text-center mb-14"
+            className="text-center mb-10 sm:mb-14"
           >
-            <span className="text-orange-600 font-semibold text-sm tracking-wide uppercase">
+            <span className="text-orange-600 font-semibold text-xs sm:text-sm tracking-[0.08em] uppercase">
               Our Leadership
             </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#152249] mt-3 mb-4">
-              <AnimatedWords text="Meet Our Leadership" />
+            <h2 className="text-[26px] leading-[1.25] sm:text-4xl sm:leading-tight font-extrabold text-[#152249] mt-3 mb-4">
+              <AnimatedWords text="Experience. Expertise. Responsible Growth." />
             </h2>
             <motion.span
               initial={{ width: 0 }}
@@ -390,67 +402,177 @@ export default function About() {
             />
           </motion.div>
 
+          {/* Featured CEO Card */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+className="relative bg-white rounded-3xl shadow-[0_20px_60px_-15px_rgba(21,34,73,0.15)] border border-gray-100 overflow-hidden mx-auto w-[70%] mb-14"          >
+            <div className="grid md:grid-cols-[minmax(0,420px)_1fr]">
+              {/* Photo */}
+              <div className="relative w-full aspect-[4/5] md:aspect-auto md:h-full min-h-[320px] sm:min-h-[420px]">
+                <Image
+                  src={ceo.photo}
+                  alt={ceo.name}
+                  fill
+                  className="object-cover object-top"
+                  priority
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0b1a3a]/40 via-transparent to-transparent md:hidden" />
+              </div>
+
+              {/* Content */}
+              <div className="flex flex-col justify-center px-6 sm:px-10 lg:px-14 py-8 sm:py-12">
+                <h3 className="text-2xl sm:text-3xl lg:text-[34px] font-extrabold text-[#152249] mb-2 tracking-tight">
+                  {ceo.name}
+                </h3>
+                <p className="text-orange-600 font-semibold text-[13.5px] sm:text-sm mb-4">
+                  {ceo.role}
+                </p>
+                <span className="block h-px w-14 bg-orange-500/60 mb-5" />
+                <p className="text-gray-600 text-[13.5px] sm:text-[15px] leading-[1.75] mb-7 sm:mb-8 max-w-md">
+                  {ceo.bio}
+                </p>
+
+                <div className="flex flex-wrap gap-6 sm:gap-8 mb-7 sm:mb-8">
+                  {ceo.tags.map(({ icon: Icon, label }) => (
+                    <div key={label} className="flex flex-col items-center gap-2">
+                      <span className="flex items-center justify-center w-11 h-11 rounded-full bg-[#152249]/[0.04] border border-[#152249]/10 text-[#152249]">
+                        <Icon size={19} strokeWidth={1.8} />
+                      </span>
+                      <span className="text-[11px] sm:text-xs font-medium text-gray-500 whitespace-nowrap">
+                        {label}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+
+                <motion.a
+                  whileHover={{ scale: 1.03, y: -2 }}
+                  whileTap={{ scale: 0.97 }}
+                  href={ceo.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2.5 bg-[#152249] hover:bg-[#0b1a3a] text-white font-semibold text-[13px] sm:text-sm w-fit px-4 sm:px-5 py-2.5 sm:py-3 rounded-xl transition-colors"
+                >
+                  <LinkedinIcon />
+                  View on LinkedIn
+                  <ArrowRight size={15} />
+                </motion.a>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Stats Bar */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            className="bg-[#0b1a3a] rounded-2xl sm:rounded-3xl px-4 sm:px-8 py-8 sm:py-10 grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-4 mb-14 sm:mb-20"
+          >
+            {[
+              { icon: Briefcase, value: "25+", label: "Years of Experience" },
+              { icon: TrendingUp, value: "8500+ Cr", label: "Capital Raised" },
+              { icon: ShieldCheck, value: "150+", label: "Transactions Executed" },
+              { icon: Trophy, value: "100+", label: "Happy Clients" },
+            ].map(({ icon: Icon, value, label }, i) => (
+              <div key={label} className="flex flex-col items-center text-center gap-2 relative">
+                {i !== 0 && (
+                  <span className="hidden lg:block absolute left-[-8px] top-1/2 -translate-y-1/2 h-10 w-px bg-white/10" />
+                )}
+                <Icon size={22} className="text-orange-500 mb-1" strokeWidth={1.8} />
+                <span className="text-2xl sm:text-3xl font-extrabold text-white">{value}</span>
+                <span className="text-[11px] sm:text-xs text-slate-400 font-medium tracking-wide">{label}</span>
+              </div>
+            ))}
+          </motion.div>
+
+          {/* Core Team Heading */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.6 }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            className="text-center mb-10 sm:mb-14"
+          >
+            <span className="text-orange-600 font-semibold text-xs sm:text-sm tracking-[0.08em] uppercase">
+              Our Core Team
+            </span>
+            <h2 className="text-[26px] leading-[1.25] sm:text-4xl sm:leading-tight font-extrabold text-[#152249] mt-3 mb-4">
+              <AnimatedWords text="Driven by Expertise. United by Purpose." />
+            </h2>
+            <motion.span
+              initial={{ width: 0 }}
+              whileInView={{ width: 56 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
+              className="block h-1 bg-orange-600 mx-auto rounded-full"
+            />
+          </motion.div>
+
+          {/* Core Team Grid */}
           <motion.div
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.1 }}
-            className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5"
+            className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6"
           >
-            {leadership.map(({ name, role, experience, linkedin, photo }, i) => (
+            {coreTeam.map(({ name, role, linkedin, photo }, i) => (
               <motion.div
                 key={name}
                 variants={fadeUp}
-                custom={i % 3}
+                custom={i % 4}
                 whileHover={{
-                  y: -5,
-                  boxShadow: "0 16px 32px -10px rgba(21,34,73,0.15)",
+                  y: -6,
+                  boxShadow: "0 20px 40px -12px rgba(21,34,73,0.15)",
                   transition: { duration: 0.25 },
                 }}
-                className="flex bg-white border border-gray-100 rounded-2xl shadow-sm overflow-hidden"
+                className="group bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-sm"
               >
-                {/* Photo */}
-                <div className="relative w-32 sm:w-36 shrink-0 bg-gray-200 self-stretch min-h-[180px]">
+                <div className="relative w-full aspect-square bg-gray-100 overflow-hidden">
                   <Image
                     src={photo}
                     alt={name}
                     fill
-                    className="object-cover object-top"
+                    className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0b1a3a]/25 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
 
-                {/* Content */}
-                <div className="flex flex-col justify-center gap-1.5 px-5 py-4">
-                  <h3 className="text-base font-bold text-[#152249] leading-tight">
+                <div className="px-3.5 sm:px-4 py-3.5 sm:py-4">
+                  <h3 className="text-[13px] sm:text-[15px] font-bold text-[#152249] leading-[1.3] break-words mb-0.5">
                     {name}
                   </h3>
-                  <p className="text-xs font-semibold text-orange-600">
+                  <p className="text-orange-600 text-[11px] sm:text-xs font-semibold leading-snug mb-2.5">
                     {role}
                   </p>
-                  <div className="flex items-center gap-1.5 text-xs text-gray-500">
-                    {/* <Briefcase size={13} strokeWidth={2} /> */}
-                    {/* <span>{experience}</span> */}
-                  </div>
-
-                  <a href={linkedin}
+                  <span className="block h-px w-6 bg-gray-200 mb-2.5" />
+                  
+                    <a href={linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-1 flex items-center justify-center w-7 h-7 rounded-md border border-gray-200 text-[#152249] hover:bg-gray-50 transition"
+                    className="inline-flex items-center gap-1.5 text-[#152249] text-[11px] sm:text-xs font-semibold hover:text-orange-600 transition-colors"
                     aria-label={`${name} on LinkedIn`}
                   >
                     <LinkedinIcon />
+                    View LinkedIn
+                    <ArrowRight size={12} />
                   </a>
                 </div>
               </motion.div>
             ))}
           </motion.div>
+
         </div>
       </section>
 
       {/* Section 4: CTA Banner */}
       <section
         ref={ctaRef}
-        className="w-full bg-white py-16 px-4 sm:px-6 lg:px-8"
+        className="w-full bg-white py-12 sm:py-16 px-5 sm:px-6 lg:px-8"
       >
         <div className="max-w-[1400px] mx-auto">
           <motion.div
@@ -458,7 +580,7 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="relative overflow-hidden rounded-3xl bg-[#0b1a3a] min-h-[220px] flex items-center"
+            className="relative overflow-hidden rounded-2xl sm:rounded-3xl bg-[#0b1a3a] min-h-[200px] sm:min-h-[220px] flex items-center"
           >
             <motion.div
               style={{ y: ctaImageY }}
@@ -472,8 +594,8 @@ export default function About() {
               />
             </motion.div>
 
-            <div className="relative z-10 px-6 sm:px-10 lg:px-14 py-12 max-w-xl">
-              <h2 className="text-2xl sm:text-3xl font-extrabold leading-tight mb-4">
+            <div className="relative z-10 px-6 sm:px-10 lg:px-14 py-10 sm:py-12 max-w-xl">
+              <h2 className="text-2xl leading-[1.25] sm:text-3xl sm:leading-tight font-extrabold mb-3.5 sm:mb-4">
                 <AnimatedWords
                   text="Let's Build Your"
                   className="text-white"
@@ -489,7 +611,7 @@ export default function About() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.5 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
-                className="text-sm sm:text-[15px] text-slate-300 leading-relaxed mb-8"
+                className="text-[13.5px] sm:text-[15px] text-slate-300 leading-[1.7] mb-7 sm:mb-8"
               >
                 Partner with AKSAN for reliable merchant banking services,
                 regulatory expertise, and strategic financial advisory
@@ -500,13 +622,13 @@ export default function About() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.5 }}
                 transition={{ duration: 0.6, delay: 0.45 }}
-                className="flex flex-wrap gap-4"
+                className="flex flex-wrap gap-3 sm:gap-4"
               >
                 <motion.a
                   whileHover={{ scale: 1.04, y: -2 }}
                   whileTap={{ scale: 0.97 }}
                   href="/contact"
-                  className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-semibold text-sm px-5 py-3 rounded-lg transition-colors"
+                  className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-semibold text-[13.5px] sm:text-sm px-4 sm:px-5 py-2.5 sm:py-3 rounded-lg transition-colors"
                 >
                   Contact Us
                   <ArrowRight size={16} />
@@ -515,7 +637,7 @@ export default function About() {
                   whileHover={{ scale: 1.04, y: -2 }}
                   whileTap={{ scale: 0.97 }}
                   href="/services"
-                  className="inline-flex items-center gap-2 border border-white/30 hover:bg-white/10 text-white font-semibold text-sm px-5 py-3 rounded-lg transition-colors"
+                  className="inline-flex items-center gap-2 border border-white/30 hover:bg-white/10 text-white font-semibold text-[13.5px] sm:text-sm px-4 sm:px-5 py-2.5 sm:py-3 rounded-lg transition-colors"
                 >
                   Our Services
                   <ArrowRight size={16} />

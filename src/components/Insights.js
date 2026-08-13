@@ -37,18 +37,13 @@ function getCategory(blog) {
   return blog.meta_data?.tags?.[0] || 'INSIGHT';
 }
 
-function getThumbnail(blog) {
-  if (blog.featured_image) {
-    return blog.featured_image;
+function resolveImageUrl(path) {
+  if (!path) return null;
+  if (path.startsWith('http://') || path.startsWith('https://')) {
+    return path;
   }
-  
-  const THUMBNAIL_MAP = {
-    'sme-ipo-vs-mainboard-ipo-which-one-fits-your-business': '/blog/b1.png',
-    'common-financial-challenges-faced-by-smes-and-how-to-overcome-them': '/blog/b2.png',
-    'what-is-an-sme-ipo-everything-you-need-to-know-1786428769': '/blog/b3.png',
-  };
-  
-  return THUMBNAIL_MAP[blog.slug] || '/default-blog.jpg';
+  const cleanPath = path.startsWith('/') ? path : `/${path}`;
+  return cleanPath;
 }
 
 const fallbackInsights = [
@@ -60,6 +55,7 @@ const fallbackInsights = [
     desc: "An overview of key market trends and investment opportunities in the coming year.",
     image: "/b-1.webp",
     slug: "market-outlook-2024",
+    readTime: 3,
   },
   {
     id: '2',
@@ -69,6 +65,7 @@ const fallbackInsights = [
     desc: "Why long-term investing remains the most effective way to build wealth.",
     image: "/b-2.webp",
     slug: "long-term-investing",
+    readTime: 4,
   },
   {
     id: '3',
@@ -78,6 +75,7 @@ const fallbackInsights = [
     desc: "Key factors driving India's economic growth and its impact on global investors.",
     image: "/b-3.webp",
     slug: "india-economic-growth",
+    readTime: 5,
   },
 ];
 
@@ -102,8 +100,8 @@ export default function MarketInsights() {
         
         const result = await getPublishedBlogs({ page: 1, per_page: 6 });
         
-        if (result.success && result.data && result.data.data) {
-          const blogList = result.data.data.filter(b => b.status === 'published');
+        if (result.success && Array.isArray(result.data)) {
+          const blogList = result.data.filter(b => b.status === 'published');
           
           if (blogList.length > 0) {
             const mappedInsights = blogList.map(blog => ({
@@ -112,7 +110,7 @@ export default function MarketInsights() {
               date: formatDate(blog.published_at || blog.created_at),
               title: blog.title,
               desc: blog.description || stripHtml(blog.content).slice(0, 120) + '...',
-              image: getThumbnail(blog),
+              image: resolveImageUrl(blog.featured_image) || '/default-blog.jpg',
               slug: blog.slug,
               readTime: readTime(blog.content),
             }));
@@ -232,7 +230,7 @@ export default function MarketInsights() {
                           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                           className="object-cover transition-transform duration-500 group-hover:scale-105"
                           onError={(e) => {
-                            e.target.src = '/default-blog.jpg';
+                            e.currentTarget.src = '/default-blog.jpg';
                           }}
                         />
                         <span className="absolute left-3 top-3 bg-white/90 text-blue-900 font-bold text-[10px] tracking-wider px-2.5 py-1 rounded">

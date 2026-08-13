@@ -4,6 +4,18 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { getPublishedBlogs } from '@/components/blogService';
 
+// Images are now stored locally in THIS Next.js app's /public/uploads/blogs
+// folder, not on the backend. The backend just sends back a path like
+// "/uploads/blogs/169999_abc.jpg" which resolves directly against our own origin.
+function resolveImageUrl(path) {
+  if (!path) return null;
+  if (path.startsWith('http://') || path.startsWith('https://')) {
+    return path;
+  }
+  const cleanPath = path.startsWith('/') ? path : `/${path}`;
+  return cleanPath;
+}
+
 function stripHtml(html = '') {
   return html.replace(/<[^>]*>/g, '');
 }
@@ -13,13 +25,6 @@ function readTime(content = '') {
   return Math.max(1, Math.round(words / 200));
 }
 
-// TEMP: manual thumbnail mapping until backend supports featured_image upload
-const THUMBNAIL_MAP = {
-  'sme-ipo-vs-mainboard-ipo-which-one-fits-your-business': '/blog/b1.png',
-  'common-financial-challenges-faced-by-smes-and-how-to-overcome-them': '/blog/b2.png',
-  'what-is-an-sme-ipo-everything-you-need-to-know-1786428769': '/blog/b3.png',
-};
-
 export default function BlogsPage() {
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -27,14 +32,17 @@ export default function BlogsPage() {
   useEffect(() => {
     getPublishedBlogs({ page: 1, per_page: 12 })
       .then((res) => {
-        if (res.success && res.data) {
-          const list = res.data.data || [];
-          setBlogs(list.filter((b) => b.status === 'published'));
+        if (res.success && Array.isArray(res.data)) {
+          setBlogs(res.data.filter((b) => b.status === 'published'));
         } else {
+          console.warn('Unexpected blogs response shape:', res);
           setBlogs([]);
         }
       })
-      .catch(() => setBlogs([]))
+      .catch((err) => {
+        console.error('Fetch error:', err);
+        setBlogs([]);
+      })
       .finally(() => setLoading(false));
   }, []);
 
@@ -80,7 +88,7 @@ export default function BlogsPage() {
             {blogs.map((blog) => {
               const tag = blog.meta_data?.tags?.[0] || 'Insight';
               const dateSource = blog.published_at || blog.created_at;
-              const thumbnail = blog.featured_image || THUMBNAIL_MAP[blog.slug] || null;
+              const thumbnail = resolveImageUrl(blog.featured_image);
 
               return (
                 <Link
@@ -94,12 +102,18 @@ export default function BlogsPage() {
                         src={thumbnail}
                         alt={blog.title}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        onError={(e) => {
+                          e.currentTarget.style.display = 'none';
+                          e.currentTarget.nextSibling.style.display = 'flex';
+                        }}
                       />
-                    ) : (
-                      <div className="w-full h-full flex items-center justify-center text-white/20 text-4xl font-bold">
-                        {tag}
-                      </div>
-                    )}
+                    ) : null}
+                    <div
+                      className="w-full h-full flex items-center justify-center text-white/20 text-4xl font-bold"
+                      style={{ display: thumbnail ? 'none' : 'flex' }}
+                    >
+                      {tag}
+                    </div>
                   </div>
 
                   <div className="p-6">

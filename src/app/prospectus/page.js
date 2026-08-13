@@ -15,127 +15,128 @@ const NAVY = "#0F2A5C";
 const NAVY_DARK = "#0A1F45";
 const ORANGE = "#F2622E";
 
-// Replace logo with your actual company logo image path, and documentUrl with the real PDF link
+// Replace logo with your actual company logo image path.
+// documentUrl points to the PDF saved in /public/prospectus/
 const rhpDocuments = [
   {
     number: "01",
     name: "Phantom Digital Effects Limited",
-    logo: "/rhp/phantom-logo.png",
+    logo: "/client/phantom.png",
     listingDate: "31-10-2022",
     listingExchange: "NSE Emerge",
     ipoSize: "29.10",
     ipoPrice: "375.00",
-    documentUrl: "#",
+    documentUrl: "/prospectus/Phantom_prospectus.pdf",
   },
   {
     number: "02",
     name: "Krishca Strapping Solutions Limited",
-    logo: "/rhp/krishca-logo.png",
+    logo: "/client/krishca.png",
     listingDate: "26-05-2023",
     listingExchange: "NSE Emerge",
     ipoSize: "17.93",
     ipoPrice: "98.00",
-    documentUrl: "#",
+    documentUrl: "/prospectus/krishca-rhp.pdf",
   },
   {
     number: "03",
     name: "Basilic Fly Studio Limited",
-    logo: "/rhp/basilic-logo.png",
+    logo: "/client/basilicfly.png",
     listingDate: "11-09-2023",
     listingExchange: "NSE Emerge",
     ipoSize: "66.35",
     ipoPrice: "395.00",
-    documentUrl: "#",
+    documentUrl: "/prospectus/Basilic-prospectus.pdf",
   },
   {
     number: "04",
-    name: "Fox Rin Hi-tech Limited",
-    logo: "/rhp/fox-logo.png",
+    name: "Rox Rin Hi-tech Limited",
+    logo: "/client/rox.jpg",
     listingDate: "16-11-2023",
     listingExchange: "NSE Emerge",
     ipoSize: "54.49",
     ipoPrice: "135.00",
-    documentUrl: "#",
+    documentUrl: "/prospectus/Rox Hi-Tech - Prospectus.pdf",
   },
   {
     number: "05",
     name: "Supreme Power Equipment Limited",
-    logo: "/rhp/supreme-logo.png",
+    logo: "/client/spel.jpg",
     listingDate: "29-12-2023",
     listingExchange: "NSE Emerge",
     ipoSize: "46.67",
     ipoPrice: "94.00",
-    documentUrl: "#",
+    documentUrl: "/prospectus/Supreme_Prospectus.pdf",
   },
   {
     number: "06",
     name: "Thaai Casting Limited",
-    logo: "/rhp/thaai-logo.png",
+    logo: "/client/thaicasting.jpg",
     listingDate: "23-02-2024",
     listingExchange: "NSE Emerge",
     ipoSize: "47.20",
     ipoPrice: "185.00",
-    documentUrl: "#",
+    documentUrl: "/prospectus/Thaai csting_prospectus.pdf",
   },
   {
     number: "07",
     name: "AVP Infracon Limited",
-    logo: "/rhp/avp-logo.png",
+    logo: "/client/avp.png",
     listingDate: "28-03-2024",
     listingExchange: "NSE Emerge",
     ipoSize: "52.34",
     ipoPrice: "79.00",
-    documentUrl: "#",
+    documentUrl: "/prospectus/Prospectus_AVP-Infracon.pdf",
   },
   {
     number: "08",
     name: "ABS Marine Limited",
-    logo: "/rhp/abs-logo.png",
+    logo: "/client/abs.png",
     listingDate: "21-05-2024",
     listingExchange: "NSE Emerge",
     ipoSize: "56.29",
     ipoPrice: "294.00",
-    documentUrl: "#",
+    documentUrl: "/prospectus/ABS_prospectus.pdf",
   },
   {
     number: "09",
     name: "Sathlokar Synergys E & C Global Limited",
-    logo: "/rhp/sathlokar-logo.png",
+    logo: "/client/sathlokar.png",
     listingDate: "06-08-2024",
     listingExchange: "NSE Emerge",
     ipoSize: "92.93",
     ipoPrice: "260.00",
-    documentUrl: "#",
+    documentUrl: "/prospectus/Sathlokar_prospectus.pdf",
   },
   {
     number: "10",
     name: "Afcom Holdings Limited",
-    logo: "/rhp/afcom-logo.png",
+    logo: "/client/afcom.png",
     listingDate: "09-08-2024",
     listingExchange: "BSE Emerge",
     ipoSize: "22.15",
     ipoPrice: "205.00",
-    documentUrl: "#",
+    documentUrl: "/prospectus/Afcom_Prospectus.pdf",
   },
   {
     number: "11",
     name: "Freshara Agro Exports Limited",
-    logo: "/rhp/freshara-logo.png",
+    logo: "/client/freshara.png",
     listingDate: "24-10-2024",
     listingExchange: "NSE Emerge",
     ipoSize: "73.83",
     ipoPrice: "125.00",
-    documentUrl: "#",
+    documentUrl: "/prospectus/Freshara_prospectus.pdf",
   },
   {
     number: "12",
     name: "Emerald Tyre Manufacturers Limited",
-    logo: "/rhp/emerald-logo.png",
+    logo: "/client/emerald.png",
     listingDate: "12-12-2024",
     listingExchange: "NSE Emerge",
     ipoSize: "49.26",
     ipoPrice: "180.00",
-    documentUrl: "#",
+    documentUrl: "/prospectus/Emerald_Prospectus.pdf",
   },
 ];
 
@@ -207,9 +208,11 @@ function DocumentCard({ doc, index }) {
       </div>
 
       {/* View document button */}
-      <a href={doc.documentUrl}
+      
+        <a href={doc.documentUrl}
         target="_blank"
         rel="noopener noreferrer"
+        download
         className="mt-auto inline-flex items-center justify-center gap-2 rounded-lg py-2.5 text-xs font-semibold text-white transition-transform hover:-translate-y-0.5"
         style={{ backgroundColor: NAVY, fontFamily: "'Noto Sans', sans-serif" }}
       >

@@ -43,18 +43,29 @@ export default function Hero() {
     <section
       ref={sectionRef}
       className="relative w-full h-[560px] xs:h-[600px] sm:h-[680px] md:h-[780px] lg:h-[870px] flex flex-col justify-center overflow-hidden"
-      style={{ fontFamily: '"Segoe UI", sans-serif' }}
     >
-      {/* BACKGROUND VIDEO */}
+      {/* BACKGROUND VIDEO - MOBILE (below md) */}
       <motion.video
         autoPlay
         loop
         muted
         playsInline
         style={{ y: videoY }}
-        className="absolute inset-0 w-full h-full object-cover object-center -z-20 scale-110 brightness-[0.75]"
+        className="md:hidden absolute inset-0 w-full h-full object-cover object-center -z-20 scale-110 brightness-[0.75]"
       >
-        <source src="/Hero.mp4" type="video/mp4" />
+        <source src="/mobbanner.mp4" type="video/mp4" />
+      </motion.video>
+
+      {/* BACKGROUND VIDEO - WEB (md and up) */}
+      <motion.video
+        autoPlay
+        loop
+        muted
+        playsInline
+        style={{ y: videoY }}
+        className="hidden md:block absolute inset-0 w-full h-full object-cover object-center -z-20 scale-110 brightness-[0.75]"
+      >
+        <source src="/webbanner.mp4" type="video/mp4" />
       </motion.video>
 
       {/* BLUE OVERLAY */}

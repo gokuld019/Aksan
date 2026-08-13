@@ -15,7 +15,7 @@ const directors = [
   {
     name: "Rajinikanth",
     role: "MANAGING DIRECTOR",
-    image: "/team2.webp",
+    image: "/team/rajiniganth-es.jpeg",
     accent: "border-orange-500 bg-slate-900/90",
   },
   {

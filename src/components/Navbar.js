@@ -6,31 +6,31 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const navLinks = [
-  { label: "HOME", href: "/" },
-  { label: "ABOUT US", href: "/About" },
-  { label: "SERVICES", href: "/services" },
+  { label: "Home", href: "/" },
+  { label: "About us", href: "/About" },
+  { label: "Services", href: "/services" },
   {
-    label: "OFFER DOCUMENTS",
+    label: "Offer documents",
     href: "/offer-documents",
     children: [
       { label: "DRHP", href: "/drhp" },
       { label: "RHP", href: "/rhp" },
-      { label: "PROSPECTUS", href: "/prospectus" },
+      { label: "Prospectus", href: "/prospectus" },
     ],
   },
   {
-    label: "INVESTOR RELATIONS",
+    label: "Investor relations",
     href: "/investor-relations",
     children: [
-      { label: "CODE AND POLICIES", href: "/investor-relations/code-and-policies" },
-      { label: "INVESTOR CHARTER", href: "/investor-relations/investor-charter" },
-      { label: "INVESTOR COMPLAINTS", href: "/investor-relations/investor-complaints" },
-      { label: "INVESTOR GRIEVANCE REDRESSAL", href: "/investor-relations/investor-grievance-redressal" },
+      { label: "Code and Policies", href: "/investor-relations/code-and-policies" },
+      { label: "Investor Charter", href: "/investor-relations/investor-charter" },
+      { label: "Investor Complaints", href: "/investor-relations/investor-complaints" },
+      { label: "Investor grievance redressal", href: "/investor-relations/investor-grievance-redressal" },
     ],
   },
-  { label: "GALLERY", href: "/Gallery" },
-  { label: "BLOGS", href: "/BlogsPage" },
-  { label: "CONTACT US", href: "/contactus" },
+  { label: "Gallery", href: "/Gallery" },
+  { label: "Blogs", href: "/BlogsPage" },
+  { label: "Contact Us", href: "/contactus" },
 ];
 
 export default function Navbar() {
@@ -71,15 +71,15 @@ export default function Navbar() {
   const showSolidBg = scrolled || isAboutPage || isGalleryPage;
 
   return (
-    <header
-      className={`fixed top-0 left-0 w-full z-30 transition-all duration-300 ${
-        showSolidBg ? "shadow-md" : ""
-      }`}
-      style={{
-        backgroundColor: showSolidBg ? "#020f33" : "transparent",
-        fontFamily: '"Segoe UI", sans-serif',
-      }}
-    >
+  <header
+  className={`fixed top-0 left-0 w-full z-30 transition-all duration-300 ${
+    showSolidBg ? "shadow-md" : ""
+  }`}
+  style={{
+    backgroundColor: showSolidBg ? "#020f33" : "transparent",
+    fontFamily: "Whitney, sans-serif",
+  }}
+>
       <nav className="max-w-[1400px] mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-6 py-2.5 sm:py-3 lg:py-3.5">
         <Link href="/" className="flex items-center gap-2 shrink-0">
           <Image
@@ -103,7 +103,7 @@ export default function Navbar() {
                 onMouseLeave={() => setServicesOpen(false)}
               >
                 <button
-                  className={`flex items-center gap-1.5 text-[12px] font-medium tracking-wide transition-colors whitespace-nowrap ${
+                  className={`flex items-center gap-1.5 text-[18px] font-semibold tracking-wide transition-colors whitespace-nowrap ${
                     servicesOpen === link.label ? "text-orange-400" : "text-white/90 hover:text-orange-400"
                   }`}
                 >
@@ -151,7 +151,7 @@ export default function Navbar() {
               <li key={link.label}>
                 <Link
                   href={link.href}
-                  className={`text-[12px] font-medium tracking-wide transition-colors whitespace-nowrap ${
+                  className={`text-[18px] font-semibold tracking-wide transition-colors whitespace-nowrap ${
                     link.href === pathname
                       ? "text-orange-400"
                       : "text-white/90 hover:text-orange-400"

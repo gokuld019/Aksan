@@ -1,35 +1,135 @@
 @import "tailwindcss";
 
+/* =========================================
+   TAILWIND THEME
+========================================= */
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+
+  --font-sans: "Whitney", sans-serif;
+  --font-mono: "Whitney", sans-serif;
+
   --navy-900: #0a1a3f;
   --navy-950: #050d24;
 }
+
+
+/* =========================================
+   LIGHT MODE VARIABLES
+========================================= */
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+
+  --primary-blue: #0f3a66;
+
+  --navy-100: #dbeafe;
+  --navy-200: #bfdbfe;
+  --navy-300: #93c5fd;
+  --navy-400: #60a5fa;
+  --navy-500: #3b82f6;
+  --navy-600: #2563eb;
+  --navy-700: #1d4ed8;
+  --navy-800: #1e40af;
+  --navy-900: #204175;
+  --navy-950: #0d1d3a;
+}
+
+
+/* =========================================
+   DARK MODE
+========================================= */
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
-    --primary-blue: #0F3A66;
-    --navy-950: #0B1A33;
-    --navy-100: #DBEAFE;
-  --navy-200: #BFDBFE;
-  --navy-300: #93C5FD;
-  --navy-400: #60A5FA;
-  --navy-500: #3B82F6;
-  --navy-600: #2563EB;
-  --navy-700: #1D4ED8;
-  --navy-800: #1E40AF;
-  --navy-900: #204175;
-  --navy-950: #0d1d3a;
+
+    --primary-blue: #0f3a66;
+
+    --navy-100: #dbeafe;
+    --navy-200: #bfdbfe;
+    --navy-300: #93c5fd;
+    --navy-400: #60a5fa;
+    --navy-500: #3b82f6;
+    --navy-600: #2563eb;
+    --navy-700: #1d4ed8;
+    --navy-800: #1e40af;
+    --navy-900: #204175;
+    --navy-950: #0d1d3a;
   }
 }
+
+
+/* =========================================
+   WHITNEY FONT
+========================================= */
+
+@font-face {
+  font-family: "Whitney";
+  src: url("/fonts/WhitneySSm-Book-Adv_Web.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Whitney";
+  src: url("/fonts/WhitneySSm-Medium-Adv_Web.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Whitney";
+  src: url("/fonts/WhitneySSm-Semibold-Adv_Web.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Whitney";
+  src: url("/fonts/WhitneySSm-Bold-Adv_Web.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+/* =========================================
+   GLOBAL WEBSITE FONT
+========================================= */
+
+html,
+body {
+  font-family: "Whitney", sans-serif !important;
+}
+
+
+/*
+   Apply Whitney to every element.
+
+   !important ensures that existing component/page
+   font-family declarations are overridden.
+*/
+
+body * {
+  font-family: "Whitney", sans-serif !important;
+}
+
+
+/* =========================================
+   BODY
+========================================= */
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
 }

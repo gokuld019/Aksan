@@ -22,7 +22,49 @@ import {
   Sparkles,
   ShieldCheck,
   AudioLines,
+  Type,
+  Check,
 } from "lucide-react";
+import {
+  Inter,
+  Plus_Jakarta_Sans,
+  Manrope,
+  Sora,
+  Outfit,
+  Space_Grotesk,
+  DM_Sans,
+  Lexend,
+} from "next/font/google";
+
+/* ============================================================
+  SITE FONT OPTIONS
+  Each is preloaded statically (next/font/google requirement),
+  exposed as a CSS variable, and swapped in via a class on
+  #page-content. Add/remove entries here to change the shortlist.
+  ============================================================ */
+const inter = Inter({ subsets: ["latin"], weight: ["400", "500", "600", "700", "800"], variable: "--font-inter" });
+const jakarta = Plus_Jakarta_Sans({ subsets: ["latin"], weight: ["400", "500", "600", "700", "800"], variable: "--font-jakarta" });
+const manrope = Manrope({ subsets: ["latin"], weight: ["400", "500", "600", "700", "800"], variable: "--font-manrope" });
+const sora = Sora({ subsets: ["latin"], weight: ["400", "500", "600", "700", "800"], variable: "--font-sora" });
+const outfit = Outfit({ subsets: ["latin"], weight: ["400", "500", "600", "700", "800"], variable: "--font-outfit" });
+const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], weight: ["400", "500", "600", "700"], variable: "--font-space-grotesk" });
+const dmSans = DM_Sans({ subsets: ["latin"], weight: ["400", "500", "600", "700", "800"], variable: "--font-dm-sans" });
+const lexend = Lexend({ subsets: ["latin"], weight: ["400", "500", "600", "700", "800"], variable: "--font-lexend" });
+
+const FONT_OPTIONS = [
+  { id: "default", label: "Default (Noto Sans)", className: "", cssVar: null, preview: "Aa" },
+  { id: "inter", label: "Inter", className: inter.variable, cssVar: "var(--font-inter)", preview: "Aa" },
+  { id: "jakarta", label: "Plus Jakarta Sans", className: jakarta.variable, cssVar: "var(--font-jakarta)", preview: "Aa" },
+  { id: "manrope", label: "Manrope", className: manrope.variable, cssVar: "var(--font-manrope)", preview: "Aa" },
+  { id: "sora", label: "Sora", className: sora.variable, cssVar: "var(--font-sora)", preview: "Aa" },
+  { id: "outfit", label: "Outfit", className: outfit.variable, cssVar: "var(--font-outfit)", preview: "Aa" },
+  { id: "spaceGrotesk", label: "Space Grotesk", className: spaceGrotesk.variable, cssVar: "var(--font-space-grotesk)", preview: "Aa" },
+  { id: "dmSans", label: "DM Sans", className: dmSans.variable, cssVar: "var(--font-dm-sans)", preview: "Aa" },
+  { id: "lexend", label: "Lexend", className: lexend.variable, cssVar: "var(--font-lexend)", preview: "Aa" },
+];
+
+const FONT_VARIABLE_CLASSES = FONT_OPTIONS.map((f) => f.className).filter(Boolean).join(" ");
+const SITE_FONT_STORAGE_KEY = "aksan-site-font";
 
 const REPLY_META = {
   "About Aksan": { icon: Building2, tint: "from-sky-500 to-sky-600" },
@@ -45,13 +87,13 @@ function typingDelayFor(flow) {
 
 /* ============================================================
   GLOBAL SPEECH ENGINE
-  A single shared controller so "speak page" and "speak this
-  message" both drive the same Pause/Play/Stop bar consistently.
+  A single shared controller so "speak page", "speak selection",
+  and "speak this message" all drive the same Pause/Play/Stop bar.
   ============================================================ */
 function useSpeechEngine() {
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
-  const [activeSourceId, setActiveSourceId] = useState(null); // "page" | message id | null
+  const [activeSourceId, setActiveSourceId] = useState(null); // "page" | "selection" | message id | null
   const utterRef = useRef(null);
 
   const speak = useCallback((text, sourceId) => {
@@ -121,6 +163,7 @@ export default function VoiceWidget() {
   const [showCallout, setShowCallout] = useState(true);
   const [accessibilityOpen, setAccessibilityOpen] = useState(false);
   const [toolbarVisible, setToolbarVisible] = useState(true);
+  const [voiceBarVisible, setVoiceBarVisible] = useState(true);
 
   const [fontSize, setFontSize] = useState(0);
   const [lineHeight, setLineHeight] = useState(0);
@@ -129,6 +172,7 @@ export default function VoiceWidget() {
   const [lightContrast, setLightContrast] = useState(false);
   const [highContrast, setHighContrast] = useState(false);
   const [monochrome, setMonochrome] = useState(false);
+  const [siteFont, setSiteFont] = useState("default");
 
   const [targetMissing, setTargetMissing] = useState(false);
 
@@ -146,6 +190,18 @@ export default function VoiceWidget() {
     }
     return el;
   }, [targetMissing]);
+
+  // Restore saved font choice on mount
+  useEffect(() => {
+    try {
+      const saved = window.localStorage.getItem(SITE_FONT_STORAGE_KEY);
+      if (saved && FONT_OPTIONS.some((f) => f.id === saved)) {
+        setSiteFont(saved);
+      }
+    } catch {
+      // localStorage unavailable — ignore, default stands
+    }
+  }, []);
 
   useEffect(() => {
     const target = getTarget();
@@ -167,8 +223,45 @@ export default function VoiceWidget() {
     target.classList.toggle("a11y-mono", monochrome);
   }, [fontSize, lineHeight, readableFont, letterSpacing, lightContrast, highContrast, monochrome, getTarget]);
 
-  // "Speak" button -> reads the whole page from start to end
+  // Apply chosen site font
+  useEffect(() => {
+    const target = getTarget();
+    if (!target) return;
+
+    const option = FONT_OPTIONS.find((f) => f.id === siteFont) || FONT_OPTIONS[0];
+
+    document.documentElement.classList.remove(
+      ...FONT_VARIABLE_CLASSES.split(" ").filter(Boolean)
+    );
+    if (option.className) {
+      document.documentElement.classList.add(option.className);
+    }
+
+    if (option.cssVar) {
+      document.documentElement.style.setProperty("--site-font", option.cssVar);
+      target.classList.add("a11y-site-font");
+    } else {
+      target.classList.remove("a11y-site-font");
+      document.documentElement.style.removeProperty("--site-font");
+    }
+
+    try {
+      window.localStorage.setItem(SITE_FONT_STORAGE_KEY, siteFont);
+    } catch {
+      // ignore
+    }
+  }, [siteFont, getTarget]);
+
+  // "Speak" button -> speaks selected text if any, otherwise reads the whole page
   const handleSpeakPage = () => {
+    const selection = window.getSelection();
+    const selectedText = selection?.toString().trim();
+
+    if (selectedText && selectedText.length > 0) {
+      speech.speak(selectedText, "selection");
+      return;
+    }
+
     const page = getTarget() || document.body;
     const text = page.innerText.slice(0, 1600);
     speech.speak(text, "page");
@@ -184,6 +277,11 @@ export default function VoiceWidget() {
   };
   const handleStop = () => speech.stop();
 
+  const handleDismissVoiceBar = () => {
+    speech.stop();
+    setVoiceBarVisible(false);
+  };
+
   const handleResetA11y = () => {
     setFontSize(0);
     setLineHeight(0);
@@ -192,6 +290,7 @@ export default function VoiceWidget() {
     setLightContrast(false);
     setHighContrast(false);
     setMonochrome(false);
+    setSiteFont("default");
   };
 
   const [mounted, setMounted] = useState(false);
@@ -205,6 +304,7 @@ export default function VoiceWidget() {
           --a11y-line-height: 1.5;
           --a11y-letter-spacing: normal;
           --a11y-font-scale: 0px;
+          --site-font: inherit;
         }
 
         #page-content {
@@ -227,6 +327,7 @@ export default function VoiceWidget() {
         #page-content.a11y-readable * {
           font-family: "Atkinson Hyperlegible", Verdana, Arial, sans-serif !important;
         }
+      
         #page-content.a11y-light {
           filter: brightness(1.12) contrast(0.95);
         }
@@ -341,27 +442,34 @@ export default function VoiceWidget() {
           setHighContrast={setHighContrast}
           monochrome={monochrome}
           setMonochrome={setMonochrome}
+          siteFont={siteFont}
+          setSiteFont={setSiteFont}
           toolbarVisible={toolbarVisible}
           setToolbarVisible={setToolbarVisible}
           onReset={handleResetA11y}
         />
       )}
 
+      {/* Chatbot launcher + voice bar — single stack, bottom-right.
+          Voice bar sits directly ABOVE the chatbot launcher, and both
+          move together (no clumsy independent jumping) when chat opens. */}
       <div
         className="fixed bottom-6 right-6 flex flex-col items-end gap-2.5 sm:gap-3 voice-widget"
         style={{ display: toolbarVisible ? "flex" : "none", zIndex: 2147483000 }}
       >
-        {/* Modern voice control pill — collapses to icon-only once chat is open */}
-        <VoiceControlBar
-          compact={chatOpen}
-          isSpeaking={speech.isSpeaking}
-          isPaused={speech.isPaused}
-          activeSourceId={speech.activeSourceId}
-          onSpeak={handleSpeakPage}
-          onPause={handlePause}
-          onPlay={handlePlayResume}
-          onStop={handleStop}
-        />
+        {voiceBarVisible && (
+          <VoiceControlBar
+            compact={chatOpen}
+            isSpeaking={speech.isSpeaking}
+            isPaused={speech.isPaused}
+            activeSourceId={speech.activeSourceId}
+            onSpeak={handleSpeakPage}
+            onPause={handlePause}
+            onPlay={handlePlayResume}
+            onStop={handleStop}
+            onDismiss={handleDismissVoiceBar}
+          />
+        )}
 
         {/* Chatbot launcher + callout */}
         <div className="flex items-center gap-2">
@@ -417,14 +525,14 @@ export default function VoiceWidget() {
 }
 
 /* ============================================================
-  VOICE CONTROL BAR — modern floating pill
-  - Full mode: labeled "Speak" pill + 3 icon buttons in one track
-  - Compact mode (chat open): shrinks to a small icon cluster so
-    it never collides with the chat header
+  VOICE CONTROL BAR — modern floating pill with Cancel button
+  Collapses to icon-only ("compact") once chat is open, so it
+  stays slim and docked neatly above the chat launcher/panel.
   ============================================================ */
-function VoiceControlBar({ compact, isSpeaking, isPaused, activeSourceId, onSpeak, onPause, onPlay, onStop }) {
+function VoiceControlBar({ compact, isSpeaking, isPaused, activeSourceId, onSpeak, onPause, onPlay, onStop, onDismiss }) {
   const active = isSpeaking || isPaused;
-  const readingPage = activeSourceId === "page";
+  const readingPage =
+    activeSourceId === "page" || activeSourceId === "selection" || activeSourceId === "chat-all";
 
   return (
     <div
@@ -440,7 +548,7 @@ function VoiceControlBar({ compact, isSpeaking, isPaused, activeSourceId, onSpea
               ? "bg-[#0f3a66] text-white shadow-inner"
               : "bg-slate-100 text-[#0f3a66] hover:bg-slate-200"
           }`}
-          title="Read the whole page"
+          title="Read page (or selected text)"
         >
           {readingPage && active ? (
             <span className="flex items-end gap-[2px] h-3" aria-hidden="true">
@@ -463,7 +571,7 @@ function VoiceControlBar({ compact, isSpeaking, isPaused, activeSourceId, onSpea
               readingPage && active ? "bg-[#0f3a66] text-white" : "bg-slate-100 text-[#0f3a66] hover:bg-slate-200"
             }`}
             aria-label="Read page"
-            title="Read the whole page"
+            title="Read page (or selected text)"
           >
             <Volume2 size={13} strokeWidth={2.25} className={readingPage && active ? "text-orange-300" : "text-orange-500"} />
           </button>
@@ -507,6 +615,17 @@ function VoiceControlBar({ compact, isSpeaking, isPaused, activeSourceId, onSpea
           title="Stop"
         >
           <Square size={11} strokeWidth={2.4} fill="currentColor" />
+        </button>
+
+        <button
+          onClick={onDismiss}
+          className={`flex items-center justify-center rounded-full bg-red-50 text-red-500 hover:bg-red-100 hover:text-red-600 transition active:scale-95 ${
+            compact ? "w-8 h-8" : "w-8 h-8 sm:w-9 sm:h-9"
+          }`}
+          aria-label="Close voice controls"
+          title="Close voice controls"
+        >
+          <X size={13} strokeWidth={2.4} />
         </button>
       </div>
     </div>
@@ -771,7 +890,7 @@ function getTime() {
 }
 
 /* ============================================================
-  ACCESSIBILITY PANEL — unchanged
+  ACCESSIBILITY PANEL — includes Site Font picker
   ============================================================ */
 function AccessibilityPanel({
   onClose,
@@ -789,11 +908,14 @@ function AccessibilityPanel({
   setHighContrast,
   monochrome,
   setMonochrome,
+  siteFont,
+  setSiteFont,
   toolbarVisible,
   setToolbarVisible,
   onReset,
 }) {
   const [visible, setVisible] = useState(false);
+  const [fontPickerOpen, setFontPickerOpen] = useState(false);
   useEffect(() => {
     const id = requestAnimationFrame(() => setVisible(true));
     return () => cancelAnimationFrame(id);
@@ -874,6 +996,8 @@ function AccessibilityPanel({
     setTimeout(onClose, 160);
   };
 
+  const activeFontOption = FONT_OPTIONS.find((f) => f.id === siteFont) || FONT_OPTIONS[0];
+
   return (
     <>
       <div
@@ -941,6 +1065,78 @@ function AccessibilityPanel({
         </div>
 
         <div className="px-4 sm:px-5 py-4 sm:py-5 overflow-y-auto flex-1 [scrollbar-width:thin]">
+          {/* Site Font picker */}
+          <div className="bg-slate-50/70 rounded-2xl p-3.5 sm:p-4 mb-3.5 sm:mb-4 ring-1 ring-slate-100">
+            <h3 className="text-slate-400 font-bold text-[10px] sm:text-[11px] tracking-widest uppercase mb-2.5 sm:mb-3 px-0.5">
+              Site Font
+            </h3>
+            <button
+              onClick={() => setFontPickerOpen((v) => !v)}
+              className="w-full flex items-center justify-between bg-white rounded-xl px-3.5 sm:px-4 py-3 shadow-sm ring-1 ring-slate-100 hover:ring-slate-200 transition-all"
+            >
+              <span className="flex items-center gap-2.5">
+                <span className="flex items-center justify-center w-8 h-8 rounded-full bg-[#0f3a66]/10 text-[#0f3a66]">
+                  <Type size={15} strokeWidth={2.1} />
+                </span>
+                <span
+                  className="text-slate-700 text-[13px] sm:text-sm font-medium"
+                  style={activeFontOption.cssVar ? { fontFamily: activeFontOption.cssVar } : undefined}
+                >
+                  {activeFontOption.label}
+                </span>
+              </span>
+              <svg
+                viewBox="0 0 24 24"
+                width="14"
+                height="14"
+                className={`text-slate-400 transition-transform ${fontPickerOpen ? "rotate-180" : ""}`}
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.2"
+              >
+                <path d="M6 9l6 6 6-6" />
+              </svg>
+            </button>
+
+            {fontPickerOpen && (
+              <div className="mt-2 sm:mt-2.5 grid grid-cols-1 gap-1.5 max-h-[220px] overflow-y-auto pr-0.5 [scrollbar-width:thin]">
+                {FONT_OPTIONS.map((opt) => {
+                  const isActive = opt.id === siteFont;
+                  return (
+                    <button
+                      key={opt.id}
+                      onClick={() => {
+                        setSiteFont(opt.id);
+                        setFontPickerOpen(false);
+                      }}
+                      className={`flex items-center justify-between rounded-lg px-3 py-2.5 transition-all text-left ${
+                        isActive
+                          ? "bg-[#0f3a66] text-white"
+                          : "bg-white text-slate-600 ring-1 ring-slate-100 hover:ring-slate-200 hover:bg-slate-50"
+                      }`}
+                    >
+                      <span className="flex items-center gap-2.5 min-w-0">
+                        <span
+                          className={`text-base font-semibold w-6 shrink-0 ${isActive ? "text-orange-300" : "text-[#0f3a66]"}`}
+                          style={opt.cssVar ? { fontFamily: opt.cssVar } : undefined}
+                        >
+                          {opt.preview}
+                        </span>
+                        <span
+                          className="text-[12.5px] sm:text-[13px] font-medium truncate"
+                          style={opt.cssVar ? { fontFamily: opt.cssVar } : undefined}
+                        >
+                          {opt.label}
+                        </span>
+                      </span>
+                      {isActive && <Check size={14} strokeWidth={2.5} className="shrink-0 text-orange-300" />}
+                    </button>
+                  );
+                })}
+              </div>
+            )}
+          </div>
+
           <div className="bg-slate-50/70 rounded-2xl p-3.5 sm:p-4 mb-3.5 sm:mb-4 ring-1 ring-slate-100">
             <h3 className="text-slate-400 font-bold text-[10px] sm:text-[11px] tracking-widest uppercase mb-2.5 sm:mb-3 px-0.5">
               Content Modules
@@ -1076,16 +1272,13 @@ function AccessibilityPanel({
 
 /* ============================================================
   CHAT PANEL
-  - Every AI message and every user message is clickable to
-    speak just that text.
-  - A small speaker icon appears on hover/tap on each bubble.
-  - The header no longer carries its own play controls — the
-    single shared VoiceControlBar handles everything, so nothing
-    overlaps.
+  - Clicking a message bubble selects it and speaks ONLY that text.
+  - Re-clicking the same bubble toggles pause/resume.
   ============================================================ */
 function ChatPanel({ onClose, speech }) {
   const [message, setMessage] = useState("");
   const [isTyping, setIsTyping] = useState(false);
+  const [selectedMsgId, setSelectedMsgId] = useState(null);
   const scrollRef = useRef(null);
   const timeoutRef = useRef(null);
 
@@ -1109,6 +1302,9 @@ function ChatPanel({ onClose, speech }) {
   }, [messages, isTyping]);
 
   useEffect(() => () => clearTimeout(timeoutRef.current), []);
+
+  const getMsgText = (m) =>
+    m.from === "ai" ? m.lines.map((l) => l.text).join(". ") : m.text;
 
   const sendUserMessage = (text) => {
     if (!text.trim() || isTyping) return;
@@ -1138,10 +1334,6 @@ function ChatPanel({ onClose, speech }) {
       };
       setIsTyping(false);
       setMessages((prev) => [...prev, aiMsg]);
-
-      // Auto-read the new bot reply aloud
-      const spokenText = flow.text.map((l) => l.text).join(". ");
-      speech.speak(spokenText, aiId);
     }, delay);
   };
 
@@ -1152,29 +1344,33 @@ function ChatPanel({ onClose, speech }) {
     clearTimeout(timeoutRef.current);
     setIsTyping(false);
     speech.stop();
+    setSelectedMsgId(null);
     setMessages((prev) => prev.slice(0, 1));
   };
 
-  const speakMessage = (id, text) => {
-    if (speech.activeSourceId === id && speech.isSpeaking && !speech.isPaused) {
-      speech.pause();
-    } else if (speech.activeSourceId === id && speech.isPaused) {
-      speech.resume();
-    } else {
-      speech.speak(text, id);
+  // Click a message bubble: select it AND speak only that message's text
+  const selectAndSpeakMessage = (id, text) => {
+    if (selectedMsgId === id && speech.activeSourceId === id) {
+      if (speech.isSpeaking && !speech.isPaused) {
+        speech.pause();
+        return;
+      } else if (speech.isPaused) {
+        speech.resume();
+        return;
+      }
     }
+    setSelectedMsgId(id);
+    speech.speak(text, id);
   };
 
   return (
     <div className="chat-panel-in fixed bottom-20 sm:bottom-24 right-4 sm:right-6 w-[calc(100vw-2rem)] sm:w-[400px] h-[540px] sm:h-[640px] max-w-[400px] rounded-[22px] sm:rounded-[26px] shadow-[0_30px_70px_-15px_rgba(6,20,38,0.55)] ring-1 ring-black/[0.06] overflow-hidden flex flex-col relative bg-[#f7f9fc] voice-widget">
-      {/* Header — clean, no controls crammed in */}
       <div
         className="relative z-10 px-4 sm:px-5 pt-4 sm:pt-5 pb-4 sm:pb-5 flex items-center justify-between shrink-0 overflow-hidden"
         style={{
           background: "linear-gradient(135deg, #081b32 0%, #0d3462 48%, #12457a 100%)",
         }}
       >
-        {/* subtle grid texture */}
         <div
           className="pointer-events-none absolute inset-0 opacity-[0.06]"
           style={{
@@ -1234,7 +1430,6 @@ function ChatPanel({ onClose, speech }) {
         </div>
       </div>
 
-      {/* Messages */}
       <div
         ref={scrollRef}
         className="chat-scrollbar relative z-10 px-3.5 sm:px-5 py-4 sm:py-5 flex-1 overflow-y-auto flex flex-col gap-4 sm:gap-5"
@@ -1244,11 +1439,12 @@ function ChatPanel({ onClose, speech }) {
         }}
       >
         {messages.map((msg) => {
+          const isSelected = selectedMsgId === msg.id;
           const isActiveHere = speech.activeSourceId === msg.id;
           const speaking = isActiveHere && speech.isSpeaking && !speech.isPaused;
 
           if (msg.from === "ai") {
-            const fullText = msg.lines.map((l) => l.text).join(". ");
+            const fullText = getMsgText(msg);
             return (
               <div key={msg.id} className="chat-msg-in">
                 <div className="flex items-start gap-2 sm:gap-2.5">
@@ -1256,11 +1452,11 @@ function ChatPanel({ onClose, speech }) {
                     AI
                   </div>
                   <button
-                    onClick={() => speakMessage(msg.id, fullText)}
+                    onClick={() => selectAndSpeakMessage(msg.id, fullText)}
                     className={`speakable-msg group relative text-left bg-white rounded-2xl rounded-tl-md px-4 py-3 max-w-[255px] sm:max-w-[290px] shadow-[0_4px_20px_-6px_rgba(15,23,42,0.10)] ring-1 transition-all ${
-                      isActiveHere ? "ring-[#12457a]/40 shadow-[0_4px_20px_-4px_rgba(18,69,122,0.25)]" : "ring-slate-100 hover:ring-slate-200"
+                      isSelected ? "ring-[#12457a]/50 shadow-[0_4px_20px_-4px_rgba(18,69,122,0.3)]" : "ring-slate-100 hover:ring-slate-200"
                     }`}
-                    title="Tap to hear this message"
+                    title="Tap to select and hear only this message"
                   >
                     {msg.lines.map((line, i) => (
                       <p
@@ -1278,6 +1474,8 @@ function ChatPanel({ onClose, speech }) {
                       className={`absolute top-2.5 right-2.5 flex items-center justify-center w-5 h-5 rounded-full transition-all ${
                         isActiveHere
                           ? "bg-[#0f3a66] text-white opacity-100"
+                          : isSelected
+                          ? "bg-[#0f3a66]/20 text-[#0f3a66] opacity-100"
                           : "bg-slate-100 text-slate-400 opacity-0 group-hover:opacity-100"
                       }`}
                     >
@@ -1336,16 +1534,20 @@ function ChatPanel({ onClose, speech }) {
           return (
             <div key={msg.id} className="flex flex-col items-end chat-msg-in">
               <button
-                onClick={() => speakMessage(msg.id, msg.text)}
+                onClick={() => selectAndSpeakMessage(msg.id, msg.text)}
                 className={`group relative text-left bg-gradient-to-br from-[#164f8a] to-[#081b32] text-white rounded-2xl rounded-tr-md px-4 py-2.5 sm:py-3 max-w-[230px] sm:max-w-[270px] shadow-[0_6px_18px_-6px_rgba(8,27,50,0.5)] transition-all ${
-                  isActiveHere ? "ring-2 ring-orange-400/70" : ""
+                  isSelected ? "ring-2 ring-orange-400/70" : ""
                 }`}
-                title="Tap to hear this message"
+                title="Tap to select and hear only this message"
               >
                 <p className="text-[13px] sm:text-sm leading-relaxed pr-5">{msg.text}</p>
                 <span
                   className={`absolute top-2.5 right-2.5 flex items-center justify-center w-5 h-5 rounded-full transition-all ${
-                    isActiveHere ? "bg-white/20 text-white opacity-100" : "bg-white/10 text-white/70 opacity-0 group-hover:opacity-100"
+                    isActiveHere
+                      ? "bg-white/20 text-white opacity-100"
+                      : isSelected
+                      ? "bg-white/15 text-white opacity-100"
+                      : "bg-white/10 text-white/70 opacity-0 group-hover:opacity-100"
                   }`}
                 >
                   {speaking ? (
@@ -1363,7 +1565,6 @@ function ChatPanel({ onClose, speech }) {
           );
         })}
 
-        {/* Typing indicator */}
         {isTyping && (
           <div className="flex items-start gap-2 sm:gap-2.5 chat-msg-in">
             <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-gradient-to-br from-[#164f8a] to-[#081b32] text-white text-[10px] sm:text-[11px] font-bold flex items-center justify-center shrink-0 ring-1 ring-black/5 shadow-sm">
@@ -1378,7 +1579,6 @@ function ChatPanel({ onClose, speech }) {
         )}
       </div>
 
-      {/* Input */}
       <div className="relative z-10 px-3.5 sm:px-4 py-3 sm:py-3.5 border-t border-slate-200/70 flex items-center gap-2 shrink-0 bg-white">
         <input
           type="text"

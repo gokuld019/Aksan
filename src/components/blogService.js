@@ -1,4 +1,4 @@
-const API_BASE_URL = 'https://aksan.athmamind.com';
+const API_BASE_URL = 'https://api.crazystory.in/api'; // Fixed typo: was api.craystory.in
 
 function getToken() {
   return typeof window !== 'undefined' ? localStorage.getItem('token') : null;
@@ -10,42 +10,56 @@ export async function getPublishedBlogs({ page = 1, per_page = 12 } = {}) {
   params.append('per_page', per_page);
   params.append('page', page);
 
-  const token = getToken();
-
   try {
     const res = await fetch(`${API_BASE_URL}/public/blogs?${params.toString()}`, {
       method: 'GET',
       headers: {
-        Accept: 'application/json',
-        ...(token && { Authorization: `Bearer ${token}` })
+        Accept: 'application/json'
       }
     });
-    return await res.json();
+    const json = await res.json();
+
+    // API returns { success, data: { data: [...], current_page, ... }, message }
+    // Normalize so callers always get a flat array in res.data
+    if (json.success && json.data) {
+      if (Array.isArray(json.data)) {
+        return { success: true, data: json.data };
+      }
+      if (json.data.data && Array.isArray(json.data.data)) {
+        return { success: true, data: json.data.data, meta: json.data };
+      }
+    }
+    return json;
   } catch (err) {
     return { success: false, message: 'Network error while fetching blogs' };
   }
 }
 
-// For public - get blog by slug (fetches list and filters, since API is ID-based)
-export async function getBlogBySlug(slug) {
-  const token = getToken();
+// For public - get featured blogs
+export async function getFeaturedBlogs() {
   try {
-    const res = await fetch(`${API_BASE_URL}/public/blogs?per_page=100&page=1`, {
+    const res = await fetch(`${API_BASE_URL}/public/blogs/featured`, {
       method: 'GET',
       headers: {
-        Accept: 'application/json',
-        ...(token && { Authorization: `Bearer ${token}` })
+        Accept: 'application/json'
       }
     });
-    const json = await res.json();
-    if (json.success && json.data) {
-      const list = json.data.data || [];
-      const blog = list.find((b) => b.slug === slug);
-      return blog
-        ? { success: true, data: blog }
-        : { success: false, message: 'Blog not found' };
-    }
-    return { success: false, message: 'Blog not found' };
+    return await res.json();
+  } catch (err) {
+    return { success: false, message: 'Network error while fetching featured blogs' };
+  }
+}
+
+// For public - get blog by slug
+export async function getBlogBySlug(slug) {
+  try {
+    const res = await fetch(`${API_BASE_URL}/public/blogs/${slug}`, {
+      method: 'GET',
+      headers: {
+        Accept: 'application/json'
+      }
+    });
+    return await res.json();
   } catch (err) {
     return { success: false, message: 'Network error while fetching blog' };
   }
@@ -74,7 +88,6 @@ export async function getAllBlogs({ status = 'all', search = '', per_page = 15, 
   }
 }
 
-// For admin - get blog by ID with auth
 // For admin - get blog by ID
 export async function getBlogById(id) {
   const token = getToken();
