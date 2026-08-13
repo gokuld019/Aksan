@@ -2,7 +2,7 @@
 
 import { useRef, useState } from "react";
 import Image from "next/image";
-import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Noto_Sans } from "next/font/google";
 
@@ -31,27 +31,83 @@ const partners = [
 
 const testimonials = [
   {
-    tag: "Seamless Financial Guidance",
+    tag: "Best Corporating..",
+    quote:
+      "I wholeheartedly endorse AKSAN Capital Advisory for their expertise, professionalism, and commitment to their clients' financial success. Their dedication and guidance have been pivotal in our journey towards financial stability and business growth.",
+    name: "Bala Manikandan",
+    role: "MD, Krishca Strapping",
+    image: "/bggg.avif",
+  },
+  {
+    tag: "Workflow Flexibility..",
+    quote:
+      "Their Audit & Assurance services have also provided us with the peace of mind that our financial and operational processes are robust and reliable. This has not only built trust with our stakeholders but has also enhanced our transparency and credibility.",
+    name: "Bejoy Arputharaj",
+    role: "Founder, Phantom VFX",
+    image: "/bggg.avif",
+  },
+  {
+    tag: "Adaptive and Creative Collaboration..",
+    quote:
+      "What stood out with AKSAN was their ability to adapt to our creative workflows. They didn't just offer solutions-they listened, understood the pulse of a creative studio, and ensured all their processes aligned with our timelines and industry rhythm.",
+    name: "Balakrishnan",
+    role: "Founder, Managing Director & CEO-Basilic Fly Studio Limited",
+    image: "/bggg.avif",
+  },
+  {
+    tag: "Seamless Financial Guidance..",
     quote:
       "Their insights into financial controls and compliance requirements gave us the confidence to pursue long-term expansion goals.",
     name: "Anandan Sriramulu",
-    role: "Chairman & MD – Thaai Casting Limited",
+    role: "Chairman & Managing Director -Thaai Casting Limited",
     image: "/bggg.avif",
   },
   {
-    tag: "Trusted Growth Partner",
+    tag: "Infrastructure-Focused Expertise..",
     quote:
-      "AKSAN's team helped us navigate a complex fundraising round with clarity and precision, delivering results ahead of schedule.",
-    name: "Priya Menon",
-    role: "CFO – Vertex Industries",
+      "In infrastructure, where precision and pace define success, AKSAN stood out with their deep sector insights and proactive approach. Their support enhanced our execution capabilities, streamlined stakeholder coordination, and ensured we were strategically positioned for a successful IPO journey.",
+    name: "D. Prasanna",
+    role: "Chairman, Managing Director & CEO - AVP Infracon Limited",
     image: "/bggg.avif",
   },
   {
-    tag: "Reliable Market Expertise",
+    tag: "Strategic Support..",
     quote:
-      "Their deep understanding of SME listing requirements made what seemed like a daunting process feel completely manageable.",
-    name: "Karthik Iyer",
-    role: "Founder & CEO – Nova Textiles",
+      "Their strategic support during our IPO process was invaluable. From documentation to regulatory compliance, the team ensured everything was seamless, instilling confidence among our investors and internal teams.",
+    name: "G Thiyagu",
+    role: "Chairman, Managing Director & CEO -Sathlokhar Synergys E&C Global Limited",
+    image: "/bggg.avif",
+  },
+  {
+    tag: "Strategic Alignment, Seamless Execution..",
+    quote:
+      "In the specialized off-highway tire industry, AKSAN brought clarity, structure, and sector understanding. Their seamless collaboration with our team ensured we stayed aligned internally while preparing confidently for our IPO journey.",
+    name: "Chandhrasekharan Thirupathi Venkatachalam",
+    role: "Chairman & Managing Director-Emerald Tyre Manufacturers Limited",
+    image: "/bggg.avif",
+  },
+  {
+    tag: "Practical and Timely Advice..",
+    quote:
+      "From financial hygiene to governance alignment, their team played a critical role in getting us IPO-ready. Their advice was practical, timely, and always aligned with our growth objectives.",
+    name: "Junaid Ahmed",
+    role: "Chairman & Managing Director -Freshara Agro Exports Limited",
+    image: "/bggg.avif",
+  },
+  {
+    tag: "People-Centric Financial Expertise..",
+    quote:
+      "As an HR services company, understanding workforce-linked compliance is vital. AKSAN's customized financial advice and risk management framework supported our scalability.",
+    name: "Shraddha Rajpal",
+    role: "Promoter - Happy Square Outsourcing Services Limited",
+    image: "/bggg.avif",
+  },
+  {
+    tag: "Strategic Support..",
+    quote:
+      "AKSAN's involvement brought efficiency and precision to our IPO process. Through timely follow-ups, well-organized documentation, and expert compliance handling, they ensured a seamless and hassle-free experience for both our management and our investors.",
+    name: "Capt. Deepak Parasuraman",
+    role: "Chairman & Managing Director – AFCOM Holdings Limited",
     image: "/bggg.avif",
   },
 ];
@@ -150,61 +206,45 @@ export default function PartnersAndTestimonial() {
             />
 
             <div className="relative z-10 flex flex-col justify-between h-full p-3.5 sm:p-4">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={active}
-                  initial={{ opacity: 0, y: 14 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -14 }}
-                  transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                  className="flex flex-col flex-1 justify-center"
-                >
-                  <span className="text-orange-500 text-3xl sm:text-4xl font-serif leading-none">
-                    &rdquo;
-                  </span>
+              <div className="flex flex-col flex-1 justify-center overflow-y-auto">
+                <span className="text-orange-500 text-3xl sm:text-4xl font-serif leading-none">
+                  &rdquo;
+                </span>
 
-                  <p className="text-orange-400 font-semibold text-xs sm:text-sm mt-1.5 sm:mt-2 mb-1 sm:mb-1.5">
+                <div className="mt-1.5 sm:mt-2">
+                  <p className="text-orange-400 font-semibold text-xs sm:text-sm mb-1 sm:mb-1.5">
                     {testimonial.tag}
                   </p>
-                  <p className="text-slate-100 text-xs sm:text-sm leading-relaxed line-clamp-3 sm:line-clamp-4">
+                  <p className="text-slate-100 text-xs sm:text-sm leading-relaxed line-clamp-4 sm:line-clamp-5">
                     {testimonial.quote}
                   </p>
-                </motion.div>
-              </AnimatePresence>
+                </div>
 
-              <div className="flex items-end justify-between mt-2 sm:mt-3">
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={active}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.3 }}
-                    className="flex-1"
-                  >
-                    <p className="text-white font-bold text-xs sm:text-sm">
-                      {testimonial.name}
-                    </p>
-                    <p className="text-slate-300 text-[10px] sm:text-xs mt-0.5">
-                      {testimonial.role}
-                    </p>
+                <div className="mt-2 sm:mt-3">
+                  <p className="text-white font-bold text-xs sm:text-sm">
+                    {testimonial.name}
+                  </p>
+                  <p className="text-slate-300 text-[10px] sm:text-xs mt-0.5">
+                    {testimonial.role}
+                  </p>
+                </div>
+              </div>
 
-                    <div className="flex items-center gap-1.5 mt-1.5 sm:mt-2">
-                      {testimonials.map((_, i) => (
-                        <button
-                          key={i}
-                          onClick={() => setActive(i)}
-                          aria-label={`Go to testimonial ${i + 1}`}
-                          className={`h-1 rounded-full transition-all ${
-                            i === active
-                              ? "w-5 sm:w-6 bg-orange-500"
-                              : "w-1.5 bg-white/40 hover:bg-white/60"
-                          }`}
-                        />
-                      ))}
-                    </div>
-                  </motion.div>
-                </AnimatePresence>
+              <div className="flex items-end justify-between mt-2 sm:mt-3 pt-2 border-t border-white/10">
+                <div className="flex items-center gap-1.5">
+                  {testimonials.map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => setActive(i)}
+                      aria-label={`Go to testimonial ${i + 1}`}
+                      className={`h-1 rounded-full transition-all ${
+                        i === active
+                          ? "w-5 sm:w-6 bg-orange-500"
+                          : "w-1.5 bg-white/40 hover:bg-white/60"
+                      }`}
+                    />
+                  ))}
+                </div>
 
                 <div className="flex gap-1.5 sm:gap-2">
                   <motion.button

@@ -52,7 +52,7 @@ const contactCards = [
 ];
 
 const quickLinks = [
-  { label: "IPO Advisory", href: "#" },
+  { label: "ipo", href: "#" },
   { label: "Rights Issue", href: "#" },
   { label: "Preferential Allotment", href: "#" },
   { label: "Follow-on Public Offer (FPO)", href: "#" },

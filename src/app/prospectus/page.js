@@ -138,6 +138,16 @@ const rhpDocuments = [
     ipoPrice: "180.00",
     documentUrl: "/prospectus/Emerald_Prospectus.pdf",
   },
+  {
+    number: "13",
+    name: "Happy Square Outsourcing Services Limited (White Force)",
+    logo: "/client/whiteforce.jpg",
+    listingDate: "10-07-2025",
+    listingExchange: "NSE Emerge",
+    ipoSize: "24.24",
+    ipoPrice: "77.00",
+    documentUrl: "/prospectus/HappySquare_prospectus.pdf",
+  },
 ];
 
 const fadeUp = {

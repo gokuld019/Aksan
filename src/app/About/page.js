@@ -83,7 +83,7 @@ const coreTeam = [
   { name: "Natarajan B", role: "Sr. Exe - CS - Trainee", linkedin: "#", photo: "/team/natarajan-b.png" },
   { name: "Badrinarayan S", role: "Jr. Financial Analyst", linkedin: "#", photo: "/team/badrinarayan-s.png" },
   { name: "Jhanani M", role: "Jr. Exe - CS - Trainee", linkedin: "#", photo: "/team/jhanani-m.png" },
-  { name: "Viduthalai S", role: "GM - Financial Analyst", linkedin: "#", photo: "/team/viduthalai-s.png" },
+  { name: "Viduthalai S", role: "GM - Financial Analyst", linkedin: "#", photo: "/team/viduthalai-s.webp" },
   { name: "Shajathali S", role: "Associate Company Secretary", linkedin: "#", photo: "/team/shajathali-s.png" },
   { name: "Pinky Naveen H", role: "AGM - Financial Analyst", linkedin: "#", photo: "/team/pinky-naveen-h.png" },
   { name: "Narayanan G", role: "Senior GM - Financial Analyst", linkedin: "#", photo: "/team/narayanan-g.png" },

@@ -105,16 +105,11 @@ export default function ContactUs() {
     <main className="w-full bg-white" style={{ fontFamily: "'Noto Sans', sans-serif" }}>
       {/* Hero Section */}
       <section className="relative overflow-hidden">
-        <div
-          className="absolute inset-0"
-          style={{
-            background: "linear-gradient(115deg, " + NAVY_DARK + " 40%, rgba(15,42,92,0.55) 75%, rgba(15,42,92,0.35) 100%)",
-          }}
-        />
+       
         <img
-          src="/contactus.png"
+          src="/contactbanner.webp"
           alt=""
-          className="absolute inset-0 h-full w-full object-cover mix-blend-luminosity opacity-40"
+          className="absolute inset-0 h-full w-full object-cover "
         />
 
         <div className="relative z-10 mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8 py-24 md:py-32">

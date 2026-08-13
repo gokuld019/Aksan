@@ -21,7 +21,7 @@ const faqs = [
   {
     question: "Who does AKSAN typically work with?",
     answer:
-      "We work with individual investors, family offices, and SME/Main Board companies seeking IPO advisory, fund raising, and portfolio guidance.",
+      "We work with individual investors, family offices, and SME/Main Board companies seeking ipo, fund raising, and portfolio guidance.",
   },
   {
     question: "Is there a minimum portfolio size to get started?",

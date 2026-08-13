@@ -155,7 +155,7 @@ export default function TrackRecord() {
           transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
           className="text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-4xl xl:text-4xl font-bold text-white leading-tight mb-8 sm:mb-10 md:mb-12 lg:mb-14 max-w-3xl mx-auto px-2"
         >
-          Largest IPO Advisory Network in South India&apos;s SME Segment
+          Largest ipo Network in South India&apos;s SME Segment
         </motion.h2>
 
         {/* Stats Grid */}

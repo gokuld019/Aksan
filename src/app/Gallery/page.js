@@ -137,7 +137,7 @@ export default function AwardsRecognition() {
 
 function AwardCard({ award }) {
   return (
-    <div className="group relative overflow-hidden rounded-lg bg-[#0E1F45] shadow-md hover:shadow-xl transition-shadow duration-300">
+    <div className="group relative overflow-hidden rounded-lg bg-[#0f4475] shadow-md hover:shadow-xl transition-shadow duration-300">
       {/* Photo Container */}
       <div className="relative w-full" style={{ paddingBottom: "66.67%" }}>
         <Image
@@ -156,8 +156,8 @@ function AwardCard({ award }) {
           NSE
         </div>
 
-        {/* Dark gradient overlay for text readability */}
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[#0E1F45] via-[#0E1F45]/80 to-transparent" />
+        {/* Dark gradient overlay for text readability - updated to #0f4475 */}
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[#0f4475] via-[#0f4475]/80 to-transparent" />
       </div>
 
       {/* Text block */}
@@ -178,7 +178,7 @@ function AwardCard({ award }) {
 
         <button
           type="button"
-          className="mt-3 sm:mt-4 rounded-full border border-white/40 px-4 sm:px-5 md:px-6 py-1.5 sm:py-2 text-[10px] sm:text-xs font-medium tracking-wide text-white transition-all duration-300 hover:bg-white hover:text-[#0E1F45] hover:border-white active:scale-95"
+          className="mt-3 sm:mt-4 rounded-full border border-white/40 px-4 sm:px-5 md:px-6 py-1.5 sm:py-2 text-[10px] sm:text-xs font-medium tracking-wide text-white transition-all duration-300 hover:bg-white hover:text-[#0f4475] hover:border-white active:scale-95"
           style={{ fontFamily: "'Noto Sans', sans-serif" }}
         >
           VIEW

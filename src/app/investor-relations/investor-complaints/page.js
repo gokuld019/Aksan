@@ -429,7 +429,7 @@ export default function InvestorComplaintsPage() {
                 <div>
                   <p className="text-slate-500 text-xs sm:text-sm" style={{ fontFamily: "'Noto Sans', sans-serif" }}>Email</p>
                   <a href="mailto:investorgrievances@aksan.in" className="text-[#0e4980] font-medium text-sm sm:text-[15px] hover:underline" style={{ fontFamily: "'Noto Sans', sans-serif" }}>
-                    investorgrievances@aksan.in
+                    info@aksan.in
                   </a>
                 </div>
               </motion.div>
@@ -442,8 +442,8 @@ export default function InvestorComplaintsPage() {
                 </span>
                 <div>
                   <p className="text-slate-500 text-xs sm:text-sm" style={{ fontFamily: "'Noto Sans', sans-serif" }}>Phone</p>
-                  <a href="tel:+912269178000" className="text-[#0e4980] font-medium text-sm sm:text-[15px] hover:underline" style={{ fontFamily: "'Noto Sans', sans-serif" }}>
-                    +91 22 6917 8000
+                  <a href="tel:+914440055781" className="text-[#0e4980] font-medium text-sm sm:text-[15px] hover:underline" style={{ fontFamily: "'Noto Sans', sans-serif" }}>
+                    +91 44400 55781
                   </a>
                 </div>
               </motion.div>
@@ -458,8 +458,11 @@ export default function InvestorComplaintsPage() {
                 <div>
                   <p className="text-slate-500 text-xs sm:text-sm" style={{ fontFamily: "'Noto Sans', sans-serif" }}>Address</p>
                   <p className="text-[#0e4980] font-medium text-sm sm:text-[15px] leading-relaxed" style={{ fontFamily: "'Noto Sans', sans-serif" }}>
-                    A-601, One BKC, Bandra Kurla Complex, Bandra (E), Mumbai – 400051, India
-                  </p>
+28/27, Parvathy Apartments, 2nd Floor,
+
+Damodaran Street, T.Nagar,
+
+Chennai - 600 017, Tamil Nadu, India.                  </p>
                 </div>
               </motion.div>
             </motion.div>
@@ -494,11 +497,10 @@ export default function InvestorComplaintsPage() {
                   Compliance Officer
                 </p>
                 <a href="mailto:compliance@aksan.in" className="block text-slate-600 text-sm hover:underline" style={{ fontFamily: "'Noto Sans', sans-serif" }}>
-                  compliance@aksan.in
+                  info@aksan.in
                 </a>
-                <a href="tel:+912269178000" className="block text-slate-600 text-sm hover:underline" style={{ fontFamily: "'Noto Sans', sans-serif" }}>
-                  +91 22 6917 8000
-                </a>
+                <a href="tel:+914440055781" className="block text-slate-600 text-sm hover:underline" style={{ fontFamily: "'Noto Sans', sans-serif" }}>
+                 +91 44400 55781                </a>
               </div>
             </div>
 

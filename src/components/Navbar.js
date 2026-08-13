@@ -76,7 +76,7 @@ export default function Navbar() {
     showSolidBg ? "shadow-md" : ""
   }`}
   style={{
-    backgroundColor: showSolidBg ? "#020f33" : "transparent",
+    backgroundColor: showSolidBg ? "#0f4475" : "transparent",
     fontFamily: "Whitney, sans-serif",
   }}
 >
@@ -210,7 +210,7 @@ export default function Navbar() {
         }`}
         style={{
           zIndex: 29,
-          background: "linear-gradient(180deg, #0a1c44 0%, #020f33 100%)",
+          background: "linear-gradient(180deg, #0a1c44 0%, #0f4475 100%)",
           boxShadow: mobileOpen ? "-8px 0 32px rgba(0,0,0,0.35)" : "none",
         }}
       >

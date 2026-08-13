@@ -281,7 +281,7 @@ export default function InvestorGrievanceRedressalPage() {
                     className="text-[#0e4980] font-medium hover:underline break-all transition-colors"
                     style={{ fontFamily: "'Noto Sans', sans-serif" }}
                   >
-                    investors.grievances@vatsacapitalventure.com
+                    info@aksan.in
                   </a>
                 </p>
               </div>
@@ -362,7 +362,7 @@ export default function InvestorGrievanceRedressalPage() {
               <div>
                 <p className="font-semibold text-sm sm:text-[15px] mb-1" style={{ fontFamily: "'Noto Sans', sans-serif" }}>Compliance Officer</p>
                 <a href="mailto:compliance@aksan.in" className="block text-white/80 text-sm hover:text-white hover:underline transition-colors" style={{ fontFamily: "'Noto Sans', sans-serif" }}>
-                  compliance@aksan.in
+                  info@aksan.in
                 </a>
                 <a href="tel:+912269178000" className="block text-white/80 text-sm hover:text-white hover:underline transition-colors" style={{ fontFamily: "'Noto Sans', sans-serif" }}>
                   +91 22 6917 8000
@@ -383,8 +383,9 @@ export default function InvestorGrievanceRedressalPage() {
               <div>
                 <p className="font-semibold text-sm sm:text-[15px] mb-1" style={{ fontFamily: "'Noto Sans', sans-serif" }}>Registered Office Address</p>
                 <p className="text-white/80 text-sm leading-relaxed" style={{ fontFamily: "'Noto Sans', sans-serif" }}>
-                  A-601, One BKC, Bandra Kurla Complex, Bandra (E), Mumbai – 400051, India
-                </p>
+28/27, Parvathy Apartments, 2nd Floor,
+Damodaran Street, T.Nagar,
+Chennai - 600 017, Tamil Nadu, India.                    </p>
               </div>
             </motion.div>
           </div>
@@ -519,7 +520,7 @@ export default function InvestorGrievanceRedressalPage() {
                     className="text-[#0e4980] font-medium text-sm sm:text-[15px] hover:text-orange-500 transition-colors"
                     style={{ fontFamily: "'Noto Sans', sans-serif" }}
                   >
-                    investorgrievances@aksan.in
+                    info@aksan.in
                   </a>
                 </div>
               </motion.div>
@@ -537,11 +538,11 @@ export default function InvestorGrievanceRedressalPage() {
                 <div>
                   <p className="text-slate-500 text-xs sm:text-sm" style={{ fontFamily: "'Noto Sans', sans-serif" }}>Phone</p>
                   <a
-                    href="tel:+912269178000"
+                    href="tel:+914440055781"
                     className="text-[#0e4980] font-medium text-sm sm:text-[15px] hover:text-orange-500 transition-colors"
                     style={{ fontFamily: "'Noto Sans', sans-serif" }}
                   >
-                    +91 22 6917 8000
+                    +91 44400 55781
                   </a>
                 </div>
               </motion.div>
@@ -560,7 +561,11 @@ export default function InvestorGrievanceRedressalPage() {
                 <div>
                   <p className="text-slate-500 text-xs sm:text-sm" style={{ fontFamily: "'Noto Sans', sans-serif" }}>Address</p>
                   <p className="text-[#0e4980] font-medium text-sm sm:text-[15px] leading-relaxed" style={{ fontFamily: "'Noto Sans', sans-serif" }}>
-                    A-601, One BKC, Bandra Kurla Complex, Bandra (E), Mumbai – 400051, India
+                    28/27, Parvathy Apartments, 2nd Floor,
+
+Damodaran Street, T.Nagar,
+
+Chennai - 600 017, Tamil Nadu, India.
                   </p>
                 </div>
               </motion.div>
