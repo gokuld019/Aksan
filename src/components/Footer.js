@@ -25,7 +25,7 @@ const contactCards = [
   },
   {
     icon: MapPin,
-    title: "Headquarter",
+    title: "Headquarter / Registered Office",
     lines: [
       "28/27, Parvathy Apartments, 2nd Floor,",
       "Damodaran Street, T.Nagar,",

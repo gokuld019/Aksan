@@ -21,7 +21,7 @@ const rhpDocuments = [
   {
     number: "01",
     name: "Phantom Digital Effects Limited",
-    logo: "/client/phantom.png",
+    logo: "/client/phantom.jpg",
     listingDate: "31-10-2022",
     listingExchange: "NSE Emerge",
     ipoSize: "29.10",
@@ -31,7 +31,7 @@ const rhpDocuments = [
   {
     number: "02",
     name: "Krishca Strapping Solutions Limited",
-    logo: "/client/krishca.png",
+    logo: "/client/krishca.jpg",
     listingDate: "26-05-2023",
     listingExchange: "NSE Emerge",
     ipoSize: "17.93",
@@ -41,7 +41,7 @@ const rhpDocuments = [
   {
     number: "03",
     name: "Basilic Fly Studio Limited",
-    logo: "/client/basilicfly.png",
+    logo: "/client/basilicfly.jpg",
     listingDate: "11-09-2023",
     listingExchange: "NSE Emerge",
     ipoSize: "66.35",
@@ -81,7 +81,7 @@ const rhpDocuments = [
   {
     number: "07",
     name: "AVP Infracon Limited",
-    logo: "/client/avp.png",
+    logo: "/client/avp.jpg",
     listingDate: "28-03-2024",
     listingExchange: "NSE Emerge",
     ipoSize: "52.34",
@@ -91,7 +91,7 @@ const rhpDocuments = [
   {
     number: "08",
     name: "ABS Marine Limited",
-    logo: "/client/abs.png",
+    logo: "/client/abs.jpg",
     listingDate: "21-05-2024",
     listingExchange: "NSE Emerge",
     ipoSize: "56.29",
@@ -101,7 +101,7 @@ const rhpDocuments = [
   {
     number: "09",
     name: "Sathlokar Synergys E & C Global Limited",
-    logo: "/client/sathlokar.png",
+    logo: "/client/sathlokar.jpg",
     listingDate: "06-08-2024",
     listingExchange: "NSE Emerge",
     ipoSize: "92.93",
@@ -111,7 +111,7 @@ const rhpDocuments = [
   {
     number: "10",
     name: "Afcom Holdings Limited",
-    logo: "/client/afcom.png",
+    logo: "/client/afcom.jpg",
     listingDate: "09-08-2024",
     listingExchange: "BSE Emerge",
     ipoSize: "22.15",
@@ -121,7 +121,7 @@ const rhpDocuments = [
   {
     number: "11",
     name: "Freshara Agro Exports Limited",
-    logo: "/client/freshara.png",
+    logo: "/client/freshara.jpg",
     listingDate: "24-10-2024",
     listingExchange: "NSE Emerge",
     ipoSize: "73.83",
@@ -131,7 +131,7 @@ const rhpDocuments = [
   {
     number: "12",
     name: "Emerald Tyre Manufacturers Limited",
-    logo: "/client/emerald.png",
+    logo: "/client/emerald.jpg",
     listingDate: "12-12-2024",
     listingExchange: "NSE Emerge",
     ipoSize: "49.26",

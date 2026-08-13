@@ -213,7 +213,7 @@ export default function CodeAndPoliciesPage() {
               className="text-slate-300/90 text-sm sm:text-base leading-relaxed max-w-md"
               style={{ fontFamily: "'Noto Sans', sans-serif" }}
             >
-              At Vatsa Capital Venture, we are committed to the highest standards
+              At Aksan Capital Venture, we are committed to the highest standards
               of governance, transparency, and accountability.
             </motion.p>
           </div>

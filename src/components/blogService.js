@@ -1,4 +1,4 @@
-const API_BASE_URL = 'https://api.crazystory.in/api'; // Fixed typo: was api.craystory.in
+const API_BASE_URL = 'https://aksan.athmamind.com/api'; // Fixed typo: was api.craystory.in
 
 function getToken() {
   return typeof window !== 'undefined' ? localStorage.getItem('token') : null;

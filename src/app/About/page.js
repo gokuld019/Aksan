@@ -40,8 +40,7 @@ const features = [
   { icon: ShieldCheck, label: "SEBI Registered" },
   { icon: Landmark, label: "Merchant Banking" },
   { icon: TrendingUp, label: "Capital Expertise" },
-    { icon: Award, label: "Regulatory Excellence" },
-
+  { icon: Award, label: "Regulatory Excellence" },
 ];
 
 const values = [
@@ -80,7 +79,7 @@ const ceo = {
 
 const coreTeam = [
   { name: "Nirmal K", role: "Senior - Financial Analyst", linkedin: "#", photo: "/team/nirmal-k.png" },
-  { name: "Vidit Madhusudan Gupta", role: "Principal Consultant", linkedin: "#", photo: "/team/vidit-madhusudan-gupta.png" },
+  { name: "Vidit Madhusudan Gupta", role: "Principal Consultant", linkedin: "#", photo: "/team/vidit-madhusudan-gupta.webp" },
   { name: "Natarajan B", role: "Sr. Exe - CS - Trainee", linkedin: "#", photo: "/team/natarajan-b.png" },
   { name: "Badrinarayan S", role: "Jr. Financial Analyst", linkedin: "#", photo: "/team/badrinarayan-s.png" },
   { name: "Jhanani M", role: "Jr. Exe - CS - Trainee", linkedin: "#", photo: "/team/jhanani-m.png" },
@@ -96,7 +95,7 @@ const coreTeam = [
   { name: "Khushboo", role: "Team Member", linkedin: "#", photo: "/team/kushboo.png" },
   { name: "Piyush", role: "Team Member", linkedin: "#", photo: "/team/piyush.png" },
   { name: "Nesapriyan", role: "Team Member", linkedin: "#", photo: "/team/nesapriyan.png" },
-  { name: "Aishwarya", role: "Team Member", linkedin: "#", photo: "/team/aishwarya.png" },
+  { name: "Aishwarya", role: "Team Member", linkedin: "#", photo: "/team/Aishwarya.png" },
   { name: "Sai Krishna", role: "Team Member", linkedin: "#", photo: "/team/sai-krishna.png" },
   { name: "Narendran", role: "Team Member", linkedin: "#", photo: "/team/narendran.png" },
   { name: "Santhosh Kumar", role: "Team Member", linkedin: "#", photo: "/team/santhosh.png" },
@@ -179,13 +178,13 @@ export default function About() {
       {/* Section 1: About Hero */}
       <section
         ref={heroRef}
-        className="w-full bg-white min-h-[560px] sm:min-h-[600px] lg:min-h-[700px] flex items-stretch relative overflow-hidden mt-10"
+        className="w-full bg-white min-h-[560px] sm:min-h-[600px] lg:min-h-[700px] flex items-stretch relative overflow-hidden mt-6 sm:mt-10"
       >
         <div className="w-full flex items-stretch">
-          <div className="max-w-[1400px] mx-auto w-full flex items-stretch px-5 sm:px-6 lg:px-8">
+          <div className="max-w-[1400px] mx-auto w-full flex items-stretch px-4 xs:px-5 sm:px-6 lg:px-8">
             <div className="grid lg:grid-cols-2 gap-0 items-stretch w-full">
-              <div className="flex items-center py-12 sm:py-16 lg:py-20 xl:py-24">
-                <div className="max-w-xl">
+              <div className="flex items-center py-10 xs:py-12 sm:py-16 lg:py-20 xl:py-24">
+                <div className="max-w-xl mx-auto lg:mx-0">
                   <motion.div
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
@@ -193,7 +192,7 @@ export default function About() {
                     transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
                     className="flex items-center gap-3 mb-4 sm:mb-5"
                   >
-                    <span className="text-orange-600 font-semibold text-xs sm:text-sm tracking-[0.08em] uppercase">
+                    <span className="text-orange-600 font-semibold text-[11px] xs:text-xs sm:text-sm tracking-[0.1em] uppercase">
                       About Aksan
                     </span>
                     <motion.span
@@ -205,12 +204,12 @@ export default function About() {
                     />
                   </motion.div>
 
-                  <h2 className="text-[28px] leading-[1.2] sm:text-4xl sm:leading-[1.18] lg:text-5xl lg:leading-[1.12] font-extrabold tracking-tight mb-5 sm:mb-6">
+                  <h2 className="text-[24px] leading-[1.3] xs:text-[27px] xs:leading-[1.25] sm:text-4xl sm:leading-[1.18] lg:text-5xl lg:leading-[1.12] font-extrabold tracking-tight mb-5 sm:mb-6">
                     <AnimatedWords
                       text="Building Trust."
                       className="text-[#152249]"
                     />
-                    <br />
+                    <br className="hidden xs:block" />
                     <AnimatedWords
                       text="Driving Capital Growth."
                       className="text-orange-600"
@@ -222,7 +221,7 @@ export default function About() {
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true, amount: 0.3 }}
-                    className="space-y-4 text-gray-600 text-[14px] sm:text-[15px] leading-[1.75] sm:leading-[1.8] tracking-[0.005em]"
+                    className="space-y-3.5 xs:space-y-4 text-gray-600 text-[13.5px] xs:text-[14px] sm:text-[15px] leading-[1.7] xs:leading-[1.75] sm:leading-[1.8] tracking-[0.005em]"
                   >
                     <motion.p variants={fadeUp} custom={0}>
                       At AKSAN, we are a{" "}
@@ -256,31 +255,31 @@ export default function About() {
                     </motion.p>
                   </motion.div>
 
-                 <motion.div
-  variants={staggerContainer}
-  initial="hidden"
-  whileInView="visible"
-  viewport={{ once: true, amount: 0.3 }}
-  className="grid grid-cols-2 gap-3 sm:gap-4 mt-8 sm:mt-10"
->
-  {features.map(({ icon: Icon, label }, i) => (
-    <motion.div
-      key={label}
-      variants={fadeUp}
-      custom={i}
-      whileHover={{ y: -4, transition: { duration: 0.2 } }}
-      className="flex items-center gap-2.5 sm:gap-3 border border-gray-200 rounded-xl px-3.5 sm:px-4 py-2.5 sm:py-3 min-w-0"
-    >
-      <span className="flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 shrink-0 rounded-full bg-orange-50 text-orange-600">
-        <Icon size={16} className="sm:hidden" strokeWidth={2} />
-        <Icon size={18} className="hidden sm:block" strokeWidth={2} />
-      </span>
-      <span className="text-[13px] sm:text-sm font-semibold text-gray-900 leading-snug">
-        {label}
-      </span>
-    </motion.div>
-  ))}
-</motion.div>
+                  <motion.div
+                    variants={staggerContainer}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.3 }}
+                    className="grid grid-cols-2 gap-2.5 xs:gap-3 sm:gap-4 mt-7 xs:mt-8 sm:mt-10"
+                  >
+                    {features.map(({ icon: Icon, label }, i) => (
+                      <motion.div
+                        key={label}
+                        variants={fadeUp}
+                        custom={i}
+                        whileHover={{ y: -4, transition: { duration: 0.2 } }}
+                        className="flex items-center gap-2 xs:gap-2.5 sm:gap-3 border border-gray-200 rounded-xl px-3 xs:px-3.5 sm:px-4 py-2.5 sm:py-3 min-w-0"
+                      >
+                        <span className="flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 shrink-0 rounded-full bg-orange-50 text-orange-600">
+                          <Icon size={16} className="sm:hidden" strokeWidth={2} />
+                          <Icon size={18} className="hidden sm:block" strokeWidth={2} />
+                        </span>
+                        <span className="text-[12px] xs:text-[13px] sm:text-sm font-semibold text-gray-900 leading-snug">
+                          {label}
+                        </span>
+                      </motion.div>
+                    ))}
+                  </motion.div>
                 </div>
               </div>
 
@@ -289,7 +288,7 @@ export default function About() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                className="relative w-full min-h-[260px] sm:min-h-[360px] lg:min-h-full overflow-hidden rounded-2xl lg:rounded-none mb-8 lg:mb-0 lg:absolute lg:right-0 lg:top-0 lg:w-1/2 lg:h-full"
+                className="relative w-full min-h-[220px] xs:min-h-[260px] sm:min-h-[360px] lg:min-h-full overflow-hidden rounded-2xl lg:rounded-none mb-7 xs:mb-8 lg:mb-0 lg:absolute lg:right-0 lg:top-0 lg:w-1/2 lg:h-full"
               >
                 <motion.div
                   style={{ y: heroImageY, scale: heroImageScale }}
@@ -311,19 +310,19 @@ export default function About() {
       </section>
 
       {/* Section 2: What Drives Us */}
-      <section className="w-full bg-slate-50 py-14 sm:py-20 px-5 sm:px-6 lg:px-8">
+      <section className="w-full bg-slate-50 py-12 xs:py-14 sm:py-20 px-4 xs:px-5 sm:px-6 lg:px-8">
         <div className="max-w-[1400px] mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.6 }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="text-center mb-10 sm:mb-14"
+            className="text-center mb-9 xs:mb-10 sm:mb-14"
           >
-            <span className="text-orange-600 font-semibold text-xs sm:text-sm tracking-[0.08em] uppercase">
+            <span className="text-orange-600 font-semibold text-[11px] xs:text-xs sm:text-sm tracking-[0.1em] uppercase">
               What Drives Us
             </span>
-            <h2 className="text-[26px] leading-[1.25] sm:text-4xl sm:leading-tight font-extrabold text-[#152249] mt-3 mb-4 px-2">
+            <h2 className="text-[22px] leading-[1.3] xs:text-[26px] xs:leading-[1.25] sm:text-4xl sm:leading-tight font-extrabold text-[#152249] mt-3 mb-4 px-2 xs:px-4">
               <AnimatedWords text="The Principles Behind Our Success" />
             </h2>
             <motion.span
@@ -340,7 +339,7 @@ export default function About() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 xs:gap-5 sm:gap-6"
           >
             {values.map(({ icon: Icon, title, description }, i) => (
               <motion.div
@@ -352,20 +351,20 @@ export default function About() {
                   boxShadow: "0 20px 40px -12px rgba(21,34,73,0.15)",
                   transition: { duration: 0.3, ease: "easeOut" },
                 }}
-                className="bg-white rounded-2xl shadow-sm border border-gray-100 px-6 sm:px-8 py-8 sm:py-10 flex flex-col items-center text-center"
+                className="bg-white rounded-2xl shadow-sm border border-gray-100 px-6 xs:px-7 sm:px-8 py-7 xs:py-8 sm:py-10 flex flex-col items-center text-center"
               >
                 <motion.span
                   whileHover={{ rotate: 8, scale: 1.08 }}
                   transition={{ duration: 0.3 }}
-                  className="flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#152249] mb-5 sm:mb-6"
+                  className="flex items-center justify-center w-13 h-13 xs:w-14 xs:h-14 sm:w-16 sm:h-16 rounded-full bg-[#152249] mb-5 sm:mb-6"
                 >
-                  <Icon size={24} className="text-orange-500 sm:hidden" strokeWidth={2} />
+                  <Icon size={22} className="text-orange-500 sm:hidden" strokeWidth={2} />
                   <Icon size={28} className="text-orange-500 hidden sm:block" strokeWidth={2} />
                 </motion.span>
-                <h3 className="text-base sm:text-lg font-bold text-[#152249] mb-2.5 sm:mb-3">
+                <h3 className="text-[15px] xs:text-base sm:text-lg font-bold text-[#152249] mb-2.5 sm:mb-3">
                   {title}
                 </h3>
-                <p className="text-[13.5px] sm:text-sm text-gray-500 leading-[1.7]">
+                <p className="text-[13px] xs:text-[13.5px] sm:text-sm text-gray-500 leading-[1.65] xs:leading-[1.7]">
                   {description}
                 </p>
                 <span className="block h-0.5 w-8 bg-orange-600 rounded-full mt-5 sm:mt-6" />
@@ -376,7 +375,7 @@ export default function About() {
       </section>
 
       {/* Section 3: Meet Our Leadership */}
-      <section className="w-full bg-slate-50 py-14 sm:py-20 px-5 sm:px-6 lg:px-8">
+      <section className="w-full bg-slate-50 py-12 xs:py-14 sm:py-20 px-4 xs:px-5 sm:px-6 lg:px-8">
         <div className="max-w-[1400px] mx-auto">
 
           {/* Heading */}
@@ -385,12 +384,12 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.6 }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="text-center mb-10 sm:mb-14"
+            className="text-center mb-9 xs:mb-10 sm:mb-14"
           >
-            <span className="text-orange-600 font-semibold text-xs sm:text-sm tracking-[0.08em] uppercase">
+            <span className="text-orange-600 font-semibold text-[11px] xs:text-xs sm:text-sm tracking-[0.1em] uppercase">
               Our Leadership
             </span>
-            <h2 className="text-[26px] leading-[1.25] sm:text-4xl sm:leading-tight font-extrabold text-[#152249] mt-3 mb-4">
+            <h2 className="text-[22px] leading-[1.3] xs:text-[26px] xs:leading-[1.25] sm:text-4xl sm:leading-tight font-extrabold text-[#152249] mt-3 mb-4 px-2 xs:px-4">
               <AnimatedWords text="Experience. Expertise. Responsible Growth." />
             </h2>
             <motion.span
@@ -408,10 +407,11 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-className="relative bg-white rounded-3xl shadow-[0_20px_60px_-15px_rgba(21,34,73,0.15)] border border-gray-100 overflow-hidden mx-auto w-[70%] mb-14"          >
+            className="relative bg-white rounded-2xl sm:rounded-3xl shadow-[0_20px_60px_-15px_rgba(21,34,73,0.15)] border border-gray-100 overflow-hidden mx-auto w-full md:w-[90%] lg:w-[70%] mb-12 xs:mb-14"
+          >
             <div className="grid md:grid-cols-[minmax(0,420px)_1fr]">
               {/* Photo */}
-              <div className="relative w-full aspect-[4/5] md:aspect-auto md:h-full min-h-[320px] sm:min-h-[420px]">
+              <div className="relative w-full aspect-[4/5] xs:aspect-[16/11] md:aspect-auto md:h-full min-h-[280px] xs:min-h-[320px] sm:min-h-[420px]">
                 <Image
                   src={ceo.photo}
                   alt={ceo.name}
@@ -423,25 +423,26 @@ className="relative bg-white rounded-3xl shadow-[0_20px_60px_-15px_rgba(21,34,73
               </div>
 
               {/* Content */}
-              <div className="flex flex-col justify-center px-6 sm:px-10 lg:px-14 py-8 sm:py-12">
-                <h3 className="text-2xl sm:text-3xl lg:text-[34px] font-extrabold text-[#152249] mb-2 tracking-tight">
+              <div className="flex flex-col justify-center px-5 xs:px-6 sm:px-10 lg:px-14 py-7 xs:py-8 sm:py-12 text-center md:text-left items-center md:items-start">
+                <h3 className="text-xl xs:text-2xl sm:text-3xl lg:text-[34px] font-extrabold text-[#152249] mb-2 tracking-tight leading-[1.25]">
                   {ceo.name}
                 </h3>
-                <p className="text-orange-600 font-semibold text-[13.5px] sm:text-sm mb-4">
+                <p className="text-orange-600 font-semibold text-[12.5px] xs:text-[13.5px] sm:text-sm mb-4 leading-snug">
                   {ceo.role}
                 </p>
                 <span className="block h-px w-14 bg-orange-500/60 mb-5" />
-                <p className="text-gray-600 text-[13.5px] sm:text-[15px] leading-[1.75] mb-7 sm:mb-8 max-w-md">
+                <p className="text-gray-600 text-[13px] xs:text-[13.5px] sm:text-[15px] leading-[1.7] xs:leading-[1.75] mb-6 xs:mb-7 sm:mb-8 max-w-md">
                   {ceo.bio}
                 </p>
 
-                <div className="flex flex-wrap gap-6 sm:gap-8 mb-7 sm:mb-8">
+                <div className="flex flex-wrap justify-center md:justify-start gap-5 xs:gap-6 sm:gap-8 mb-6 xs:mb-7 sm:mb-8">
                   {ceo.tags.map(({ icon: Icon, label }) => (
                     <div key={label} className="flex flex-col items-center gap-2">
-                      <span className="flex items-center justify-center w-11 h-11 rounded-full bg-[#152249]/[0.04] border border-[#152249]/10 text-[#152249]">
-                        <Icon size={19} strokeWidth={1.8} />
+                      <span className="flex items-center justify-center w-10 h-10 xs:w-11 xs:h-11 rounded-full bg-[#152249]/[0.04] border border-[#152249]/10 text-[#152249]">
+                        <Icon size={18} className="xs:hidden" strokeWidth={1.8} />
+                        <Icon size={19} className="hidden xs:block" strokeWidth={1.8} />
                       </span>
-                      <span className="text-[11px] sm:text-xs font-medium text-gray-500 whitespace-nowrap">
+                      <span className="text-[10.5px] xs:text-[11px] sm:text-xs font-medium text-gray-500 whitespace-nowrap">
                         {label}
                       </span>
                     </div>
@@ -454,7 +455,7 @@ className="relative bg-white rounded-3xl shadow-[0_20px_60px_-15px_rgba(21,34,73
                   href={ceo.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2.5 bg-[#152249] hover:bg-[#0b1a3a] text-white font-semibold text-[13px] sm:text-sm w-fit px-4 sm:px-5 py-2.5 sm:py-3 rounded-xl transition-colors"
+                  className="inline-flex items-center gap-2.5 bg-[#152249] hover:bg-[#0b1a3a] text-white font-semibold text-[12.5px] xs:text-[13px] sm:text-sm w-fit px-4 sm:px-5 py-2.5 sm:py-3 rounded-xl transition-colors"
                 >
                   <LinkedinIcon />
                   View on LinkedIn
@@ -470,7 +471,7 @@ className="relative bg-white rounded-3xl shadow-[0_20px_60px_-15px_rgba(21,34,73
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="bg-[#0b1a3a] rounded-2xl sm:rounded-3xl px-4 sm:px-8 py-8 sm:py-10 grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-4 mb-14 sm:mb-20"
+            className="bg-[#0b1a3a] rounded-2xl sm:rounded-3xl px-4 xs:px-6 sm:px-8 py-8 xs:py-9 sm:py-10 grid grid-cols-2 lg:grid-cols-4 gap-y-7 gap-x-4 xs:gap-x-6 sm:gap-4 mb-12 xs:mb-14 sm:mb-20"
           >
             {[
               { icon: Briefcase, value: "25+", label: "Years of Experience" },
@@ -478,13 +479,17 @@ className="relative bg-white rounded-3xl shadow-[0_20px_60px_-15px_rgba(21,34,73
               { icon: ShieldCheck, value: "150+", label: "Transactions Executed" },
               { icon: Trophy, value: "100+", label: "Happy Clients" },
             ].map(({ icon: Icon, value, label }, i) => (
-              <div key={label} className="flex flex-col items-center text-center gap-2 relative">
+              <div key={label} className="flex flex-col items-center text-center gap-1.5 xs:gap-2 relative px-2">
+                {i !== 0 && i !== 2 && (
+                  <span className="lg:hidden absolute left-[-8px] xs:left-[-12px] top-1/2 -translate-y-1/2 h-9 w-px bg-white/10" />
+                )}
                 {i !== 0 && (
                   <span className="hidden lg:block absolute left-[-8px] top-1/2 -translate-y-1/2 h-10 w-px bg-white/10" />
                 )}
-                <Icon size={22} className="text-orange-500 mb-1" strokeWidth={1.8} />
-                <span className="text-2xl sm:text-3xl font-extrabold text-white">{value}</span>
-                <span className="text-[11px] sm:text-xs text-slate-400 font-medium tracking-wide">{label}</span>
+                <Icon size={20} className="text-orange-500 mb-1 xs:hidden" strokeWidth={1.8} />
+                <Icon size={22} className="text-orange-500 mb-1 hidden xs:block" strokeWidth={1.8} />
+                <span className="text-xl xs:text-2xl sm:text-3xl font-extrabold text-white leading-tight">{value}</span>
+                <span className="text-[10px] xs:text-[11px] sm:text-xs text-slate-400 font-medium tracking-wide leading-snug">{label}</span>
               </div>
             ))}
           </motion.div>
@@ -495,12 +500,12 @@ className="relative bg-white rounded-3xl shadow-[0_20px_60px_-15px_rgba(21,34,73
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.6 }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="text-center mb-10 sm:mb-14"
+            className="text-center mb-9 xs:mb-10 sm:mb-14"
           >
-            <span className="text-orange-600 font-semibold text-xs sm:text-sm tracking-[0.08em] uppercase">
+            <span className="text-orange-600 font-semibold text-[11px] xs:text-xs sm:text-sm tracking-[0.1em] uppercase">
               Our Core Team
             </span>
-            <h2 className="text-[26px] leading-[1.25] sm:text-4xl sm:leading-tight font-extrabold text-[#152249] mt-3 mb-4">
+            <h2 className="text-[22px] leading-[1.3] xs:text-[26px] xs:leading-[1.25] sm:text-4xl sm:leading-tight font-extrabold text-[#152249] mt-3 mb-4 px-2 xs:px-4">
               <AnimatedWords text="Driven by Expertise. United by Purpose." />
             </h2>
             <motion.span
@@ -518,7 +523,7 @@ className="relative bg-white rounded-3xl shadow-[0_20px_60px_-15px_rgba(21,34,73
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.1 }}
-            className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6"
+            className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3.5 xs:gap-4 sm:gap-6"
           >
             {coreTeam.map(({ name, role, linkedin, photo }, i) => (
               <motion.div
@@ -530,7 +535,7 @@ className="relative bg-white rounded-3xl shadow-[0_20px_60px_-15px_rgba(21,34,73
                   boxShadow: "0 20px 40px -12px rgba(21,34,73,0.15)",
                   transition: { duration: 0.25 },
                 }}
-                className="group bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-sm"
+                className="group bg-white border border-gray-100 rounded-xl xs:rounded-2xl overflow-hidden shadow-sm flex flex-col"
               >
                 <div className="relative w-full aspect-square bg-gray-100 overflow-hidden">
                   <Image
@@ -542,19 +547,20 @@ className="relative bg-white rounded-3xl shadow-[0_20px_60px_-15px_rgba(21,34,73
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0b1a3a]/25 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
 
-                <div className="px-3.5 sm:px-4 py-3.5 sm:py-4">
-                  <h3 className="text-[13px] sm:text-[15px] font-bold text-[#152249] leading-[1.3] break-words mb-0.5">
+                <div className="px-3 xs:px-3.5 sm:px-4 py-3 xs:py-3.5 sm:py-4 flex flex-col flex-1">
+                  <h3 className="text-[12.5px] xs:text-[13px] sm:text-[15px] font-bold text-[#152249] leading-[1.35] break-words mb-1">
                     {name}
                   </h3>
-                  <p className="text-orange-600 text-[11px] sm:text-xs font-semibold leading-snug mb-2.5">
+                  <p className="text-orange-600 text-[10.5px] xs:text-[11px] sm:text-xs font-semibold leading-snug mb-2.5 min-h-[2.2em]">
                     {role}
                   </p>
-                  <span className="block h-px w-6 bg-gray-200 mb-2.5" />
-                  
-                    <a href={linkedin}
+                  <span className="block h-px w-6 bg-gray-200 mb-2.5 mt-auto" />
+
+                  <a
+                    href={linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-[#152249] text-[11px] sm:text-xs font-semibold hover:text-orange-600 transition-colors"
+                    className="inline-flex items-center gap-1.5 text-[#152249] text-[10.5px] xs:text-[11px] sm:text-xs font-semibold hover:text-orange-600 transition-colors"
                     aria-label={`${name} on LinkedIn`}
                   >
                     <LinkedinIcon />
@@ -572,7 +578,7 @@ className="relative bg-white rounded-3xl shadow-[0_20px_60px_-15px_rgba(21,34,73
       {/* Section 4: CTA Banner */}
       <section
         ref={ctaRef}
-        className="w-full bg-white py-12 sm:py-16 px-5 sm:px-6 lg:px-8"
+        className="w-full bg-white py-10 xs:py-12 sm:py-16 px-4 xs:px-5 sm:px-6 lg:px-8"
       >
         <div className="max-w-[1400px] mx-auto">
           <motion.div
@@ -580,7 +586,7 @@ className="relative bg-white rounded-3xl shadow-[0_20px_60px_-15px_rgba(21,34,73
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="relative overflow-hidden rounded-2xl sm:rounded-3xl bg-[#0b1a3a] min-h-[200px] sm:min-h-[220px] flex items-center"
+            className="relative overflow-hidden rounded-2xl sm:rounded-3xl bg-[#0b1a3a] min-h-[220px] xs:min-h-[240px] sm:min-h-[220px] flex items-center"
           >
             <motion.div
               style={{ y: ctaImageY }}
@@ -594,8 +600,8 @@ className="relative bg-white rounded-3xl shadow-[0_20px_60px_-15px_rgba(21,34,73
               />
             </motion.div>
 
-            <div className="relative z-10 px-6 sm:px-10 lg:px-14 py-10 sm:py-12 max-w-xl">
-              <h2 className="text-2xl leading-[1.25] sm:text-3xl sm:leading-tight font-extrabold mb-3.5 sm:mb-4">
+            <div className="relative z-10 px-5 xs:px-6 sm:px-10 lg:px-14 py-9 xs:py-10 sm:py-12 max-w-xl">
+              <h2 className="text-[21px] leading-[1.3] xs:text-2xl xs:leading-[1.28] sm:text-3xl sm:leading-tight font-extrabold mb-3 xs:mb-3.5 sm:mb-4">
                 <AnimatedWords
                   text="Let's Build Your"
                   className="text-white"
@@ -611,7 +617,7 @@ className="relative bg-white rounded-3xl shadow-[0_20px_60px_-15px_rgba(21,34,73
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.5 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
-                className="text-[13.5px] sm:text-[15px] text-slate-300 leading-[1.7] mb-7 sm:mb-8"
+                className="text-[13px] xs:text-[13.5px] sm:text-[15px] text-slate-300 leading-[1.65] xs:leading-[1.7] mb-6 xs:mb-7 sm:mb-8"
               >
                 Partner with AKSAN for reliable merchant banking services,
                 regulatory expertise, and strategic financial advisory
@@ -622,13 +628,13 @@ className="relative bg-white rounded-3xl shadow-[0_20px_60px_-15px_rgba(21,34,73
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.5 }}
                 transition={{ duration: 0.6, delay: 0.45 }}
-                className="flex flex-wrap gap-3 sm:gap-4"
+                className="flex flex-wrap gap-2.5 xs:gap-3 sm:gap-4"
               >
                 <motion.a
                   whileHover={{ scale: 1.04, y: -2 }}
                   whileTap={{ scale: 0.97 }}
                   href="/contact"
-                  className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-semibold text-[13.5px] sm:text-sm px-4 sm:px-5 py-2.5 sm:py-3 rounded-lg transition-colors"
+                  className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-semibold text-[12.5px] xs:text-[13.5px] sm:text-sm px-4 sm:px-5 py-2.5 sm:py-3 rounded-lg transition-colors"
                 >
                   Contact Us
                   <ArrowRight size={16} />
@@ -637,7 +643,7 @@ className="relative bg-white rounded-3xl shadow-[0_20px_60px_-15px_rgba(21,34,73
                   whileHover={{ scale: 1.04, y: -2 }}
                   whileTap={{ scale: 0.97 }}
                   href="/services"
-                  className="inline-flex items-center gap-2 border border-white/30 hover:bg-white/10 text-white font-semibold text-[13.5px] sm:text-sm px-4 sm:px-5 py-2.5 sm:py-3 rounded-lg transition-colors"
+                  className="inline-flex items-center gap-2 border border-white/30 hover:bg-white/10 text-white font-semibold text-[12.5px] xs:text-[13.5px] sm:text-sm px-4 sm:px-5 py-2.5 sm:py-3 rounded-lg transition-colors"
                 >
                   Our Services
                   <ArrowRight size={16} />

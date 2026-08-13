@@ -24,7 +24,7 @@ const drhpDocuments = [
   {
     id: 1,
     name: "Phantom Digital Effects Limited",
-    logo: "/client/phantom.png",
+    logo: "/client/phantom.jpg",
     listingDate: "21-10-2022",
     listingExchange: "NSE Emerge",
     ipoSize: "29.10",
@@ -34,7 +34,7 @@ const drhpDocuments = [
   {
     id: 2,
     name: "Krishca Strapping Solutions Limited",
-    logo: "/client/krishca.png",
+    logo: "/client/krishca.jpg",
     listingDate: "26-05-2023",
     listingExchange: "NSE Emerge",
     ipoSize: "17.93",
@@ -44,7 +44,7 @@ const drhpDocuments = [
   {
     id: 3,
     name: "Basilic Fly Studio Limited",
-    logo: "/client/basilicfly.png",
+    logo: "/client/basilicfly.jpg",
     listingDate: "11-09-2023",
     listingExchange: "NSE Emerge",
     ipoSize: "66.35",
@@ -54,7 +54,7 @@ const drhpDocuments = [
   {
     id: 4,
     name: "ROX Hi-Tech Limited",
-    logo: "/client/rox.png",
+    logo: "/client/rox.jpg",
     listingDate: "16-11-2023",
     listingExchange: "NSE Emerge",
     ipoSize: "54.49",
@@ -84,7 +84,7 @@ const drhpDocuments = [
   {
     id: 7,
     name: "AVP Infracon Limited",
-    logo: "/client/avp.png",
+    logo: "/client/avp.jpg",
     listingDate: "20-03-2024",
     listingExchange: "NSE Emerge",
     ipoSize: "52.34",
@@ -94,7 +94,7 @@ const drhpDocuments = [
   {
     id: 8,
     name: "ABS Marine Services Limited",
-    logo: "/client/abs.png",
+    logo: "/client/abs.jpg",
     listingDate: "21-05-2024",
     listingExchange: "NSE Emerge",
     ipoSize: "96.29",
@@ -104,7 +104,7 @@ const drhpDocuments = [
   {
     id: 9,
     name: "Sathlokhar Synergys E&C Global Limited",
-    logo: "/client/sathlokar.png",
+    logo: "/client/sathlokar.jpg",
     listingDate: "06-08-2024",
     listingExchange: "NSE Emerge",
     ipoSize: "92.93",
@@ -114,7 +114,7 @@ const drhpDocuments = [
   {
     id: 10,
     name: "AFCOM Holdings Limited",
-    logo: "/client/afcom.png",
+    logo: "/client/afcom.jpg",
     listingDate: "09-08-2024",
     listingExchange: "BSE Emerge",
     ipoSize: "73.83",
@@ -124,7 +124,7 @@ const drhpDocuments = [
   {
     id: 11,
     name: "Freshara Agro Exports Limited",
-    logo: "/client/freshara.png",
+    logo: "/client/freshara.jpg",
     listingDate: "24-10-2024",
     listingExchange: "BSE Emerge",
     ipoSize: "73.83",
@@ -134,7 +134,7 @@ const drhpDocuments = [
   {
     id: 12,
     name: "Emerald Tyre Manufacturers Limited",
-    logo: "/client/emerald.png",
+    logo: "/client/emerald.jpg",
     listingDate: "12-12-2024",
     listingExchange: "NSE Emerge",
     ipoSize: "49.26",
@@ -144,7 +144,7 @@ const drhpDocuments = [
   {
     id: 13,
     name: "Happy Square Outsourcing Services Limited (White Force)",
-    logo: "/client/whiteforce.png",
+    logo: "/client/whiteforce.jpg",
     listingDate: "10-07-2025",
     listingExchange: "NSE Emerge",
     ipoSize: "24.24",
