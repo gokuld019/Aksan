@@ -49,7 +49,7 @@ const rhpDocuments = [
   },
   {
     number: "04",
-    name: "Rox Rin Hi-tech Limited",
+    name: "Rox Hi-tech Limited",
     logo: "/client/rox.jpg",
     listingDate: "16-11-2023",
     listingExchange: "NSE Emerge",

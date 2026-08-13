@@ -87,7 +87,7 @@ export default function WhyAksan() {
               transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
               className="text-2xl xs:text-3xl sm:text-3xl md:text-4xl lg:text-3xl xl:text-4xl font-bold text-white leading-tight mb-6 sm:mb-8 lg:mb-8"
             >
-              Why People Choose{" "}
+              Why People Choose{" "}<br />
               <span className="text-orange-500">AKSAN Capital</span>
             </motion.h2>
 

@@ -145,7 +145,7 @@ export default function Services() {
 
       {/* What we do */}
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 py-12 sm:py-16 md:py-20 lg:py-24">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12 ">
           {/* Left Column - Heading */}
           <motion.div
             initial={{ opacity: 0, y: 32 }}
@@ -168,7 +168,7 @@ export default function Services() {
                 We offer a wide range of financial advisory services to help you
                 achieve your financial goals with confidence.
               </p>
-              <button className="inline-flex items-center justify-center gap-2 border border-slate-300 font-semibold text-sm px-5 py-2.5 rounded-md hover:bg-slate-50 transition w-full sm:w-auto" style={{ color: "#1E2A5E" }}>
+              <button className=" hidden sm:inline-flex md:inline-flex items-center justify-center gap-2 border border-slate-300 font-semibold text-sm px-5 py-2.5 rounded-md hover:bg-slate-50 transition w-full sm:w-auto" style={{ color: "#1E2A5E" }}>
                 VIEW ALL SERVICES <span aria-hidden="true">→</span>
               </button>
             </div>
@@ -207,6 +207,10 @@ export default function Services() {
                 </motion.div>
               ))}
             </div>
+
+            <button className=" mt-[30px] sm:hidden md:hidden inline-flex items-center justify-center gap-2 border border-slate-300 font-semibold text-sm px-5 py-2.5 rounded-md hover:bg-slate-50 transition w-full sm:w-auto" style={{ color: "#1E2A5E" }}>
+                VIEW ALL SERVICES <span aria-hidden="true">→</span>
+              </button>
           </motion.div>
         </div>
       </div>

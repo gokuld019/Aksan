@@ -13,13 +13,13 @@ const notoSans = Noto_Sans({
 
 const directors = [
   {
-    name: "Rajinikanth",
+    name: "Rajinikanth ES",
     role: "MANAGING DIRECTOR",
-    image: "/team/rajiniganth-es.jpeg",
+    image: "/team/CEO.jpg",
     accent: "border-orange-500 bg-slate-900/90",
   },
   {
-    name: "Savitha",
+    name: "Savitha R",
     role: "DIRECTOR",
     image: "/team1.webp",
     accent: "border-blue-800 bg-[#0F3A66]/90",

@@ -25,11 +25,9 @@ const contactCards = [
   },
   {
     icon: MapPin,
-    title: "Headquarter / Registered Office",
+    title: "Registered Office",
     lines: [
-      "28/27, Parvathy Apartments, 2nd Floor,",
-      "Damodaran Street, T.Nagar,",
-      "Chennai - 600 017, Tamil Nadu, India.",
+      "28/27, Parvathy Apartments, 2nd Floor, Damodaran Street, T.Nagar, Chennai - 600 017, Tamil Nadu, India.",
     ],
     type: "text",
   },
@@ -37,9 +35,7 @@ const contactCards = [
     icon: MapPin,
     title: "Branch Office",
     lines: [
-      "Office No. 104, 1st Floor, The Summit",
-      "Business Bay, Off Western Express Highway,",
-      "Andheri (East), Mumbai - 400093.",
+      "Office No. 104, 1st Floor, The Summit Business Bay, Off Western Express Highway, Andheri (East), Mumbai - 400093.",
     ],
     type: "text",
   },
@@ -52,28 +48,28 @@ const contactCards = [
 ];
 
 const quickLinks = [
-  { label: "ipo", href: "#" },
-  { label: "Rights Issue", href: "#" },
-  { label: "Preferential Allotment", href: "#" },
-  { label: "Follow-on Public Offer (FPO)", href: "#" },
-  { label: "Merchant Banking Services", href: "#" },
-  { label: "Corporate Advisory", href: "#" },
+  { label: "IPO", href: "/services/ipo" },
+  { label: "Rights Issue", href: "/services/rights-issue" },
+  { label: "Preferential Allotment", href: "/services/preferential-allotment" },
+  { label: "Follow-on Public Offer (FPO)", href: "/services/fpo" },
+  { label: "Merchant Banking Services", href: "/services/merchant-banking" },
+  { label: "Corporate Advisory", href: "/services/corporate-advisory" },
 ];
 
 const companyLinks = [
-  { label: "Company", href: "#" },
-  { label: "Board of Directors", href: "#" },
-  { label: "Core Team", href: "#" },
-  { label: "Awards & Recognition", href: "#" },
-  { label: "Careers", href: "#" },
-  { label: "Contact", href: "#" },
+  { label: "Company", href: "/company" },
+  { label: "Board of Directors", href: "/company/board" },
+  { label: "Core Team", href: "/company/core-team" },
+  { label: "Awards & Recognition", href: "/company/awards" },
+  { label: "Careers", href: "/careers" },
+  { label: "Contact", href: "/contact" },
 ];
 
 const usefulLinks = [
-  { label: "Live Stock", href: "#" },
-  { label: "Videos", href: "#" },
-  { label: "Terms & Conditions", href: "#" },
-  { label: "Privacy Policy", href: "#" },
+  { label: "Live Stock", href: "/live-stock" },
+  { label: "Videos", href: "/videos" },
+  { label: "Terms & Conditions", href: "/terms-and-condition" },
+  { label: "Privacy Policy", href: "/privacy-policy" },
 ];
 
 const trustBadges = [
@@ -86,32 +82,50 @@ const trustBadges = [
 const socialLinks = [
   {
     icon: () => (
-      <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true">
-        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 1 1 0-4.124 2.062 2.062 0 0 1 0 4.124zM7.114 20.452H3.56V9h3.554v11.452z" />
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true">
+        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
       </svg>
     ),
-    href: "#",
-    label: "LinkedIn",
+    href: "https://www.youtube.com/@aksancapital",
+    label: "YouTube",
   },
   {
     icon: () => (
-      <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true">
-        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true">
+        <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
       </svg>
     ),
-    href: "#",
-    label: "X",
+    href: "https://x.com/AksanCapital",
+    label: "X (Twitter)",
   },
   {
     icon: () => (
-      <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true">
+        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 1 1 0-4.124 2.062 2.062 0 0 1 0 4.124zM7.114 20.452H3.56V9h3.554v11.452z"/>
+      </svg>
+    ),
+    href: "https://www.facebook.com/people/Aksan-Capital/61556670907313/#",
+    label: "Facebook",
+  },
+  {
+    icon: () => (
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
         <rect x="2" y="2" width="20" height="20" rx="5" />
         <circle cx="12" cy="12" r="4" />
         <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
       </svg>
     ),
-    href: "#",
+    href: "https://instagram.com/aksan",
     label: "Instagram",
+  },
+  {
+    icon: () => (
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true">
+        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 1 1 0-4.124 2.062 2.062 0 0 1 0 4.124zM7.114 20.452H3.56V9h3.554v11.452z"/>
+      </svg>
+    ),
+    href: "https://linkedin.com/company/aksan",
+    label: "LinkedIn",
   },
 ];
 
@@ -144,13 +158,25 @@ function FooterLinkList({ title, links }) {
 
 export default function Footer() {
   const [email, setEmail] = useState("");
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (email) {
+      // Handle newsletter subscription
+      console.log("Newsletter subscription:", email);
+      setIsSubmitted(true);
+      setEmail("");
+      setTimeout(() => setIsSubmitted(false), 3000);
+    }
+  };
 
   return (
     <footer
       className="relative overflow-hidden"
       style={{ backgroundColor: "#0c4172f5" }}
     >
-      {/* Background image — unchanged */}
+      {/* Background image */}
       <Image
         src="/footerak.webp"
         alt=""
@@ -159,7 +185,7 @@ export default function Footer() {
         className="object-cover opacity-40 pointer-events-none select-none"
       />
 
-      {/* Color dominance overlay — unchanged */}
+      {/* Color dominance overlay */}
       <div
         className="absolute inset-0 pointer-events-none"
         aria-hidden="true"
@@ -218,19 +244,23 @@ export default function Footer() {
               width={180}
               height={50}
               className="h-8 xs:h-9 sm:h-11 w-auto mb-4 xs:mb-5"
+              priority
             />
             <p className="text-slate-300 text-[11.5px] xs:text-xs sm:text-sm leading-[1.7] mb-5 xs:mb-6 max-w-xs">
               AKSAN Capital Advisory Private Limited is a SEBI-registered
               investment advisor committed to independent, research-driven
               guidance and long-term client partnerships.
             </p>
-            <div className="flex items-center gap-2.5 sm:gap-3">
+            <div className="flex items-center gap-2.5 sm:gap-3 flex-wrap">
               {socialLinks.map((social) => (
                 <a
                   key={social.label}
                   href={social.href}
                   aria-label={social.label}
-                  className="w-8 h-8 xs:w-9 xs:h-9 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-orange-500 hover:border-orange-500 transition-colors"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-8 h-8 xs:w-9 xs:h-9 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-orange-500 hover:border-orange-500 transition-all hover:scale-110 duration-200"
+                  title={social.label}
                 >
                   <social.icon />
                 </a>
@@ -253,11 +283,13 @@ export default function Footer() {
                 <span className="w-8 h-8 rounded-full bg-orange-500/15 flex items-center justify-center text-orange-500 shrink-0">
                   <Clock size={15} strokeWidth={2} />
                 </span>
-                <p className="text-slate-300 text-[11.5px] xs:text-xs sm:text-sm leading-snug">
-                  10 AM – 8 PM
-                  <br />
-                  Monday – Saturday
-                </p>
+                <div>
+                  <p className="text-slate-300 text-[11.5px] xs:text-xs sm:text-sm leading-snug">
+                    <span className="font-semibold text-white">10 AM – 8 PM</span>
+                    <br />
+                    Monday – Saturday
+                  </p>
+                </div>
               </div>
             </div>
 
@@ -269,8 +301,8 @@ export default function Footer() {
                 Subscribe to our newsletter for the latest updates and insights.
               </p>
               <form
-                onSubmit={(e) => e.preventDefault()}
-                className="flex items-center bg-white/5 border border-white/15 rounded-lg overflow-hidden focus-within:border-orange-500/60 transition-colors"
+                onSubmit={handleSubmit}
+                className="relative flex items-center bg-white/5 border border-white/15 rounded-lg overflow-hidden focus-within:border-orange-500/60 transition-colors"
               >
                 <input
                   type="email"
@@ -283,11 +315,16 @@ export default function Footer() {
                 <button
                   type="submit"
                   aria-label="Subscribe"
-                  className="flex items-center justify-center w-10 h-10 xs:w-11 xs:h-11 bg-orange-500 hover:bg-orange-600 text-white shrink-0 transition-colors"
+                  className="flex items-center justify-center w-10 h-10 xs:w-11 xs:h-11 bg-orange-500 hover:bg-orange-600 text-white shrink-0 transition-colors hover:scale-105 active:scale-95"
                 >
                   <Send size={15} strokeWidth={2} />
                 </button>
               </form>
+              {isSubmitted && (
+                <p className="text-green-400 text-[11px] mt-1.5 animate-fadeIn">
+                  ✓ Subscribed successfully!
+                </p>
+              )}
             </div>
           </div>
         </div>
@@ -303,7 +340,7 @@ export default function Footer() {
                 i !== 0 ? "lg:pl-6 lg:border-l lg:border-white/10" : ""
               }`}
             >
-              <span className="w-10 h-10 xs:w-11 xs:h-11 rounded-full border border-orange-500/40 flex items-center justify-center text-orange-500 shrink-0">
+              <span className="w-10 h-10 xs:w-11 xs:h-11 rounded-full border border-orange-500/40 flex items-center justify-center text-orange-500 shrink-0 hover:bg-orange-500/10 transition-colors">
                 <Icon size={18} strokeWidth={1.8} />
               </span>
               <div>
@@ -326,15 +363,15 @@ export default function Footer() {
             © Copyright {new Date().getFullYear()} AKSAN Capital Advisory Private Limited. All Rights Reserved.
           </p>
           <div className="flex items-center gap-3 xs:gap-4 sm:gap-5 flex-wrap justify-center order-1 sm:order-2">
-            <Link href="/Privacypolicy" className="text-slate-400 hover:text-orange-400 transition-colors">
+            <Link href="/privacy-policy" className="text-slate-400 hover:text-orange-400 transition-colors">
               Privacy Policy
             </Link>
             <span className="text-slate-600">|</span>
-            <Link href="/Termsandcondition" className="text-slate-400 hover:text-orange-400 transition-colors">
-              Terms and Conditions
+            <Link href="/terms-and-condition" className="text-slate-400 hover:text-orange-400 transition-colors">
+              Terms & Conditions
             </Link>
             <span className="hidden sm:inline text-slate-600">|</span>
-            <Link href="/Disclaimer" className="hidden sm:inline text-slate-400 hover:text-orange-400 transition-colors">
+            <Link href="/disclaimer" className="hidden sm:inline text-slate-400 hover:text-orange-400 transition-colors">
               Disclaimer
             </Link>
           </div>

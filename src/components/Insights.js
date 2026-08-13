@@ -182,7 +182,7 @@ export default function MarketInsights() {
                   transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
                   whileHover={{ scale: 1.04 }}
                   whileTap={{ scale: 0.97 }}
-                  className="inline-flex items-center justify-center gap-2 bg-white text-blue-900 font-semibold text-sm px-5 py-2.5 rounded-md hover:bg-slate-100 transition w-full sm:w-auto"
+                  className="sm:inline-flex md:inline-flex hidden items-center justify-center gap-2 bg-white text-blue-900 font-semibold text-sm px-5 py-2.5 rounded-md hover:bg-slate-100 transition w-full sm:w-auto"
                 >
                   VIEW ALL INSIGHTS <span aria-hidden="true">→</span>
                 </motion.button>
@@ -260,6 +260,19 @@ export default function MarketInsights() {
               )}
             </div>
           </div>
+              <Link href="/BlogsPage">
+                <motion.button
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.4 }}
+                  transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
+                  whileHover={{ scale: 1.04 }}
+                  whileTap={{ scale: 0.97 }}
+                  className="inline-flex sm:hidden md:hidden items-center justify-center gap-2 bg-white text-blue-900 font-semibold text-sm px-5 py-2.5 rounded-md hover:bg-slate-100 transition w-full sm:w-auto"
+                >
+                  VIEW ALL INSIGHTS <span aria-hidden="true">→</span>
+                </motion.button>
+              </Link>
         </div>
 
         {/* Show error message if API failed but we're using fallback */}

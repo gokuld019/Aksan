@@ -116,9 +116,9 @@ export default function OurProcess() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.5 }}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-4xl xl:text-4xl font-bold text-slate-900 leading-tight mb-0 max-w-3xl mx-auto"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-4xl xl:text-4xl font-bold text-slate-900 leading-tight mb-0  mx-auto"
           >
-            A Proven Approach to Your Financial Success
+            A Proven Approach to Your <span className="text-[#0f4475]">Financial Success</span> 
           </motion.h2>
         </motion.div>
 

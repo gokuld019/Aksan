@@ -63,7 +63,7 @@ export default function Hero() {
         muted
         playsInline
         style={{ y: videoY }}
-        className="hidden md:block absolute inset-0 w-full h-full object-cover object-center -z-20 scale-110 brightness-[0.75]"
+        className="hidden md:block absolute inset-0 w-full h-full object-cover object-center -z-20 scale-110 "
       >
         <source src="/webbanner.mp4" type="video/mp4" />
       </motion.video>
@@ -72,7 +72,7 @@ export default function Hero() {
       <div
         className="absolute inset-0 -z-10"
         style={{
-          background: `linear-gradient(to right, rgba(8,15,35,0.92) 0%, rgba(10,20,45,0.8) 25%, rgba(12,25,55,0.5) 45%, rgba(15,30,60,0.15) 60%, rgba(10,20,45,0.05) 75%, transparent 100%)`,
+          background: `linear-gradient(to right, rgb(8 15 35 / 89%) 0%, rgb(10 20 45 / 72%) 25%, rgb(12 25 55 / 24%) 45%, rgb(15 30 60 / 0%) 60%, rgb(10 20 45 / 0%) 75%, transparent 100%)`,
         }}
       />
 
@@ -92,7 +92,7 @@ export default function Hero() {
 
         <motion.h1
           variants={item}
-          className="text-[26px] xs:text-[30px] sm:text-[36px] md:text-[45px] lg:text-[56px] xl:text-[67px] font-bold text-white leading-[1.15] max-w-xl break-words"
+          className="text-[32px] xs:text-[30px] sm:text-[36px] md:text-[45px] lg:text-[56px] xl:text-[67px] font-bold text-white leading-[1.15] max-w-xl break-words"
         >
           Guidance That Grows{" "}
           <span className="text-orange-500">Wealth</span>
@@ -130,7 +130,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-6 xs:mt-7 sm:mt-8 w-full"
+          className="mt-18 xs:mt-7 sm:mt-20 w-full"
         >
           <div className="bg-slate-900/75 backdrop-blur-sm rounded-lg grid grid-cols-2 md:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-white/20 border border-white/20 w-full">
             {stats.map((stat, i) => (

@@ -74,7 +74,7 @@ const ceo = {
     { icon: Target, label: "Strategy" },
   ],
   linkedin: "#",
-  photo: "/team/rajiniganth-es.jpeg",
+  photo: "/team/CEO1.jpg",
 };
 
 const coreTeam = [
@@ -178,7 +178,7 @@ export default function About() {
       {/* Section 1: About Hero */}
       <section
         ref={heroRef}
-        className="w-full bg-white min-h-[560px] sm:min-h-[600px] lg:min-h-[700px] flex items-stretch relative overflow-hidden mt-6 sm:mt-10"
+        className="w-full bg-white min-h-[560px] sm:min-h-[600px] lg:min-h-[700px] flex items-stretch relative overflow-hidden mt-12 sm:mt-10"
       >
         <div className="w-full flex items-stretch">
           <div className="max-w-[1400px] mx-auto w-full flex items-stretch px-4 xs:px-5 sm:px-6 lg:px-8">

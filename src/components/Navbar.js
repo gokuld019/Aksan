@@ -25,7 +25,7 @@ const navLinks = [
       { label: "Code and Policies", href: "/investor-relations/code-and-policies" },
       { label: "Investor Charter", href: "/investor-relations/investor-charter" },
       { label: "Investor Complaints", href: "/investor-relations/investor-complaints" },
-      { label: "Investor grievance redressal", href: "/investor-relations/investor-grievance-redressal" },
+      { label: "Investor Grievance Redressal", href: "/investor-relations/investor-grievance-redressal" },
     ],
   },
   { label: "Gallery", href: "/Gallery" },
