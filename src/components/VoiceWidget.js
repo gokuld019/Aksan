@@ -51,11 +51,8 @@ const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], weight: ["400", "500", 
 const dmSans = DM_Sans({ subsets: ["latin"], weight: ["400", "500", "600", "700", "800"], variable: "--font-dm-sans" });
 const lexend = Lexend({ subsets: ["latin"], weight: ["400", "500", "600", "700", "800"], variable: "--font-lexend" });
 
-// Whitney font as default
-const WHITNEY_FONT = '"Whitney", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif';
-
 const FONT_OPTIONS = [
-  { id: "default", label: "Default (Whitney)", className: "", cssVar: WHITNEY_FONT, preview: "Aa" },
+  { id: "default", label: "Default (Noto Sans)", className: "", cssVar: null, preview: "Aa" },
   { id: "inter", label: "Inter", className: inter.variable, cssVar: "var(--font-inter)", preview: "Aa" },
   { id: "jakarta", label: "Plus Jakarta Sans", className: jakarta.variable, cssVar: "var(--font-jakarta)", preview: "Aa" },
   { id: "manrope", label: "Manrope", className: manrope.variable, cssVar: "var(--font-manrope)", preview: "Aa" },
@@ -72,7 +69,7 @@ const SITE_FONT_STORAGE_KEY = "aksan-site-font";
 const REPLY_META = {
   "About Aksan": { icon: Building2, tint: "from-sky-500 to-sky-600" },
   Fundraising: { icon: TrendingUp, tint: "from-emerald-500 to-emerald-600" },
-  "ipo": { icon: Rocket, tint: "from-violet-500 to-violet-600" },
+  "IPO Advisory": { icon: Rocket, tint: "from-violet-500 to-violet-600" },
   Valuation: { icon: Calculator, tint: "from-amber-500 to-amber-600" },
   "Due Diligence": { icon: SearchCheck, tint: "from-cyan-500 to-cyan-600" },
   "M&A & Compliance": { icon: Handshake, tint: "from-rose-500 to-rose-600" },
@@ -206,7 +203,6 @@ export default function VoiceWidget() {
     }
   }, []);
 
-  // Apply accessibility settings
   useEffect(() => {
     const target = getTarget();
     if (!target) return;
@@ -227,49 +223,28 @@ export default function VoiceWidget() {
     target.classList.toggle("a11y-mono", monochrome);
   }, [fontSize, lineHeight, readableFont, letterSpacing, lightContrast, highContrast, monochrome, getTarget]);
 
-  // Apply chosen site font - UPDATED with proper font application
+  // Apply chosen site font
   useEffect(() => {
     const target = getTarget();
     if (!target) return;
 
     const option = FONT_OPTIONS.find((f) => f.id === siteFont) || FONT_OPTIONS[0];
 
-    // Remove ALL previous font classes from html element
     document.documentElement.classList.remove(
       ...FONT_VARIABLE_CLASSES.split(" ").filter(Boolean)
     );
-    
-    // Remove site font class from target
-    target.classList.remove("a11y-site-font");
-    
-    // Reset font properties
-    document.documentElement.style.removeProperty("--site-font");
-    target.style.fontFamily = "";
-    
-    // Apply the selected font
     if (option.className) {
       document.documentElement.classList.add(option.className);
     }
-    
+
     if (option.cssVar) {
-      // Set CSS variable
       document.documentElement.style.setProperty("--site-font", option.cssVar);
       target.classList.add("a11y-site-font");
-      
-      // Apply directly to target for immediate effect
-      if (option.id === "default") {
-        target.style.fontFamily = WHITNEY_FONT;
-      } else {
-        target.style.fontFamily = option.cssVar;
-      }
     } else {
-      // If no CSS var, use the font family directly
-      if (option.id === "default") {
-        target.style.fontFamily = WHITNEY_FONT;
-      }
+      target.classList.remove("a11y-site-font");
+      document.documentElement.style.removeProperty("--site-font");
     }
 
-    // Save preference
     try {
       window.localStorage.setItem(SITE_FONT_STORAGE_KEY, siteFont);
     } catch {
@@ -325,31 +300,10 @@ export default function VoiceWidget() {
   return createPortal(
     <>
       <style jsx global>{`
-        :root {
-          --a11y-line-height: 1.5;
-          --a11y-letter-spacing: normal;
-          --a11y-font-scale: 0px;
-          --site-font: ${WHITNEY_FONT};
-        }
-
-        /* Ensure the page content uses the font */
-        #page-content {
-          font-family: var(--site-font, ${WHITNEY_FONT}) !important;
-          transition: all 0.3s ease;
-        }
-
-        /* Ensure all children inherit the font */
-        #page-content * {
-          font-family: inherit !important;
-        }
-
-        /* When custom font is applied */
-        #page-content.a11y-site-font {
-          font-family: var(--site-font, ${WHITNEY_FONT}) !important;
-        }
         
-        #page-content.a11y-site-font * {
-          font-family: inherit !important;
+
+        #page-content {
+          transition: all 0.3s ease;
         }
 
         #page-content.a11y-font-scaled,
@@ -368,7 +322,10 @@ export default function VoiceWidget() {
         #page-content.a11y-readable * {
           font-family: "Atkinson Hyperlegible", Verdana, Arial, sans-serif !important;
         }
-      
+        #page-content.a11y-site-font,
+        #page-content.a11y-site-font * {
+          font-family: var(--site-font) !important;
+        }
         #page-content.a11y-light {
           filter: brightness(1.12) contrast(0.95);
         }
@@ -496,7 +453,7 @@ export default function VoiceWidget() {
           move together (no clumsy independent jumping) when chat opens. */}
       <div
         className="fixed bottom-6 right-6 flex flex-col items-end gap-2.5 sm:gap-3 voice-widget"
-        style={{ display: toolbarVisible && !chatOpen ? "flex" : chatOpen ? "none" : "flex", zIndex: 2147483000 }}
+        style={{ display: toolbarVisible ? "flex" : "none", zIndex: 2147483000 }}
       >
         {voiceBarVisible && (
           <VoiceControlBar
@@ -552,14 +509,14 @@ export default function VoiceWidget() {
             />
           </button>
         </div>
-      </div>
 
-      {chatOpen && (
-        <ChatPanel
-          onClose={() => setChatOpen(false)}
-          speech={speech}
-        />
-      )}
+        {chatOpen && (
+          <ChatPanel
+            onClose={() => setChatOpen(false)}
+            speech={speech}
+          />
+        )}
+      </div>
     </>,
     document.body
   );
@@ -679,7 +636,7 @@ function VoiceControlBar({ compact, isSpeaking, isPaused, activeSourceId, onSpea
 const TOPICS = [
   "About Aksan",
   "Fundraising",
-  "ipo",
+  "IPO Advisory",
   "Valuation",
   "Due Diligence",
   "M&A & Compliance",
@@ -778,7 +735,7 @@ const BOT_FLOWS = {
     replies: ["Fundraising", "Our services"],
   },
 
-  "ipo": {
+  "IPO Advisory": {
     text: [{ text: "Select a question:" }],
     replies: [
       "Can you help with an IPO?",
@@ -791,23 +748,23 @@ const BOT_FLOWS = {
   },
   "Can you help with an IPO?": {
     text: [{ text: "Yes. Contact info@aksan.in to schedule an IPO readiness discussion." }],
-    replies: ["ipo", "Our services"],
+    replies: ["IPO Advisory", "Our services"],
   },
   "What is an SME IPO?": {
     text: [{ text: "It enables eligible SMEs to raise capital through SME exchanges. For guidance, email info@aksan.in." }],
-    replies: ["ipo", "Our services"],
+    replies: ["IPO Advisory", "Our services"],
   },
   "How do I know if my company is IPO ready?": {
     text: [{ text: "We conduct an IPO readiness assessment. Contact info@aksan.in." }],
-    replies: ["ipo", "Our services"],
+    replies: ["IPO Advisory", "Our services"],
   },
   "How long does an IPO take?": {
     text: [{ text: "It depends on readiness and approvals. Email info@aksan.in." }],
-    replies: ["ipo", "Our services"],
+    replies: ["IPO Advisory", "Our services"],
   },
   "Can you assist after listing?": {
     text: [{ text: "Yes. Contact info@aksan.in." }],
-    replies: ["ipo", "Our services"],
+    replies: ["IPO Advisory", "Our services"],
   },
 
   Valuation: {
@@ -1315,10 +1272,6 @@ function AccessibilityPanel({
   CHAT PANEL
   - Clicking a message bubble selects it and speaks ONLY that text.
   - Re-clicking the same bubble toggles pause/resume.
-  - On mobile it opens as a near-full-screen sheet anchored to the
-    viewport (safe-area aware) instead of a small floating card,
-    so the header, transcript and composer are all comfortably
-    legible on a phone.
   ============================================================ */
 function ChatPanel({ onClose, speech }) {
   const [message, setMessage] = useState("");
@@ -1333,7 +1286,7 @@ function ChatPanel({ onClose, speech }) {
       from: "ai",
       lines: [
         { bold: true, text: "Welcome to Aksan AI" },
-        { text: "I can help with fundraising, ipo, valuation, due diligence and more. Pick a topic to get started." },
+        { text: "I can help with fundraising, IPO advisory, valuation, due diligence and more. Pick a topic to get started." },
       ],
       time: getTime(),
       replies: TOPICS,
@@ -1409,12 +1362,9 @@ function ChatPanel({ onClose, speech }) {
   };
 
   return (
-    <div
-      className="chat-panel-in fixed inset-x-0 bottom-0 sm:inset-x-auto sm:bottom-24 sm:right-6 w-full sm:w-[400px] h-[92dvh] sm:h-[640px] max-h-[820px] sm:max-h-[640px] rounded-t-[24px] sm:rounded-[26px] shadow-[0_-8px_40px_-15px_rgba(6,20,38,0.35),0_30px_70px_-15px_rgba(6,20,38,0.55)] sm:shadow-[0_30px_70px_-15px_rgba(6,20,38,0.55)] ring-1 ring-black/[0.06] overflow-hidden flex flex-col relative bg-[#f7f9fc] voice-widget"
-      style={{ zIndex: 2147483000 }}
-    >
+    <div className="chat-panel-in fixed bottom-20 sm:bottom-24 right-4 sm:right-6 w-[calc(100vw-2rem)] sm:w-[400px] h-[540px] sm:h-[640px] max-w-[400px] rounded-[22px] sm:rounded-[26px] shadow-[0_30px_70px_-15px_rgba(6,20,38,0.55)] ring-1 ring-black/[0.06] overflow-hidden flex flex-col relative bg-[#f7f9fc] voice-widget">
       <div
-        className="relative z-10 px-4 sm:px-5 pt-[max(1rem,env(safe-area-inset-top))] sm:pt-5 pb-4 sm:pb-5 flex items-center justify-between shrink-0 overflow-hidden"
+        className="relative z-10 px-4 sm:px-5 pt-4 sm:pt-5 pb-4 sm:pb-5 flex items-center justify-between shrink-0 overflow-hidden"
         style={{
           background: "linear-gradient(135deg, #081b32 0%, #0d3462 48%, #12457a 100%)",
         }}
@@ -1432,7 +1382,7 @@ function ChatPanel({ onClose, speech }) {
           style={{ background: "radial-gradient(circle, #fb923c, transparent 70%)" }}
         />
 
-        <div className="relative flex items-center gap-2.5 sm:gap-3 min-w-0">
+        <div className="relative flex items-center gap-3 min-w-0">
           <div className="relative w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/10 ring-1 ring-white/20 flex items-center justify-center shrink-0 overflow-hidden">
             <Image
               src="/chatbot.webp"
@@ -1444,13 +1394,13 @@ function ChatPanel({ onClose, speech }) {
           </div>
           <div className="min-w-0">
             <div className="flex items-center gap-1.5">
-              <p className="text-white font-semibold text-[14px] sm:text-[15px] leading-tight tracking-tight truncate">
+              <p className="text-white font-semibold text-sm sm:text-[15px] tracking-tight truncate">
                 Aksan AI Advisor
               </p>
               <ShieldCheck size={13} className="text-sky-300 shrink-0" strokeWidth={2.4} />
             </div>
-            <span className="flex items-center gap-1.5 text-emerald-300/90 text-[10.5px] sm:text-[11px] font-medium leading-snug">
-              <span className="relative flex w-1.5 h-1.5 shrink-0">
+            <span className="flex items-center gap-1.5 text-emerald-300/90 text-[10px] sm:text-[11px] font-medium">
+              <span className="relative flex w-1.5 h-1.5">
                 <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 animate-ping" />
                 <span className="relative inline-flex rounded-full h-full w-full bg-emerald-400" />
               </span>
@@ -1501,7 +1451,7 @@ function ChatPanel({ onClose, speech }) {
                   </div>
                   <button
                     onClick={() => selectAndSpeakMessage(msg.id, fullText)}
-                    className={`speakable-msg group relative text-left bg-white rounded-2xl rounded-tl-md px-4 py-3 max-w-[78%] sm:max-w-[290px] shadow-[0_4px_20px_-6px_rgba(15,23,42,0.10)] ring-1 transition-all ${
+                    className={`speakable-msg group relative text-left bg-white rounded-2xl rounded-tl-md px-4 py-3 max-w-[255px] sm:max-w-[290px] shadow-[0_4px_20px_-6px_rgba(15,23,42,0.10)] ring-1 transition-all ${
                       isSelected ? "ring-[#12457a]/50 shadow-[0_4px_20px_-4px_rgba(18,69,122,0.3)]" : "ring-slate-100 hover:ring-slate-200"
                     }`}
                     title="Tap to select and hear only this message"
@@ -1511,8 +1461,8 @@ function ChatPanel({ onClose, speech }) {
                         key={i}
                         className={
                           line.bold
-                            ? "text-slate-900 text-[13.5px] sm:text-sm font-semibold leading-snug tracking-tight pr-5"
-                            : `text-slate-600 text-[13.5px] sm:text-sm leading-[1.55] pr-5 ${i > 0 ? "mt-1.5 sm:mt-2" : ""}`
+                            ? "text-slate-900 text-[13px] sm:text-sm font-semibold tracking-tight pr-5"
+                            : `text-slate-600 text-[13px] sm:text-sm leading-relaxed pr-5 ${i > 0 ? "mt-1.5 sm:mt-2" : ""}`
                         }
                       >
                         {line.text}
@@ -1535,12 +1485,12 @@ function ChatPanel({ onClose, speech }) {
                     </span>
                   </button>
                 </div>
-                <p className="text-slate-400 text-[10.5px] sm:text-[11px] mt-1.5 ml-9 sm:ml-[42px] font-medium leading-none">
+                <p className="text-slate-400 text-[10px] sm:text-[11px] mt-1.5 ml-9 sm:ml-[42px] font-medium">
                   {msg.time}
                 </p>
 
                 {msg.replies && msg.replies.length > 0 && (
-                  <div className="grid grid-cols-2 gap-2 mt-3 ml-9 sm:ml-[42px] max-w-[calc(100%-2.5rem)] sm:max-w-[300px]">
+                  <div className="grid grid-cols-2 gap-1.5 sm:gap-2 mt-3 ml-9 sm:ml-[42px] max-w-[266px] sm:max-w-[300px]">
                     {msg.replies.map((reply) => {
                       const meta = REPLY_META[reply];
                       const Icon = meta?.icon || Sparkles;
@@ -1550,7 +1500,7 @@ function ChatPanel({ onClose, speech }) {
                           key={reply}
                           onClick={() => handleQuickReply(reply)}
                           disabled={isTyping}
-                          className={`group relative flex items-center gap-2 rounded-[14px] px-2.5 py-2.5 min-h-[44px] text-left transition-all duration-150 active:scale-[0.97] disabled:opacity-40 disabled:pointer-events-none ${
+                          className={`group relative flex items-center gap-2 rounded-[14px] px-2.5 py-2.5 text-left transition-all duration-150 active:scale-[0.97] disabled:opacity-40 disabled:pointer-events-none ${
                             isNav
                               ? "bg-white ring-1 ring-slate-200/80 hover:ring-[#12457a]/30 hover:shadow-[0_6px_16px_-4px_rgba(15,58,102,0.18)]"
                               : "col-span-2 bg-gradient-to-r from-orange-50 to-white ring-1 ring-orange-200/70 hover:ring-orange-300 hover:shadow-[0_6px_16px_-4px_rgba(249,115,22,0.18)]"
@@ -1567,7 +1517,7 @@ function ChatPanel({ onClose, speech }) {
                               <Icon size={12} strokeWidth={2.5} />
                             </span>
                           )}
-                          <span className="text-[12px] sm:text-xs font-medium text-slate-700 leading-[1.35] group-hover:text-slate-900">
+                          <span className="text-[11.5px] sm:text-xs font-medium text-slate-700 leading-snug group-hover:text-slate-900">
                             {reply}
                           </span>
                         </button>
@@ -1583,12 +1533,12 @@ function ChatPanel({ onClose, speech }) {
             <div key={msg.id} className="flex flex-col items-end chat-msg-in">
               <button
                 onClick={() => selectAndSpeakMessage(msg.id, msg.text)}
-                className={`group relative text-left bg-gradient-to-br from-[#164f8a] to-[#081b32] text-white rounded-2xl rounded-tr-md px-4 py-2.5 sm:py-3 max-w-[75%] sm:max-w-[270px] shadow-[0_6px_18px_-6px_rgba(8,27,50,0.5)] transition-all ${
+                className={`group relative text-left bg-gradient-to-br from-[#164f8a] to-[#081b32] text-white rounded-2xl rounded-tr-md px-4 py-2.5 sm:py-3 max-w-[230px] sm:max-w-[270px] shadow-[0_6px_18px_-6px_rgba(8,27,50,0.5)] transition-all ${
                   isSelected ? "ring-2 ring-orange-400/70" : ""
                 }`}
                 title="Tap to select and hear only this message"
               >
-                <p className="text-[13.5px] sm:text-sm leading-[1.55] pr-5">{msg.text}</p>
+                <p className="text-[13px] sm:text-sm leading-relaxed pr-5">{msg.text}</p>
                 <span
                   className={`absolute top-2.5 right-2.5 flex items-center justify-center w-5 h-5 rounded-full transition-all ${
                     isActiveHere
@@ -1605,7 +1555,7 @@ function ChatPanel({ onClose, speech }) {
                   )}
                 </span>
               </button>
-              <p className="text-slate-400 text-[10.5px] sm:text-[11px] mt-1.5 mr-1 flex items-center gap-1 font-medium leading-none">
+              <p className="text-slate-400 text-[10px] sm:text-[11px] mt-1.5 mr-1 flex items-center gap-1 font-medium">
                 {msg.time}
                 <span className="text-sky-600" aria-hidden="true">✓✓</span>
               </p>
@@ -1627,7 +1577,7 @@ function ChatPanel({ onClose, speech }) {
         )}
       </div>
 
-      <div className="relative z-10 px-3.5 sm:px-4 pt-3 sm:pt-3.5 pb-[max(0.75rem,env(safe-area-inset-bottom))] sm:pb-3.5 border-t border-slate-200/70 flex items-center gap-2 shrink-0 bg-white">
+      <div className="relative z-10 px-3.5 sm:px-4 py-3 sm:py-3.5 border-t border-slate-200/70 flex items-center gap-2 shrink-0 bg-white">
         <input
           type="text"
           value={message}
@@ -1635,7 +1585,7 @@ function ChatPanel({ onClose, speech }) {
           onKeyDown={(e) => e.key === "Enter" && handleSend()}
           placeholder="Ask about fundraising, IPO, valuation..."
           disabled={isTyping}
-          className="flex-1 min-w-0 border border-slate-200 bg-slate-50/70 rounded-full px-4 py-2.5 text-[13.5px] sm:text-sm outline-none focus:border-[#12457a]/50 focus:bg-white focus:ring-4 focus:ring-[#12457a]/[0.08] transition-all disabled:bg-slate-50 disabled:text-slate-400 placeholder:text-slate-400"
+          className="flex-1 border border-slate-200 bg-slate-50/70 rounded-full px-4 py-2.5 text-[13px] sm:text-sm outline-none focus:border-[#12457a]/50 focus:bg-white focus:ring-4 focus:ring-[#12457a]/[0.08] transition-all disabled:bg-slate-50 disabled:text-slate-400 placeholder:text-slate-400"
         />
         <button
           onClick={handleSend}
@@ -1647,8 +1597,8 @@ function ChatPanel({ onClose, speech }) {
         </button>
       </div>
 
-      <p className="relative z-10 text-center text-[10px] sm:text-[11px] text-slate-400 pb-[max(0.5rem,env(safe-area-inset-bottom))] sm:pb-3 pt-1 bg-white shrink-0 font-medium">
-        Secured &amp; Powered by <span className="text-orange-500 font-semibold">Aksan AI</span>
+      <p className="relative z-10 text-center text-[10px] sm:text-[11px] text-slate-400 pb-2.5 sm:pb-3 bg-white shrink-0 font-medium">
+        Secured & Powered by <span className="text-orange-500 font-semibold">Aksan AI</span>
       </p>
     </div>
   );
