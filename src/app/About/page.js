@@ -74,31 +74,38 @@ const ceo = {
     { icon: Target, label: "Strategy" },
   ],
   linkedin: "#",
-  photo: "/team/CEO1.jpg",
+  photo: "/team/CEO2.jpg",
 };
 
 const coreTeam = [
-  { name: "Nirmal K", role: "Senior - Financial Analyst", linkedin: "#", photo: "/team/nirmal-k.png" },
-  { name: "Vidit Madhusudan Gupta", role: "Principal Consultant", linkedin: "#", photo: "/team/vidit-madhusudan-gupta.webp" },
-  { name: "Natarajan B", role: "Sr. Exe - CS - Trainee", linkedin: "#", photo: "/team/natarajan-b.png" },
-  { name: "Badrinarayan S", role: "Jr. Financial Analyst", linkedin: "#", photo: "/team/badrinarayan-s.png" },
-  { name: "Jhanani M", role: "Jr. Exe - CS - Trainee", linkedin: "#", photo: "/team/jhanani-m.png" },
-  { name: "Viduthalai S", role: "GM - Financial Analyst", linkedin: "#", photo: "/team/viduthalai-s.webp" },
+  { name: "Nirmal K", role: "Senior-Financial Analyst", linkedin: "#", photo: "/team/nirmal-k.png" },
+
+  { name: "Vidit Madhusudan Gupta", role: "Principal Consultant", linkedin: "#", photo: "/team/viddit.png" },
+
+  { name: "Natarajan B", role: "Sr.Executive-CS-Trainee", linkedin: "#", photo: "/team/natarajan-b.png" },
+
+  { name: "Badrinarayan S", role: "Jr.Financial Analyst", linkedin: "#", photo: "/team/badrinarayan-s.png" },
+
+  { name: "Jhanani M", role: "Jr. Exe-CS-Trainee", linkedin: "#", photo: "/team/jhanani-m.png" },
+  { name: "Viduthalai S", role: "GM - Financial Analyst", linkedin: "#", photo: "/team/vidu.png" },
   { name: "Shajathali S", role: "Associate Company Secretary", linkedin: "#", photo: "/team/shajathali-s.png" },
   { name: "Pinky Naveen H", role: "AGM - Financial Analyst", linkedin: "#", photo: "/team/pinky-naveen-h.png" },
   { name: "Narayanan G", role: "Senior GM - Financial Analyst", linkedin: "#", photo: "/team/narayanan-g.png" },
   { name: "Pugazhendhi P", role: "Senior - Financial Analyst", linkedin: "#", photo: "/team/pugazhendhi-p.png" },
   { name: "Indira AK", role: "AGM - Accounts & Finance", linkedin: "#", photo: "/team/indira-ak.png" },
-  { name: "Satheesh Srinivasan", role: "Jr. Financial Analyst", linkedin: "#", photo: "/team/satheesh-srinivasan.png" },
+  { name: "Satheesh Srinivasan", role: "Jr.Financial Analyst", linkedin: "#", photo: "/team/satheesh-srinivasan.png" },
   { name: "Sudarsana Rao K", role: "Admin Assistant", linkedin: "#", photo: "/team/sudarsana-rao-k.png" },
-  { name: "Preeti", role: "Team Member", linkedin: "#", photo: "/team/preeti.png" },
-  { name: "Khushboo", role: "Team Member", linkedin: "#", photo: "/team/kushboo.png" },
-  { name: "Piyush", role: "Team Member", linkedin: "#", photo: "/team/piyush.png" },
-  { name: "Nesapriyan", role: "Team Member", linkedin: "#", photo: "/team/nesapriyan.png" },
-  { name: "Aishwarya", role: "Team Member", linkedin: "#", photo: "/team/Aishwarya.png" },
-  { name: "Sai Krishna", role: "Team Member", linkedin: "#", photo: "/team/sai-krishna.png" },
-  { name: "Narendran", role: "Team Member", linkedin: "#", photo: "/team/narendran.png" },
-  { name: "Santhosh Kumar", role: "Team Member", linkedin: "#", photo: "/team/santhosh.png" },
+  { name: "Preeti Ankit Dedhiya", role: "Associate Vice President", linkedin: "#", photo: "/team/preeti.png" },
+  { name: "Khushboo", role: "CS cum Compliance Officer", linkedin: "#", photo: "/team/kushboo.png" },
+
+  { name: "Piyush", role: "Associate Vice President ", linkedin: "#", photo: "/team/piyush.png" },
+
+  { name: "Nesapriyan", role: "Sr.Manager-Finance & Accounts", linkedin: "#", photo: "/team/nesapriyan.png" },
+
+  { name: "Aishwarya", role: "Executive Assistant - MD", linkedin: "#", photo: "/team/aishu.png" },
+  { name: "Sai Krishna", role: "AGM - Company Secretary", linkedin: "#", photo: "/team/sai-krishna.png" },
+  { name: "Narendran", role: "Sr.Exe-CS-Trainee", linkedin: "#", photo: "/team/narendran.png" },
+  { name: "Santhosh Kumar", role: "Manager - IT & Admin", linkedin: "#", photo: "/team/santhosh.png" },
 ];
 
 // ---------- Animation variants ----------
@@ -226,7 +233,7 @@ export default function About() {
                     <motion.p variants={fadeUp} custom={0}>
                       At AKSAN, we are a{" "}
                       <span className="font-semibold text-gray-900">
-                        SEBI Registered Category-I Merchant Banker
+                        SEBI Registered Category-II Merchant Banker
                       </span>{" "}
                       committed to delivering strategic, compliant, and
                       execution-focused capital market solutions.

@@ -73,7 +73,7 @@ const usefulLinks = [
 ];
 
 const trustBadges = [
-  { icon: ShieldCheck, title: "SEBI Registered", desc: "Category-I Merchant Banker" },
+  { icon: ShieldCheck, title: "SEBI Registered", desc: "Category-II Merchant Banker" },
   { icon: Users, title: "Independent Advice", desc: "Unbiased. Research Driven." },
   { icon: TrendingUp, title: "Client Focused", desc: "Your Growth. Our Priority." },
   { icon: Handshake, title: "Trust & Integrity", desc: "Built on Transparency." },
@@ -247,8 +247,7 @@ export default function Footer() {
               priority
             />
             <p className="text-slate-300 text-[11.5px] xs:text-xs sm:text-sm leading-[1.7] mb-5 xs:mb-6 max-w-xs">
-              AKSAN Capital Advisory Private Limited is a SEBI-registered
-              investment advisor committed to independent, research-driven
+              AKSAN Capital Advisory Private Limited is a SEBI-registered Merchant Banker committed to independent, research-driven
               guidance and long-term client partnerships.
             </p>
             <div className="flex items-center gap-2.5 sm:gap-3 flex-wrap">

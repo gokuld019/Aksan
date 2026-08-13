@@ -298,7 +298,7 @@ export default function Services() {
               { icon: TrendingUp, value: "₹15,000 Cr+", label: "Capital Raised" },
               { icon: Handshake, value: "150+", label: "Successful Deals" },
               { icon: Clock, value: "20+", label: "Years of Excellence" },
-              { icon: Award, value: "SEBI Registered", label: "Category-I Merchant Banker" },
+              { icon: Award, value: "SEBI Registered", label: "Category-II Merchant Banker" },
             ].map(({ icon: Icon, value, label }, i) => (
               <div key={label} className="flex flex-col items-center text-center gap-2 relative">
                 {i !== 0 && (

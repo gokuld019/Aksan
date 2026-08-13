@@ -87,7 +87,7 @@ export default function Hero() {
           variants={item}
           className="text-orange-500 font-semibold tracking-wide text-[10px] xs:text-[11px] sm:text-[13px] md:text-[14px] mb-2 xs:mb-2.5 sm:mb-3 uppercase"
         >
-          SEBI-Registered Investment Advisor
+          SEBI-registered Merchant Banker
         </motion.p>
 
         <motion.h1
@@ -107,7 +107,7 @@ export default function Hero() {
 
         <motion.p
           variants={item}
-          className="text-slate-300 text-xs xs:text-[13px] sm:text-[14px] md:text-[16px] lg:text-[18px] mt-2.5 xs:mt-3 max-w-[480px] w-[300px] leading-relaxed"
+          className="text-slate-300 text-xs xs:text-[13px] sm:text-[14px] md:text-[16px] lg:text-[18px] mt-2.5 xs:mt-3 max-w-[480px] w-[300px] sm:w-full leading-relaxed"
         >
           For over two decades we've partnered with investors and
           businesses to build resilient portfolios — backed by independent
