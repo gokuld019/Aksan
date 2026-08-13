@@ -42,7 +42,7 @@ export default function Hero() {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full h-[560px] xs:h-[600px] sm:h-[680px] md:h-[780px] lg:h-[870px] flex flex-col justify-center overflow-hidden"
+      className="relative w-full h-[700px] xs:h-[600px] sm:h-[680px] md:h-[780px] lg:h-[870px] flex flex-col justify-center overflow-hidden"
     >
       {/* BACKGROUND VIDEO - MOBILE (below md) */}
       <motion.video
@@ -102,12 +102,12 @@ export default function Hero() {
           variants={item}
           className="text-white text-[13px] xs:text-[14px] sm:text-[16px] md:text-[18px] lg:text-[20px] font-medium mt-3 xs:mt-4 max-w-md leading-normal xs:whitespace-normal sm:whitespace-nowrap"
         >
-          Strategic Investment. Sustainable Growth. Trusted Advisory.
+          Strategic Investment. Sustainable Growth.<br /> Trusted Advisory.
         </motion.p>
 
         <motion.p
           variants={item}
-          className="text-slate-300 text-xs xs:text-[13px] sm:text-[14px] md:text-[16px] lg:text-[18px] mt-2.5 xs:mt-3 max-w-[480px] leading-relaxed"
+          className="text-slate-300 text-xs xs:text-[13px] sm:text-[14px] md:text-[16px] lg:text-[18px] mt-2.5 xs:mt-3 max-w-[480px] w-[300px] leading-relaxed"
         >
           For over two decades we've partnered with investors and
           businesses to build resilient portfolios — backed by independent

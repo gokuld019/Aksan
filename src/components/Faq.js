@@ -147,7 +147,7 @@ export default function FAQSection() {
             </motion.div>
 
             {/* Feature icons row */}
-            <div className="grid grid-cols-4 gap-2 xs:gap-3 sm:gap-4 max-w-sm mx-auto lg:mx-0">
+            <div className="grid grid-cols-2 gap-2 xs:gap-3 sm:gap-4 max-w-sm mx-auto lg:mx-0">
               {features.map((feature, i) => (
                 <motion.div
                   key={feature.label}

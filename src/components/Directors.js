@@ -56,7 +56,7 @@ export default function BoardOfDirectors() {
               alt="AKSAN logo"
               width={96}
               height={96}
-              className="w-12 h-12 xs:w-14 xs:h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 object-contain"
+              className="w-25 h-25 xs:w-14 xs:h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 object-contain"
             />
           </motion.div>
 
@@ -102,7 +102,7 @@ export default function BoardOfDirectors() {
             className="flex gap-8 xs:gap-10 sm:gap-12 md:gap-16 mb-6 xs:mb-7 sm:mb-8 md:mb-10 justify-center lg:justify-start"
           >
             {/* Stat 1 */}
-            <div className="relative">
+            <div className="relative text-center flex flex-col items-center justify-center">
               <div className="flex items-baseline gap-0.5">
                 <p className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl font-extrabold text-blue-900 leading-none tracking-tight">
                   20
@@ -125,7 +125,7 @@ export default function BoardOfDirectors() {
             <div className="w-px bg-orange-200/60 self-stretch"></div>
 
             {/* Stat 2 */}
-            <div className="relative">
+            <div className="relative text-center flex flex-col items-center justify-center">
               <div className="flex items-baseline gap-0.5">
                 <p className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl font-extrabold text-blue-900 leading-none tracking-tight">
                   100

@@ -248,7 +248,7 @@ export default function Services() {
               viewport={{ once: true, amount: 0.4 }}
               className="relative z-10"
             >
-              <div className="text-center lg:text-left">
+              <div className="text-left lg:text-left">
                 <motion.p variants={revealItem} className="text-slate-300 text-xs font-semibold tracking-wide mb-2 sm:mb-3">
                   ABOUT AKSAN
                 </motion.p>
@@ -265,7 +265,7 @@ export default function Services() {
                 <motion.ul variants={revealItem} className="space-y-2 mb-4 sm:mb-6">
                   {["Client-Centric Approach", "Expertise & Experience", "Transparent & Ethical"].map(
                     (point) => (
-                      <li key={point} className="flex items-center justify-center lg:justify-start gap-2 text-white text-sm font-medium">
+                      <li key={point} className="flex items-center justify-left lg:justify-start gap-2 text-white text-sm font-medium">
                         <span className="text-orange-500" aria-hidden="true">✓</span>
                         {point}
                       </li>
@@ -287,12 +287,12 @@ export default function Services() {
 
           {/* Right: USP grid */}
           <div className="bg-white p-6 sm:p-8 md:p-10 lg:p-14 flex flex-col justify-center">
-            <div className="text-center sm:text-left">
+            <div className="text-left sm:text-left">
               <p className="text-orange-500 font-bold text-sm tracking-wide mb-2 sm:mb-3">
                 OUR USP
               </p>
               <h3
-                className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 md:mb-10"
+                className="text-[16px] sm:text-3xl font-bold mb-6 sm:mb-8 md:mb-10"
                 style={{ color: "#1E2A5E" }}
               >
                 Why Investors Choose Aksan
@@ -304,10 +304,10 @@ export default function Services() {
               initial="hidden"
               whileInView="show"
               viewport={{ once: true, amount: 0.2 }}
-              className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-x-8 sm:gap-y-6"
+              className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-x-8 sm:gap-y-6 "
             >
               {usps.map((usp) => (
-                <motion.div key={usp.title} variants={revealItem} className="flex items-start gap-3 text-center sm:text-left">
+                <motion.div key={usp.title} variants={revealItem} className="flex items-start gap-3 text-left sm:text-left">
                   <span className="w-10 h-10 flex items-center justify-center rounded-full bg-[#EEF0F7] text-[#1E2A5E] shrink-0 mx-auto sm:mx-0">
                     <usp.icon className="w-[17px] h-[17px]" strokeWidth={2} />
                   </span>

@@ -71,15 +71,15 @@ export default function Navbar() {
   const showSolidBg = scrolled || isAboutPage || isGalleryPage;
 
   return (
-  <header
-  className={`fixed top-0 left-0 w-full z-30 transition-all duration-300 ${
-    showSolidBg ? "shadow-md" : ""
-  }`}
-  style={{
-    backgroundColor: showSolidBg ? "#0f4475" : "transparent",
-    fontFamily: "Whitney, sans-serif",
-  }}
->
+    <header
+      className={`fixed top-0 left-0 w-full z-30 transition-all duration-300 ${
+        showSolidBg ? "shadow-md" : ""
+      }`}
+      style={{
+        backgroundColor: showSolidBg ? "#0f4475" : "transparent",
+        fontFamily: "Whitney, sans-serif",
+      }}
+    >
       <nav className="max-w-[1400px] mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-6 py-2.5 sm:py-3 lg:py-3.5">
         <Link href="/" className="flex items-center gap-2 shrink-0">
           <Image
@@ -164,8 +164,6 @@ export default function Navbar() {
           )}
         </ul>
 
-       
-
         {/* Mobile menu toggle — animated hamburger to X */}
         <button
           className="lg:hidden relative w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center -mr-1.5 sm:-mr-2 rounded-full active:bg-white/10 transition-colors"
@@ -235,10 +233,10 @@ export default function Navbar() {
             </button>
           </div>
 
-          {/* Links */}
-          <ul className="flex flex-col px-3 pt-3 pb-2">
+          {/* Links with dividers */}
+          <ul className="flex flex-col px-3 pt-3 pb-2 divide-y divide-white/10">
             {navLinks.map((link) => (
-              <li key={link.label}>
+              <li key={link.label} className="py-0.5">
                 {link.children ? (
                   <div>
                     <button
@@ -303,8 +301,6 @@ export default function Navbar() {
               </li>
             ))}
           </ul>
-
-         
         </div>
       </div>
     </header>

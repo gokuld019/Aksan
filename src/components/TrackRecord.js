@@ -164,14 +164,14 @@ export default function TrackRecord() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.2 }}
-          className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 xs:gap-4 sm:gap-6 md:gap-7 justify-items-center"
+          className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 xs:gap-4 sm:gap-6 md:gap-7 justify-items-center"
         >
           {stats.map((stat) => (
             <motion.div
               key={stat.label + stat.sub}
               variants={revealItem}
               whileHover={{ y: -6 }}
-              className={`relative rounded-xl p-4 xs:p-5 sm:p-7 md:p-8 flex flex-col items-center text-center border transition-colors h-full w-full min-h-[140px] xs:min-h-[160px] sm:min-h-[190px] max-w-[220px] sm:max-w-[240px] ${
+              className={`relative rounded-xl p-2 xs:p-5 sm:p-7 md:p-8 flex flex-col items-center justify-center text-center border transition-colors h-full w-full min-h-[140px] xs:min-h-[160px] sm:min-h-[190px] max-w-[220px] sm:max-w-[240px] ${
                 stat.highlighted
                   ? "border-orange-500 bg-slate-900/40"
                   : "border-slate-600/40 bg-white/5"
