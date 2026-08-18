@@ -50,7 +50,7 @@ const rhpDocuments = [
   },
   {
     number: "04",
-    name: "Rox Rin Hi-tech Limited",
+    name: "Rox Hi-tech Limited",
     logo: "/client/rox.jpg",
     listingDate: "16-11-2023",
     listingExchange: "NSE Emerge",
@@ -168,29 +168,29 @@ function DocumentCard({ doc, index }) {
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}
       whileHover={{ y: -4, boxShadow: "0 16px 32px -10px rgba(15,42,92,0.18)" }}
-      className="relative bg-white rounded-xl border border-slate-100 shadow-sm p-5 flex flex-col"
+      className="relative bg-white rounded-xl border border-slate-100 shadow-sm p-5 pt-7 flex flex-col"
     >
       {/* Number badge */}
-      <span
+      {/* <span
         className="absolute -top-3 -left-3 flex items-center justify-center w-8 h-8 rounded-lg text-white text-xs font-bold"
         style={{ backgroundColor: NAVY }}
       >
         {doc.number}
-      </span>
+      </span> */}
 
       {/* Logo + name */}
-      <div className="flex items-center gap-3 mb-4 mt-1">
-        <div className="relative w-10 h-10 shrink-0 rounded-md overflow-hidden bg-slate-50 flex items-center justify-center">
+      <div className="flex items-start gap-4 mb-4">
+        <div className="relative w-16 h-16 shrink-0 rounded-lg overflow-hidden bg-white border border-slate-100 flex items-center justify-center">
           <Image
             src={doc.logo}
             alt={doc.name}
-            width={40}
-            height={40}
-            className="object-contain"
+            fill
+            className="object-contain p-1"
+            sizes="64px"
           />
         </div>
         <h3
-          className="text-sm font-bold leading-tight"
+          className="text-sm font-bold leading-snug pt-1.5"
           style={{ color: NAVY, fontFamily: "'Noto Sans', sans-serif" }}
         >
           {doc.name}

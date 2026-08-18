@@ -24,6 +24,7 @@ import {
   AudioLines,
   Type,
   Check,
+  Mic,
 } from "lucide-react";
 import {
   Inter,
@@ -38,9 +39,6 @@ import {
 
 /* ============================================================
   SITE FONT OPTIONS
-  Each is preloaded statically (next/font/google requirement),
-  exposed as a CSS variable, and swapped in via a class on
-  #page-content. Add/remove entries here to change the shortlist.
   ============================================================ */
 const inter = Inter({ subsets: ["latin"], weight: ["400", "500", "600", "700", "800"], variable: "--font-inter" });
 const jakarta = Plus_Jakarta_Sans({ subsets: ["latin"], weight: ["400", "500", "600", "700", "800"], variable: "--font-jakarta" });
@@ -65,6 +63,56 @@ const FONT_OPTIONS = [
 
 const FONT_VARIABLE_CLASSES = FONT_OPTIONS.map((f) => f.className).filter(Boolean).join(" ");
 const SITE_FONT_STORAGE_KEY = "aksan-site-font";
+const SITE_VOICE_STORAGE_KEY = "aksan-site-voice";
+
+/* ============================================================
+  VOICE OPTIONS
+  ============================================================ */
+const INDIAN_MALE_HINTS = ["ravi", "prabhat", "hemant", "madhur", "rishi", "veena's brother"];
+const INDIAN_FEMALE_HINTS = ["heera", "veena", "lekha", "swara", "kalpana", "priya"];
+
+function classifyVoice(voice) {
+  const name = voice.name.toLowerCase();
+  const lang = (voice.lang || "").toLowerCase();
+  const isIndianLang = lang === "en-in" || lang === "hi-in" || lang.startsWith("hi-");
+
+  let gender = "unknown";
+  if (INDIAN_MALE_HINTS.some((h) => name.includes(h))) gender = "male";
+  else if (INDIAN_FEMALE_HINTS.some((h) => name.includes(h))) gender = "female";
+  else if (name.includes("male") && !name.includes("female")) gender = "male";
+  else if (name.includes("female")) gender = "female";
+
+  return { isIndian: isIndianLang, gender };
+}
+
+function buildVoiceOptions(voices) {
+  const options = [{ id: "default", label: "Default", voiceURI: null, preview: "Browser default voice" }];
+
+  const indianVoices = voices.filter((v) => classifyVoice(v).isIndian);
+
+  const seen = new Set();
+  const ordered = [
+    ...indianVoices.filter((v) => classifyVoice(v).gender === "male"),
+    ...indianVoices.filter((v) => classifyVoice(v).gender === "female"),
+    ...indianVoices.filter((v) => classifyVoice(v).gender === "unknown"),
+  ];
+
+  ordered.forEach((v) => {
+    if (seen.has(v.voiceURI)) return;
+    seen.add(v.voiceURI);
+    const { gender } = classifyVoice(v);
+    const langLabel = v.lang?.toLowerCase().startsWith("hi") ? "Hindi" : "Indian English";
+    const genderLabel = gender === "male" ? "Male" : gender === "female" ? "Female" : "";
+    options.push({
+      id: v.voiceURI,
+      label: [langLabel, genderLabel].filter(Boolean).join(" — ") || v.name,
+      voiceURI: v.voiceURI,
+      preview: v.name,
+    });
+  });
+
+  return options.slice(0, 6);
+}
 
 const REPLY_META = {
   "About Aksan": { icon: Building2, tint: "from-sky-500 to-sky-600" },
@@ -87,14 +135,56 @@ function typingDelayFor(flow) {
 
 /* ============================================================
   GLOBAL SPEECH ENGINE
-  A single shared controller so "speak page", "speak selection",
-  and "speak this message" all drive the same Pause/Play/Stop bar.
   ============================================================ */
 function useSpeechEngine() {
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
-  const [activeSourceId, setActiveSourceId] = useState(null); // "page" | "selection" | message id | null
+  const [activeSourceId, setActiveSourceId] = useState(null);
+  const [voices, setVoices] = useState([]);
+  const [selectedVoiceURI, setSelectedVoiceURI] = useState("default");
   const utterRef = useRef(null);
+  const selectedVoiceRef = useRef("default");
+
+  useEffect(() => {
+    selectedVoiceRef.current = selectedVoiceURI;
+  }, [selectedVoiceURI]);
+
+  useEffect(() => {
+    if (typeof window === "undefined" || !window.speechSynthesis) return;
+
+    const loadVoices = () => {
+      const list = window.speechSynthesis.getVoices();
+      if (list && list.length) {
+        setVoices(list);
+      }
+    };
+
+    loadVoices();
+    window.speechSynthesis.addEventListener("voiceschanged", loadVoices);
+
+    try {
+      const saved = window.localStorage.getItem(SITE_VOICE_STORAGE_KEY);
+      if (saved) {
+        setSelectedVoiceURI(saved);
+        selectedVoiceRef.current = saved;
+      }
+    } catch {
+      // ignore
+    }
+
+    return () => {
+      window.speechSynthesis.removeEventListener("voiceschanged", loadVoices);
+    };
+  }, []);
+
+  const chooseVoice = useCallback((voiceURI) => {
+    setSelectedVoiceURI(voiceURI);
+    try {
+      window.localStorage.setItem(SITE_VOICE_STORAGE_KEY, voiceURI);
+    } catch {
+      // ignore
+    }
+  }, []);
 
   const speak = useCallback((text, sourceId) => {
     if (typeof window === "undefined" || !window.speechSynthesis) return;
@@ -105,6 +195,14 @@ function useSpeechEngine() {
     const utter = new SpeechSynthesisUtterance(text);
     utter.rate = 1;
     utter.pitch = 1;
+
+    const chosenURI = selectedVoiceRef.current;
+    if (chosenURI && chosenURI !== "default") {
+      const list = window.speechSynthesis.getVoices();
+      const match = list.find((v) => v.voiceURI === chosenURI);
+      if (match) utter.voice = match;
+    }
+
     utter.onend = () => {
       setIsSpeaking(false);
       setIsPaused(false);
@@ -155,7 +253,18 @@ function useSpeechEngine() {
     };
   }, []);
 
-  return { isSpeaking, isPaused, activeSourceId, speak, pause, resume, stop };
+  return {
+    isSpeaking,
+    isPaused,
+    activeSourceId,
+    speak,
+    pause,
+    resume,
+    stop,
+    voices,
+    selectedVoiceURI,
+    chooseVoice,
+  };
 }
 
 export default function VoiceWidget() {
@@ -191,7 +300,6 @@ export default function VoiceWidget() {
     return el;
   }, [targetMissing]);
 
-  // Restore saved font choice on mount
   useEffect(() => {
     try {
       const saved = window.localStorage.getItem(SITE_FONT_STORAGE_KEY);
@@ -199,7 +307,7 @@ export default function VoiceWidget() {
         setSiteFont(saved);
       }
     } catch {
-      // localStorage unavailable — ignore, default stands
+      // ignore
     }
   }, []);
 
@@ -223,7 +331,6 @@ export default function VoiceWidget() {
     target.classList.toggle("a11y-mono", monochrome);
   }, [fontSize, lineHeight, readableFont, letterSpacing, lightContrast, highContrast, monochrome, getTarget]);
 
-  // Apply chosen site font
   useEffect(() => {
     const target = getTarget();
     if (!target) return;
@@ -252,7 +359,6 @@ export default function VoiceWidget() {
     }
   }, [siteFont, getTarget]);
 
-  // "Speak" button -> speaks selected text if any, otherwise reads the whole page
   const handleSpeakPage = () => {
     const selection = window.getSelection();
     const selectedText = selection?.toString().trim();
@@ -291,6 +397,7 @@ export default function VoiceWidget() {
     setHighContrast(false);
     setMonochrome(false);
     setSiteFont("default");
+    speech.chooseVoice("default");
   };
 
   const [mounted, setMounted] = useState(false);
@@ -300,8 +407,6 @@ export default function VoiceWidget() {
   return createPortal(
     <>
       <style jsx global>{`
-        
-
         #page-content {
           transition: all 0.3s ease;
         }
@@ -344,7 +449,6 @@ export default function VoiceWidget() {
           to { opacity: 1; transform: translateY(0) scale(1); }
         }
 
-        /* ---- Chat widget motion & typing indicator ---- */
         @keyframes chatBubbleIn {
           from { opacity: 0; transform: translateY(10px) scale(0.97); }
           to { opacity: 1; transform: translateY(0) scale(1); }
@@ -400,6 +504,36 @@ export default function VoiceWidget() {
         .speakable-msg {
           cursor: pointer;
         }
+
+        /* Launcher stack: fixed at bottom-right, never grows/shrinks
+           because of sibling content — the chat panel is rendered
+           OUTSIDE this stack (see .chat-panel-anchor below), so the
+           launcher button/voice bar physically cannot be pushed. */
+        .launcher-stack {
+          position: fixed;
+          right: 1.5rem;
+          bottom: 1.5rem;
+        }
+
+        /* Chat panel anchor: positioned independently, anchored to
+           the same bottom-right corner, so it opens "above" the
+           launcher without being in the same flex flow. */
+        .chat-panel-anchor {
+          position: fixed;
+          right: 1.5rem;
+          bottom: 6rem;
+        }
+
+        @media (max-width: 640px) {
+          .chat-panel-anchor {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            right: auto;
+            bottom: auto;
+            transform: translate(-50%, -50%);
+          }
+        }
       `}</style>
 
       {/* Bottom-left accessibility icon */}
@@ -445,14 +579,17 @@ export default function VoiceWidget() {
           toolbarVisible={toolbarVisible}
           setToolbarVisible={setToolbarVisible}
           onReset={handleResetA11y}
+          voices={speech.voices}
+          selectedVoiceURI={speech.selectedVoiceURI}
+          chooseVoice={speech.chooseVoice}
         />
       )}
 
-      {/* Chatbot launcher + voice bar — single stack, bottom-right.
-          Voice bar sits directly ABOVE the chatbot launcher, and both
-          move together (no clumsy independent jumping) when chat opens. */}
+      {/* Launcher stack — STATIC position, always fixed bottom-right.
+          The chat panel is NOT a child of this stack anymore, so
+          opening it can never push this button around. */}
       <div
-        className="fixed bottom-6 right-6 flex flex-col items-end gap-2.5 sm:gap-3 voice-widget"
+        className="launcher-stack flex flex-col items-end gap-2.5 sm:gap-3 voice-widget"
         style={{ display: toolbarVisible ? "flex" : "none", zIndex: 2147483000 }}
       >
         {voiceBarVisible && (
@@ -489,11 +626,11 @@ export default function VoiceWidget() {
 
           <button
             onClick={() => {
-              setChatOpen(true);
+              setChatOpen((v) => !v);
               setShowCallout(false);
             }}
             className="relative flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[linear-gradient(145deg,#12457a,#0a2a4d)] shadow-[0_10px_30px_-8px_rgba(10,42,77,0.6)] hover:scale-105 active:scale-95 transition overflow-hidden p-0 shrink-0 ring-1 ring-white/10"
-            aria-label="Open chatbot"
+            aria-label={chatOpen ? "Close chatbot" : "Open chatbot"}
           >
             <span
               className="absolute inset-0 rounded-full ring-2 ring-orange-400/40"
@@ -509,23 +646,28 @@ export default function VoiceWidget() {
             />
           </button>
         </div>
-
-        {chatOpen && (
-          <ChatPanel
-            onClose={() => setChatOpen(false)}
-            speech={speech}
-          />
-        )}
       </div>
+
+      {/* Chat panel — rendered as its own fixed-position layer,
+          completely independent of the launcher stack above.
+          Opening/closing it can never move the launcher button. */}
+      {chatOpen && (
+        <div className="chat-panel-anchor voice-widget" style={{ zIndex: 2147483000 }}>
+          <ChatPanel onClose={() => setChatOpen(false)} speech={speech} centered={isMobileNow()} />
+        </div>
+      )}
     </>,
     document.body
   );
 }
 
+function isMobileNow() {
+  if (typeof window === "undefined") return false;
+  return window.innerWidth <= 640;
+}
+
 /* ============================================================
-  VOICE CONTROL BAR — modern floating pill with Cancel button
-  Collapses to icon-only ("compact") once chat is open, so it
-  stays slim and docked neatly above the chat launcher/panel.
+  VOICE CONTROL BAR
   ============================================================ */
 function VoiceControlBar({ compact, isSpeaking, isPaused, activeSourceId, onSpeak, onPause, onPlay, onStop, onDismiss }) {
   const active = isSpeaking || isPaused;
@@ -631,7 +773,7 @@ function VoiceControlBar({ compact, isSpeaking, isPaused, activeSourceId, onSpea
 }
 
 /* ============================================================
-  BOT FLOW — unchanged from client-approved FAQ content
+  BOT FLOW
   ============================================================ */
 const TOPICS = [
   "About Aksan",
@@ -888,7 +1030,7 @@ function getTime() {
 }
 
 /* ============================================================
-  ACCESSIBILITY PANEL — includes Site Font picker
+  ACCESSIBILITY PANEL
   ============================================================ */
 function AccessibilityPanel({
   onClose,
@@ -911,13 +1053,22 @@ function AccessibilityPanel({
   toolbarVisible,
   setToolbarVisible,
   onReset,
+  voices,
+  selectedVoiceURI,
+  chooseVoice,
 }) {
   const [visible, setVisible] = useState(false);
   const [fontPickerOpen, setFontPickerOpen] = useState(false);
+  const [voicePickerOpen, setVoicePickerOpen] = useState(false);
   useEffect(() => {
     const id = requestAnimationFrame(() => setVisible(true));
     return () => cancelAnimationFrame(id);
   }, []);
+
+  const voiceOptions = buildVoiceOptions(voices);
+  const activeVoiceOption =
+    voiceOptions.find((v) => v.id === selectedVoiceURI) || voiceOptions[0];
+  const hasIndianVoices = voiceOptions.length > 1;
 
   const contentModules = [
     {
@@ -1063,7 +1214,6 @@ function AccessibilityPanel({
         </div>
 
         <div className="px-4 sm:px-5 py-4 sm:py-5 overflow-y-auto flex-1 [scrollbar-width:thin]">
-          {/* Site Font picker */}
           <div className="bg-slate-50/70 rounded-2xl p-3.5 sm:p-4 mb-3.5 sm:mb-4 ring-1 ring-slate-100">
             <h3 className="text-slate-400 font-bold text-[10px] sm:text-[11px] tracking-widest uppercase mb-2.5 sm:mb-3 px-0.5">
               Site Font
@@ -1131,6 +1281,72 @@ function AccessibilityPanel({
                     </button>
                   );
                 })}
+              </div>
+            )}
+          </div>
+
+          <div className="bg-slate-50/70 rounded-2xl p-3.5 sm:p-4 mb-3.5 sm:mb-4 ring-1 ring-slate-100">
+            <h3 className="text-slate-400 font-bold text-[10px] sm:text-[11px] tracking-widest uppercase mb-2.5 sm:mb-3 px-0.5">
+              Read-Aloud Voice
+            </h3>
+            <button
+              onClick={() => setVoicePickerOpen((v) => !v)}
+              className="w-full flex items-center justify-between bg-white rounded-xl px-3.5 sm:px-4 py-3 shadow-sm ring-1 ring-slate-100 hover:ring-slate-200 transition-all"
+            >
+              <span className="flex items-center gap-2.5 min-w-0">
+                <span className="flex items-center justify-center w-8 h-8 rounded-full bg-[#0f3a66]/10 text-[#0f3a66] shrink-0">
+                  <Mic size={15} strokeWidth={2.1} />
+                </span>
+                <span className="text-slate-700 text-[13px] sm:text-sm font-medium truncate">
+                  {activeVoiceOption.label}
+                </span>
+              </span>
+              <svg
+                viewBox="0 0 24 24"
+                width="14"
+                height="14"
+                className={`text-slate-400 transition-transform shrink-0 ${voicePickerOpen ? "rotate-180" : ""}`}
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.2"
+              >
+                <path d="M6 9l6 6 6-6" />
+              </svg>
+            </button>
+
+            {voicePickerOpen && (
+              <div className="mt-2 sm:mt-2.5 grid grid-cols-1 gap-1.5 max-h-[220px] overflow-y-auto pr-0.5 [scrollbar-width:thin]">
+                {voiceOptions.map((opt) => {
+                  const isActive = opt.id === selectedVoiceURI;
+                  return (
+                    <button
+                      key={opt.id}
+                      onClick={() => {
+                        chooseVoice(opt.id);
+                        setVoicePickerOpen(false);
+                      }}
+                      className={`flex items-center justify-between rounded-lg px-3 py-2.5 transition-all text-left ${
+                        isActive
+                          ? "bg-[#0f3a66] text-white"
+                          : "bg-white text-slate-600 ring-1 ring-slate-100 hover:ring-slate-200 hover:bg-slate-50"
+                      }`}
+                    >
+                      <span className="flex flex-col min-w-0">
+                        <span className="text-[12.5px] sm:text-[13px] font-medium truncate">{opt.label}</span>
+                        <span className={`text-[10.5px] truncate ${isActive ? "text-white/60" : "text-slate-400"}`}>
+                          {opt.preview}
+                        </span>
+                      </span>
+                      {isActive && <Check size={14} strokeWidth={2.5} className="shrink-0 text-orange-300 ml-2" />}
+                    </button>
+                  );
+                })}
+                {!hasIndianVoices && (
+                  <p className="text-[11px] text-slate-400 px-1 pt-1 leading-snug">
+                    No Indian voices were found on this device/browser. Try Chrome or Edge on
+                    Windows or Android for more options.
+                  </p>
+                )}
               </div>
             )}
           </div>
@@ -1270,10 +1486,8 @@ function AccessibilityPanel({
 
 /* ============================================================
   CHAT PANEL
-  - Clicking a message bubble selects it and speaks ONLY that text.
-  - Re-clicking the same bubble toggles pause/resume.
   ============================================================ */
-function ChatPanel({ onClose, speech }) {
+function ChatPanel({ onClose, speech, centered }) {
   const [message, setMessage] = useState("");
   const [isTyping, setIsTyping] = useState(false);
   const [selectedMsgId, setSelectedMsgId] = useState(null);
@@ -1346,7 +1560,6 @@ function ChatPanel({ onClose, speech }) {
     setMessages((prev) => prev.slice(0, 1));
   };
 
-  // Click a message bubble: select it AND speak only that message's text
   const selectAndSpeakMessage = (id, text) => {
     if (selectedMsgId === id && speech.activeSourceId === id) {
       if (speech.isSpeaking && !speech.isPaused) {
@@ -1362,7 +1575,9 @@ function ChatPanel({ onClose, speech }) {
   };
 
   return (
-    <div className="chat-panel-in fixed bottom-20 sm:bottom-24 right-4 sm:right-6 w-[calc(100vw-2rem)] sm:w-[400px] h-[540px] sm:h-[640px] max-w-[400px] rounded-[22px] sm:rounded-[26px] shadow-[0_30px_70px_-15px_rgba(6,20,38,0.55)] ring-1 ring-black/[0.06] overflow-hidden flex flex-col relative bg-[#f7f9fc] voice-widget">
+    <div
+      className={`chat-panel-in w-[calc(100vw-2rem)] sm:w-[400px] h-[540px] sm:h-[640px] max-w-[400px] rounded-[22px] sm:rounded-[26px] shadow-[0_30px_70px_-15px_rgba(6,20,38,0.55)] ring-1 ring-black/[0.06] overflow-hidden flex flex-col relative bg-[#f7f9fc]`}
+    >
       <div
         className="relative z-10 px-4 sm:px-5 pt-4 sm:pt-5 pb-4 sm:pb-5 flex items-center justify-between shrink-0 overflow-hidden"
         style={{

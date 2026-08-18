@@ -74,6 +74,7 @@ export default function ContactUs() {
     agree: false,
   });
   const [status, setStatus] = useState("idle");
+  const [errorMsg, setErrorMsg] = useState("");
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -84,20 +85,45 @@ export default function ContactUs() {
     e.preventDefault();
     if (!form.agree) return;
     setStatus("submitting");
+    setErrorMsg("");
+
     try {
-      await new Promise((res) => setTimeout(res, 900));
-      setStatus("success");
-      setForm({
-        fullName: "",
-        email: "",
-        phone: "",
-        company: "",
-        subject: "",
-        message: "",
-        agree: false,
+      const res = await fetch("https://api.crazystory.in/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: form.fullName,
+          email: form.email,
+          phone: form.phone,
+          company_name: form.company,
+          service: form.subject,
+          message: form.message,
+          agree: form.agree,
+        }),
       });
+
+      const data = await res.json();
+
+      if (res.ok && data.success) {
+        setStatus("success");
+        setForm({
+          fullName: "",
+          email: "",
+          phone: "",
+          company: "",
+          subject: "",
+          message: "",
+          agree: false,
+        });
+      } else {
+        setStatus("error");
+        setErrorMsg(data.message || "Something went wrong. Please try again.");
+      }
     } catch (err) {
       setStatus("error");
+      setErrorMsg("Network error. Please check your connection and try again.");
     }
   };
 
@@ -311,7 +337,7 @@ export default function ContactUs() {
               )}
               {status === "error" && (
                 <p className="text-sm font-medium text-red-600" style={{ fontFamily: "'Noto Sans', sans-serif" }}>
-                  Something went wrong. Please try again.
+                  {errorMsg || "Something went wrong. Please try again."}
                 </p>
               )}
             </form>
@@ -347,7 +373,7 @@ export default function ContactUs() {
               <ContactItem
                 icon={Clock}
                 label="Business Hours"
-                lines={["Monday - Friday", "9:30 AM - 6:30 PM"]}
+                lines={["Monday - Friday", "10 AM - 8 PM"]}
               />
             </div>
           </motion.div>

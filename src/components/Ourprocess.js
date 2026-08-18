@@ -12,36 +12,11 @@ const notoSans = Noto_Sans({
 });
 
 const steps = [
-  {
-    icon: Heart,
-    number: "01",
-    title: "Understand",
-    desc: "We analyze your goals and financial needs.",
-  },
-  {
-    icon: Compass,
-    number: "02",
-    title: "Strategize",
-    desc: "We create a customized investment strategy.",
-  },
-  {
-    icon: Wrench,
-    number: "03",
-    title: "Implement",
-    desc: "We execute the strategy with precision.",
-  },
-  {
-    icon: Gauge,
-    number: "04",
-    title: "Monitor",
-    desc: "We continuously track and optimise.",
-  },
-  {
-    icon: Sprout,
-    number: "05",
-    title: "Grow",
-    desc: "We help you achieve sustainable growth.",
-  },
+  { icon: Heart, number: "01", title: "Understand", desc: "We analyze your goals and financial needs." },
+  { icon: Compass, number: "02", title: "Strategize", desc: "We create a customized investment strategy." },
+  { icon: Wrench, number: "03", title: "Implement", desc: "We execute the strategy with precision." },
+  { icon: Gauge, number: "04", title: "Monitor", desc: "We continuously track and optimise." },
+  { icon: Sprout, number: "05", title: "Grow", desc: "We help you achieve sustainable growth." },
 ];
 
 export default function OurProcess() {
@@ -56,7 +31,6 @@ export default function OurProcess() {
 
   const textY = useTransform(scrollYProgress, [0, 1], [40, -40]);
 
-  // Track which mobile card is centered, to drive the progress rail + counter
   useEffect(() => {
     const track = trackRef.current;
     if (!track) return;
@@ -73,10 +47,7 @@ export default function OurProcess() {
           }
         });
       },
-      {
-        root: track,
-        threshold: 0.6,
-      }
+      { root: track, threshold: 0.6 }
     );
 
     cards.forEach((card) => observer.observe(card));
@@ -88,7 +59,7 @@ export default function OurProcess() {
     if (!track) return;
     const card = track.querySelectorAll("[data-process-card]")[idx];
     if (card) {
-      card.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+      card.scrollIntoView({ behavior: "smooth", inline: "start", block: "nearest" });
     }
   };
 
@@ -116,9 +87,9 @@ export default function OurProcess() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.5 }}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-4xl xl:text-4xl font-bold text-slate-900 leading-tight mb-0  mx-auto"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-4xl xl:text-4xl font-bold text-slate-900 leading-tight mb-0 mx-auto"
           >
-            A Proven Approach to Your <span className="text-[#0f4475]">Financial Success</span> 
+            A Proven Approach to Your <span className="text-[#0f4475]">Financial Success</span>
           </motion.h2>
         </motion.div>
 
@@ -126,7 +97,7 @@ export default function OurProcess() {
         <div className="lg:hidden">
           <div
             ref={trackRef}
-            className="flex overflow-x-auto snap-x snap-mandatory gap-4 sm:gap-5 pb-4 -mx-4 px-4 sm:-mx-6 sm:px-6 scrollbar-hide"
+            className="flex overflow-x-auto snap-x snap-mandatory gap-4 sm:gap-5 pb-4 -mx-4 px-4 sm:-mx-6 sm:px-6 [&::-webkit-scrollbar]:hidden"
             style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
           >
             {steps.map((step, index) => (
@@ -137,21 +108,13 @@ export default function OurProcess() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
-                transition={{
-                  duration: 0.5,
-                  ease: [0.22, 1, 0.36, 1],
-                  delay: index * 0.08,
-                }}
-                className="relative shrink-0 snap-center w-[78%] xs:w-[72%] sm:w-[46%] first:ml-0"
+                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: index * 0.08 }}
+                className="relative shrink-0 snap-start w-[62%] xs:w-[58%] sm:w-[42%] first:ml-0"
               >
                 <div className="relative h-full rounded-[28px] bg-white border border-slate-200/70 shadow-[0_8px_30px_-12px_rgba(15,42,86,0.18)] px-6 py-7 sm:px-7 sm:py-8 overflow-hidden">
-                  {/* Oversized ghost numeral */}
                   <span
                     className="pointer-events-none absolute -top-3 -right-2 text-[88px] sm:text-[100px] font-bold leading-none select-none"
-                    style={{
-                      WebkitTextStroke: "1px rgba(30,64,120,0.14)",
-                      color: "transparent",
-                    }}
+                    style={{ WebkitTextStroke: "1px rgba(30,64,120,0.14)", color: "transparent" }}
                   >
                     {step.number}
                   </span>
@@ -179,7 +142,6 @@ export default function OurProcess() {
             ))}
           </div>
 
-          {/* Progress rail */}
           <div className="flex items-center justify-center gap-2 mt-6">
             {steps.map((step, index) => (
               <button
@@ -213,11 +175,7 @@ export default function OurProcess() {
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.4 }}
-                transition={{
-                  duration: 0.5,
-                  ease: [0.22, 1, 0.36, 1],
-                  delay: index * 0.12,
-                }}
+                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: index * 0.12 }}
                 whileHover={{ y: -4 }}
                 className="flex flex-col items-center w-[130px] xl:w-[150px]"
               >
@@ -227,9 +185,7 @@ export default function OurProcess() {
                 <h3 className="text-blue-900 font-bold text-base mb-1.5 whitespace-nowrap">
                   <span className="text-blue-500">{step.number}.</span> {step.title}
                 </h3>
-                <p className="text-slate-500 text-sm leading-snug text-center">
-                  {step.desc}
-                </p>
+                <p className="text-slate-500 text-sm leading-snug text-center">{step.desc}</p>
               </motion.div>
 
               {index < steps.length - 1 && (
@@ -241,7 +197,7 @@ export default function OurProcess() {
                   className="flex items-center pt-4 mx-2 xl:mx-3"
                 >
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="text-slate-300 w-5 h-5 min-w-[18px] min-h-[18px]">
-                    <path d="M9 18l6-6-6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M9 18l6-6-6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </motion.div>
               )}
@@ -249,12 +205,6 @@ export default function OurProcess() {
           ))}
         </div>
       </div>
-
-      <style jsx global>{`
-        .scrollbar-hide::-webkit-scrollbar {
-          display: none;
-        }
-      `}</style>
     </section>
   );
 }

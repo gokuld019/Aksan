@@ -2,8 +2,8 @@
 
 import { useRef, useState } from "react";
 import Image from "next/image";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
+import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
 import { Noto_Sans } from "next/font/google";
 
 const notoSans = Noto_Sans({
@@ -19,6 +19,12 @@ const partners = [
   { name: "PhantomFX", logo: "/client/phantom.jpg" },
   { name: "SPEL", logo: "/client/spel.jpg" },
   { name: "Basilic Fly", logo: "/client/basilicfly.jpg" },
+  { name: "Thaai Casting", logo: "/client/thaicasting.jpg" },
+  { name: "AVP Infracon", logo: "/client/avp.jpg" },
+  { name: "Sathlokhar", logo: "/client/sathlokar.jpg" },
+  { name: "Freshara Agro", logo: "/client/freshara.jpg" },
+  { name: "Happy Square", logo: "/client/whiteforce.jpg" },
+  { name: "AFCOM Holdings", logo: "/client/afcom.jpg" },
 ];
 
 const testimonials = [
@@ -106,162 +112,204 @@ const testimonials = [
 
 export default function PartnersAndTestimonial() {
   const [active, setActive] = useState(0);
+  const [direction, setDirection] = useState(1);
   const sectionRef = useRef(null);
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"],
   });
+  const fade = useTransform(scrollYProgress, [0, 0.15], [0, 1]);
 
-  const leftY = useTransform(scrollYProgress, [0, 1], [30, -30]);
-  const rightY = useTransform(scrollYProgress, [0, 1], [-30, 30]);
-
-  const prev = () =>
-    setActive((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1));
-  const next = () =>
-    setActive((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
+  const prev = () => {
+    setDirection(-1);
+    setActive((p) => (p === 0 ? testimonials.length - 1 : p - 1));
+  };
+  const next = () => {
+    setDirection(1);
+    setActive((p) => (p === testimonials.length - 1 ? 0 : p + 1));
+  };
+  const goTo = (i) => {
+    setDirection(i > active ? 1 : -1);
+    setActive(i);
+  };
 
   const testimonial = testimonials[active];
 
   return (
     <section
       ref={sectionRef}
-      className={`bg-slate-50 py-6 sm:py-8 ${notoSans.className}`}
+      className={`relative bg-white py-12 sm:py-16 lg:py-20 overflow-hidden ${notoSans.className}`}
     >
-      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col lg:flex-row gap-4 sm:gap-5">
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{
+          backgroundImage:
+            "radial-gradient(circle at 15% 10%, rgba(242,98,46,0.06), transparent 40%), radial-gradient(circle at 90% 80%, rgba(11,42,77,0.05), transparent 45%)",
+        }}
+      />
+      <div
+        className="pointer-events-none absolute inset-0 opacity-[0.35]"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(15,23,42,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(15,23,42,0.04) 1px, transparent 1px)",
+          backgroundSize: "40px 40px",
+        }}
+      />
 
-          {/* Left: Our Partners - 3 columns x 2 rows */}
-          <motion.div
-            style={{ y: leftY }}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            className="flex flex-col w-full lg:w-[48%] bg-white rounded-2xl shadow-sm p-4 sm:p-5"
-          >
-            <motion.p
-              initial={{ opacity: 0, y: 12 }}
+      <div className="relative max-w-[1300px] mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Heading */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.4 }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-8 sm:mb-12 lg:mb-14"
+        >
+          <span className="inline-flex items-center gap-2 text-orange-500 text-[11px] sm:text-sm font-bold tracking-[0.2em] sm:tracking-[0.25em]">
+            <span className="w-4 sm:w-6 h-px bg-orange-400" />
+            TRUSTED BY INDUSTRY LEADERS
+            <span className="w-4 sm:w-6 h-px bg-orange-400" />
+          </span>
+          <h2 className="mt-3 sm:mt-4 text-xl sm:text-2xl md:text-3xl lg:text-[2.5rem] font-bold text-[#0b2a4d] tracking-tight leading-tight px-2">
+            Backed by Growth. <span className="text-orange-500">Proven</span> in Results.
+          </h2>
+        </motion.div>
+
+        {/* Logo grid */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6 }}
+          className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5 sm:gap-4 mb-10 sm:mb-16 lg:mb-20"
+        >
+          {partners.map((partner, i) => (
+            <motion.div
+              key={partner.name}
+              initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.4 }}
-              transition={{ duration: 0.5 }}
-              className="text-orange-500 font-bold text-center text-xs sm:text-sm tracking-widest mb-3 sm:mb-4"
+              transition={{ duration: 0.4, delay: i * 0.04, ease: [0.22, 1, 0.36, 1] }}
+              whileHover={{ y: -4 }}
+              className="group relative flex items-center justify-center aspect-[4/3] rounded-xl sm:rounded-2xl bg-white ring-1 ring-slate-200 hover:ring-orange-300 p-3 sm:p-4 lg:p-5 transition-all duration-300 hover:shadow-[0_20px_40px_-16px_rgba(242,98,46,0.35)]"
             >
-              OUR PARTNERS
-            </motion.p>
+              <Image
+                src={partner.logo}
+                alt={partner.name}
+                width={140}
+                height={90}
+                className="max-w-full max-h-full object-contain transition-transform duration-300 group-hover:scale-105"
+              />
+            </motion.div>
+          ))}
+        </motion.div>
 
-            <div className="grid grid-cols-3 gap-2.5 sm:gap-3">
-              {partners.map((partner, i) => (
-                <motion.div
-                  key={partner.name}
-                  initial={{ opacity: 0, y: 16 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.4 }}
-                  transition={{ duration: 0.4, delay: i * 0.05, ease: [0.22, 1, 0.36, 1] }}
-                  whileHover={{ y: -2 }}
-                  className="flex items-center justify-center aspect-[3/2] border border-slate-200 rounded-lg p-3 sm:p-4 hover:border-orange-300 hover:shadow-sm transition-[border-color,box-shadow] duration-300"
-                >
-                  <Image
-                    src={partner.logo}
-                    alt={partner.name}
-                    width={140}
-                    height={80}
-                    className="max-w-full max-h-full object-contain"
-                  />
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-
-          {/* Right: Testimonial - 52% */}
-          <motion.div
-            style={{ y: rightY }}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
-            className="relative flex flex-col w-full lg:w-[52%] rounded-2xl overflow-hidden min-h-[260px] sm:min-h-[280px]"
-          >
-            <Image
-              src={testimonial.image}
-              alt={testimonial.name}
-              fill
-              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 52vw"
-              className="object-cover"
+        {/* Testimonial spotlight — compact & responsive */}
+        <motion.div
+          style={{ opacity: fade }}
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6 }}
+          className="relative max-w-[640px] mx-auto"
+        >
+          <div className="relative rounded-2xl sm:rounded-[24px] bg-gradient-to-br from-[#0b2a4d] to-[#081b32] px-5 sm:px-8 lg:px-10 py-7 sm:py-9 lg:py-10 overflow-hidden shadow-[0_20px_50px_-20px_rgba(11,42,77,0.45)]">
+            <div
+              className="pointer-events-none absolute -top-12 -left-12 w-40 h-40 rounded-full opacity-25 blur-3xl"
+              style={{ background: "radial-gradient(circle, #f2622e, transparent 70%)" }}
             />
             <div
-              className="absolute inset-0"
+              className="pointer-events-none absolute -bottom-12 -right-12 w-40 h-40 rounded-full opacity-20 blur-3xl"
+              style={{ background: "radial-gradient(circle, #38bdf8, transparent 70%)" }}
+            />
+            <div
+              className="pointer-events-none absolute inset-0 opacity-[0.05]"
               style={{
-                background:
-                  "linear-gradient(100deg, rgba(11,42,77,0.94) 0%, rgba(11,42,77,0.82) 45%, rgba(11,42,77,0.35) 100%)",
+                backgroundImage:
+                  "linear-gradient(rgba(255,255,255,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.6) 1px, transparent 1px)",
+                backgroundSize: "22px 22px",
               }}
             />
 
-            <div className="relative z-10 flex flex-col justify-between h-full p-5 sm:p-6">
-              <div className="flex flex-col flex-1 justify-center">
-                <span className="text-orange-500 text-4xl sm:text-5xl font-serif leading-none mb-1">
-                  &rdquo;
-                </span>
+            <span className="relative flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-orange-500/15 ring-1 ring-orange-400/30 mx-auto mb-4 sm:mb-5">
+              <Quote className="w-4 h-4 sm:w-5 sm:h-5 text-orange-400" fill="currentColor" />
+            </span>
 
-                <div>
-                  <p className="text-orange-400 font-bold text-sm sm:text-base mb-2">
-                    {testimonial.tag}
-                  </p>
-                  <p className="text-slate-100 text-sm sm:text-[15px] leading-relaxed line-clamp-5">
-                    {testimonial.quote}
-                  </p>
-                </div>
+            <AnimatePresence mode="wait" custom={direction}>
+              <motion.div
+                key={active}
+                custom={direction}
+                initial={{ opacity: 0, x: direction > 0 ? 24 : -24 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: direction > 0 ? -24 : 24 }}
+                transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                className="relative text-center"
+              >
+                <p className="text-orange-400 font-bold text-xs sm:text-sm mb-2.5 sm:mb-3 tracking-wide">
+                  {testimonial.tag}
+                </p>
+                <p className="text-slate-100 text-sm sm:text-base lg:text-lg leading-relaxed font-medium line-clamp-5 sm:line-clamp-4">
+                  &ldquo;{testimonial.quote}&rdquo;
+                </p>
 
-                <div className="mt-3 sm:mt-4">
-                  <p className="text-white font-bold text-sm sm:text-base">
-                    {testimonial.name}
-                  </p>
-                  <p className="text-slate-300 text-xs sm:text-sm mt-0.5">
-                    {testimonial.role}
-                  </p>
+                <div className="mt-5 sm:mt-7 flex flex-col items-center gap-2 sm:gap-2.5">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center text-white font-bold text-xs sm:text-sm ring-4 ring-white/10">
+                    {testimonial.name
+                      .split(" ")
+                      .map((w) => w[0])
+                      .slice(0, 2)
+                      .join("")}
+                  </div>
+                  <div>
+                    <p className="text-white font-bold text-sm sm:text-base">
+                      {testimonial.name}
+                    </p>
+                    <p className="text-slate-300 text-xs sm:text-sm mt-0.5">
+                      {testimonial.role}
+                    </p>
+                  </div>
                 </div>
+              </motion.div>
+            </AnimatePresence>
+
+            {/* Navigation */}
+            <div className="relative flex items-center justify-center gap-2.5 sm:gap-3.5 mt-6 sm:mt-8">
+              <motion.button
+                onClick={prev}
+                aria-label="Previous testimonial"
+                whileHover={{ scale: 1.08 }}
+                whileTap={{ scale: 0.94 }}
+                className="flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white/5 ring-1 ring-white/15 text-white hover:bg-white/10 transition shrink-0"
+              >
+                <ChevronLeft className="w-4 h-4" />
+              </motion.button>
+
+              <div className="flex items-center gap-1.5 overflow-x-auto max-w-[160px] sm:max-w-none px-1 [scrollbar-width:none]">
+                {testimonials.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => goTo(i)}
+                    aria-label={`Go to testimonial ${i + 1}`}
+                    className={`h-1.5 rounded-full transition-all shrink-0 ${
+                      i === active ? "w-6 bg-orange-500" : "w-1.5 bg-white/20 hover:bg-white/40"
+                    }`}
+                  />
+                ))}
               </div>
 
-              <div className="flex items-center justify-between mt-4 pt-3 border-t border-white/10">
-                <div className="flex items-center gap-1.5">
-                  {testimonials.map((_, i) => (
-                    <button
-                      key={i}
-                      onClick={() => setActive(i)}
-                      aria-label={`Go to testimonial ${i + 1}`}
-                      className={`h-1.5 rounded-full transition-all ${
-                        i === active
-                          ? "w-6 bg-orange-500"
-                          : "w-1.5 bg-white/40 hover:bg-white/60"
-                      }`}
-                    />
-                  ))}
-                </div>
-
-                <div className="flex gap-2">
-                  <motion.button
-                    onClick={prev}
-                    aria-label="Previous testimonial"
-                    whileHover={{ scale: 1.08 }}
-                    whileTap={{ scale: 0.94 }}
-                    className="flex items-center justify-center w-8 h-8 rounded-full border border-white/40 text-white hover:bg-white/10 transition"
-                  >
-                    <ChevronLeft className="w-4 h-4" />
-                  </motion.button>
-                  <motion.button
-                    onClick={next}
-                    aria-label="Next testimonial"
-                    whileHover={{ scale: 1.08 }}
-                    whileTap={{ scale: 0.94 }}
-                    className="flex items-center justify-center w-8 h-8 rounded-full border border-white/40 text-white hover:bg-white/10 transition"
-                  >
-                    <ChevronRight className="w-4 h-4" />
-                  </motion.button>
-                </div>
-              </div>
+              <motion.button
+                onClick={next}
+                aria-label="Next testimonial"
+                whileHover={{ scale: 1.08 }}
+                whileTap={{ scale: 0.94 }}
+                className="flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-orange-500 text-white hover:bg-orange-600 shadow-[0_10px_24px_-8px_rgba(242,98,46,0.6)] transition shrink-0"
+              >
+                <ChevronRight className="w-4 h-4" />
+              </motion.button>
             </div>
-          </motion.div>
-        </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

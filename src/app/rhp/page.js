@@ -169,26 +169,26 @@ function DocumentCard({ doc, index }) {
       className="relative flex h-full flex-col rounded-xl border border-slate-100 bg-white p-6 pt-7 shadow-sm"
     >
       {/* Number badge */}
-      <span
+      {/* <span
         className="absolute -top-3 -left-3 flex h-8 w-8 items-center justify-center rounded-lg text-xs font-bold text-white"
         style={{ backgroundColor: NAVY }}
       >
         {doc.number}
-      </span>
+      </span> */}
 
       {/* Logo + name — fixed heights so every card lines up */}
-      <div className="flex items-start gap-3.5">
-        <div className="relative flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-md bg-slate-50">
+      <div className="flex items-start gap-4">
+        <div className="relative flex h-16 w-16 shrink-0 items-center justify-center overflow-hidden rounded-lg border border-slate-100 bg-white">
           <Image
             src={doc.logo}
             alt={doc.name}
             fill
-            className="object-contain p-1.5"
-            sizes="44px"
+            className="object-contain p-1"
+            sizes="64px"
           />
         </div>
         <h3
-          className="min-h-[36px] text-sm font-bold leading-snug pt-1"
+          className="min-h-[36px] text-sm font-bold leading-snug pt-1.5"
           style={{ color: NAVY, fontFamily: "'Noto Sans', sans-serif" }}
         >
           {doc.name}

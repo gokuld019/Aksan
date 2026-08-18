@@ -64,11 +64,13 @@ export default function Navbar() {
       document.body.style.overflow = "";
     };
   }, [mobileOpen]);
-
-  // Add Gallery to pages with static blue background
-  const isAboutPage = pathname === "/About";
-  const isGalleryPage = pathname === "/Gallery";
-  const showSolidBg = scrolled || isAboutPage || isGalleryPage;
+// Add Gallery to pages with static blue background
+const isAboutPage = pathname === "/About";
+const isGalleryPage = pathname === "/Gallery";
+const isAwardSlugPage = pathname.startsWith("/awards/");
+const isprivacypolicy = pathname === "/Privacypolicy"
+const terms = pathname === "/Termsandcondition"
+const showSolidBg = scrolled || isAboutPage || isGalleryPage || isAwardSlugPage || isprivacypolicy || terms;
 
   return (
     <header

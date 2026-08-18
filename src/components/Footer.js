@@ -362,11 +362,11 @@ export default function Footer() {
             © Copyright {new Date().getFullYear()} AKSAN Capital Advisory Private Limited. All Rights Reserved.
           </p>
           <div className="flex items-center gap-3 xs:gap-4 sm:gap-5 flex-wrap justify-center order-1 sm:order-2">
-            <Link href="/privacy-policy" className="text-slate-400 hover:text-orange-400 transition-colors">
+            <Link href="/Privacypolicy" className="text-slate-400 hover:text-orange-400 transition-colors">
               Privacy Policy
             </Link>
             <span className="text-slate-600">|</span>
-            <Link href="/terms-and-condition" className="text-slate-400 hover:text-orange-400 transition-colors">
+            <Link href="/Termsandcondition" className="text-slate-400 hover:text-orange-400 transition-colors">
               Terms & Conditions
             </Link>
             <span className="hidden sm:inline text-slate-600">|</span>

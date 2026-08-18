@@ -81,7 +81,7 @@ export default function Hero() {
         variants={container}
         initial="hidden"
         animate="show"
-        className="w-full max-w-[1400px] mx-auto pt-20 xs:pt-24 sm:pt-28 md:pt-32 pb-10 xs:pb-12 sm:pb-16 px-4 xs:px-5 sm:px-6 md:px-8 lg:px-10 relative z-10"
+        className="w-full max-w-[1400px] mx-auto pt-0 xs:pt-24 sm:pt-28 md:pt-32 pb-10 xs:pb-12 sm:pb-16 px-4 xs:px-5 sm:px-6 md:px-8 lg:px-10 relative z-10"
       >
         <motion.p
           variants={item}

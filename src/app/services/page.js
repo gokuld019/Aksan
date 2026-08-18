@@ -220,8 +220,8 @@ export default function Services() {
       </section>
 
       {/* TRUSTED EXPERTISE SECTION */}
-      <section className="w-full bg-slate-50 pt-14 pb-14 sm:pt-20 sm:pb-16 px-5 sm:px-6 lg:px-8">
-        <div className="max-w-[1200px] mx-auto">
+      <section className="bg-slate-50 pt-14 pb-14 sm:pt-20 sm:pb-16 px-5 sm:px-6 lg:px-8">
+        <div className="max-w-[1400px] mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -300,13 +300,18 @@ export default function Services() {
               { icon: Clock, value: "20+", label: "Years of Excellence" },
               { icon: Award, value: "SEBI Registered", label: "Category-II Merchant Banker" },
             ].map(({ icon: Icon, value, label }, i) => (
-              <div key={label} className="flex flex-col items-center text-center gap-2 relative">
+              <div
+                key={label}
+                className={`flex flex-col items-center text-center gap-2 relative ${
+                  i === 4 ? "col-span-2 sm:col-span-1" : ""
+                }`}
+              >
                 {i !== 0 && (
                   <span className="hidden lg:block absolute left-[-8px] top-1/2 -translate-y-1/2 h-10 w-px bg-white/10" />
                 )}
                 <Icon size={22} className="text-orange-500 mb-1" strokeWidth={1.8} />
                 <span className="text-lg sm:text-2xl font-extrabold text-white leading-tight">{value}</span>
-                <span className="text-[10.5px] sm:text-xs text-slate-400 font-medium tracking-wide leading-tight">{label}</span>
+                <span className="text-[10.5px] sm:text-xs text-slate-400 font-medium tracking-wide leading-tight text-center">{label}</span>
               </div>
             ))}
           </motion.div>

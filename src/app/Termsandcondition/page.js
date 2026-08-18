@@ -80,17 +80,17 @@ const contactDetails = [
   {
     icon: Mail,
     label: "Email",
-    value: "compliance@aksan.in",
+    value: "info@aksan.in",
   },
   {
     icon: Phone,
     label: "Phone",
-    value: "+91 22 6917 8000",
+    value: "+91 93602 67233",
   },
   {
     icon: MapPin,
     label: "Address",
-    value: "A-601, One BKC, Bandra Kurla Complex, Bandra (E), Mumbai - 400051, India",
+    value: "28/27, Parvathy Apartments, 2nd Floor, Damodaran Street, T.Nagar, Chennai - 600 017, Tamil Nadu, India.",
   },
 ];
 

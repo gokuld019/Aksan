@@ -64,18 +64,32 @@ const values = [
   },
 ];
 
-const ceo = {
-  name: "Rajinikanth E S",
-  role: "Managing Director | CEO | Principal Officer",
-  bio: "Visionary leader with deep expertise in capital markets and strategic advisory. Driving responsible growth and long-term value creation for our clients and stakeholders.",
-  tags: [
-    { icon: Briefcase, label: "Leadership" },
-    { icon: TrendingUp, label: "Capital Markets" },
-    { icon: Target, label: "Strategy" },
-  ],
-  linkedin: "#",
-  photo: "/team/CEO2.jpg",
-};
+// Leadership cards — same tag set (Leadership / Capital Markets / Strategy) for each person.
+// Swap the bio placeholder for Savitha once you have real copy.
+const leadershipTags = [
+  { icon: Briefcase, label: "Leadership" },
+  { icon: TrendingUp, label: "Capital Markets" },
+  { icon: Target, label: "Strategy" },
+];
+
+const leadership = [
+  {
+    name: "Rajinikanth E S",
+    role: "Managing Director | CEO | Principal Officer",
+    bio: "Visionary leader with deep expertise in capital markets and strategic advisory. Driving responsible growth and long-term value creation for our clients and stakeholders.",
+    tags: leadershipTags,
+    linkedin: "#",
+    photo: "/team/CEO3.png",
+  },
+  {
+    name: "Savitha",
+    role: "Director",
+    bio: "Add a short bio describing this leader's expertise, focus areas, and the value they bring to AKSAN.",
+    tags: leadershipTags,
+    linkedin: "#",
+    photo: "/team/savitha.webp",
+  },
+];
 
 const coreTeam = [
   { name: "Nirmal K", role: "Senior-Financial Analyst", linkedin: "#", photo: "/team/nirmal-k.png" },
@@ -90,13 +104,13 @@ const coreTeam = [
   { name: "Viduthalai S", role: "GM - Financial Analyst", linkedin: "#", photo: "/team/vidu.png" },
   { name: "Shajathali S", role: "Associate Company Secretary", linkedin: "#", photo: "/team/shajathali-s.png" },
   { name: "Pinky Naveen H", role: "AGM - Financial Analyst", linkedin: "#", photo: "/team/pinky-naveen-h.png" },
-  { name: "Narayanan G", role: "Senior GM - Financial Analyst", linkedin: "#", photo: "/team/narayanan-g.png" },
+  { name: "Narayanan G", role: "Senior GM - Financial Analyst", linkedin: "#", photo: "/team/nara.jpeg" },
   { name: "Pugazhendhi P", role: "Senior - Financial Analyst", linkedin: "#", photo: "/team/pugazhendhi-p.png" },
   { name: "Indira AK", role: "AGM - Accounts & Finance", linkedin: "#", photo: "/team/indira-ak.png" },
   { name: "Satheesh Srinivasan", role: "Jr.Financial Analyst", linkedin: "#", photo: "/team/satheesh-srinivasan.png" },
   { name: "Sudarsana Rao K", role: "Admin Assistant", linkedin: "#", photo: "/team/sudarsana-rao-k.png" },
   { name: "Preeti Ankit Dedhiya", role: "Associate Vice President", linkedin: "#", photo: "/team/preeti.png" },
-  { name: "Khushboo", role: "CS cum Compliance Officer", linkedin: "#", photo: "/team/kushboo.png" },
+  { name: "Khushboo", role: "Company Secretary & Compliance Officer", linkedin: "#", photo: "/team/kushboo.png" },
 
   { name: "Piyush", role: "Associate Vice President ", linkedin: "#", photo: "/team/piyush.png" },
 
@@ -408,68 +422,78 @@ export default function About() {
             />
           </motion.div>
 
-          {/* Featured CEO Card */}
+          {/* Leadership Cards */}
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="relative bg-white rounded-2xl sm:rounded-3xl shadow-[0_20px_60px_-15px_rgba(21,34,73,0.15)] border border-gray-100 overflow-hidden mx-auto w-full md:w-[90%] lg:w-[70%] mb-12 xs:mb-14"
+            className="grid grid-cols-1 md:grid-cols-2 gap-6 xs:gap-7 sm:gap-8 max-w-6xl mx-auto mb-12 xs:mb-14"
           >
-            <div className="grid md:grid-cols-[minmax(0,420px)_1fr]">
-              {/* Photo */}
-              <div className="relative w-full aspect-[4/5] xs:aspect-[16/11] md:aspect-auto md:h-full min-h-[280px] xs:min-h-[320px] sm:min-h-[420px]">
-                <Image
-                  src={ceo.photo}
-                  alt={ceo.name}
-                  fill
-                  className="object-cover object-top"
-                  priority
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0b1a3a]/40 via-transparent to-transparent md:hidden" />
-              </div>
-
-              {/* Content */}
-              <div className="flex flex-col justify-center px-5 xs:px-6 sm:px-10 lg:px-14 py-7 xs:py-8 sm:py-12 text-center md:text-left items-center md:items-start">
-                <h3 className="text-xl xs:text-2xl sm:text-3xl lg:text-[34px] font-extrabold text-[#152249] mb-2 tracking-tight leading-[1.25]">
-                  {ceo.name}
-                </h3>
-                <p className="text-orange-600 font-semibold text-[12.5px] xs:text-[13.5px] sm:text-sm mb-4 leading-snug">
-                  {ceo.role}
-                </p>
-                <span className="block h-px w-14 bg-orange-500/60 mb-5" />
-                <p className="text-gray-600 text-[13px] xs:text-[13.5px] sm:text-[15px] leading-[1.7] xs:leading-[1.75] mb-6 xs:mb-7 sm:mb-8 max-w-md">
-                  {ceo.bio}
-                </p>
-
-                <div className="flex flex-wrap justify-center md:justify-start gap-5 xs:gap-6 sm:gap-8 mb-6 xs:mb-7 sm:mb-8">
-                  {ceo.tags.map(({ icon: Icon, label }) => (
-                    <div key={label} className="flex flex-col items-center gap-2">
-                      <span className="flex items-center justify-center w-10 h-10 xs:w-11 xs:h-11 rounded-full bg-[#152249]/[0.04] border border-[#152249]/10 text-[#152249]">
-                        <Icon size={18} className="xs:hidden" strokeWidth={1.8} />
-                        <Icon size={19} className="hidden xs:block" strokeWidth={1.8} />
-                      </span>
-                      <span className="text-[10.5px] xs:text-[11px] sm:text-xs font-medium text-gray-500 whitespace-nowrap">
-                        {label}
-                      </span>
-                    </div>
-                  ))}
+            {leadership.map((person, i) => (
+              <motion.div
+                key={person.name}
+                variants={fadeUp}
+                custom={i}
+                whileHover={{
+                  y: -6,
+                  boxShadow: "0 20px 60px -15px rgba(21,34,73,0.18)",
+                  transition: { duration: 0.3, ease: "easeOut" },
+                }}
+                className="relative bg-white rounded-2xl sm:rounded-3xl shadow-[0_20px_60px_-15px_rgba(21,34,73,0.15)] border border-gray-100 overflow-hidden flex flex-col"
+              >
+                {/* Photo */}
+                <div className="relative w-full aspect-[4/3.2] min-h-[260px] xs:min-h-[300px] sm:min-h-[340px]">
+                  <Image
+                    src={person.photo}
+                    alt={person.name}
+                    fill
+                    className="object-cover object-top"
+                  />
                 </div>
 
-                <motion.a
-                  whileHover={{ scale: 1.03, y: -2 }}
-                  whileTap={{ scale: 0.97 }}
-                  href={ceo.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2.5 bg-[#152249] hover:bg-[#0b1a3a] text-white font-semibold text-[12.5px] xs:text-[13px] sm:text-sm w-fit px-4 sm:px-5 py-2.5 sm:py-3 rounded-xl transition-colors"
-                >
-                  <LinkedinIcon />
-                  View on LinkedIn
-                  <ArrowRight size={15} />
-                </motion.a>
-              </div>
-            </div>
+                {/* Content */}
+                <div className="flex flex-col items-center text-center px-6 xs:px-7 sm:px-8 py-7 xs:py-8">
+                  <h3 className="text-xl xs:text-2xl font-extrabold text-[#152249] mb-1.5 tracking-tight leading-[1.25]">
+                    {person.name}
+                  </h3>
+                  <p className="text-orange-600 font-semibold text-[12.5px] xs:text-[13.5px] sm:text-sm mb-4 leading-snug">
+                    {person.role}
+                  </p>
+                  <span className="block h-px w-14 bg-orange-500/60 mb-5" />
+                  <p className="text-gray-600 text-[13px] xs:text-[13.5px] sm:text-sm leading-[1.65] xs:leading-[1.7] mb-6 xs:mb-7 max-w-xs">
+                    {person.bio}
+                  </p>
+
+                  <div className="flex flex-wrap justify-center gap-5 xs:gap-6 mb-6 xs:mb-7">
+                    {person.tags.map(({ icon: Icon, label }) => (
+                      <div key={label} className="flex flex-col items-center gap-2">
+                        <span className="flex items-center justify-center w-10 h-10 xs:w-11 xs:h-11 rounded-full bg-[#152249]/[0.04] border border-[#152249]/10 text-[#152249]">
+                          <Icon size={18} className="xs:hidden" strokeWidth={1.8} />
+                          <Icon size={19} className="hidden xs:block" strokeWidth={1.8} />
+                        </span>
+                        <span className="text-[10.5px] xs:text-[11px] sm:text-xs font-medium text-gray-500 whitespace-nowrap">
+                          {label}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* <motion.a
+                    whileHover={{ scale: 1.03, y: -2 }}
+                    whileTap={{ scale: 0.97 }}
+                    href={person.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2.5 bg-[#152249] hover:bg-[#0b1a3a] text-white font-semibold text-[12.5px] xs:text-[13px] sm:text-sm w-fit px-4 sm:px-5 py-2.5 sm:py-3 rounded-xl transition-colors"
+                  >
+                    <LinkedinIcon />
+                    View on LinkedIn
+                    <ArrowRight size={15} />
+                  </motion.a> */}
+                </div>
+              </motion.div>
+            ))}
           </motion.div>
 
           {/* Stats Bar */}
@@ -563,7 +587,7 @@ export default function About() {
                   </p>
                   <span className="block h-px w-6 bg-gray-200 mb-2.5 mt-auto" />
 
-                  <a
+                  {/* <a
                     href={linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -573,7 +597,7 @@ export default function About() {
                     <LinkedinIcon />
                     View LinkedIn
                     <ArrowRight size={12} />
-                  </a>
+                  </a> */}
                 </div>
               </motion.div>
             ))}

@@ -318,30 +318,28 @@ function DetailRow({ icon, label, value }) {
 }
 
 function DocumentCard({ index, doc }) {
-  // Check if this is one of the new cards (id 14, 15, or 16)
-  const isNewCard = doc.id === 14 || doc.id === 15 || doc.id === 16;
-  
   return (
     <div className="flex h-full flex-col rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition hover:shadow-md">
-      <div className="flex items-center justify-between">
+      {/* <div className="flex items-center justify-between">
         <span className="flex h-7 w-7 flex-none items-center justify-center rounded-full bg-[#0B1B3A] text-xs font-semibold text-white">
           {String(index).padStart(2, "0")}
         </span>
-      </div>
+      </div> */}
 
-      <div className="mt-4 flex h-[72px] w-full items-center justify-center">
+      {/* Increased logo container size */}
+      <div className="mt-4 flex h-[100px] w-full items-center justify-center">
         {doc.logo ? (
-          <div className={`relative ${isNewCard ? 'h-[80px] w-[160px]' : 'h-[60px] w-[120px]'}`}>
+          <div className="relative h-[90px] w-[180px]">
             <Image
               src={doc.logo}
               alt={doc.name}
               fill
               className="object-contain"
-              sizes={isNewCard ? "160px" : "120px"}
+              sizes="180px"
             />
           </div>
         ) : (
-          <span className={`flex items-center justify-center rounded-full bg-blue-50 text-base font-bold text-[#0B1B3A] ${isNewCard ? 'h-16 w-16 text-lg' : 'h-14 w-14'}`}>
+          <span className="flex h-20 w-20 items-center justify-center rounded-full bg-blue-50 text-xl font-bold text-[#0B1B3A]">
             {doc.name.charAt(0)}
           </span>
         )}
