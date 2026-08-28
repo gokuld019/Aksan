@@ -212,9 +212,9 @@ export default function PartnersAndTestimonial() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.6 }}
-          className="relative max-w-[640px] mx-auto"
+          className="relative max-w-[760px] mx-auto"
         >
-          <div className="relative rounded-2xl sm:rounded-[24px] bg-gradient-to-br from-[#0b2a4d] to-[#081b32] px-5 sm:px-8 lg:px-10 py-7 sm:py-9 lg:py-10 overflow-hidden shadow-[0_20px_50px_-20px_rgba(11,42,77,0.45)]">
+          <div className="relative rounded-2xl sm:rounded-[24px] bg-gradient-to-br from-[#0b2a4d] to-[#081b32] px-5 sm:px-9 lg:px-12 py-5 sm:py-6 lg:py-7 overflow-hidden shadow-[0_20px_50px_-20px_rgba(11,42,77,0.45)]">
             <div
               className="pointer-events-none absolute -top-12 -left-12 w-40 h-40 rounded-full opacity-25 blur-3xl"
               style={{ background: "radial-gradient(circle, #f2622e, transparent 70%)" }}
@@ -232,8 +232,8 @@ export default function PartnersAndTestimonial() {
               }}
             />
 
-            <span className="relative flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-orange-500/15 ring-1 ring-orange-400/30 mx-auto mb-4 sm:mb-5">
-              <Quote className="w-4 h-4 sm:w-5 sm:h-5 text-orange-400" fill="currentColor" />
+            <span className="relative flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-orange-500/15 ring-1 ring-orange-400/30 mx-auto mb-3 sm:mb-3.5">
+              <Quote className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-orange-400" fill="currentColor" />
             </span>
 
             <AnimatePresence mode="wait" custom={direction}>
@@ -246,15 +246,15 @@ export default function PartnersAndTestimonial() {
                 transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
                 className="relative text-center"
               >
-                <p className="text-orange-400 font-bold text-xs sm:text-sm mb-2.5 sm:mb-3 tracking-wide">
+                <p className="text-orange-400 font-bold text-xs sm:text-sm mb-2 sm:mb-2.5 tracking-wide">
                   {testimonial.tag}
                 </p>
-                <p className="text-slate-100 text-sm sm:text-base lg:text-lg leading-relaxed font-medium line-clamp-5 sm:line-clamp-4">
+                <p className="text-slate-100 text-sm sm:text-base leading-relaxed font-medium line-clamp-3 sm:line-clamp-3">
                   &ldquo;{testimonial.quote}&rdquo;
                 </p>
 
-                <div className="mt-5 sm:mt-7 flex flex-col items-center gap-2 sm:gap-2.5">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center text-white font-bold text-xs sm:text-sm ring-4 ring-white/10">
+                <div className="mt-4 sm:mt-5 flex flex-col items-center gap-1.5 sm:gap-2">
+                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center text-white font-bold text-xs sm:text-sm ring-4 ring-white/10">
                     {testimonial.name
                       .split(" ")
                       .map((w) => w[0])
@@ -274,7 +274,7 @@ export default function PartnersAndTestimonial() {
             </AnimatePresence>
 
             {/* Navigation */}
-            <div className="relative flex items-center justify-center gap-2.5 sm:gap-3.5 mt-6 sm:mt-8">
+            <div className="relative flex items-center justify-center gap-2.5 sm:gap-3.5 mt-5 sm:mt-6">
               <motion.button
                 onClick={prev}
                 aria-label="Previous testimonial"

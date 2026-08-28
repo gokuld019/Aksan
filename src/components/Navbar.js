@@ -9,22 +9,13 @@ const navLinks = [
   { label: "Home", href: "/" },
   { label: "About us", href: "/About" },
   { label: "Services", href: "/services" },
-  {
-    label: "Offer documents",
-    href: "/offer-documents",
-    children: [
-      { label: "DRHP", href: "/drhp" },
-      { label: "RHP", href: "/rhp" },
-      { label: "Prospectus", href: "/prospectus" },
-    ],
-  },
+  { label: "Offer documents", href: "/offer-documents" },
   {
     label: "Investor relations",
     href: "/investor-relations",
     children: [
       { label: "Code and Policies", href: "/investor-relations/code-and-policies" },
       { label: "Investor Charter", href: "/investor-relations/investor-charter" },
-      { label: "Investor Complaints", href: "/investor-relations/investor-complaints" },
       { label: "Investor Grievance Redressal", href: "/investor-relations/investor-grievance-redressal" },
     ],
   },
@@ -64,13 +55,25 @@ export default function Navbar() {
       document.body.style.overflow = "";
     };
   }, [mobileOpen]);
-// Add Gallery to pages with static blue background
-const isAboutPage = pathname === "/About";
-const isGalleryPage = pathname === "/Gallery";
-const isAwardSlugPage = pathname.startsWith("/awards/");
-const isprivacypolicy = pathname === "/Privacypolicy"
-const terms = pathname === "/Termsandcondition"
-const showSolidBg = scrolled || isAboutPage || isGalleryPage || isAwardSlugPage || isprivacypolicy || terms;
+
+  // Add Gallery to pages with static blue background
+  const isAboutPage = pathname === "/About";
+  const isGalleryPage = pathname === "/Gallery";
+  const isAwardSlugPage = pathname.startsWith("/awards/");
+  const isprivacypolicy = pathname === "/Privacypolicy";
+  const terms = pathname === "/Termsandcondition";
+  const showSolidBg = scrolled || isAboutPage || isGalleryPage || isAwardSlugPage || isprivacypolicy || terms;
+
+  // Determine which logo to show
+  const logoSrc = showSolidBg ? "/aksanlogod.png" : "/White-logo.png";
+
+  // Gradient style for text
+  const gradientStyle = {
+    background: "linear-gradient(135deg, #0B1A33 0%, #10254A 40%, #0F3A66 75%, #0E4A7A 100%)",
+    WebkitBackgroundClip: "text",
+    WebkitTextFillColor: "transparent",
+    backgroundClip: "text",
+  };
 
   return (
     <header
@@ -78,18 +81,18 @@ const showSolidBg = scrolled || isAboutPage || isGalleryPage || isAwardSlugPage 
         showSolidBg ? "shadow-md" : ""
       }`}
       style={{
-        backgroundColor: showSolidBg ? "#0f4475" : "transparent",
+        backgroundColor: showSolidBg ? "#ffffff" : "transparent",
         fontFamily: "Whitney, sans-serif",
       }}
     >
       <nav className="max-w-[1400px] mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-6 py-2.5 sm:py-3 lg:py-3.5">
         <Link href="/" className="flex items-center gap-2 shrink-0">
           <Image
-            src="/White-logo.png"
+            src={logoSrc}
             alt="AKSAN Capital Advisory Private Limited — Guidance that Grows Wealth"
-            width={314}
+            width={320}
             height={100}
-            className="w-auto h-10 sm:h-12 lg:h-14"
+            className="w-auto h-10 sm:h-12 lg:h-20"
             priority
           />
         </Link>
@@ -105,11 +108,23 @@ const showSolidBg = scrolled || isAboutPage || isGalleryPage || isAwardSlugPage 
                 onMouseLeave={() => setServicesOpen(false)}
               >
                 <button
-                  className={`flex items-center gap-1.5 text-[18px] font-semibold tracking-wide transition-colors whitespace-nowrap ${
-                    servicesOpen === link.label ? "text-orange-400" : "text-white/90 hover:text-orange-400"
+                  className={`flex items-center gap-1.5 text-[18px] font-semibold tracking-wide whitespace-nowrap transition-colors ${
+                    servicesOpen === link.label
+                      ? "text-[#F2622E]"
+                      : showSolidBg
+                      ? "text-[#0B1A33] hover:text-[#F2622E]"
+                      : "text-white/90 hover:text-[#F2622E]"
                   }`}
                 >
-                  {link.label}
+                  <span
+                    style={
+                      showSolidBg && servicesOpen !== link.label
+                        ? gradientStyle
+                        : {}
+                    }
+                  >
+                    {link.label}
+                  </span>
                   <svg
                     width="10"
                     height="10"
@@ -122,7 +137,24 @@ const showSolidBg = scrolled || isAboutPage || isGalleryPage || isAwardSlugPage 
                     className={`transition-transform duration-200 ${
                       servicesOpen === link.label ? "rotate-180" : ""
                     }`}
+                    style={
+                      showSolidBg && servicesOpen !== link.label
+                        ? {
+                            stroke: "url(#navGradient)",
+                          }
+                        : {
+                            stroke: showSolidBg ? "#0B1A33" : "white",
+                          }
+                    }
                   >
+                    <defs>
+                      <linearGradient id="navGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stopColor="#0B1A33" />
+                        <stop offset="40%" stopColor="#10254A" />
+                        <stop offset="75%" stopColor="#0F3A66" />
+                        <stop offset="100%" stopColor="#0E4A7A" />
+                      </linearGradient>
+                    </defs>
                     <path d="M6 9l6 6 6-6" />
                   </svg>
                 </button>
@@ -139,9 +171,9 @@ const showSolidBg = scrolled || isAboutPage || isGalleryPage || isAwardSlugPage 
                       <li key={child.label} className={idx > 0 ? "border-t border-slate-100" : ""}>
                         <Link
                           href={child.href}
-                          className="group flex items-center px-5 py-3.5 text-[12px] font-medium text-slate-600 hover:text-[#0e4980] hover:bg-slate-50 transition-colors relative"
+                          className="group flex items-center px-5 py-3.5 text-[12px] font-medium text-slate-600 hover:text-[#F2622E] hover:bg-slate-50 transition-colors relative"
                         >
-                          <span className="absolute left-0 top-0 h-full w-[3px] bg-orange-500 scale-y-0 group-hover:scale-y-100 transition-transform duration-150 origin-center" />
+                          <span className="absolute left-0 top-0 h-full w-[3px] bg-[#F2622E] scale-y-0 group-hover:scale-y-100 transition-transform duration-150 origin-center" />
                           <span className="pl-2">{child.label}</span>
                         </Link>
                       </li>
@@ -153,11 +185,18 @@ const showSolidBg = scrolled || isAboutPage || isGalleryPage || isAwardSlugPage 
               <li key={link.label}>
                 <Link
                   href={link.href}
-                  className={`text-[18px] font-semibold tracking-wide transition-colors whitespace-nowrap ${
+                  className={`text-[18px] font-semibold tracking-wide whitespace-nowrap transition-colors ${
                     link.href === pathname
-                      ? "text-orange-400"
-                      : "text-white/90 hover:text-orange-400"
+                      ? "text-[#F2622E]"
+                      : showSolidBg
+                      ? "text-[#0B1A33] hover:text-[#F2622E]"
+                      : "text-white/90 hover:text-[#F2622E]"
                   }`}
+                  style={
+                    showSolidBg && link.href !== pathname
+                      ? gradientStyle
+                      : {}
+                  }
                 >
                   {link.label}
                 </Link>
@@ -177,19 +216,19 @@ const showSolidBg = scrolled || isAboutPage || isGalleryPage || isAwardSlugPage 
           aria-expanded={mobileOpen}
         >
           <span
-            className={`absolute h-[2px] w-5 sm:w-6 bg-white rounded-full transition-all duration-300 ${
-              mobileOpen ? "rotate-45" : "-translate-y-[6px]"
-            }`}
+            className={`absolute h-[2px] w-5 sm:w-6 rounded-full transition-all duration-300 ${
+              showSolidBg ? "bg-[#0B1A33]" : "bg-white"
+            } ${mobileOpen ? "rotate-45" : "-translate-y-[6px]"}`}
           />
           <span
-            className={`absolute h-[2px] w-5 sm:w-6 bg-white rounded-full transition-all duration-300 ${
-              mobileOpen ? "opacity-0" : "opacity-100"
-            }`}
+            className={`absolute h-[2px] w-5 sm:w-6 rounded-full transition-all duration-300 ${
+              showSolidBg ? "bg-[#0B1A33]" : "bg-white"
+            } ${mobileOpen ? "opacity-0" : "opacity-100"}`}
           />
           <span
-            className={`absolute h-[2px] w-5 sm:w-6 bg-white rounded-full transition-all duration-300 ${
-              mobileOpen ? "-rotate-45" : "translate-y-[6px]"
-            }`}
+            className={`absolute h-[2px] w-5 sm:w-6 rounded-full transition-all duration-300 ${
+              showSolidBg ? "bg-[#0B1A33]" : "bg-white"
+            } ${mobileOpen ? "-rotate-45" : "translate-y-[6px]"}`}
           />
         </button>
       </nav>
@@ -257,9 +296,7 @@ const showSolidBg = scrolled || isAboutPage || isGalleryPage || isAwardSlugPage 
                         strokeWidth="2.5"
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                        className={`text-orange-400 transform transition-transform duration-200 ${
-                          mobileServicesOpen === link.label ? "rotate-180" : ""
-                        }`}
+                        className="text-white/60 transform transition-transform duration-200"
                       >
                         <path d="M6 9l6 6 6-6" />
                       </svg>
@@ -269,12 +306,12 @@ const showSolidBg = scrolled || isAboutPage || isGalleryPage || isAwardSlugPage 
                         mobileServicesOpen === link.label ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
                       }`}
                     >
-                      <ul className="ml-3 mt-0.5 mb-2 flex flex-col gap-0.5 border-l-2 border-orange-500/30 pl-3">
+                      <ul className="ml-3 mt-0.5 mb-2 flex flex-col gap-0.5 border-l-2 border-[#F2622E]/30 pl-3">
                         {link.children.map((child) => (
                           <li key={child.label}>
                             <Link
                               href={child.href}
-                              className="block text-[12.5px] font-medium text-white/60 hover:text-orange-400 active:text-orange-400 py-2.5 px-3 rounded-lg active:bg-white/5 transition-colors"
+                              className="block text-[12.5px] font-medium text-white/60 hover:text-[#F2622E] active:text-[#F2622E] py-2.5 px-3 rounded-lg active:bg-white/5 transition-colors"
                               onClick={() => setMobileOpen(false)}
                             >
                               {child.label}
@@ -289,13 +326,13 @@ const showSolidBg = scrolled || isAboutPage || isGalleryPage || isAwardSlugPage 
                     href={link.href}
                     className={`flex items-center text-[13px] font-semibold tracking-wide py-3.5 px-3 rounded-xl transition-colors relative ${
                       link.href === pathname
-                        ? "text-orange-400 bg-orange-500/10"
+                        ? "text-[#F2622E] bg-[#F2622E]/10"
                         : "text-white/90 active:bg-white/5"
                     }`}
                     onClick={() => setMobileOpen(false)}
                   >
                     {link.href === pathname && (
-                      <span className="absolute left-0 top-1/2 -translate-y-1/2 h-4 w-[3px] rounded-full bg-orange-400" />
+                      <span className="absolute left-0 top-1/2 -translate-y-1/2 h-4 w-[3px] rounded-full bg-[#F2622E]" />
                     )}
                     {link.label}
                   </Link>

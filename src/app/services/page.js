@@ -89,10 +89,6 @@ function ServiceCard({ service, index }) {
       }}
       className="relative bg-white rounded-2xl shadow-sm border border-gray-100 p-6 sm:p-8 text-center flex flex-col"
     >
-      <span className="absolute top-4 left-4 sm:top-5 sm:left-6 text-xl sm:text-3xl font-extrabold text-gray-200 select-none">
-        {service.number}
-      </span>
-
       <motion.span
         whileHover={{ rotate: 8, scale: 1.08 }}
         transition={{ duration: 0.3 }}
@@ -135,6 +131,11 @@ function ServiceCard({ service, index }) {
 }
 
 export default function Services() {
+  // Filter out ONLY ESOP Advisory and AIF Compliances - Keep Valuation
+  const filteredServices = coreServices.filter(
+    (service) => service.slug !== "esop-advisory" && service.slug !== "aif-compliances"
+  );
+
   const heroRef = useRef(null);
   const ctaRef = useRef(null);
 
@@ -297,7 +298,7 @@ export default function Services() {
               { icon: Users, value: "200+", label: "Clients Served" },
               { icon: TrendingUp, value: "₹15,000 Cr+", label: "Capital Raised" },
               { icon: Handshake, value: "150+", label: "Successful Deals" },
-              { icon: Clock, value: "20+", label: "Years of Excellence" },
+              { icon: Clock, value: "29+", label: "Years of Excellence" },
               { icon: Award, value: "SEBI Registered", label: "Category-II Merchant Banker" },
             ].map(({ icon: Icon, value, label }, i) => (
               <div
@@ -381,7 +382,7 @@ export default function Services() {
             viewport={{ once: true, amount: 0.2 }}
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 mb-5 sm:mb-6"
           >
-            {coreServices.slice(0, 3).map((service, i) => (
+            {filteredServices.slice(0, 3).map((service, i) => (
               <ServiceCard key={service.slug} service={service} index={i} />
             ))}
           </motion.div>
@@ -393,7 +394,7 @@ export default function Services() {
             viewport={{ once: true, amount: 0.2 }}
             className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6 max-w-[calc(2*20rem+1.5rem)] mx-auto"
           >
-            {coreServices.slice(3).map((service, i) => (
+            {filteredServices.slice(3).map((service, i) => (
               <ServiceCard key={service.slug} service={service} index={i} />
             ))}
           </motion.div>
@@ -442,7 +443,7 @@ export default function Services() {
                 <br />
                 <AnimatedWords text="Financial Success Together." className="text-orange-500" />
               </h2>
-              <motion.p
+              {/* <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.5 }}
@@ -452,7 +453,7 @@ export default function Services() {
                 From fundraising to restructuring, we provide the expertise,
                 insights, and execution support you need to grow with
                 confidence.
-              </motion.p>
+              </motion.p> */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}

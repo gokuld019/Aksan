@@ -22,7 +22,7 @@ const policies = [
     title: "Investor Grievance Redressal Policy",
     description:
       "Ensuring fair and timely resolution of investor grievances with transparency and accountability.",
-    href: "/investor-relations/code-and-policies/investor-grievance-redressal-policy",
+    href: "/codeandpolicies/redressal.pdf",
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
         <path d="M12 21c-4-2.5-8-5.5-8-10.5A5 5 0 0 1 12 7a5 5 0 0 1 8 3.5c0 5-4 8-8 10.5z" />

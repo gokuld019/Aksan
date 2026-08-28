@@ -76,7 +76,7 @@ export default function Hero() {
         }}
       />
 
-      <motion.div
+      {/* <motion.div
         style={{ y: textY, opacity: textOpacity }}
         variants={container}
         initial="hidden"
@@ -125,7 +125,6 @@ export default function Hero() {
           <span aria-hidden="true">→</span>
         </motion.button>
 
-        {/* Stats box */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -156,7 +155,7 @@ export default function Hero() {
             ))}
           </div>
         </motion.div>
-      </motion.div>
+      </motion.div> */}
     </section>
   );
 }

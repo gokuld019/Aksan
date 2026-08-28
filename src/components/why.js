@@ -19,7 +19,7 @@ const features = [
   },
   {
     icon: LineChart,
-    text: "25+ years of research-driven guidance",
+    text: "29+ years of research-driven guidance",
   },
   {
     icon: Users,
@@ -56,9 +56,9 @@ export default function WhyAksan() {
         >
           {/* Left: Phone mockup — hidden on mobile, visible from md up */}
           <div className="relative order-2 lg:order-1 hidden md:block md:h-[280px] lg:h-full">
-            <div className="absolute -top-8 md:-top-10 lg:-top-65 left-1/2 -translate-x-1/2 lg:-left-16 lg:translate-x-0 w-[240px] sm:w-[300px] md:w-[360px] lg:w-[480px]">
+            <div className="absolute -top-8 md:-top-10 lg:-top-62 left-1/2 -translate-x-1/2 lg:-left-16 lg:translate-x-0 w-[240px] sm:w-[300px] md:w-[360px] lg:w-[480px]">
               <Image
-                src="/hand.webp"
+                src="/handd.png"
                 alt="AKSAN mobile app held in hand"
                 width={840}
                 height={1040}

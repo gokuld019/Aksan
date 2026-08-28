@@ -85,7 +85,7 @@ const contactDetails = [
   {
     icon: Phone,
     label: "Phone",
-    value: "+91 93602 67233",
+    value: "+91 81221 41901",
   },
   {
     icon: MapPin,

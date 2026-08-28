@@ -20,15 +20,8 @@ import {
   Globe,
 } from "lucide-react";
 
-const highlightServices = [
-  { icon: Target, title: "IPO", desc: "Unlocking growth through public markets for SME companies." },
-  { icon: BarChart3, title: "Rights Issue", desc: "Capital infusion without debt for listed companies." },
-  { icon: ShieldCheck, title: "Preferential Allotment", desc: "Efficient, targeted capital raising for listed companies." },
-  { icon: Clock, title: "Follow-on Public Offer", desc: "Leveraging public markets for continued growth." },
-];
-
 const stats = [
-  { icon: User, value: "25+", label: "Years of Experience" },
+  { icon: User, value: "29+", label: "Years of Experience" },
   { icon: IndianRupee, value: "₹8,500 Cr+", label: "Assets Under Advisory" },
   { icon: Users, value: "150+", label: "Happy Investors" },
   { icon: Crosshair, value: "100+", label: "Successful Investments" },
@@ -73,7 +66,7 @@ export default function Services() {
 
   return (
     <section className="bg-white">
-      {/* Highlight bar */}
+      {/* Stats Bar */}
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 pt-8 sm:pt-12 md:pt-16 relative z-20">
         <motion.div
           variants={revealContainer}
@@ -85,60 +78,26 @@ export default function Services() {
             background: "linear-gradient(135deg, #0B1A33 0%, #10254A 40%, #0F3A66 75%, #0E4A7A 100%)",
           }}
         >
-          <div className="grid grid-cols-1 md:grid-cols-5">
-            {/* Services Grid - 4 columns */}
-            <div className="md:col-span-4">
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-slate-700">
-                {highlightServices.map((item) => (
-                  <motion.div
-                    key={item.title}
-                    variants={revealItem}
-                    whileHover={{ y: -4 }}
-                    className="p-5 sm:p-6 lg:p-7 transition-shadow"
-                  >
-                    <div className="flex flex-col items-center sm:items-start text-center sm:text-left">
-                      <span className="w-10 h-10 sm:w-11 sm:h-11 flex items-center justify-center rounded-full border border-orange-500 text-orange-500 mb-3 sm:mb-4">
-                        <item.icon className="w-5 h-5 sm:w-[18px] sm:h-[18px]" strokeWidth={2} />
-                      </span>
-                      <h3 className="text-white font-semibold text-sm sm:text-base mb-1.5 sm:mb-2">
-                        {item.title}
-                      </h3>
-                      <p className="text-slate-400 text-xs sm:text-sm leading-relaxed mb-2 sm:mb-3">
-                        {item.desc}
-                      </p>
-                      <a href="#" className="text-orange-500 text-xs sm:text-sm font-medium inline-flex items-center gap-1 hover:text-orange-400 transition">
-                        Learn More <span aria-hidden="true">→</span>
-                      </a>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-
-            {/* Stats Column - Fixed Alignment */}
-            <div className="md:col-span-1 border-t md:border-t-0 md:border-l border-slate-700">
-              <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-1 gap-4 p-5 sm:p-6">
-                {stats.map((stat) => (
-                  <motion.div
-                    key={stat.label}
-                    variants={revealItem}
-                    className="flex items-center gap-3"
-                  >
-                    <span className="w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center rounded-full border border-orange-500 text-orange-500 shrink-0">
-                      <stat.icon className="w-4 h-4 sm:w-[14px] sm:h-[14px]" strokeWidth={2} />
-                    </span>
-                    <div className="flex-1 min-w-0">
-                      <p className="text-white font-bold text-sm sm:text-base leading-tight">
-                        {stat.value}
-                      </p>
-                      <p className="text-slate-400 text-[10px] sm:text-xs leading-tight mt-0.5">
-                        {stat.label}
-                      </p>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-5 sm:p-6 md:p-8">
+            {stats.map((stat) => (
+              <motion.div
+                key={stat.label}
+                variants={revealItem}
+                className="flex items-center gap-3"
+              >
+                <span className="w-10 h-10 flex items-center justify-center rounded-full border border-orange-500 text-orange-500 shrink-0">
+                  <stat.icon className="w-5 h-5" strokeWidth={2} />
+                </span>
+                <div className="flex-1 min-w-0">
+                  <p className="text-white font-bold text-base sm:text-lg md:text-xl leading-tight">
+                    {stat.value}
+                  </p>
+                  <p className="text-slate-400 text-xs sm:text-sm leading-tight mt-0.5">
+                    {stat.label}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </motion.div>
       </div>
@@ -216,12 +175,11 @@ export default function Services() {
       </div>
 
       {/* About / USP */}
-      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 pb-12 sm:pb-16 md:pb-20 lg:pb-24">
+      {/* <div className="max-w-[1400px] mx-auto px-4 sm:px-6 pb-12 sm:pb-16 md:pb-20 lg:pb-24">
         <div
           ref={aboutRef}
           className="rounded-2xl overflow-hidden shadow-xl grid grid-cols-1 lg:grid-cols-2"
         >
-          {/* Left: About card */}
           <div className="relative p-6 sm:p-8 md:p-10 flex flex-col justify-center min-h-[400px] sm:min-h-[450px] md:min-h-[480px] overflow-hidden">
             <motion.div style={{ y: aboutImageY }} className="absolute inset-[-6%]">
               <Image
@@ -285,7 +243,6 @@ export default function Services() {
             </motion.div>
           </div>
 
-          {/* Right: USP grid */}
           <div className="bg-white p-6 sm:p-8 md:p-10 lg:p-14 flex flex-col justify-center">
             <div className="text-left sm:text-left">
               <p className="text-orange-500 font-bold text-sm tracking-wide mb-2 sm:mb-3">
@@ -324,7 +281,7 @@ export default function Services() {
             </motion.div>
           </div>
         </div>
-      </div>
+      </div> */}
     </section>
   );
 }

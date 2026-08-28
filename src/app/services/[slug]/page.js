@@ -275,10 +275,10 @@ export default async function ServiceDetailPage({ params }) {
                     {service.ctaBanner?.highlight || "Financial Success Together."}
                   </span>
                 </h2>
-                <p className="text-[12.5px] sm:text-sm text-slate-100 leading-[1.65] max-w-md">
+                {/* <p className="text-[12.5px] sm:text-sm text-slate-100 leading-[1.65] max-w-md">
                   {service.ctaBanner?.subtitle ||
                     "From fundraising to restructuring, we provide the expertise, insights, and execution support you need to grow with confidence."}
-                </p>
+                </p> */}
               </div>
 
               <div className="flex flex-wrap gap-2.5 sm:gap-3 shrink-0">

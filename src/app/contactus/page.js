@@ -21,7 +21,7 @@ const OFFICES = [
     label: "Headquarters / Registered Office",
     icon: Building2,
     address: "28/27, Parvathy Apartments, 2nd Floor, Damodaran Street, T.Nagar, Chennai - 600 017, Tamil Nadu, India",
-    phone: "+91 93602 67233",
+    phone: "+91 81221 41901",
     email: "info@aksan.in",
     mapQuery: "28/27 Parvathy Apartments, Damodaran Street, T Nagar, Chennai",
   },
@@ -29,7 +29,7 @@ const OFFICES = [
     label: "Branch Office",
     icon: Building2,
     address: "Office No. 104, 1st Floor, The Summit Business Bay, (Opp. Movie Max Theatre) Off Western Express Highway, Andheri (East), Mumbai - 400093, Maharashtra, India",
-    phone: "+91 93602 67233",
+    phone: "+91 81221 41901",
     email: "info@aksan.in",
     mapQuery: "The Summit Business Bay, Western Express Highway, Andheri East, Mumbai",
   },
@@ -367,7 +367,7 @@ export default function ContactUs() {
               <ContactItem
                 icon={Phone}
                 label="Phone"
-                lines={["+91 93602 67233", "+91 81221 41901", "+91 44 4005 5781"]}
+                lines={[ "+91 81221 41901", "+91 44 4005 5781"]}
               />
               <ContactItem icon={Mail} label="Email" lines={["info@aksan.in"]} />
               <ContactItem

@@ -92,32 +92,31 @@ const leadership = [
 ];
 
 const coreTeam = [
-  { name: "Nirmal K", role: "Senior-Financial Analyst", linkedin: "#", photo: "/team/nirmal-k.png" },
+  { name: "Khushboo", role: "Cs Cum Compliance Officer", linkedin: "#", photo: "/team/kushh.jpeg" },
+  { name: "Preeti", role: "Associate Vice President", linkedin: "#", photo: "/team/preeti.png" },
+  { name: "Piyush", role: "Associate Vice President ", linkedin: "#", photo: "/team/piyush.png" },
+  { name: "Vidit", role: "Principal Consultant", linkedin: "#", photo: "/team/viddit.png" },
+  { name: "Narayanan", role: "Senior GM - Financial Analyst", linkedin: "#", photo: "/team/nara.jpeg" },
+  { name: "Pinky", role: "AGM - Financial Analyst", linkedin: "#", photo: "/team/pinky-naveen-h.png" },
+  { name: "Nesapriyan", role: "Chief financial officer", linkedin: "#", photo: "/team/nesapriyan.png" },
+  { name: "Aishwarya", role: "Executive Assistant", linkedin: "#", photo: "/team/aishu.png" },
+  { name: "Sai Krishna", role: "AGM - Company Secretary", linkedin: "#", photo: "/team/sai-krishna.png" },
+  { name: "Shajath Ali", role: "Associate Company Secretary", linkedin: "#", photo: "/team/shajathali-s.png" },
+  { name: "Viduthalai", role: "GM - Financial Analyst", linkedin: "#", photo: "/team/vidu.png" },
+  { name: "Pugazhendhi", role: "Senior - Financial Analyst", linkedin: "#", photo: "/team/pugazhendhi-p.png" },
+  { name: "Satheesh", role: "Jr.Financial Analyst", linkedin: "#", photo: "/team/satheesh.jpeg" },
+  { name: "Nirmal", role: "Senior-Financial Analyst", linkedin: "#", photo: "/team/nirmal-k.png" },
+  { name: "Indira", role: "AGM - Accounts & Finance", linkedin: "#", photo: "/team/indira-ak.png" },
 
-  { name: "Vidit Madhusudan Gupta", role: "Principal Consultant", linkedin: "#", photo: "/team/viddit.png" },
 
-  { name: "Natarajan B", role: "Sr.Executive-CS-Trainee", linkedin: "#", photo: "/team/natarajan-b.png" },
-
-  { name: "Badrinarayan S", role: "Jr.Financial Analyst", linkedin: "#", photo: "/team/badrinarayan-s.png" },
+{ name: "Natarajan B", role: "Sr.Executive-CS-Trainee", linkedin: "#", photo: "/team/natarajan-b.png" },
+{ name: "Badrinarayan S", role: "Jr.Financial Analyst", linkedin: "#", photo: "/team/badrinarayan-s.png" },
 
   { name: "Jhanani M", role: "Jr. Exe-CS-Trainee", linkedin: "#", photo: "/team/jhanani-m.png" },
-  { name: "Viduthalai S", role: "GM - Financial Analyst", linkedin: "#", photo: "/team/vidu.png" },
-  { name: "Shajathali S", role: "Associate Company Secretary", linkedin: "#", photo: "/team/shajathali-s.png" },
-  { name: "Pinky Naveen H", role: "AGM - Financial Analyst", linkedin: "#", photo: "/team/pinky-naveen-h.png" },
-  { name: "Narayanan G", role: "Senior GM - Financial Analyst", linkedin: "#", photo: "/team/nara.jpeg" },
-  { name: "Pugazhendhi P", role: "Senior - Financial Analyst", linkedin: "#", photo: "/team/pugazhendhi-p.png" },
-  { name: "Indira AK", role: "AGM - Accounts & Finance", linkedin: "#", photo: "/team/indira-ak.png" },
-  { name: "Satheesh Srinivasan", role: "Jr.Financial Analyst", linkedin: "#", photo: "/team/satheesh-srinivasan.png" },
   { name: "Sudarsana Rao K", role: "Admin Assistant", linkedin: "#", photo: "/team/sudarsana-rao-k.png" },
-  { name: "Preeti Ankit Dedhiya", role: "Associate Vice President", linkedin: "#", photo: "/team/preeti.png" },
-  { name: "Khushboo", role: "Company Secretary & Compliance Officer", linkedin: "#", photo: "/team/kushboo.png" },
 
-  { name: "Piyush", role: "Associate Vice President ", linkedin: "#", photo: "/team/piyush.png" },
 
-  { name: "Nesapriyan", role: "Sr.Manager-Finance & Accounts", linkedin: "#", photo: "/team/nesapriyan.png" },
 
-  { name: "Aishwarya", role: "Executive Assistant - MD", linkedin: "#", photo: "/team/aishu.png" },
-  { name: "Sai Krishna", role: "AGM - Company Secretary", linkedin: "#", photo: "/team/sai-krishna.png" },
   { name: "Narendran", role: "Sr.Exe-CS-Trainee", linkedin: "#", photo: "/team/narendran.png" },
   { name: "Santhosh Kumar", role: "Manager - IT & Admin", linkedin: "#", photo: "/team/santhosh.png" },
 ];
@@ -465,7 +464,7 @@ export default function About() {
                     {person.bio}
                   </p>
 
-                  <div className="flex flex-wrap justify-center gap-5 xs:gap-6 mb-6 xs:mb-7">
+                  {/* <div className="flex flex-wrap justify-center gap-5 xs:gap-6 mb-6 xs:mb-7">
                     {person.tags.map(({ icon: Icon, label }) => (
                       <div key={label} className="flex flex-col items-center gap-2">
                         <span className="flex items-center justify-center w-10 h-10 xs:w-11 xs:h-11 rounded-full bg-[#152249]/[0.04] border border-[#152249]/10 text-[#152249]">
@@ -477,7 +476,7 @@ export default function About() {
                         </span>
                       </div>
                     ))}
-                  </div>
+                  </div> */}
 
                   {/* <motion.a
                     whileHover={{ scale: 1.03, y: -2 }}
@@ -505,7 +504,7 @@ export default function About() {
             className="bg-[#0b1a3a] rounded-2xl sm:rounded-3xl px-4 xs:px-6 sm:px-8 py-8 xs:py-9 sm:py-10 grid grid-cols-2 lg:grid-cols-4 gap-y-7 gap-x-4 xs:gap-x-6 sm:gap-4 mb-12 xs:mb-14 sm:mb-20"
           >
             {[
-              { icon: Briefcase, value: "25+", label: "Years of Experience" },
+              { icon: Briefcase, value: "29+", label: "Years of Experience" },
               { icon: TrendingUp, value: "8500+ Cr", label: "Capital Raised" },
               { icon: ShieldCheck, value: "150+", label: "Transactions Executed" },
               { icon: Trophy, value: "100+", label: "Happy Clients" },

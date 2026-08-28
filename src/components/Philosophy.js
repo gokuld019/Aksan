@@ -73,7 +73,7 @@ export default function OurPhilosophy() {
           uplift financial awareness.
         </motion.p>
 
-        <motion.button
+        {/* <motion.button
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.5 }}
@@ -83,7 +83,7 @@ export default function OurPhilosophy() {
           className="inline-flex items-center gap-2 bg-white text-blue-900 font-semibold text-sm sm:text-sm px-5 sm:px-6 lg:px-6 py-2.5 sm:py-3 lg:py-3 rounded-md hover:bg-slate-100 transition"
         >
           Book Appointment <span aria-hidden="true">→</span>
-        </motion.button>
+        </motion.button> */}
       </motion.div>
     </section>
   );

@@ -21,7 +21,7 @@ export default function Home() {
       {/* <AboutAksan /> */}
       <WhyAksan />
       <BoardOfDirectors />
-      <MarketInsights />
+      {/* <MarketInsights /> */}
       <PartnersAndTestimonial /> 
       <OurProcess />
       <OurPhilosophy />
