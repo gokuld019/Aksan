@@ -75,7 +75,7 @@ const leadershipTags = [
 const leadership = [
   {
     name: "Rajinikanth E S",
-    role: "Managing Director | CEO | Principal Officer",
+    role: "MD/CEO/PO",
     bio: "Visionary leader with deep expertise in capital markets and strategic advisory. Driving responsible growth and long-term value creation for our clients and stakeholders.",
     tags: leadershipTags,
     linkedin: "#",
@@ -92,33 +92,33 @@ const leadership = [
 ];
 
 const coreTeam = [
-  { name: "Khushboo", role: "Cs Cum Compliance Officer", linkedin: "#", photo: "/team/kushh.jpeg" },
-  { name: "Preeti", role: "Associate Vice President", linkedin: "#", photo: "/team/preeti.png" },
-  { name: "Piyush", role: "Associate Vice President ", linkedin: "#", photo: "/team/piyush.png" },
-  { name: "Vidit", role: "Principal Consultant", linkedin: "#", photo: "/team/viddit.png" },
-  { name: "Narayanan", role: "Senior GM - Financial Analyst", linkedin: "#", photo: "/team/nara.jpeg" },
+  { name: "Khushboo Hanswal", role: "Cs Cum Compliance Officer", linkedin: "#", photo: "/team/kushh.jpeg" },
+  { name: "Preeti Dedhiya", role: "Associate Vice President", linkedin: "#", photo: "/team/p.jpeg" },
+  { name: "Piyush Chandra", role: "Associate Vice President ", linkedin: "#", photo: "/team/piyush.png" },
+  { name: "Vidit Madhusudan Gupta", role: "Principal Consultant", linkedin: "#", photo: "/team/viddit.png" },
+  { name: "Narayanan", role: "Sr. GM - Financial Analyst", linkedin: "#", photo: "/team/naraa.jpeg" },
   { name: "Pinky", role: "AGM - Financial Analyst", linkedin: "#", photo: "/team/pinky-naveen-h.png" },
   { name: "Nesapriyan", role: "Chief financial officer", linkedin: "#", photo: "/team/nesapriyan.png" },
-  { name: "Aishwarya", role: "Executive Assistant", linkedin: "#", photo: "/team/aishu.png" },
+  { name: "Aishwarya", role: "Executive Assistant - MD", linkedin: "#", photo: "/team/aishu.png" },
   { name: "Sai Krishna", role: "AGM - Company Secretary", linkedin: "#", photo: "/team/sai-krishna.png" },
-  { name: "Shajath Ali", role: "Associate Company Secretary", linkedin: "#", photo: "/team/shajathali-s.png" },
+  { name: "Shajathali", role: "Associate Company Secretary", linkedin: "#", photo: "/team/shajathali-s.png" },
   { name: "Viduthalai", role: "GM - Financial Analyst", linkedin: "#", photo: "/team/vidu.png" },
-  { name: "Pugazhendhi", role: "Senior - Financial Analyst", linkedin: "#", photo: "/team/pugazhendhi-p.png" },
-  { name: "Satheesh", role: "Jr.Financial Analyst", linkedin: "#", photo: "/team/satheesh.jpeg" },
-  { name: "Nirmal", role: "Senior-Financial Analyst", linkedin: "#", photo: "/team/nirmal-k.png" },
+  { name: "Pugazhendhi", role: "Sr. Financial Analyst", linkedin: "#", photo: "/team/pugazhendhi-p.png" },
+  { name: "Satheesh", role: "Jr. Financial Analyst", linkedin: "#", photo: "/team/satheesh.jpeg" },
+  { name: "Nirmal", role: "Sr. Financial Analyst", linkedin: "#", photo: "/team/nirmal-k.png" },
   { name: "Indira", role: "AGM - Accounts & Finance", linkedin: "#", photo: "/team/indira-ak.png" },
 
 
-{ name: "Natarajan B", role: "Sr.Executive-CS-Trainee", linkedin: "#", photo: "/team/natarajan-b.png" },
-{ name: "Badrinarayan S", role: "Jr.Financial Analyst", linkedin: "#", photo: "/team/badrinarayan-s.png" },
+// { name: "Natarajan", role: "Sr. Exe - CS", linkedin: "#", photo: "/team/natarajan-b.png" },
+// { name: "Badrinarayan", role: "Jr. Financial Analyst", linkedin: "#", photo: "/team/badrinarayan-s.png" },
 
-  { name: "Jhanani M", role: "Jr. Exe-CS-Trainee", linkedin: "#", photo: "/team/jhanani-m.png" },
-  { name: "Sudarsana Rao K", role: "Admin Assistant", linkedin: "#", photo: "/team/sudarsana-rao-k.png" },
+//   { name: "Jhanani", role: "Jr. Executive - CS - Trainee", linkedin: "#", photo: "/team/jhanani-m.png" },
+//   { name: "Sudarsana Rao", role: "Admin Assistant", linkedin: "#", photo: "/team/sudarsana-rao-k.png" },
 
 
 
-  { name: "Narendran", role: "Sr.Exe-CS-Trainee", linkedin: "#", photo: "/team/narendran.png" },
-  { name: "Santhosh Kumar", role: "Manager - IT & Admin", linkedin: "#", photo: "/team/santhosh.png" },
+//   { name: "Narendran", role: "Sr. Exe - CS - Trainee", linkedin: "#", photo: "/team/narendran.png" },
+//   { name: "Santhosh Kumar", role: "Manager - IT & Admin", linkedin: "#", photo: "/team/santhosh.png" },
 ];
 
 // ---------- Animation variants ----------
@@ -236,44 +236,60 @@ export default function About() {
                     />
                   </h2>
 
-                  <motion.div
-                    variants={staggerContainer}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, amount: 0.3 }}
-                    className="space-y-3.5 xs:space-y-4 text-gray-600 text-[13.5px] xs:text-[14px] sm:text-[15px] leading-[1.7] xs:leading-[1.75] sm:leading-[1.8] tracking-[0.005em]"
-                  >
-                    <motion.p variants={fadeUp} custom={0}>
-                      At AKSAN, we are a{" "}
-                      <span className="font-semibold text-gray-900">
-                        SEBI Registered Category-II Merchant Banker
-                      </span>{" "}
-                      committed to delivering strategic, compliant, and
-                      execution-focused capital market solutions.
-                    </motion.p>
-                    <motion.p variants={fadeUp} custom={1}>
-                      Built on the principles of integrity, precision, and
-                      regulatory excellence, we provide comprehensive merchant
-                      banking services including issue management, capital
-                      structuring, mergers &amp; acquisitions, valuation advisory,
-                      and end-to-end regulatory support.
-                    </motion.p>
-                    <motion.p variants={fadeUp} custom={2}>
-                      Every business has a distinct growth journey. Our approach is
-                      tailored, detail-oriented, and driven by rigorous due
-                      diligence—ensuring agility without compromising governance
-                      standards.
-                    </motion.p>
-                    <motion.p variants={fadeUp} custom={3}>
-                      Backed by a dynamic team and seasoned industry professionals,
-                      we combine strategic foresight with technical depth to
-                      create long-term value.
-                    </motion.p>
-                    <motion.p variants={fadeUp} custom={4}>
-                      AKSAN stands as a trusted partner for businesses navigating
-                      India&apos;s evolving capital markets landscape.
-                    </motion.p>
-                  </motion.div>
+                 <motion.div
+  variants={staggerContainer}
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true, amount: 0.3 }}
+  className="space-y-3.5 xs:space-y-4 text-gray-600 text-[13.5px] xs:text-[14px] sm:text-[15px] leading-[1.7] xs:leading-[1.75] sm:leading-[1.8] tracking-[0.005em] text-left sm:text-justify"
+>
+  <motion.p variants={fadeUp} custom={0}>
+    At AKSAN, we are a{" "}
+    
+      SEBI Registered Category-II Merchant Banker
+    
+    committed to delivering strategic, compliant, and execution-focused
+    solutions across the capital markets.
+  </motion.p>
+
+  <motion.p variants={fadeUp} custom={1}>
+    Built on{" "}
+   
+      integrity, precision, and regulatory excellence
+    
+    , we offer comprehensive merchant banking services spanning issue
+    management, capital structuring, mergers &amp; acquisitions, valuation
+    advisory, and regulatory support.
+  </motion.p>
+
+  <motion.p variants={fadeUp} custom={2}>
+    Every business follows a distinct growth trajectory. Our approach is
+    therefore{" "}
+    
+      tailored, insight-driven, and detail-oriented
+    
+    , enabling us to navigate complex requirements while maintaining the
+    highest standards of governance and compliance.
+  </motion.p>
+
+  <motion.p variants={fadeUp} custom={3}>
+    Backed by a dynamic team and experienced industry professionals, we
+    combine{" "}
+    
+      strategic perspective with technical expertise
+    
+    to create lasting value and support informed capital market decisions.
+  </motion.p>
+
+  <motion.p variants={fadeUp} custom={4}>
+    At AKSAN, we serve as a{" "}
+    
+      trusted strategic partner for businesses seeking sustainable growth,
+      efficient capital solutions, and long-term value creation
+    
+    .
+  </motion.p>
+</motion.div>
 
                   <motion.div
                     variants={staggerContainer}
@@ -459,7 +475,7 @@ export default function About() {
                   <p className="text-orange-600 font-semibold text-[12.5px] xs:text-[13.5px] sm:text-sm mb-4 leading-snug">
                     {person.role}
                   </p>
-                  <span className="block h-px w-14 bg-orange-500/60 mb-5" />
+                  {/* <span className="block h-px w-14 bg-orange-500/60 mb-5" /> */}
                   <p className="text-gray-600 text-[13px] xs:text-[13.5px] sm:text-sm leading-[1.65] xs:leading-[1.7] mb-6 xs:mb-7 max-w-xs">
                     {person.bio}
                   </p>
@@ -507,7 +523,7 @@ export default function About() {
               { icon: Briefcase, value: "29+", label: "Years of Experience" },
               { icon: TrendingUp, value: "8500+ Cr", label: "Capital Raised" },
               { icon: ShieldCheck, value: "150+", label: "Transactions Executed" },
-              { icon: Trophy, value: "100+", label: "Happy Clients" },
+              { icon: Trophy, value: "230+", label: "Happy Clients" },
             ].map(({ icon: Icon, value, label }, i) => (
               <div key={label} className="flex flex-col items-center text-center gap-1.5 xs:gap-2 relative px-2">
                 {i !== 0 && i !== 2 && (

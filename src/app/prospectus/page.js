@@ -46,7 +46,7 @@ const rhpDocuments = [
     listingExchange: "NSE Emerge",
     ipoSize: "66.35",
     ipoPrice: "395.00",
-    documentUrl: "/prospectus/Basilic-prospectus.pdf",
+    documentUrl: "/prospectus/Basilic- prospectus.pdf",
   },
   {
     number: "04",

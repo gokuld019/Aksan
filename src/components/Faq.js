@@ -14,29 +14,29 @@ const notoSans = Noto_Sans({
 
 const faqs = [
   {
-    question: "Is AKSAN Capital Advisory SEBI-registered?",
+    question: "How does AKSAN Capital Advisory Private Limited tailor their investment planning?",
     answer:
-      "Yes. AKSAN is a SEBI-registered investment advisor, and every recommendation we make follows the disclosure and conduct standards set by the regulator.",
+      "AKSAN Capital Advisory Private Limited works by combining market research and financial analysis into the development of an investment plan to meet the needs of any given financial goal..",
   },
   {
-    question: "Who does AKSAN typically work with?",
+    question: "Can AKSAN Capital Advisory Private Limited analyse the current portfolio?",
     answer:
-      "We work with individual investors, family offices, and SME/Main Board companies seeking ipo, fund raising, and portfolio guidance.",
+      "Certainly, the company specialises in providing investment advice and portfolio analysis to evaluate the current state of one’s portfolio and make the necessary recommendations.",
   },
   {
-    question: "Is there a minimum portfolio size to get started?",
+    question: "What is the importance of diversification in a portfolio, as suggested by AKSAN Capital Advisory Private Limited?",
     answer:
-      "We work with investors at different stages of their journey. Book a complimentary consultation and our team will let you know what fits your goals best.",
+      "Diversification is viewed as an element of the overall investment outlook and is considered as a component of portfolio analysis in order to make the appropriate recommendations.",
   },
   {
-    question: "How are your advisory fees structured?",
+    question: "How does AKSAN Capital Advisory Private Limited advise during volatile markets?",
     answer:
-      "Fees are transparent and typically structured as a flat advisory fee or a percentage of assets under advisory, disclosed upfront before engagement.",
+      "AKSAN Capital Advisory Private Limited stays up to date regarding the current market environment and can provide an independent outlook on the current situation and the potential impact it may have on one’s portfolio.",
   },
   {
-    question: "How do I get started with AKSAN?",
+    question: "What are the advantages of professional investment advisory?",
     answer:
-      "Simply book a consultation with our team. We'll understand your goals, review your current portfolio, and recommend a suitable path forward.",
+      "An objective third party provides the necessary research and analysis required to make confident and well-informed decisions regarding one of the most important assets in one’s life.",
   },
 ];
 
@@ -279,14 +279,14 @@ export default function FAQSection() {
                 </motion.button>
 
                 
-                  <a href="tel:+919360267233"
+                  <a href="tel:04440055781"
                   className="inline-flex items-center gap-2 text-white font-semibold text-[11px] xs:text-xs sm:text-sm whitespace-nowrap"
                 >
                   <Phone
                     size={11}
                     className="text-orange-500 fill-orange-500 xs:w-3 xs:h-3 sm:w-[14px] sm:h-[14px]"
                   />
-                  +91 81221 41901
+                  044 40055781
                 </a>
               </motion.div>
             </div>

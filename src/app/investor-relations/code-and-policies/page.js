@@ -10,7 +10,7 @@ const policies = [
     title: "Chinese Wall Policy",
     description:
       "Safeguarding confidential information and preventing conflicts of interest through strict information barriers.",
-    href: "/investor-relations/code-and-policies/chinese-wall-policy",
+    href: "/codeandpolicies/chinese.pdf",
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
         <path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z" />
@@ -19,10 +19,10 @@ const policies = [
     ),
   },
   {
-    title: "Investor Grievance Redressal Policy",
+    title: "Data Storage, Security and Backup Policy",
     description:
       "Ensuring fair and timely resolution of investor grievances with transparency and accountability.",
-    href: "/codeandpolicies/redressal.pdf",
+    href: "/codeandpolicies/datastorage.pdf",
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
         <path d="M12 21c-4-2.5-8-5.5-8-10.5A5 5 0 0 1 12 7a5 5 0 0 1 8 3.5c0 5-4 8-8 10.5z" />
@@ -31,10 +31,10 @@ const policies = [
     ),
   },
   {
-    title: "Cyber Security & Cyber Resilience Policy",
+    title: "Employee Investment Policy",
     description:
       "Protecting our digital assets and systems through robust security measures and resilience practices.",
-    href: "/investor-relations/code-and-policies/cyber-security-policy",
+    href: "/codeandpolicies/employeeinvesment.pdf",
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
         <path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z" />
@@ -43,10 +43,10 @@ const policies = [
     ),
   },
   {
-    title: "Code for Executive Directors and Managerial Personnel",
+    title: "Investor Grievance Redressal Policy",
     description:
       "Defining ethical standards and responsibilities for our leadership to promote integrity and good governance.",
-    href: "/investor-relations/code-and-policies/code-for-executive-directors",
+    href: "/codeandpolicies/investorgrievance.pdf",
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="9" cy="8" r="2.6" />
@@ -57,10 +57,10 @@ const policies = [
     ),
   },
   {
-    title: "Data Back-up Policy",
+    title: "Policy on Code of Conducts",
     description:
       "Ensuring the safety, integrity, and availability of data through regular back-ups and disaster recovery protocols.",
-    href: "/investor-relations/code-and-policies/data-back-up-policy",
+    href: "/codeandpolicies/policyoncode.pdf",
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
         <ellipse cx="12" cy="6" rx="7" ry="2.6" />
@@ -69,34 +69,7 @@ const policies = [
       </svg>
     ),
   },
-  {
-    title: "Investment Policy",
-    description:
-      "Establishing principles and guidelines for prudent investment decisions aligned with our strategic objectives.",
-    href: "/investor-relations/code-and-policies/investment-policy",
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M4 19V10" />
-        <path d="M10 19V6" />
-        <path d="M16 19v-8" />
-        <path d="M4 19h16" />
-      </svg>
-    ),
-  },
-  {
-    title: "Mandate Acceptance Criteria",
-    description:
-      "Ensuring that mandates are accepted based on a thorough evaluation of suitability, capability, and risk.",
-    href: "/investor-relations/code-and-policies/mandate-acceptance-criteria",
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="5" y="4" width="14" height="17" rx="1.5" />
-        <path d="M9 3.2h6a1 1 0 0 1 1 1v1.2H8V4.2a1 1 0 0 1 1-1z" />
-        <path d="M8.5 11.5h7" />
-        <path d="M8.5 15h7" />
-      </svg>
-    ),
-  },
+  
 ];
 
 const fadeUp = {

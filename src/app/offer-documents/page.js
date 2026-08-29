@@ -35,7 +35,9 @@ const offerDocuments = [
     drhpUrl: "/PhantomDigital_DRHP.pdf",
     rhpUrl: "/rhp/phantom.pdf",
     prospectusUrl: "/prospectus/Phantom_prospectus.pdf",
-    qipNcdCcdUrl: "#",
+    qipUrl: "#",
+    ncdUrl: "#",
+    ccdUrl: "#",
   },
   {
     id: 2,
@@ -48,7 +50,9 @@ const offerDocuments = [
     drhpUrl: "/KrishcaStrapping_DRHP.pdf",
     rhpUrl: "/rhp/krishca.pdf",
     prospectusUrl: "/prospectus/krishca-rhp.pdf",
-    qipNcdCcdUrl: "#",
+    qipUrl: "#",
+    ncdUrl: "#",
+    ccdUrl: "#",
   },
   {
     id: 3,
@@ -61,7 +65,9 @@ const offerDocuments = [
     drhpUrl: "/Draft-red-herring-prospectus-Basilic-Fly-Studio-Limited.pdf",
     rhpUrl: "/rhp/basilic.pdf",
     prospectusUrl: "/prospectus/Basilic-prospectus.pdf",
-    qipNcdCcdUrl: "#",
+    qipUrl: "#",
+    ncdUrl: "#",
+    ccdUrl: "#",
   },
   {
     id: 4,
@@ -74,7 +80,9 @@ const offerDocuments = [
     drhpUrl: "/ROX Hi-Tech Limited DRHP.pdf",
     rhpUrl: "/rhp/rox.pdf",
     prospectusUrl: "/prospectus/Rox Hi-Tech - Prospectus.pdf",
-    qipNcdCcdUrl: "#",
+    qipUrl: "#",
+    ncdUrl: "#",
+    ccdUrl: "#",
   },
   {
     id: 5,
@@ -87,7 +95,9 @@ const offerDocuments = [
     drhpUrl: "/SupremePower_DRHP.pdf",
     rhpUrl: "/rhp/supreme.pdf",
     prospectusUrl: "/prospectus/Supreme_Prospectus.pdf",
-    qipNcdCcdUrl: "#",
+    qipUrl: "#",
+    ncdUrl: "#",
+    ccdUrl: "#",
   },
   {
     id: 6,
@@ -100,7 +110,9 @@ const offerDocuments = [
     drhpUrl: "/ThaaiCasting_DRHP.pdf",
     rhpUrl: "/rhp/thaaicasting.pdf",
     prospectusUrl: "/prospectus/Thaai csting_prospectus.pdf",
-    qipNcdCcdUrl: "#",
+    qipUrl: "#",
+    ncdUrl: "#",
+    ccdUrl: "#",
   },
   {
     id: 7,
@@ -113,7 +125,9 @@ const offerDocuments = [
     drhpUrl: "/DRHP_AVP-Infracon-limited_final.pdf",
     rhpUrl: "/rhp/avp.pdf",
     prospectusUrl: "/prospectus/Prospectus_AVP-Infracon.pdf",
-    qipNcdCcdUrl: "#",
+    qipUrl: "#",
+    ncdUrl: "#",
+    ccdUrl: "#",
   },
   {
     id: 8,
@@ -126,7 +140,9 @@ const offerDocuments = [
     drhpUrl: "/ABSMarine_DRHP.pdf",
     rhpUrl: "/rhp/abs.pdf",
     prospectusUrl: "/prospectus/ABS_prospectus.pdf",
-    qipNcdCcdUrl: "#",
+    qipUrl: "#",
+    ncdUrl: "#",
+    ccdUrl: "#",
   },
   {
     id: 9,
@@ -139,7 +155,9 @@ const offerDocuments = [
     drhpUrl: "/SathlokharSynergys_DRHP.pdf",
     rhpUrl: "/rhp/sathlokar.pdf",
     prospectusUrl: "/prospectus/Sathlokar_prospectus.pdf",
-    qipNcdCcdUrl: "#",
+    qipUrl: "#",
+    ncdUrl: "#",
+    ccdUrl: "#",
   },
   {
     id: 10,
@@ -152,7 +170,9 @@ const offerDocuments = [
     drhpUrl: "/DRHP AFCOM final_20240326113515.pdf",
     rhpUrl: "/rhp/afcom.pdf",
     prospectusUrl: "/prospectus/Afcom_Prospectus.pdf",
-    qipNcdCcdUrl: "#",
+    qipUrl: "#",
+    ncdUrl: "#",
+    ccdUrl: "#",
   },
   {
     id: 11,
@@ -165,7 +185,9 @@ const offerDocuments = [
     drhpUrl: "/FresharaAgroExportsLimited_DRHP.pdf",
     rhpUrl: "/rhp/freshara.pdf",
     prospectusUrl: "/prospectus/Freshara_prospectus.pdf",
-    qipNcdCcdUrl: "#",
+    qipUrl: "#",
+    ncdUrl: "#",
+    ccdUrl: "#",
   },
   {
     id: 12,
@@ -178,7 +200,9 @@ const offerDocuments = [
     drhpUrl: "/DRHP_Emerald_Final.pdf",
     rhpUrl: "/rhp/emerald.pdf",
     prospectusUrl: "/prospectus/Emerald_Prospectus.pdf",
-    qipNcdCcdUrl: "#",
+    qipUrl: "#",
+    ncdUrl: "#",
+    ccdUrl: "#",
   },
   {
     id: 13,
@@ -191,11 +215,13 @@ const offerDocuments = [
     drhpUrl: "/Registration_30012025182411_DRHP_HappySquare.pdf",
     rhpUrl: "/rhp/happysquare.pdf",
     prospectusUrl: "/prospectus/HappySquare_prospectus.pdf",
-    qipNcdCcdUrl: "#",
+    qipUrl: "#",
+    ncdUrl: "#",
+    ccdUrl: "#",
   },
   {
     id: 14,
-    name: "Taiyo Global Infratech Limited",
+    name: "Taiyo Feed Mill Limited",
     logo: "/client/taiyo.jpg",
     listingDate: "TBD - To Be Disclosed",
     listingExchange: "NSE Emerge",
@@ -204,7 +230,9 @@ const offerDocuments = [
     drhpUrl: "/Taiyo-DRHP.pdf",
     rhpUrl: "#",
     prospectusUrl: "#",
-    qipNcdCcdUrl: "#",
+    qipUrl: "#",
+    ncdUrl: "#",
+    ccdUrl: "#",
     filing: true,
   },
   {
@@ -218,7 +246,9 @@ const offerDocuments = [
     drhpUrl: "/Sri_priyanka_DRHP.pdf",
     rhpUrl: "#",
     prospectusUrl: "#",
-    qipNcdCcdUrl: "#",
+    qipUrl: "#",
+    ncdUrl: "#",
+    ccdUrl: "#",
     filing: true,
   },
   {
@@ -232,7 +262,9 @@ const offerDocuments = [
     drhpUrl: "/RK-steel-DRHP.pdf",
     rhpUrl: "#",
     prospectusUrl: "#",
-    qipNcdCcdUrl: "#",
+    qipUrl: "#",
+    ncdUrl: "#",
+    ccdUrl: "#",
     filing: true,
   },
 ];
@@ -283,7 +315,7 @@ function InfoIcon() {
 
 function CalendarIcon() {
   return (
-    <svg viewBox="0 0 24 24" fill="none" className="h-[15px] w-[15px] text-slate-400 flex-none">
+    <svg viewBox="0 0 24 24" fill="none" className="h-[16px] w-[16px] text-slate-600 flex-none">
       <rect x="3.5" y="4.5" width="17" height="16" rx="2" stroke="currentColor" strokeWidth="1.6" />
       <path d="M3.5 9h17" stroke="currentColor" strokeWidth="1.6" />
       <path d="M8 2.5v4M16 2.5v4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
@@ -293,7 +325,7 @@ function CalendarIcon() {
 
 function ExchangeIcon() {
   return (
-    <svg viewBox="0 0 24 24" fill="none" className="h-[15px] w-[15px] text-slate-400 flex-none">
+    <svg viewBox="0 0 24 24" fill="none" className="h-[16px] w-[16px] text-slate-600 flex-none">
       <path
         d="M4 7h13M17 7l-3-3M17 7l-3 3M20 17H7M7 17l3-3M7 17l3 3"
         stroke="currentColor"
@@ -307,7 +339,7 @@ function ExchangeIcon() {
 
 function SizeIcon() {
   return (
-    <svg viewBox="0 0 24 24" fill="none" className="h-[15px] w-[15px] text-slate-400 flex-none">
+    <svg viewBox="0 0 24 24" fill="none" className="h-[16px] w-[16px] text-slate-600 flex-none">
       <path
         d="M3 12a9 9 0 1 0 18 0 9 9 0 0 0-18 0Z"
         stroke="currentColor"
@@ -320,7 +352,7 @@ function SizeIcon() {
 
 function PriceIcon() {
   return (
-    <svg viewBox="0 0 24 24" fill="none" className="h-[15px] w-[15px] text-slate-400 flex-none">
+    <svg viewBox="0 0 24 24" fill="none" className="h-[16px] w-[16px] text-slate-600 flex-none">
       <path
         d="M12 3v18M16.5 6.5H9.75a2.75 2.75 0 0 0 0 5.5h4.5a2.75 2.75 0 0 1 0 5.5H7"
         stroke="currentColor"
@@ -334,29 +366,24 @@ function PriceIcon() {
 
 function DetailRow({ icon, label, value }) {
   return (
-    <div className="flex items-center justify-between gap-3">
-      <span className="flex items-center gap-1.5 text-slate-400 whitespace-nowrap">
+    <div className="flex items-center justify-between gap-2">
+      <span className="flex items-center gap-2 text-slate-700 font-semibold whitespace-nowrap text-[13px]">
         {icon}
         {label}
       </span>
-      <span className="font-medium text-slate-700 text-right">{value}</span>
+      <span className="font-bold text-slate-800 text-right text-[14px]">{value}</span>
     </div>
   );
 }
 
-function DocButton({ href, label, tone }) {
-  const tones = {
-    navy: "hover:bg-[#0B1B3A] hover:border-[#0B1B3A] hover:text-white",
-    blue: "hover:bg-[#0F3A66] hover:border-[#0F3A66] hover:text-white",
-    orange: "hover:bg-[#F2622E] hover:border-[#F2622E] hover:text-white",
-    purple: "hover:bg-[#5B2C91] hover:border-[#5B2C91] hover:text-white",
-  };
+// SINGLE BUTTON COMPONENT - All buttons use the same style
+function DocButton({ href, label }) {
   return (
     <Link
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className={`group/btn relative flex items-center gap-2.5 overflow-hidden rounded-lg border border-slate-200 bg-slate-50/60 px-4 py-2.5 text-[11px] font-semibold uppercase tracking-wide text-slate-600 transition-all duration-300 ${tones[tone]}`}
+      className="group/btn relative flex items-center gap-2.5 overflow-hidden rounded-lg border border-slate-200 bg-slate-50/60 px-4 py-2.5 text-[11px] font-semibold uppercase tracking-wide text-slate-600 transition-all duration-300 hover:bg-[#0B1B3A] hover:border-[#0B1B3A] hover:text-white"
     >
       <FileText size={13} className="relative z-10 flex-none opacity-70 transition-opacity duration-300 group-hover/btn:opacity-100" />
       <span className="relative z-10 flex-1">{label}</span>
@@ -371,6 +398,22 @@ function DocButton({ href, label, tone }) {
   );
 }
 
+// COMPACT VARIANT — used for the 3-across QIP / NCD / CCD row where
+// space is tighter than the full-width buttons above it.
+function DocButtonCompact({ href, label }) {
+  return (
+    <Link
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group/btn relative flex flex-col items-center justify-center gap-1 overflow-hidden rounded-lg border border-slate-200 bg-slate-50/60 px-2 py-2.5 text-[10px] font-semibold uppercase tracking-wide text-slate-600 transition-all duration-300 hover:bg-[#0B1B3A] hover:border-[#0B1B3A] hover:text-white"
+    >
+      <FileText size={13} className="relative z-10 flex-none opacity-70 transition-opacity duration-300 group-hover/btn:opacity-100" />
+      <span className="relative z-10">{label}</span>
+    </Link>
+  );
+}
+
 function DocumentCard({ doc, index }) {
   return (
     <motion.div
@@ -379,7 +422,7 @@ function DocumentCard({ doc, index }) {
       viewport={{ once: true, amount: 0.3 }}
       transition={{ duration: 0.5, delay: (index % 6) * 0.05 }}
       whileHover={{ y: -4, boxShadow: "0 16px 32px -10px rgba(15,42,92,0.18)" }}
-      className="relative flex h-full flex-col rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition"
+      className="relative flex h-full flex-col rounded-xl border border-slate-200 bg-white p-5 shadow-sm transition"
     >
       {/* Filing stage star badge */}
       {doc.filing && (
@@ -389,52 +432,54 @@ function DocumentCard({ doc, index }) {
         </span>
       )}
 
-      {/* Logo — enlarged */}
-      <div className="flex h-[130px] w-full items-center justify-center">
+      {/* Logo — LARGER size */}
+      <div className="flex h-[180px] w-full items-center justify-center">
         {doc.logo ? (
-          <div className="relative h-[120px] w-[240px]">
+          <div className="relative h-[170px] w-[320px]">
             <Image
               src={doc.logo}
               alt={doc.name}
               fill
               className="object-contain"
-              sizes="240px"
+              sizes="320px"
+              priority={index < 4}
             />
           </div>
         ) : (
-          <span className="flex h-28 w-28 items-center justify-center rounded-full bg-blue-50 text-2xl font-bold text-[#0B1B3A]">
+          <span className="flex h-36 w-36 items-center justify-center rounded-full bg-blue-50 text-4xl font-bold text-[#0B1B3A]">
             {doc.name.charAt(0)}
           </span>
         )}
       </div>
 
-      <p className="mt-4 flex min-h-[44px] items-center justify-center text-center text-sm font-semibold leading-snug text-[#0B1B3A]">
+      <p className="mt-3 flex min-h-[40px] items-center justify-center text-center text-[13px] font-semibold leading-snug text-[#0B1B3A]">
         {doc.name}
       </p>
 
-      <div className="mt-5 space-y-3 border-t border-slate-100 pt-4 text-xs leading-relaxed text-slate-600">
+      <div className="mt-4 space-y-3 border-t border-slate-100 pt-3.5">
         <DetailRow icon={<CalendarIcon />} label="Listing Date" value={doc.listingDate} />
         <DetailRow icon={<ExchangeIcon />} label="Listing Exchange" value={doc.listingExchange} />
         <DetailRow icon={<SizeIcon />} label="IPO Size (in Crs.)" value={doc.ipoSize} />
         <DetailRow icon={<PriceIcon />} label="IPO Price (₹)" value={doc.ipoPrice} />
       </div>
 
-      {/* Section label so it's clear these are viewable/downloadable documents */}
-      <div className="mt-6 mb-2.5 flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.12em] text-slate-400">
+      {/* Section label */}
+      <div className="mt-5 mb-2 flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.12em] text-slate-400">
         <FileSearch size={13} className="flex-none" />
         View Documents
       </div>
 
-      {/* Three View Document Buttons — modern sleek style */}
-      <div className="flex flex-col gap-2">
-        <DocButton href={doc.drhpUrl} label="DRHP" tone="navy" />
-        <DocButton href={doc.rhpUrl} label="RHP" tone="blue" />
-        <DocButton href={doc.prospectusUrl} label="Prospectus" tone="orange" />
+      {/* Main doc buttons stacked, QIP/NCD/CCD split into 3 buttons in one row */}
+      <div className="flex flex-col gap-1.5">
+        <DocButton href={doc.drhpUrl} label="DRHP" />
+        <DocButton href={doc.rhpUrl} label="RHP" />
+        <DocButton href={doc.prospectusUrl} label="Prospectus" />
+        <div className="grid grid-cols-3 gap-1.5">
+          <DocButtonCompact href={doc.qipUrl || "#"} label="QIP" />
+          <DocButtonCompact href={doc.ncdUrl || "#"} label="NCD" />
+          <DocButtonCompact href={doc.ccdUrl || "#"} label="CCD" />
+        </div>
       </div>
-
-      <p className="mt-3 text-center text-[11px] font-semibold uppercase tracking-wide text-slate-400">
-        QIP/NCD/CCD
-      </p>
     </motion.div>
   );
 }
@@ -446,7 +491,7 @@ export default function OfferDocumentsPage() {
       <section className="relative flex min-h-[420px] w-full items-center overflow-hidden bg-[#0B1B3A] sm:min-h-[520px]">
         <div className="absolute inset-0">
           <Image
-            src="/drhp.png"
+            src="/offerdoc.png"
             alt=""
             fill
             priority
@@ -476,7 +521,7 @@ export default function OfferDocumentsPage() {
         </div>
       </section>
 
-      {/* ===== Understanding Offer Documents - Updated to match PDF ===== */}
+      {/* ===== Understanding Offer Documents ===== */}
       <section className="bg-white px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
         <div className="mx-auto max-w-[1400px]">
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-10 items-start">
@@ -560,7 +605,7 @@ export default function OfferDocumentsPage() {
             </p>
           </div>
 
-          <div className="mt-14 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          <div className="mt-14 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {offerDocuments.map((doc, i) => (
               <DocumentCard key={doc.id} doc={doc} index={i} />
             ))}

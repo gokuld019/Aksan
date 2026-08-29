@@ -127,9 +127,9 @@ export default function Services() {
                 We offer a wide range of financial advisory services to help you
                 achieve your financial goals with confidence.
               </p>
-              <button className=" hidden sm:inline-flex md:inline-flex items-center justify-center gap-2 border border-slate-300 font-semibold text-sm px-5 py-2.5 rounded-md hover:bg-slate-50 transition w-full sm:w-auto" style={{ color: "#1E2A5E" }}>
+              {/* <button className=" hidden sm:inline-flex md:inline-flex items-center justify-center gap-2 border border-slate-300 font-semibold text-sm px-5 py-2.5 rounded-md hover:bg-slate-50 transition w-full sm:w-auto" style={{ color: "#1E2A5E" }}>
                 VIEW ALL SERVICES <span aria-hidden="true">→</span>
-              </button>
+              </button> */}
             </div>
           </motion.div>
 
@@ -159,9 +159,9 @@ export default function Services() {
                     <p className="text-slate-500 text-xs sm:text-sm leading-relaxed mb-3 sm:mb-4 flex-1">
                       {service.desc}
                     </p>
-                    <a href="#" className="text-orange-500 text-[10px] sm:text-xs font-semibold tracking-wide inline-flex items-center gap-1 hover:text-orange-600 transition mt-auto">
+                    {/* <a href="#" className="text-orange-500 text-[10px] sm:text-xs font-semibold tracking-wide inline-flex items-center gap-1 hover:text-orange-600 transition mt-auto">
                       LEARN MORE <span aria-hidden="true">→</span>
-                    </a>
+                    </a> */}
                   </div>
                 </motion.div>
               ))}

@@ -13,18 +13,29 @@ const notoSans = Noto_Sans({
 });
 
 const partners = [
-  { name: "Rox", logo: "/client/rox.jpg" },
-  { name: "Emerald", logo: "/client/emerald.jpg" },
-  { name: "White Force", logo: "/client/whiteforce.jpg" },
+
   { name: "PhantomFX", logo: "/client/phantom.jpg" },
-  { name: "SPEL", logo: "/client/spel.jpg" },
+  { name: "Krishca", logo: "/client/krishca.jpg" },
   { name: "Basilic Fly", logo: "/client/basilicfly.jpg" },
+  { name: "Rox", logo: "/client/rox.jpg" },
+  { name: "SPEL", logo: "/client/spel.jpg" },
   { name: "Thaai Casting", logo: "/client/thaicasting.jpg" },
   { name: "AVP Infracon", logo: "/client/avp.jpg" },
+  { name: "ABS Marine Services Limited", logo: "/client/abs.jpg" },
   { name: "Sathlokhar", logo: "/client/sathlokar.jpg" },
-  { name: "Freshara Agro", logo: "/client/freshara.jpg" },
-  { name: "Happy Square", logo: "/client/whiteforce.jpg" },
   { name: "AFCOM Holdings", logo: "/client/afcom.jpg" },
+  { name: "Freshara Agro", logo: "/client/freshara.jpg" },
+  { name: "Emerald", logo: "/client/emerald.jpg" },
+  { name: "White Force", logo: "/client/whiteforce.jpg" },
+  // { name: "Taiyo Feed Mill Limited", logo: "/client/taiyo.jpg" },
+  // { name: "Sri Priyanka Enterprises Limited", logo: "/client/spgcl.jpg" },
+  // { name: "RK Steel & Infrastructure Limited", logo: "/client/rksteel.jpg" },
+  
+  
+  
+  
+  
+  
 ];
 
 const testimonials = [
@@ -176,13 +187,13 @@ export default function PartnersAndTestimonial() {
           </h2>
         </motion.div>
 
-        {/* Logo grid */}
+        {/* Logo grid — 5 per row on desktop, last row (remainder) centered */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.6 }}
-          className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5 sm:gap-4 mb-10 sm:mb-16 lg:mb-20"
+          className="flex flex-wrap justify-center gap-2.5 sm:gap-4 mb-10 sm:mb-16 lg:mb-20"
         >
           {partners.map((partner, i) => (
             <motion.div
@@ -192,7 +203,7 @@ export default function PartnersAndTestimonial() {
               viewport={{ once: true, amount: 0.4 }}
               transition={{ duration: 0.4, delay: i * 0.04, ease: [0.22, 1, 0.36, 1] }}
               whileHover={{ y: -4 }}
-              className="group relative flex items-center justify-center aspect-[4/3] rounded-xl sm:rounded-2xl bg-white ring-1 ring-slate-200 hover:ring-orange-300 p-3 sm:p-4 lg:p-5 transition-all duration-300 hover:shadow-[0_20px_40px_-16px_rgba(242,98,46,0.35)]"
+              className="group relative flex items-center justify-center aspect-[4/3] rounded-xl sm:rounded-2xl bg-white ring-1 ring-slate-200 hover:ring-orange-300 p-3 sm:p-4 lg:p-5 transition-all duration-300 hover:shadow-[0_20px_40px_-16px_rgba(242,98,46,0.35)] w-[calc(50%-0.3125rem)] sm:w-[calc(33.333%-0.6667rem)] lg:w-[calc(20%-0.8rem)]"
             >
               <Image
                 src={partner.logo}

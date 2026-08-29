@@ -148,34 +148,6 @@ export default function InvestorGrievanceRedressalPage() {
 
         <div className="relative z-10 w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 py-16 sm:py-20 lg:py-24">
           <div className="max-w-2xl">
-            {/* Breadcrumb
-            <motion.nav 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              aria-label="Breadcrumb" 
-              className="mb-5"
-            >
-              <ol className="flex items-center flex-wrap gap-x-2 gap-y-1 text-xs sm:text-sm text-white/70" style={{ fontFamily: "'Noto Sans', sans-serif" }}>
-                <li>
-                  <Link href="/" className="hover:text-white transition-colors">
-                    Home
-                  </Link>
-                </li>
-                <li aria-hidden="true">›</li>
-                <li>
-                  <Link
-                    href="/investor-relations"
-                    className="hover:text-white transition-colors"
-                  >
-                    Investor Relations
-                  </Link>
-                </li>
-                <li aria-hidden="true">›</li>
-                <li className="text-orange-400 font-medium">Investor Grievance Redressal</li>
-              </ol>
-            </motion.nav> */}
-
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
@@ -255,14 +227,15 @@ export default function InvestorGrievanceRedressalPage() {
           Investors can lodge their grievances through the following channels:
         </motion.p>
 
-        <motion.div 
-          variants={staggerContainer}
-          className="rounded-xl border border-slate-100 shadow-[0_2px_16px_-8px_rgba(15,42,92,0.14)] overflow-hidden hover:shadow-[0_8px_30px_-12px_rgba(15,42,92,0.2)] transition-shadow duration-500"
-        >
-          <div className="grid sm:grid-cols-2 divide-y sm:divide-y-0 sm:divide-x divide-slate-100">
+        {/* Channels + Note — now spaced as distinct cards instead of one fused block */}
+        <motion.div variants={staggerContainer} className="flex flex-col gap-4 sm:gap-5">
+          <div className="grid sm:grid-cols-2 gap-4 sm:gap-5">
+            {/* 1. Email */}
             <motion.div 
               variants={fadeInLeft}
-              className="flex items-start gap-4 p-5 sm:p-6 hover:bg-slate-50/50 transition-colors duration-300"
+              whileHover={{ y: -3 }}
+              transition={{ duration: 0.3 }}
+              className="flex items-start gap-4 rounded-xl border border-slate-100 shadow-[0_2px_16px_-8px_rgba(15,42,92,0.14)] p-5 sm:p-6 hover:shadow-[0_8px_30px_-12px_rgba(15,42,92,0.2)] hover:border-orange-200 transition-all duration-500"
             >
               <span className="shrink-0 flex items-center justify-center w-11 h-11 rounded-lg bg-blue-50 text-[#0e4980]">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
@@ -277,19 +250,22 @@ export default function InvestorGrievanceRedressalPage() {
                 <p className="text-slate-500 text-xs sm:text-sm leading-relaxed" style={{ fontFamily: "'Noto Sans', sans-serif" }}>
                   Send a detailed email to our dedicated grievances cell at{" "}
                   <a
-                    href="mailto:investors.grievances@vatsacapitalventure.com"
-                    className="text-[#0e4980] font-medium hover:underline break-all transition-colors"
+                    href="mailto:investorrelations@aksan.in"
+                    className="text-[#0e4980] font-medium hover:underline transition-colors"
                     style={{ fontFamily: "'Noto Sans', sans-serif" }}
                   >
-                    info@aksan.in
+                    investorrelations@aksan.in
                   </a>
                 </p>
               </div>
             </motion.div>
 
+            {/* 2. Letter */}
             <motion.div 
               variants={fadeInRight}
-              className="flex items-start gap-4 p-5 sm:p-6 hover:bg-slate-50/50 transition-colors duration-300"
+              whileHover={{ y: -3 }}
+              transition={{ duration: 0.3 }}
+              className="flex items-start gap-4 rounded-xl border border-slate-100 shadow-[0_2px_16px_-8px_rgba(15,42,92,0.14)] p-5 sm:p-6 hover:shadow-[0_8px_30px_-12px_rgba(15,42,92,0.2)] hover:border-orange-200 transition-all duration-500"
             >
               <span className="shrink-0 flex items-center justify-center w-11 h-11 rounded-lg bg-blue-50 text-[#0e4980]">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
@@ -308,9 +284,10 @@ export default function InvestorGrievanceRedressalPage() {
             </motion.div>
           </div>
 
+          {/* Note — now its own rounded card, separated with real breathing room */}
           <motion.div 
             variants={fadeInUp}
-            className="flex items-start gap-3 bg-slate-50 border-t border-slate-100 px-5 sm:px-6 py-4"
+            className="flex items-start gap-3 rounded-xl bg-slate-50 border border-slate-100 px-5 sm:px-6 py-4"
           >
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="shrink-0 mt-0.5 text-slate-400">
               <path d="M7 3h7l4 4v14a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z" />
@@ -327,66 +304,103 @@ export default function InvestorGrievanceRedressalPage() {
         </motion.div>
       </AnimatedSection>
 
-      {/* Key Contacts for Grievances */}
+      {/* Key Contacts for Grievances — modern glass-card redesign */}
       <AnimatedSection className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 pb-14 sm:pb-16">
         <motion.div 
           variants={staggerContainer}
-          className="rounded-xl bg-[#0e2a4e] text-white p-6 sm:p-8 relative overflow-hidden group"
+          className="rounded-2xl bg-gradient-to-br from-[#0e2a4e] to-[#0b1a3a] text-white p-6 sm:p-10 relative overflow-hidden group border border-white/5"
         >
           {/* Background decoration */}
-          <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-orange-500/10 to-transparent rounded-full -translate-y-1/2 translate-x-1/4 group-hover:scale-110 transition-transform duration-700" />
-          
-          <motion.h3 
-            variants={fadeInUp}
-            className="font-bold text-base sm:text-lg mb-1 relative z-10"
-            style={{ fontFamily: "'Noto Sans', sans-serif" }}
-          >
-            Key Contacts for Grievances
-          </motion.h3>
-          <motion.span 
-            variants={fadeInUp}
-            className="block w-10 h-[3px] bg-orange-500 mb-6 relative z-10" 
-          />
+          <div className="absolute top-0 right-0 w-80 h-80 bg-gradient-to-br from-orange-500/10 to-transparent rounded-full -translate-y-1/3 translate-x-1/4 blur-2xl group-hover:scale-110 transition-transform duration-700" />
+          <div className="absolute bottom-0 left-0 w-64 h-64 bg-gradient-to-tr from-blue-400/5 to-transparent rounded-full translate-y-1/3 -translate-x-1/4 blur-2xl" />
 
-          <div className="grid sm:grid-cols-2 gap-6 sm:gap-8 relative z-10">
+          <motion.div variants={fadeInUp} className="relative z-10 mb-8">
+            <p
+              className="text-orange-400 text-xs font-semibold tracking-[0.14em] uppercase mb-2"
+              style={{ fontFamily: "'Noto Sans', sans-serif" }}
+            >
+              Get in Touch
+            </p>
+            <h3 className="font-bold text-xl sm:text-2xl" style={{ fontFamily: "'Noto Sans', sans-serif" }}>
+              Key Contacts for Grievances
+            </h3>
+            <span className="block w-10 h-[3px] bg-orange-500 mt-4" />
+          </motion.div>
+
+          <div className="grid sm:grid-cols-2 gap-5 sm:gap-6 relative z-10">
+            {/* Compliance Officer */}
             <motion.div 
               variants={fadeInLeft}
-              className="flex items-start gap-4"
+              whileHover={{ y: -4 }}
+              transition={{ duration: 0.3 }}
+              className="rounded-xl bg-white/[0.04] backdrop-blur-sm border border-white/10 p-5 sm:p-6 hover:bg-white/[0.07] hover:border-orange-400/30 transition-all duration-300"
             >
-              <span className="shrink-0 flex items-center justify-center w-11 h-11 rounded-lg bg-white/10 text-white group-hover:bg-white/20 transition-colors duration-300">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                  <circle cx="12" cy="8" r="3.4" />
-                  <path d="M5 20c.6-3.6 3.4-6 7-6s6.4 2.4 7 6" />
-                </svg>
-              </span>
-              <div>
-                <p className="font-semibold text-sm sm:text-[15px] mb-1" style={{ fontFamily: "'Noto Sans', sans-serif" }}>Compliance Officer</p>
-                <a href="mailto:compliance@aksan.in" className="block text-white/80 text-sm hover:text-white hover:underline transition-colors" style={{ fontFamily: "'Noto Sans', sans-serif" }}>
-                  info@aksan.in
+              <div className="flex items-center gap-4 mb-4">
+                <span className="shrink-0 flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-br from-orange-500/20 to-orange-500/5 border border-orange-400/20 text-orange-400">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="12" cy="8" r="3.4" />
+                    <path d="M5 20c.6-3.6 3.4-6 7-6s6.4 2.4 7 6" />
+                  </svg>
+                </span>
+                <div>
+                  
+                  <p className="font-semibold text-base" style={{ fontFamily: "'Noto Sans', sans-serif" }}>
+                    Kushboo Hanswal
+                  </p>
+
+                  <p className="text-white/50 text-[11px] font-medium tracking-[0.08em]" style={{ fontFamily: "'Noto Sans', sans-serif" }}>
+                    Compliance Officer
+                  </p>
+                </div>
+              </div>
+              <div className="flex flex-col gap-2.5 pl-1">
+                <a
+                  href="mailto:info@aksan.in"
+                  className="flex items-center gap-2.5 text-white/70 text-sm hover:text-orange-400 transition-colors"
+                  style={{ fontFamily: "'Noto Sans', sans-serif" }}
+                >
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="shrink-0">
+                    <rect x="3" y="5" width="18" height="14" rx="1.5" />
+                    <path d="M3.5 6.5L12 13l8.5-6.5" />
+                  </svg>
+                 investorrelations@aksan.in
                 </a>
-                <a href="tel:+912269178000" className="block text-white/80 text-sm hover:text-white hover:underline transition-colors" style={{ fontFamily: "'Noto Sans', sans-serif" }}>
-                  +91 22 6917 8000
+                <a
+                  href="tel:+912269178000"
+                  className="flex items-center gap-2.5 text-white/70 text-sm hover:text-orange-400 transition-colors"
+                  style={{ fontFamily: "'Noto Sans', sans-serif" }}
+                >
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="shrink-0">
+                    <path d="M6.6 10.8a15.4 15.4 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25c1.1.36 2.3.56 3.6.56a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.4 21 3 13.6 3 4.5a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.3.2 2.5.56 3.6a1 1 0 0 1-.25 1L6.6 10.8z" />
+                  </svg>
+                  022 40040874
                 </a>
               </div>
             </motion.div>
 
+            {/* Registered Office Address */}
             <motion.div 
               variants={fadeInRight}
-              className="flex items-start gap-4 sm:pl-8 sm:border-l sm:border-white/15"
+              whileHover={{ y: -4 }}
+              transition={{ duration: 0.3 }}
+              className="rounded-xl bg-white/[0.04] backdrop-blur-sm border border-white/10 p-5 sm:p-6 hover:bg-white/[0.07] hover:border-orange-400/30 transition-all duration-300"
             >
-              <span className="shrink-0 flex items-center justify-center w-11 h-11 rounded-lg bg-white/10 text-white group-hover:bg-white/20 transition-colors duration-300">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M12 21s7-6.5 7-11.5a7 7 0 1 0-14 0C5 14.5 12 21 12 21z" />
-                  <circle cx="12" cy="9.5" r="2.4" />
-                </svg>
-              </span>
-              <div>
-                <p className="font-semibold text-sm sm:text-[15px] mb-1" style={{ fontFamily: "'Noto Sans', sans-serif" }}>Registered Office Address</p>
-                <p className="text-white/80 text-sm leading-relaxed" style={{ fontFamily: "'Noto Sans', sans-serif" }}>
-28/27, Parvathy Apartments, 2nd Floor,
-Damodaran Street, T.Nagar,
-Chennai - 600 017, Tamil Nadu, India.                    </p>
+              <div className="flex items-center gap-4 mb-4">
+                <span className="shrink-0 flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-br from-orange-500/20 to-orange-500/5 border border-orange-400/20 text-orange-400">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M12 21s7-6.5 7-11.5a7 7 0 1 0-14 0C5 14.5 12 21 12 21z" />
+                    <circle cx="12" cy="9.5" r="2.4" />
+                  </svg>
+                </span>
+                <p className="font-semibold text-base" style={{ fontFamily: "'Noto Sans', sans-serif" }}>
+                  Registered Office Address
+                </p>
               </div>
+              <p className="text-white/70 text-sm leading-relaxed pl-1" style={{ fontFamily: "'Noto Sans', sans-serif" }}>
+                28/27, Parvathy Apartments, 2nd Floor,
+                Damodaran Street, T.Nagar,
+                Chennai - 600 017, Tamil Nadu, India.
+              </p>
             </motion.div>
           </div>
         </motion.div>
@@ -562,10 +576,8 @@ Chennai - 600 017, Tamil Nadu, India.                    </p>
                   <p className="text-slate-500 text-xs sm:text-sm" style={{ fontFamily: "'Noto Sans', sans-serif" }}>Address</p>
                   <p className="text-[#0e4980] font-medium text-sm sm:text-[15px] leading-relaxed" style={{ fontFamily: "'Noto Sans', sans-serif" }}>
                     28/27, Parvathy Apartments, 2nd Floor,
-
-Damodaran Street, T.Nagar,
-
-Chennai - 600 017, Tamil Nadu, India.
+                    Damodaran Street, T.Nagar,
+                    Chennai - 600 017, Tamil Nadu, India.
                   </p>
                 </div>
               </motion.div>

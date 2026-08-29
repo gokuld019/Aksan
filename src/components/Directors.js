@@ -14,7 +14,7 @@ const notoSans = Noto_Sans({
 const directors = [
   {
     name: "Rajinikanth ES",
-    role: "MANAGING DIRECTOR",
+    role: "MD/CEO/PO",
     image: "/team/CEO3.png",
     accent: "border-orange-500 bg-slate-900/90",
   },

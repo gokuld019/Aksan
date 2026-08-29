@@ -61,6 +61,11 @@ export default function AwardsRecognition() {
 }
 
 function AwardCard({ award }) {
+  // BSE badge only for AFCOM Holdings Limited (matched loosely so
+  // "AFCOM Holdings Ltd", extra whitespace, or case differences in the
+  // data still resolve correctly). Every other company gets NSE.
+  const isAfcom = award.company?.trim().toLowerCase().includes("afcom");
+
   return (
     <div className="group relative overflow-hidden rounded-lg bg-[#0f4475] shadow-md hover:shadow-xl transition-shadow duration-300">
       {/* Photo Container */}
@@ -74,12 +79,12 @@ function AwardCard({ award }) {
           priority={false}
         />
 
-        {/* NSE badge, top-left */}
+        {/* Exchange Badge - NSE by default, BSE only for AFCOM */}
         <div
           className="absolute left-3 top-3 flex h-8 w-8 sm:h-10 sm:w-10 items-center justify-center rounded-full bg-[#F7931E] text-[8px] sm:text-[10px] font-bold text-white shadow-lg"
           style={{ fontFamily: "'Noto Sans', sans-serif" }}
         >
-          BSE
+          {isAfcom ? "BSE" : "NSE"}
         </div>
 
         {/* Dark gradient overlay for text readability */}

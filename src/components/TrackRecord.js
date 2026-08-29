@@ -16,7 +16,6 @@ const stats = [
     suffix: "+",
     label: "Companies",
     sub: "Listed on SME till date",
-    highlighted: true,
   },
   {
     value: "1",
@@ -25,25 +24,25 @@ const stats = [
     sub: "DRHP filed – Mainboard",
   },
   {
-    value: "3",
+    value: "2",
     suffix: "+",
     label: "Companies",
     sub: "DRHP filed – SME",
   },
   {
-    value: "6.00",
+    value: "10L",
     suffix: "+",
     label: "Lakhs",
     sub: "Investors Network",
   },
   {
-    value: "725",
+    value: "1,495",
     suffix: "+",
     label: "Crores",
-    sub: "Raised on SME Platform",
+    sub: "Raised on IPO",
   },
   {
-    value: "7,275",
+    value: "6,516",
     suffix: "+",
     label: "Crores",
     sub: "Market Capitalisation",
@@ -142,7 +141,7 @@ export default function TrackRecord() {
           viewport={{ once: true, amount: 0.6 }}
           transition={{ duration: 0.5 }}
           className="font-semibold text-[10px] xs:text-xs sm:text-sm tracking-widest mb-3 sm:mb-4"
-          style={{ color: "#FA7B20" }}
+          style={{ color: "#fcfcfc" }}
         >
           TRACK RECORD
         </motion.p>
@@ -155,7 +154,7 @@ export default function TrackRecord() {
           transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
           className="text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-4xl xl:text-4xl font-bold text-white leading-tight mb-8 sm:mb-10 md:mb-12 lg:mb-14 max-w-3xl mx-auto px-2"
         >
-          Largest IPO Network in South India&apos;s SME Segment
+          One of India’s Leading IPO Networks
         </motion.h2>
 
         {/* Stats Grid */}
@@ -171,20 +170,8 @@ export default function TrackRecord() {
               key={stat.label + stat.sub}
               variants={revealItem}
               whileHover={{ y: -6 }}
-              className={`relative rounded-xl p-2 xs:p-5 sm:p-7 md:p-8 flex flex-col items-center justify-center text-center border transition-colors h-full w-full min-h-[140px] xs:min-h-[160px] sm:min-h-[190px] max-w-[220px] sm:max-w-[240px] ${
-                stat.highlighted
-                  ? "border-orange-500 bg-slate-900/40"
-                  : "border-slate-600/40 bg-white/5"
-              }`}
+              className="relative rounded-xl p-2 xs:p-5 sm:p-7 md:p-8 flex flex-col items-center justify-center text-center border border-slate-600/40 bg-white/5 transition-colors h-full w-full min-h-[140px] xs:min-h-[160px] sm:min-h-[190px] max-w-[220px] sm:max-w-[240px]"
             >
-              {stat.highlighted && (
-                <span
-                  className="absolute inset-0 rounded-xl -z-10 animate-pulse"
-                  style={{ boxShadow: "0 0 0 1px rgba(249,115,22,0.35), 0 0 30px rgba(249,115,22,0.15)" }}
-                  aria-hidden="true"
-                />
-              )}
-
               {/* Value with suffix */}
               <p className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-none mb-2 xs:mb-3 sm:mb-4 tabular-nums">
                 <StatNumber value={stat.value} />

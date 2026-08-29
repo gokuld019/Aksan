@@ -20,14 +20,17 @@ const contactCards = [
   {
     icon: Phone,
     title: "Call Us",
-    lines: ["+91 81221 41901", "+91 81221 41901", "+91 44 4005 5781"],
-    type: "text",
+    lines: [
+      { text: "022 40040874", href: "tel:02240040874" },
+      { text: "044 40055781", href: "tel:04440055781" },
+    ],
+    type: "phone",
   },
   {
     icon: MapPin,
     title: "Registered Office",
     lines: [
-      "28/27, Parvathy Apartments, 2nd Floor, Damodaran Street, T.Nagar, Chennai - 600 017, Tamil Nadu, India.",
+      { text: "28/27, Parvathy Apartments, 2nd Floor, Damodaran Street, T.Nagar, Chennai - 600 017, Tamil Nadu, India." },
     ],
     type: "text",
   },
@@ -35,41 +38,35 @@ const contactCards = [
     icon: MapPin,
     title: "Branch Office",
     lines: [
-      "Office No. 104, 1st Floor, The Summit Business Bay, Off Western Express Highway, Andheri (East), Mumbai - 400093.",
+      { text: "Office No. 104, 1st Floor, The Summit Business Bay, Off Western Express Highway, Andheri (East), Mumbai - 400093." },
     ],
     type: "text",
   },
   {
     icon: Mail,
     title: "Email Us",
-    lines: ["info@aksan.in"],
+    lines: [
+      { text: "info@aksan.in", href: "mailto:info@aksan.in" },
+    ],
     type: "email",
   },
 ];
 
 const quickLinks = [
-  { label: "IPO", href: "/services/ipo" },
-  { label: "Rights Issue", href: "/services/rights-issue" },
-  { label: "Preferential Allotment", href: "/services/preferential-allotment" },
-  { label: "Follow-on Public Offer (FPO)", href: "/services/fpo" },
-  { label: "Merchant Banking Services", href: "/services/merchant-banking" },
-  { label: "Corporate Advisory", href: "/services/corporate-advisory" },
+  { label: "About Us", href: "/About" },
+  { label: "Offer Documents", href: "/offer-documents" },
+  { label: "Gallery", href: "/Gallery" },
+  { label: "Blogs", href: "/BlogsPage" },
+  { label: "Contact Us", href: "/contactus" },
+  
 ];
 
 const companyLinks = [
-  { label: "Company", href: "/company" },
-  { label: "Board of Directors", href: "/company/board" },
-  { label: "Core Team", href: "/company/core-team" },
-  { label: "Awards & Recognition", href: "/company/awards" },
-  { label: "Careers", href: "/careers" },
-  { label: "Contact", href: "/contact" },
-];
-
-const usefulLinks = [
-  { label: "Live Stock", href: "/live-stock" },
-  { label: "Videos", href: "/videos" },
-  { label: "Terms & Conditions", href: "/terms-and-condition" },
-  { label: "Privacy Policy", href: "/privacy-policy" },
+  
+  
+  { label: "Core Team", href: "/About" },
+  { label: "Gallery", href: "/Gallery" },
+  { label: "Contact Us", href: "/contactus" },
 ];
 
 const trustBadges = [
@@ -80,44 +77,7 @@ const trustBadges = [
 ];
 
 const socialLinks = [
-  {
-    icon: () => (
-      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true">
-        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-      </svg>
-    ),
-    href: "https://www.youtube.com/@aksancapital",
-    label: "YouTube",
-  },
-  {
-    icon: () => (
-      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true">
-        <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
-      </svg>
-    ),
-    href: "https://x.com/AksanCapital",
-    label: "X (Twitter)",
-  },
-  {
-    icon: () => (
-      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true">
-        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 1 1 0-4.124 2.062 2.062 0 0 1 0 4.124zM7.114 20.452H3.56V9h3.554v11.452z"/>
-      </svg>
-    ),
-    href: "https://www.facebook.com/people/Aksan-Capital/61556670907313/#",
-    label: "Facebook",
-  },
-  {
-    icon: () => (
-      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
-        <rect x="2" y="2" width="20" height="20" rx="5" />
-        <circle cx="12" cy="12" r="4" />
-        <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
-      </svg>
-    ),
-    href: "https://instagram.com/aksan",
-    label: "Instagram",
-  },
+ 
   {
     icon: () => (
       <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true">
@@ -211,21 +171,29 @@ export default function Footer() {
                 <h3 className="text-white font-semibold text-[12.5px] xs:text-sm sm:text-[15px] mb-1 xs:mb-1.5 leading-tight">
                   {card.title}
                 </h3>
-                {card.lines.map((line) =>
+                {card.lines.map((line, idx) =>
                   card.type === "email" ? (
                     <a
-                      key={line}
-                      href={`mailto:${line}`}
+                      key={idx}
+                      href={line.href}
                       className="block text-orange-400 font-medium text-[11px] xs:text-xs sm:text-sm break-all hover:text-orange-300 transition-colors"
                     >
-                      {line}
+                      {line.text}
+                    </a>
+                  ) : card.type === "phone" ? (
+                    <a
+                      key={idx}
+                      href={line.href}
+                      className="block text-slate-400 hover:text-orange-400 text-[11px] xs:text-[11.5px] sm:text-[13px] leading-[1.55] transition-colors"
+                    >
+                      {line.text}
                     </a>
                   ) : (
                     <p
-                      key={line}
+                      key={idx}
                       className="text-slate-400 text-[11px] xs:text-[11.5px] sm:text-[13px] leading-[1.55] break-words"
                     >
-                      {line}
+                      {line.text}
                     </p>
                   )
                 )}
@@ -234,8 +202,8 @@ export default function Footer() {
           ))}
         </div>
 
-        {/* Main footer grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr_1.1fr] gap-8 xs:gap-9 sm:gap-10 lg:gap-8 pb-10 xs:pb-12 sm:pb-14">
+        {/* Main footer grid - Adjusted to 4 columns instead of 5 */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1fr_1.2fr] gap-8 xs:gap-9 sm:gap-10 lg:gap-8 pb-10 xs:pb-12 sm:pb-14">
           {/* Brand column */}
           <div className="sm:col-span-2 lg:col-span-1 text-left">
             <Image
@@ -269,7 +237,6 @@ export default function Footer() {
 
           <FooterLinkList title="Popular Quick Links" links={quickLinks} />
           <FooterLinkList title="Company" links={companyLinks} />
-          <FooterLinkList title="Useful Links" links={usefulLinks} />
 
           {/* Work Hours + Newsletter */}
           <div className="sm:col-span-2 lg:col-span-1 text-left flex flex-col gap-6 xs:gap-7">

@@ -7,8 +7,16 @@ import { usePathname } from "next/navigation";
 
 const navLinks = [
   { label: "Home", href: "/" },
-  { label: "About us", href: "/About" },
-  { label: "Services", href: "/services" },
+  { label: "About Us", href: "/About" },
+  {
+    label: "Services",
+    href: "/services",
+    children: [
+      { label: "Capital Markets", href: "/services/capital-markets" },
+      { label: "Corporate Restructuring", href: "/services/corporate-restructuring" },
+      { label: "Valuation", href: "/services/valuation" },
+    ],
+  },
   { label: "Offer documents", href: "/offer-documents" },
   {
     label: "Investor relations",
@@ -75,6 +83,9 @@ export default function Navbar() {
     backgroundClip: "text",
   };
 
+  // Check if current path is a service subpage
+  const isServiceSubpage = pathname.startsWith("/services/");
+
   return (
     <header
       className={`fixed top-0 left-0 w-full z-30 transition-all duration-300 ${
@@ -109,7 +120,7 @@ export default function Navbar() {
               >
                 <button
                   className={`flex items-center gap-1.5 text-[18px] font-semibold tracking-wide whitespace-nowrap transition-colors ${
-                    servicesOpen === link.label
+                    servicesOpen === link.label || (link.href && pathname.startsWith(link.href))
                       ? "text-[#F2622E]"
                       : showSolidBg
                       ? "text-[#0B1A33] hover:text-[#F2622E]"
@@ -118,7 +129,7 @@ export default function Navbar() {
                 >
                   <span
                     style={
-                      showSolidBg && servicesOpen !== link.label
+                      showSolidBg && servicesOpen !== link.label && !(link.href && pathname.startsWith(link.href))
                         ? gradientStyle
                         : {}
                     }
@@ -284,7 +295,11 @@ export default function Navbar() {
                       onClick={() =>
                         setMobileServicesOpen((prev) => (prev === link.label ? false : link.label))
                       }
-                      className="w-full flex items-center justify-between text-[13px] font-semibold tracking-wide text-white/90 py-3.5 px-3 rounded-xl active:bg-white/5 transition-colors"
+                      className={`w-full flex items-center justify-between text-[13px] font-semibold tracking-wide py-3.5 px-3 rounded-xl active:bg-white/5 transition-colors ${
+                        link.href && pathname.startsWith(link.href)
+                          ? "text-[#F2622E]"
+                          : "text-white/90"
+                      }`}
                     >
                       <span>{link.label}</span>
                       <svg
@@ -296,7 +311,9 @@ export default function Navbar() {
                         strokeWidth="2.5"
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                        className="text-white/60 transform transition-transform duration-200"
+                        className={`text-white/60 transform transition-transform duration-200 ${
+                          mobileServicesOpen === link.label ? "rotate-180" : ""
+                        }`}
                       >
                         <path d="M6 9l6 6 6-6" />
                       </svg>
@@ -311,7 +328,11 @@ export default function Navbar() {
                           <li key={child.label}>
                             <Link
                               href={child.href}
-                              className="block text-[12.5px] font-medium text-white/60 hover:text-[#F2622E] active:text-[#F2622E] py-2.5 px-3 rounded-lg active:bg-white/5 transition-colors"
+                              className={`block text-[12.5px] font-medium py-2.5 px-3 rounded-lg active:bg-white/5 transition-colors ${
+                                child.href === pathname
+                                  ? "text-[#F2622E]"
+                                  : "text-white/60 hover:text-[#F2622E] active:text-[#F2622E]"
+                              }`}
                               onClick={() => setMobileOpen(false)}
                             >
                               {child.label}

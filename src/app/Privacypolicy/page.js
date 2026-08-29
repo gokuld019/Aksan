@@ -92,7 +92,7 @@ const contactDetails = [
   {
     icon: Phone,
     label: "Phone",
-    value: "+91 81221 41901",
+    value: "044 40055781",
   },
   {
     icon: MapPin,

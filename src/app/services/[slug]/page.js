@@ -224,12 +224,12 @@ export default async function ServiceDetailPage({ params }) {
                         </p>
                       )}
 
-                      <a href="#"
+                      {/* <a href="#"
                         className="inline-flex items-center gap-2 text-orange-500 hover:text-orange-600 font-semibold text-[13px] sm:text-sm transition group"
                       >
                         View Details
                         <ArrowRight size={15} className="transition-transform group-hover:translate-x-1" />
-                      </a>
+                      </a> */}
                     </div>
                   </div>
                 );
@@ -240,7 +240,7 @@ export default async function ServiceDetailPage({ params }) {
       )}
 
       {/* BACK LINK */}
-      <section className="w-full bg-white pb-14 sm:pb-16 px-5 sm:px-6 lg:px-8">
+      {/* <section className="w-full bg-white pb-14 sm:pb-16 px-5 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto flex flex-wrap items-center justify-between gap-4 pt-6 sm:pt-8 border-t border-gray-100">
           <Link
             href="/services"
@@ -250,7 +250,7 @@ export default async function ServiceDetailPage({ params }) {
             Back to All Services
           </Link>
         </div>
-      </section>
+      </section> */}
 
       {/* CTA BANNER */}
       <section className="w-full bg-white pt-4 pb-14 sm:pb-16 px-5 sm:px-6 lg:px-8">
