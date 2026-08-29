@@ -237,36 +237,37 @@ const offerDocuments = [
   },
 ];
 
+// Updated to match PDF content exactly
 const drhpContents = [
   {
     icon: Building2,
     title: "Company & Business Overview",
-    desc: "Details about the company, industry, and business model.",
+    desc: "Information about the company, its business model, industry, operations, and competitive position.",
   },
   {
     icon: BarChart3,
     title: "Financial Information",
-    desc: "Historical financials and key performance indicators.",
+    desc: "Key financial statements, historical performance, and relevant financial information.",
   },
   {
     icon: AlertTriangle,
     title: "Risk Factors",
-    desc: "Potential risks associated with the business and industry.",
+    desc: "Important risks and uncertainties associated with the company, industry, and proposed offering.",
   },
   {
     icon: Users,
     title: "Management & Promoter Details",
-    desc: "Information about management team and promoters.",
+    desc: "Information about the company's management team, promoters, and their relevant background.",
   },
   {
     icon: FileText,
     title: "IPO / Offer Details",
-    desc: "Issue size, price band, structure, and offer details.",
+    desc: "Details relating to the proposed issue, including issue structure, size, price band, and other offer-related information.",
   },
   {
     icon: Target,
     title: "Objects of the Issue",
-    desc: "Purpose and utilization of the proceeds.",
+    desc: "Details on how the company proposes to utilise the funds raised through the offering.",
   },
 ];
 
@@ -475,14 +476,14 @@ export default function OfferDocumentsPage() {
         </div>
       </section>
 
-      {/* ===== Understanding Offer Documents ===== */}
+      {/* ===== Understanding Offer Documents - Updated to match PDF ===== */}
       <section className="bg-white px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
         <div className="mx-auto max-w-[1400px]">
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-10 items-start">
-            {/* Left: Understanding */}
+            {/* Left: Understanding Offer Documents */}
             <div>
               <span className="mb-2.5 flex items-center gap-2.5 text-xs font-semibold uppercase tracking-[0.15em] text-orange-500">
-                About Offer Documents
+                Offer Documents
                 <span className="h-px w-8 bg-orange-500/70" />
               </span>
               <h2 className="text-2xl font-bold leading-snug text-[#152249] sm:text-3xl">
@@ -491,32 +492,14 @@ export default function OfferDocumentsPage() {
               <span className="mt-3 block h-1 w-14 rounded-full bg-orange-500" />
 
               <p className="mt-5 text-sm leading-[1.8] text-slate-500 sm:text-[15px]">
-                An offer document is a comprehensive legal and financial
-                document filed with SEBI before launching an Initial Public
-                Offering (IPO).
+                Offer Documents provide detailed information about a company and its proposed public offering. They help investors understand the company's business, financial performance, offer structure, risk factors, and the proposed use of funds.
               </p>
               <p className="mt-4 text-sm leading-[1.8] text-slate-500 sm:text-[15px]">
-                It contains essential information about the company, its
-                business operations, financial performance, risk factors,
-                management details, and the proposed public issue.
+                AKSAN Capital Advisory provides access to relevant offer documents of companies advised by us, enabling investors and stakeholders to review important information associated with each offering.
               </p>
               <p className="mt-4 text-sm leading-[1.8] text-slate-500 sm:text-[15px]">
-                The three key offer documents include:
+                These documents are made available for informational purposes and should be reviewed carefully before making any investment decision.
               </p>
-              <ul className="mt-4 space-y-3 text-sm leading-relaxed text-slate-600">
-                <li className="flex items-start gap-3">
-                  <span className="mt-1 h-2 w-2 flex-none rounded-full bg-[#0B1B3A]" />
-                  <span><strong>Draft Red Herring Prospectus (DRHP):</strong> Preliminary document filed with SEBI for review.</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="mt-1 h-2 w-2 flex-none rounded-full bg-[#0F3A66]" />
-                  <span><strong>Red Herring Prospectus (RHP):</strong> Final offer document with price band and issue details.</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="mt-1 h-2 w-2 flex-none rounded-full bg-[#F2622E]" />
-                  <span><strong>Prospectus:</strong> Complete final document approved by SEBI for public subscription.</span>
-                </li>
-              </ul>
 
               <div className="mt-6 flex items-start gap-3 rounded-lg border border-slate-200 bg-slate-50 p-4">
                 <InfoIcon />
@@ -525,19 +508,16 @@ export default function OfferDocumentsPage() {
                     Please Note
                   </p>
                   <p className="mt-1 text-xs leading-relaxed text-slate-500 sm:text-sm">
-                    These documents are published for informational and
-                    regulatory reference only. Investors are encouraged to read
-                    the respective document carefully before making any
-                    investment decisions.
+                    Offer Documents contain important information and risk factors relating to the respective offering. Investors should read the complete document carefully and consider all applicable disclosures before making an investment decision.
                   </p>
                 </div>
               </div>
             </div>
 
-            {/* Right: What does an offer document contain? */}
+            {/* Right: What does an Offer Document contain? */}
             <div className="rounded-2xl border border-slate-200 bg-slate-50 p-6 sm:p-7">
               <h3 className="text-base font-bold text-[#152249] sm:text-lg">
-                What do Offer Documents contain?
+                What does an Offer Document contain?
               </h3>
               <span className="mt-2 block h-1 w-10 rounded-full bg-orange-500" />
 
