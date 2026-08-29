@@ -79,7 +79,7 @@ const leadership = [
     bio: "Visionary leader with deep expertise in capital markets and strategic advisory. Driving responsible growth and long-term value creation for our clients and stakeholders.",
     tags: leadershipTags,
     linkedin: "#",
-    photo: "/team/CEO3.png",
+    photo: "/team/md.jpeg",
   },
   {
     name: "Savitha",
@@ -96,7 +96,7 @@ const coreTeam = [
   { name: "Preeti Dedhiya", role: "Associate Vice President", linkedin: "#", photo: "/team/p.jpeg" },
   { name: "Piyush Chandra", role: "Associate Vice President ", linkedin: "#", photo: "/team/piyush.png" },
   { name: "Vidit Madhusudan Gupta", role: "Principal Consultant", linkedin: "#", photo: "/team/viddit.png" },
-  { name: "Narayanan", role: "Sr. GM - Financial Analyst", linkedin: "#", photo: "/team/naraa.jpeg" },
+  { name: "Narayanan", role: "Sr. GM - Financial Analyst", linkedin: "#", photo: "/team/narayanaup.jpeg" },
   { name: "Pinky", role: "AGM - Financial Analyst", linkedin: "#", photo: "/team/pinky-naveen-h.png" },
   { name: "Nesapriyan", role: "Chief financial officer", linkedin: "#", photo: "/team/nesapriyan.png" },
   { name: "Aishwarya", role: "Executive Assistant - MD", linkedin: "#", photo: "/team/aishu.png" },

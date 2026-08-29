@@ -15,7 +15,7 @@ const directors = [
   {
     name: "Rajinikanth ES",
     role: "MD/CEO/PO",
-    image: "/team/CEO3.png",
+    image: "/team/md.jpeg",
     accent: "border-orange-500 bg-slate-900/90",
   },
   {
