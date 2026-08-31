@@ -35,14 +35,6 @@ const OFFICES = [
   },
 ];
 
-const SUBJECTS = [
-  "General Enquiry",
-  "Investment Advisory",
-  "Portfolio Management",
-  "Partnership Opportunity",
-  "Other",
-];
-
 function ContactItem({ icon: Icon, label, lines }) {
   return (
     <div className="flex items-start gap-3">
@@ -131,11 +123,10 @@ export default function ContactUs() {
     <main className="w-full bg-white" style={{ fontFamily: "'Noto Sans', sans-serif" }}>
       {/* Hero Section */}
       <section className="relative overflow-hidden">
-       
         <img
           src="/contactbanner.webp"
           alt=""
-          className="absolute inset-0 h-full w-full object-cover "
+          className="absolute inset-0 h-full w-full object-cover"
         />
 
         <div className="relative z-10 mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8 py-24 md:py-32">
@@ -159,7 +150,7 @@ export default function ContactUs() {
             className="max-w-xl text-4xl font-bold leading-tight text-white md:text-5xl"
             style={{ fontFamily: "'Noto Sans', sans-serif" }}
           >
-            Let&apos;s Build Financial{" "}
+            Let's Build Financial{" "}
             <span style={{ color: ORANGE }}>Success Together.</span>
           </motion.h1>
 
@@ -171,7 +162,7 @@ export default function ContactUs() {
             className="mt-5 max-w-md text-sm leading-relaxed text-slate-300 md:text-base"
             style={{ fontFamily: "'Noto Sans', sans-serif" }}
           >
-            Have a question or looking for expert financial advisory? We&apos;re
+            Have a question or looking for expert financial advisory? We're
             here to help you navigate your capital market journey with confidence.
           </motion.p>
 
@@ -270,24 +261,18 @@ export default function ContactUs() {
                 </div>
               </div>
 
+              {/* Subject - Changed from dropdown to typeable input */}
               <div className="relative">
-                <select
+                <input
+                  type="text"
                   name="subject"
                   value={form.subject}
                   onChange={handleChange}
+                  placeholder="Subject *"
                   required
-                  className="w-full appearance-none rounded-lg border border-slate-200 bg-slate-50 py-3 pl-4 pr-10 text-sm text-slate-700 outline-none transition focus:border-[#0F2A5C] focus:bg-white focus:ring-2 focus:ring-[#0F2A5C]/10"
+                  className="w-full rounded-lg border border-slate-200 bg-slate-50 py-3 pl-4 pr-10 text-sm text-slate-700 outline-none transition focus:border-[#0F2A5C] focus:bg-white focus:ring-2 focus:ring-[#0F2A5C]/10"
                   style={{ fontFamily: "'Noto Sans', sans-serif" }}
-                >
-                  <option value="" disabled>
-                    Subject *
-                  </option>
-                  {SUBJECTS.map((s) => (
-                    <option key={s} value={s}>
-                      {s}
-                    </option>
-                  ))}
-                </select>
+                />
               </div>
 
               <textarea
@@ -332,7 +317,7 @@ export default function ContactUs() {
 
               {status === "success" && (
                 <p className="text-sm font-medium text-emerald-600" style={{ fontFamily: "'Noto Sans', sans-serif" }}>
-                  Thanks — your message has been sent. We&apos;ll be in touch shortly.
+                  Thanks — your message has been sent. We'll be in touch shortly.
                 </p>
               )}
               {status === "error" && (
@@ -367,7 +352,7 @@ export default function ContactUs() {
               <ContactItem
                 icon={Phone}
                 label="Phone"
-                lines={[ "022 40040874", "044 40055781"]}
+                lines={["022 40040874", "044 40055781"]}
               />
               <ContactItem icon={Mail} label="Email" lines={["info@aksan.in"]} />
               <ContactItem
@@ -430,7 +415,8 @@ export default function ContactUs() {
                   </span>
                 </div>
 
-                <a href={"https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(office.mapQuery)}
+                <a
+                  href={"https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(office.mapQuery)}
                   target="_blank"
                   rel="noreferrer"
                   className="mt-5 inline-flex items-center gap-2 rounded-lg px-4 py-2.5 text-sm font-semibold text-white transition-transform hover:-translate-y-0.5"

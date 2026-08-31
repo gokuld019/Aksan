@@ -14,29 +14,29 @@ const notoSans = Noto_Sans({
 
 const faqs = [
   {
-    question: "How does AKSAN Capital Advisory Private Limited tailor their investment planning?",
+    question: "How does AKSAN Capital support investment planning?",
     answer:
-      "AKSAN Capital Advisory Private Limited works by combining market research and financial analysis into the development of an investment plan to meet the needs of any given financial goal..",
+      "AKSAN Capital considers financial objectives, investment preferences and market factors to help establish a clear direction for investment decisions.",
   },
   {
-    question: "Can AKSAN Capital Advisory Private Limited analyse the current portfolio?",
+    question: "Can an existing investment portfolio be reviewed?",
     answer:
-      "Certainly, the company specialises in providing investment advice and portfolio analysis to evaluate the current state of one’s portfolio and make the necessary recommendations.",
+      "Yes. Current investments can be assessed to understand portfolio allocation, existing exposure and whether they remain aligned with financial priorities.",
   },
   {
-    question: "What is the importance of diversification in a portfolio, as suggested by AKSAN Capital Advisory Private Limited?",
+    question: "How are investment opportunities evaluated?",
     answer:
-      "Diversification is viewed as an element of the overall investment outlook and is considered as a component of portfolio analysis in order to make the appropriate recommendations.",
+      "Investment decisions are supported by market research, financial analysis and careful consideration of factors that may influence potential outcomes.",
   },
   {
-    question: "How does AKSAN Capital Advisory Private Limited advise during volatile markets?",
+    question: "How are changing market conditions considered?",
     answer:
-      "AKSAN Capital Advisory Private Limited stays up to date regarding the current market environment and can provide an independent outlook on the current situation and the potential impact it may have on one’s portfolio.",
+      "Market developments are reviewed in context to provide perspective on changing conditions and support disciplined decision-making over short-term reactions.",
   },
   {
-    question: "What are the advantages of professional investment advisory?",
+    question: "What value does professional investment expertise bring?",
     answer:
-      "An objective third party provides the necessary research and analysis required to make confident and well-informed decisions regarding one of the most important assets in one’s life.",
+      "Professional expertise adds analytical depth and market perspective, helping investors assess opportunities and make more considered financial decisions.",
   },
 ];
 
@@ -109,20 +109,9 @@ export default function FAQSection() {
                   transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
                   className="text-slate-500 text-xs xs:text-[13px] sm:text-sm md:text-base leading-relaxed mb-4 xs:mb-5 sm:mb-6 max-w-sm mx-auto lg:mx-0"
                 >
-                  Can&apos;t find what you&apos;re looking for? Our advisory team is
+                  Can't find what you're looking for? Our advisory team is
                   happy to walk you through it directly.
                 </motion.p>
-
-                {/* <motion.a
-                  href="#contact"
-                  initial={{ opacity: 0, y: 16 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.4 }}
-                  transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
-                  className="inline-flex items-center gap-2 text-blue-900 font-semibold text-[11px] xs:text-xs sm:text-sm underline underline-offset-4 decoration-orange-500 mb-6 xs:mb-8 sm:mb-0"
-                >
-                  Contact Us <span aria-hidden="true">→</span>
-                </motion.a> */}
               </div>
 
               {/* Feature icons row */}
@@ -255,7 +244,7 @@ export default function FAQSection() {
                   GET STARTED
                 </p>
                 <h3 className="text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-2xl xl:text-3xl font-bold text-white leading-tight mb-1.5 xs:mb-2 sm:mb-3 break-words">
-                  Let&apos;s Build Your Financial Roadmap Together
+                  Let's Build Your Financial Roadmap Together
                 </h3>
                 <p className="text-slate-300 text-[11px] xs:text-xs sm:text-sm leading-relaxed">
                   Book a complimentary consultation with our advisory team and
@@ -278,8 +267,8 @@ export default function FAQSection() {
                   Talk to an Advisor <span aria-hidden="true">→</span>
                 </motion.button>
 
-                
-                  <a href="tel:04440055781"
+                <a
+                  href="tel:04440055781"
                   className="inline-flex items-center gap-2 text-white font-semibold text-[11px] xs:text-xs sm:text-sm whitespace-nowrap"
                 >
                   <Phone
