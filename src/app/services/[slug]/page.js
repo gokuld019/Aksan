@@ -282,19 +282,19 @@ export default async function ServiceDetailPage({ params }) {
               </div>
 
               <div className="flex flex-wrap gap-2.5 sm:gap-3 shrink-0">
-                <a href="/contact"
+                <a href="/contactus"
                   className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-semibold text-[12.5px] sm:text-sm px-4 py-2.5 sm:px-5 sm:py-3 rounded-lg transition shadow-lg shadow-orange-500/30 hover:shadow-orange-500/50"
                 >
                   Contact Us
                   <ArrowRight size={14} className="sm:w-4 sm:h-4" />
                 </a>
 
-                <a href="/services"
+                {/* <a href="/services"
                   className="inline-flex items-center gap-2 border border-white/40 hover:bg-white/10 text-white font-semibold text-[12.5px] sm:text-sm px-4 py-2.5 sm:px-5 sm:py-3 rounded-lg transition"
                 >
                   View All Services
                   <ArrowRight size={14} className="sm:w-4 sm:h-4" />
-                </a>
+                </a> */}
               </div>
             </div>
           </div>

@@ -679,13 +679,13 @@ export default function About() {
                 <motion.a
                   whileHover={{ scale: 1.04, y: -2 }}
                   whileTap={{ scale: 0.97 }}
-                  href="/contact"
+                  href="/contactus"
                   className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-semibold text-[12.5px] xs:text-[13.5px] sm:text-sm px-4 sm:px-5 py-2.5 sm:py-3 rounded-lg transition-colors"
                 >
                   Contact Us
                   <ArrowRight size={16} />
                 </motion.a>
-                <motion.a
+                {/* <motion.a
                   whileHover={{ scale: 1.04, y: -2 }}
                   whileTap={{ scale: 0.97 }}
                   href="/services"
@@ -693,7 +693,7 @@ export default function About() {
                 >
                   Our Services
                   <ArrowRight size={16} />
-                </motion.a>
+                </motion.a> */}
               </motion.div>
             </div>
           </motion.div>

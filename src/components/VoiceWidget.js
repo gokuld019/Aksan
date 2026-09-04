@@ -542,7 +542,7 @@ export default function VoiceWidget() {
         className="group fixed bottom-6 left-6 flex items-center justify-center w-[50px] h-[50px] rounded-[14px] hover:rounded-full bg-[linear-gradient(150deg,var(--primary-blue),var(--navy-950))] shadow-lg hover:shadow-[0_8px_30px_rgba(10,42,77,0.5)] hover:scale-105 transition-all duration-300 ease-in-out voice-widget"
         aria-label="Accessibility options"
         aria-expanded={accessibilityOpen}
-        style={{ display: toolbarVisible ? "flex" : "none", zIndex: 2147483000 }}
+        style={{ display: toolbarVisible ? "flex" : "none", zIndex: 10 }}
       >
         <svg
           className="w-[22px] h-[22px] text-white transition-transform duration-300 ease-in-out group-hover:scale-110"
@@ -590,7 +590,7 @@ export default function VoiceWidget() {
           opening it can never push this button around. */}
       <div
         className="launcher-stack flex flex-col items-end gap-2.5 sm:gap-3 voice-widget"
-        style={{ display: toolbarVisible ? "flex" : "none", zIndex: 2147483000 }}
+        style={{ display: toolbarVisible ? "flex" : "none", zIndex: 10 }}
       >
         {voiceBarVisible && (
           <VoiceControlBar
@@ -652,7 +652,7 @@ export default function VoiceWidget() {
           completely independent of the launcher stack above.
           Opening/closing it can never move the launcher button. */}
       {chatOpen && (
-        <div className="chat-panel-anchor voice-widget" style={{ zIndex: 2147483000 }}>
+        <div className="chat-panel-anchor voice-widget" style={{ zIndex: 10 }}>
           <ChatPanel onClose={() => setChatOpen(false)} speech={speech} centered={isMobileNow()} />
         </div>
       )}
@@ -1151,7 +1151,7 @@ function AccessibilityPanel({
     <>
       <div
         className="fixed inset-0 bg-slate-900/20 backdrop-blur-[2px] transition-opacity duration-300"
-        style={{ zIndex: 2147483000, opacity: visible ? 1 : 0 }}
+        style={{ zIndex: 10, opacity: visible ? 1 : 0 }}
         onClick={handleClose}
       />
 

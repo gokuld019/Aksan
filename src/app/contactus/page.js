@@ -24,6 +24,7 @@ const OFFICES = [
     phone: "044 40055781",
     email: "info@aksan.in",
     mapQuery: "28/27 Parvathy Apartments, Damodaran Street, T Nagar, Chennai",
+    mapEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.758270038977!2d80.235075!3d13.035787!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5267f5d7a1d2c5%3A0x2b8a6b5a4d3e2f1a!2sT.Nagar%2C%20Chennai%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1700000000000"
   },
   {
     label: "Branch Office",
@@ -32,6 +33,7 @@ const OFFICES = [
     phone: "022 40040874",
     email: "info@aksan.in",
     mapQuery: "The Summit Business Bay, Western Express Highway, Andheri East, Mumbai",
+    mapEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3769.798377189008!2d72.8574129!3d19.1164991!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c832166487cd%3A0x97f514452b5b5872!2sThe%20Summit%20Business%20Park%2C%20Andheri%20East!5e0!3m2!1sen!2sin!4v1788417129359!5m2!1sen!2sin"
   },
 ];
 
@@ -96,9 +98,16 @@ export default function ContactUs() {
         }),
       });
 
-      const data = await res.json();
+      // The API may return a non-JSON body on server errors (e.g. an
+      // HTML 500 page), so guard the parse rather than assuming JSON.
+      let data = null;
+      try {
+        data = await res.json();
+      } catch {
+        // no parseable JSON body
+      }
 
-      if (res.ok && data.success) {
+      if (res.ok && data?.success) {
         setStatus("success");
         setForm({
           fullName: "",
@@ -111,7 +120,7 @@ export default function ContactUs() {
         });
       } else {
         setStatus("error");
-        setErrorMsg(data.message || "Something went wrong. Please try again.");
+        setErrorMsg(data?.message || `Request failed (status ${res.status}). Please try again.`);
       }
     } catch (err) {
       setStatus("error");
@@ -261,7 +270,6 @@ export default function ContactUs() {
                 </div>
               </div>
 
-              {/* Subject - Changed from dropdown to typeable input */}
               <div className="relative">
                 <input
                   type="text"
@@ -430,10 +438,11 @@ export default function ContactUs() {
               <div className="h-40 w-full">
                 <iframe
                   title={office.label}
-                  src={"https://www.google.com/maps?q=" + encodeURIComponent(office.mapQuery) + "&output=embed"}
+                  src={office.mapEmbed}
                   className="h-full w-full border-0"
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
+                  allowFullScreen
                 />
               </div>
             </motion.div>

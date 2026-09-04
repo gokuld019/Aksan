@@ -92,7 +92,7 @@ const offerDocuments = [
     listingExchange: "NSE Emerge",
     ipoSize: "46.67",
     ipoPrice: "94.00",
-    drhpUrl: "/SupremePower_DRHP.pdf",
+    drhpUrl: "/spel-drhp.pdf",
     rhpUrl: "/rhp/supreme.pdf",
     prospectusUrl: "/prospectus/Supreme_Prospectus.pdf",
     qipUrl: "#",
@@ -107,7 +107,7 @@ const offerDocuments = [
     listingExchange: "NSE Emerge",
     ipoSize: "47.20",
     ipoPrice: "185.00",
-    drhpUrl: "/ThaaiCasting_DRHP.pdf",
+    drhpUrl: "/thaaicasting-drhp.pdf",
     rhpUrl: "/rhp/thaaicasting.pdf",
     prospectusUrl: "/prospectus/Thaai csting_prospectus.pdf",
     qipUrl: "#",
@@ -233,7 +233,6 @@ const offerDocuments = [
     qipUrl: "#",
     ncdUrl: "#",
     ccdUrl: "#",
-    filing: true,
   },
   {
     id: 15,
@@ -244,12 +243,11 @@ const offerDocuments = [
     ipoSize: "TBD - To Be Disclosed",
     ipoPrice: "TBD - To Be Disclosed",
     drhpUrl: "/Sri_priyanka_DRHP.pdf",
-    rhpUrl: "#",
+    rhpUrl: "/sprhp.pdf",
     prospectusUrl: "#",
     qipUrl: "#",
     ncdUrl: "#",
     ccdUrl: "#",
-    filing: true,
   },
   {
     id: 16,
@@ -265,7 +263,7 @@ const offerDocuments = [
     qipUrl: "#",
     ncdUrl: "#",
     ccdUrl: "#",
-    filing: true,
+    yetToFile: true,
   },
 ];
 
@@ -425,10 +423,10 @@ function DocumentCard({ doc, index }) {
       className="relative flex h-full flex-col rounded-xl border border-slate-200 bg-white p-5 shadow-sm transition"
     >
       {/* Filing stage star badge */}
-      {doc.filing && (
-        <span className="absolute -top-3 left-1/2 z-10 flex -translate-x-1/2 items-center gap-1.5 whitespace-nowrap rounded-full bg-gradient-to-r from-orange-500 to-orange-400 px-3 py-1 text-[10px] font-bold uppercase tracking-wide text-white shadow-[0_6px_16px_-4px_rgba(242,98,46,0.6)]">
+      {doc.yetToFile && (
+        <span className="absolute -top-3 left-1/2 z-10 flex -translate-x-1/2 items-center gap-1.5 whitespace-nowrap rounded-full bg-gradient-to-r from-blue-500 to-blue-400 px-3 py-1 text-[10px] font-bold uppercase tracking-wide text-white shadow-[0_6px_16px_-4px_rgba(59,130,246,0.6)]">
           <Star size={11} fill="currentColor" strokeWidth={0} />
-          Filing Stage
+          Yet to File
         </span>
       )}
 
