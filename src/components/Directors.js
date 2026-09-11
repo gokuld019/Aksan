@@ -105,7 +105,7 @@ export default function BoardOfDirectors() {
             <div className="relative text-center flex flex-col items-center justify-center">
               <div className="flex items-baseline gap-0.5">
                 <p className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl font-extrabold text-blue-900 leading-none tracking-tight">
-                  20
+                  35
                 </p>
                 <span className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-4xl xl:text-5xl font-extrabold text-orange-500 leading-none">
                   +
@@ -128,7 +128,7 @@ export default function BoardOfDirectors() {
             <div className="relative text-center flex flex-col items-center justify-center">
               <div className="flex items-baseline gap-0.5">
                 <p className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl font-extrabold text-blue-900 leading-none tracking-tight">
-                  100
+                  165
                 </p>
                 <span className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-4xl xl:text-5xl font-extrabold text-orange-500 leading-none">
                   +

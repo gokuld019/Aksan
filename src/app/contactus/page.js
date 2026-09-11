@@ -10,11 +10,22 @@ import {
   ArrowRight,
   User,
   Building2,
+  ClipboardList,
+  ChevronDown,
 } from "lucide-react";
 
 const NAVY = "#0F2A5C";
 const NAVY_DARK = "#0A1F45";
 const ORANGE = "#F2622E";
+
+const SERVICE_OPTIONS = [
+  "IPO",
+  "Rights Issue",
+  "Preferential Allotment",
+  "Follow-on Public Offer",
+  "Merchant Banking Services",
+  "Corporate Advisory",
+];
 
 const OFFICES = [
   {
@@ -159,8 +170,8 @@ export default function ContactUs() {
             className="max-w-xl text-4xl font-bold leading-tight text-white md:text-5xl"
             style={{ fontFamily: "'Noto Sans', sans-serif" }}
           >
-            Let's Build Financial{" "}
-            <span style={{ color: ORANGE }}>Success Together.</span>
+            Your Vision.{" "}
+            <span style={{ color: ORANGE }}>Our Expertise.</span>
           </motion.h1>
 
           <motion.p
@@ -196,7 +207,7 @@ export default function ContactUs() {
       </section>
 
       {/* Contact Form Section */}
-      <section id="contact-form" className="relative z-20 mx-auto -mt-10 max-w-[1400px] px-4 sm:px-6 lg:px-8 pb-20 md:-mt-16">
+      <section id="contact-form" className="relative z-10 mx-auto -mt-10 max-w-[1400px] px-4 sm:px-6 lg:px-8 pb-20 md:-mt-16">
         <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
@@ -271,16 +282,25 @@ export default function ContactUs() {
               </div>
 
               <div className="relative">
-                <input
-                  type="text"
+                <select
                   name="subject"
                   value={form.subject}
                   onChange={handleChange}
-                  placeholder="Subject *"
                   required
-                  className="w-full rounded-lg border border-slate-200 bg-slate-50 py-3 pl-4 pr-10 text-sm text-slate-700 outline-none transition focus:border-[#0F2A5C] focus:bg-white focus:ring-2 focus:ring-[#0F2A5C]/10"
+                  className="w-full appearance-none rounded-lg border border-slate-200 bg-slate-50 py-3 pl-4 pr-10 text-sm text-slate-700 outline-none transition focus:border-[#0F2A5C] focus:bg-white focus:ring-2 focus:ring-[#0F2A5C]/10"
                   style={{ fontFamily: "'Noto Sans', sans-serif" }}
-                />
+                >
+                  <option value="" disabled>
+                    Select a Service
+                  </option>
+                  {SERVICE_OPTIONS.map((option) => (
+                    <option key={option} value={option}>
+                      {option}
+                    </option>
+                  ))}
+                </select>
+                <ClipboardList className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" size={16} style={{ display: "none" }} />
+                <ChevronDown className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-slate-400" size={16} />
               </div>
 
               <textarea
@@ -377,10 +397,10 @@ export default function ContactUs() {
       <section className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8 pb-24">
         <div className="mb-10 text-center">
           <p className="mb-2 text-xs font-semibold tracking-widest" style={{ color: ORANGE, fontFamily: "'Noto Sans', sans-serif" }}>
-            OUR OFFICES
+            AKSAN LOCATIONS
           </p>
           <h2 className="text-2xl font-bold md:text-3xl" style={{ color: NAVY, fontFamily: "'Noto Sans', sans-serif" }}>
-            Our Offices
+            Where We’re Located
           </h2>
         </div>
 

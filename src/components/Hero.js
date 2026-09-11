@@ -69,12 +69,12 @@ export default function Hero() {
       </motion.video>
 
       {/* BLUE OVERLAY */}
-      <div
+      {/* <div
         className="absolute inset-0 -z-10"
         style={{
           background: `linear-gradient(to right, rgb(8 15 35 / 89%) 0%, rgb(10 20 45 / 72%) 25%, rgb(12 25 55 / 24%) 45%, rgb(15 30 60 / 0%) 60%, rgb(10 20 45 / 0%) 75%, transparent 100%)`,
         }}
-      />
+      /> */}
 
       {/* <motion.div
         style={{ y: textY, opacity: textOpacity }}

@@ -22,8 +22,8 @@ import {
 
 const stats = [
   { icon: User, value: "29+", label: "Years of Experience" },
-  { icon: IndianRupee, value: "₹8,500 Cr+", label: "Assets Under Advisory" },
-  { icon: Users, value: "150+", label: "Happy Investors" },
+  // { icon: IndianRupee, value: "₹8,500 Cr+", label: "Assets Under Advisory" },
+  { icon: Users, value: "1 Lakh+", label: "Happy Investors" },
   { icon: Crosshair, value: "100+", label: "Successful Investments" },
 ];
 
@@ -78,26 +78,26 @@ export default function Services() {
             background: "linear-gradient(135deg, #0B1A33 0%, #10254A 40%, #0F3A66 75%, #0E4A7A 100%)",
           }}
         >
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-5 sm:p-6 md:p-8">
-            {stats.map((stat) => (
-              <motion.div
-                key={stat.label}
-                variants={revealItem}
-                className="flex items-center gap-3"
-              >
-                <span className="w-10 h-10 flex items-center justify-center rounded-full border border-orange-500 text-orange-500 shrink-0">
-                  <stat.icon className="w-5 h-5" strokeWidth={2} />
-                </span>
-                <div className="flex-1 min-w-0">
-                  <p className="text-white font-bold text-base sm:text-lg md:text-xl leading-tight">
-                    {stat.value}
-                  </p>
-                  <p className="text-slate-400 text-xs sm:text-sm leading-tight mt-0.5">
-                    {stat.label}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 p-5 sm:p-6 md:p-8">
+  {stats.map((stat) => (
+    <motion.div
+      key={stat.label}
+      variants={revealItem}
+      className="flex items-center justify-center gap-3 sm:border-r sm:last:border-r-0 border-white/10 px-2"
+    >
+      <span className="w-10 h-10 flex items-center justify-center rounded-full border border-orange-500 text-orange-500 shrink-0">
+        <stat.icon className="w-5 h-5" strokeWidth={2} />
+      </span>
+      <div className="min-w-0">
+        <p className="text-white font-bold text-base sm:text-lg md:text-xl leading-tight">
+          {stat.value}
+        </p>
+        <p className="text-slate-400 text-xs sm:text-sm leading-tight mt-0.5">
+          {stat.label}
+        </p>
+      </div>
+    </motion.div>
+  ))}
           </div>
         </motion.div>
       </div>

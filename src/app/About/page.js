@@ -108,7 +108,6 @@ const coreTeam = [
   { name: "Nirmal", role: "Sr. Financial Analyst", linkedin: "#", photo: "/team/nirmal-k.png" },
   { name: "Indira", role: "AGM - Accounts & Finance", linkedin: "#", photo: "/team/indira-ak.png" },
 
-
 // { name: "Natarajan", role: "Sr. Exe - CS", linkedin: "#", photo: "/team/natarajan-b.png" },
 // { name: "Badrinarayan", role: "Jr. Financial Analyst", linkedin: "#", photo: "/team/badrinarayan-s.png" },
 
@@ -517,18 +516,22 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="bg-[#0b1a3a] rounded-2xl sm:rounded-3xl px-4 xs:px-6 sm:px-8 py-8 xs:py-9 sm:py-10 grid grid-cols-2 lg:grid-cols-4 gap-y-7 gap-x-4 xs:gap-x-6 sm:gap-4 mb-12 xs:mb-14 sm:mb-20"
+            className="bg-[#0b1a3a] rounded-2xl sm:rounded-3xl px-4 xs:px-6 sm:px-8 py-8 xs:py-9 sm:py-10 grid grid-cols-2 lg:grid-cols-3 gap-y-7 gap-x-4 xs:gap-x-6 sm:gap-4 mb-12 xs:mb-14 sm:mb-20"
           >
             {[
               { icon: Briefcase, value: "29+", label: "Years of Experience" },
-              { icon: TrendingUp, value: "8500+ Cr", label: "Capital Raised" },
-              { icon: ShieldCheck, value: "150+", label: "Transactions Executed" },
+              { icon: ShieldCheck, value: "7864+ Crs", label: "Raised Debt & Equity Shares" },
               { icon: Trophy, value: "230+", label: "Happy Clients" },
             ].map(({ icon: Icon, value, label }, i) => (
-              <div key={label} className="flex flex-col items-center text-center gap-1.5 xs:gap-2 relative px-2">
-                {i !== 0 && i !== 2 && (
+              <div
+                key={label}
+                className="flex flex-col items-center text-center gap-1.5 xs:gap-2 relative px-2"
+              >
+                {/* Divider — mobile (2 cols): show after 1st item */}
+                {i % 2 !== 0 && (
                   <span className="lg:hidden absolute left-[-8px] xs:left-[-12px] top-1/2 -translate-y-1/2 h-9 w-px bg-white/10" />
                 )}
+                {/* Divider — desktop (3 cols): show after every item except first */}
                 {i !== 0 && (
                   <span className="hidden lg:block absolute left-[-8px] top-1/2 -translate-y-1/2 h-10 w-px bg-white/10" />
                 )}
@@ -649,12 +652,12 @@ export default function About() {
             <div className="relative z-10 px-5 xs:px-6 sm:px-10 lg:px-14 py-9 xs:py-10 sm:py-12 max-w-xl">
               <h2 className="text-[21px] leading-[1.3] xs:text-2xl xs:leading-[1.28] sm:text-3xl sm:leading-tight font-extrabold mb-3 xs:mb-3.5 sm:mb-4">
                 <AnimatedWords
-                  text="Let's Build Your"
+                  text="Let’s Turn Your Goals"
                   className="text-white"
                 />
                 <br />
                 <AnimatedWords
-                  text="Financial Growth Story."
+                  text="Into a Clear Strategy."
                   className="text-orange-500"
                 />
               </h2>
@@ -665,9 +668,7 @@ export default function About() {
                 transition={{ duration: 0.6, delay: 0.3 }}
                 className="text-[13px] xs:text-[13.5px] sm:text-[15px] text-slate-300 leading-[1.65] xs:leading-[1.7] mb-6 xs:mb-7 sm:mb-8"
               >
-                Partner with AKSAN for reliable merchant banking services,
-                regulatory expertise, and strategic financial advisory
-                tailored to your business.
+                Partner with AKSAN for reliable merchant banking services, regulatory expertise, and strategic business solutions tailored to your business.
               </motion.p>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}

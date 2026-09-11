@@ -2,7 +2,7 @@
 
 import { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { Heart, Compass, Wrench, Gauge, Sprout } from "lucide-react";
+import { ClipboardList, Target, Rocket, Gauge, Sprout } from "lucide-react";
 import { Noto_Sans } from "next/font/google";
 
 const notoSans = Noto_Sans({
@@ -12,9 +12,9 @@ const notoSans = Noto_Sans({
 });
 
 const steps = [
-  { icon: Heart, number: "01", title: "Understand", desc: "We analyze your goals and financial needs." },
-  { icon: Compass, number: "02", title: "Strategize", desc: "We create a customized investment strategy." },
-  { icon: Wrench, number: "03", title: "Implement", desc: "We execute the strategy with precision." },
+  { icon: ClipboardList, number: "01", title: "Understand", desc: "We assess your business & IPO plans" },
+  { icon: Target, number: "02", title: "Strategize", desc: "We develop your tailored IPO strategy." },
+  { icon: Rocket, number: "03", title: "Implement", desc: "We coordinate key steps toward IPO." },
   { icon: Gauge, number: "04", title: "Monitor", desc: "We continuously track and optimise." },
   { icon: Sprout, number: "05", title: "Grow", desc: "We help you achieve sustainable growth." },
 ];
@@ -89,7 +89,7 @@ export default function OurProcess() {
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
             className="text-3xl sm:text-4xl md:text-5xl lg:text-4xl xl:text-4xl font-bold text-slate-900 leading-tight mb-0 mx-auto"
           >
-            A Proven Approach to Your <span className="text-[#0f4475]">Financial Success</span>
+            A Proven Approach to Lasting Success
           </motion.h2>
         </motion.div>
 

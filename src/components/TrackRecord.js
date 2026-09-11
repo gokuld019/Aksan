@@ -46,6 +46,7 @@ const stats = [
     suffix: "+",
     label: "Crores",
     sub: "Market Capitalisation",
+    note: "*August 2026",
   },
 ];
 
@@ -154,7 +155,7 @@ export default function TrackRecord() {
           transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
           className="text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-4xl xl:text-4xl font-bold text-white leading-tight mb-8 sm:mb-10 md:mb-12 lg:mb-14 max-w-3xl mx-auto px-2"
         >
-          One of India’s Leading IPO Networks
+          A Trusted Name in the IPO Landscape
         </motion.h2>
 
         {/* Stats Grid */}
@@ -170,7 +171,7 @@ export default function TrackRecord() {
               key={stat.label + stat.sub}
               variants={revealItem}
               whileHover={{ y: -6 }}
-              className="relative rounded-xl p-2 xs:p-5 sm:p-7 md:p-8 flex flex-col items-center justify-center text-center border border-slate-600/40 bg-white/5 transition-colors h-full w-full min-h-[140px] xs:min-h-[160px] sm:min-h-[190px] max-w-[220px] sm:max-w-[240px]"
+              className="relative rounded-xl p-2 xs:p-5 sm:p-7 md:p-8 flex flex-col items-center justify-start text-center border border-slate-600/40 bg-white/5 transition-colors h-full w-full min-h-[140px] xs:min-h-[160px] sm:min-h-[190px] max-w-[220px] sm:max-w-[240px]"
             >
               {/* Value with suffix */}
               <p className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-none mb-2 xs:mb-3 sm:mb-4 tabular-nums">
@@ -186,6 +187,11 @@ export default function TrackRecord() {
               {/* Sub-label - single line */}
               <p className="text-slate-300 text-[11px] xs:text-xs sm:text-sm leading-snug whitespace-nowrap">
                 {stat.sub}
+              </p>
+
+              {/* Note slot — reserved on all cards so heights & baselines match */}
+              <p className="text-white text-[10px] xs:text-[11px] font-bold mt-1 whitespace-nowrap min-h-[14px] xs:min-h-[16px]">
+                {stat.note || "\u00A0"}
               </p>
             </motion.div>
           ))}

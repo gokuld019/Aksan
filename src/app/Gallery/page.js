@@ -7,10 +7,13 @@ import { awards } from "@/data/awards";
 /**
  * AwardsRecognition
  * -------------------------------------------------------------------------
- * Replicates the "Celebrated Equity and IPO Advisors — List of Awards and
- * Recognitions" grid: a 2-column (1-column on mobile) set of navy cards,
- * each with a listing-ceremony photo, an NSE badge, company name, ceremony
- * date, and a "VIEW" pill button that links to /awards/[slug].
+ * Now includes a single, centered, slightly larger "AKSAN Events" featured
+ * card in its own row above the main grid, linking to the full events
+ * gallery at /events. Below it: the "Celebrated Equity and IPO Advisors —
+ * List of Awards and Recognitions" grid — a 2-column (1-column on mobile)
+ * set of navy cards, each with a listing-ceremony photo, an NSE badge,
+ * company name, ceremony date, and a "VIEW" pill button that links to
+ * /awards/[slug].
  *
  * Uses the shared `awards` array from src/data/awards.js so the slugs
  * always match the detail page (app/awards/[slug]/page.js).
@@ -49,6 +52,11 @@ export default function AwardsRecognition() {
           to providing top-notch equity advisory services.
         </p>
 
+        {/* ===== AKSAN Events — single centered, slightly larger featured card ===== */}
+        <div className="flex justify-center mb-10 sm:mb-12 md:mb-14">
+          <AksanEventsCard />
+        </div>
+
         {/* Cards grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-5 md:gap-6">
           {awards.map((award) => (
@@ -57,6 +65,54 @@ export default function AwardsRecognition() {
         </div>
       </div>
     </section>
+  );
+}
+
+function AksanEventsCard() {
+  return (
+    <Link
+      href="/events"
+      className="group relative block w-full max-w-[560px] sm:max-w-[680px] md:max-w-[760px] overflow-hidden rounded-xl bg-[#0f4475] shadow-lg hover:shadow-2xl transition-shadow duration-300"
+    >
+      {/* Photo Container — wider, shorter ratio than the standard award cards */}
+      <div className="relative w-full" style={{ paddingBottom: "40%" }}>
+        <Image
+          src="/gallery/aksangallery1.webp"
+          alt="AKSAN Events"
+          fill
+          sizes="(max-width: 640px) 100vw, 560px"
+          className="object-cover object-center "
+          priority
+        />
+
+        {/* Dark gradient overlay for text readability */}
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-[#0f4475] via-[#0f4475]/70 to-transparent" />
+      </div>
+
+      {/* Text block */}
+      <div className="relative -mt-2 px-5 sm:px-6 md:px-8 pb-6 sm:pb-7 pt-3 sm:pt-4 text-center">
+        <h3
+          className="text-base sm:text-lg md:text-xl font-bold text-white leading-tight"
+          style={{ fontFamily: "'Noto Sans', sans-serif" }}
+        >
+          AKSAN Events
+        </h3>
+
+        <p
+          className="mt-1 text-[11px] sm:text-xs text-white/70"
+          style={{ fontFamily: "'Noto Sans', sans-serif" }}
+        >
+          A look back at our listing ceremonies and milestone moments
+        </p>
+
+        <span
+          className="mt-3 sm:mt-4 inline-block rounded-full border border-white/40 px-5 sm:px-6 md:px-7 py-1.5 sm:py-2 text-[10px] sm:text-xs font-medium tracking-wide text-white transition-all duration-300 group-hover:bg-white group-hover:text-[#0f4475] group-hover:border-white"
+          style={{ fontFamily: "'Noto Sans', sans-serif" }}
+        >
+          VIEW GALLERY
+        </span>
+      </div>
+    </Link>
   );
 }
 

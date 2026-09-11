@@ -64,8 +64,8 @@ const features = [
 ];
 
 const serviceOptions = [
-  "IPO Consulting",
-  "Rights Issue Advisory",
+  "IPO",
+  "Rights Issue",
   "Preferential Allotment",
   "Follow-on Public Offer",
   "Merchant Banking Services",
@@ -75,7 +75,7 @@ const serviceOptions = [
 const CONTACT_API_URL = "https://api.crazystory.in/api/contact";
 
 /* ---------------------------------------------------
-   Talk to an Advisor — Modal
+   Get Expert Guidance — Modal
 --------------------------------------------------- */
 function AdvisorModal({ open, onClose }) {
   const [form, setForm] = useState({
@@ -214,11 +214,10 @@ function AdvisorModal({ open, onClose }) {
                 GET STARTED
               </p>
               <h3 className="text-white text-xl sm:text-2xl font-bold leading-tight max-w-xs">
-                Talk to an Advisor
+                Get Expert Guidance
               </h3>
               <p className="text-slate-300 text-xs sm:text-sm mt-2 max-w-sm">
-                Share a few details and our advisory team will reach out to you
-                shortly.
+                Share a few details and our experts will reach out to you shortly.
               </p>
             </div>
 
@@ -331,15 +330,22 @@ function AdvisorModal({ open, onClose }) {
                         )}
                       </motion.button>
 
-                      <p className="text-center text-[11px] text-slate-400 pt-1">
-                        Or call us directly at{" "}
-                        <a
-                          href="tel:04440055781"
-                          className="text-orange-500 font-medium"
-                        >
-                          044 40055781
-                        </a>
-                      </p>
+                     <p className="text-center text-[11px] text-slate-400 pt-1">
+  Or call us directly at{" "}
+  <a
+    href="tel:04440055781"
+    className="text-orange-500 font-medium hover:text-orange-400 transition-colors"
+  >
+    044 40055781
+  </a>
+  <span className="text-slate-400"> / </span>
+  <a
+    href="tel:02240040874"
+    className="text-orange-500 font-medium hover:text-orange-400 transition-colors"
+  >
+    022 40040874
+  </a>
+</p>
                     </motion.form>
                   ) : (
                     <motion.div
@@ -415,148 +421,11 @@ export default function FAQSection() {
     <div className={notoSans.className}>
       {/* MAIN CONTENT - Blur all background elements when modal is open */}
       <div
-        className={`transition-all duration-300 ease-out ${
+        className={`transition-all duration-300 ease-out mt-30 ${
           modalOpen ? "blur-md pointer-events-none select-none" : ""
         }`}
       >
-        <section
-          ref={sectionRef}
-          className="relative bg-white py-8 xs:py-10 sm:py-14 md:py-20 lg:py-24 xl:py-28 overflow-hidden"
-        >
-          <Image
-            src="/faq-bg.webp"
-            alt=""
-            fill
-            aria-hidden="true"
-            className="object-cover object-left pointer-events-none select-none -z-0"
-          />
 
-          <div className="relative z-10 w-full max-w-[1400px] mx-auto px-4 xs:px-5 sm:px-6 md:px-8 lg:px-10 xl:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-6 xs:gap-x-8 lg:gap-x-12 gap-y-8 xs:gap-y-10 lg:gap-y-0 items-stretch">
-              {/* Left column */}
-              <motion.div
-                style={{ y: textY }}
-                className="text-center lg:text-left w-full flex flex-col justify-between"
-              >
-                <div>
-                  <motion.p
-                    initial={{ opacity: 0, y: 14 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.4 }}
-                    transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                    className="text-orange-500 font-semibold text-[9px] xs:text-[10px] sm:text-xs md:text-sm tracking-widest mb-2 xs:mb-3 sm:mb-4"
-                  >
-                    FAQs
-                  </motion.p>
-                  <motion.h2
-                    initial={{ opacity: 0, y: 22 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.4 }}
-                    transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
-                    className="text-xl xs:text-2xl sm:text-3xl md:text-3xl lg:text-[28px] xl:text-4xl 2xl:text-[42px] font-bold text-blue-900 leading-tight mb-3 xs:mb-4 sm:mb-6 break-words"
-                  >
-                    Answers Before You Ask
-                  </motion.h2>
-                  <motion.p
-                    initial={{ opacity: 0, y: 18 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.4 }}
-                    transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
-                    className="text-slate-500 text-xs xs:text-[13px] sm:text-sm md:text-base leading-relaxed mb-4 xs:mb-5 sm:mb-6 max-w-sm mx-auto lg:mx-0"
-                  >
-                    Can't find what you're looking for? Our advisory team is
-                    happy to walk you through it directly.
-                  </motion.p>
-                </div>
-
-                {/* Feature icons row */}
-                <div className="grid grid-cols-2 gap-3 xs:gap-4 sm:gap-5 max-w-sm mx-auto lg:mx-0 w-full mt-6 xs:mt-8 sm:mt-10 lg:mt-auto">
-                  {features.map((feature, i) => (
-                    <motion.div
-                      key={feature.label}
-                      initial={{ opacity: 0, y: 16 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true, amount: 0.4 }}
-                      transition={{ duration: 0.45, delay: 0.3 + i * 0.08, ease: [0.22, 1, 0.36, 1] }}
-                      whileHover={{ y: -3 }}
-                      className="flex items-center gap-2.5 xs:gap-3 justify-center lg:justify-start bg-slate-50/80 rounded-lg px-3 py-2.5 xs:py-3"
-                    >
-                      <span className="w-8 h-8 xs:w-9 xs:h-9 sm:w-10 sm:h-10 rounded-full bg-white shadow-sm flex items-center justify-center text-blue-900 shrink-0 transition-colors duration-300 hover:bg-orange-50">
-                        <feature.icon size={14} strokeWidth={2} className="xs:w-4 xs:h-4 sm:w-[18px] sm:h-[18px]" />
-                      </span>
-                      <p className="text-slate-700 text-[11px] xs:text-xs sm:text-[13px] font-medium leading-snug text-left break-words">
-                        {feature.label}
-                      </p>
-                    </motion.div>
-                  ))}
-                </div>
-              </motion.div>
-
-              {/* Right column: Accordion */}
-              <div className="space-y-2.5 xs:space-y-3 sm:space-y-3.5 w-full flex flex-col justify-center">
-                {faqs.map((faq, index) => {
-                  const isOpen = index === openIndex;
-                  return (
-                    <motion.div
-                      key={faq.question}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true, amount: 0.3 }}
-                      transition={{ duration: 0.5, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
-                      className={`rounded-lg sm:rounded-xl border transition ${
-                        isOpen
-                          ? "border-blue-900 bg-white shadow-md"
-                          : "border-slate-200 bg-white"
-                      }`}
-                    >
-                      <button
-                        onClick={() => toggle(index)}
-                        className="w-full flex items-center justify-between gap-2.5 xs:gap-3 sm:gap-4 px-3.5 xs:px-4 sm:px-6 py-3 xs:py-3.5 sm:py-4 text-left"
-                      >
-                        <span className="text-slate-900 font-semibold text-[13px] xs:text-sm sm:text-base pr-2 break-words">
-                          {faq.question}
-                        </span>
-                        <motion.span
-                          animate={{ rotate: isOpen ? 90 : 0 }}
-                          transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                          className={`w-6 h-6 xs:w-7 xs:h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center shrink-0 transition-colors ${
-                            isOpen
-                              ? "bg-blue-900 text-white"
-                              : "bg-slate-100 text-slate-500"
-                          }`}
-                        >
-                          {isOpen ? (
-                            <X size={12} className="xs:w-[13px] xs:h-[13px] sm:w-4 sm:h-4" />
-                          ) : (
-                            <Plus size={12} className="xs:w-[13px] xs:h-[13px] sm:w-4 sm:h-4" />
-                          )}
-                        </motion.span>
-                      </button>
-
-                      <AnimatePresence initial={false}>
-                        {isOpen && (
-                          <motion.div
-                            initial={{ height: 0, opacity: 0 }}
-                            animate={{ height: "auto", opacity: 1 }}
-                            exit={{ height: 0, opacity: 0 }}
-                            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                            className="overflow-hidden"
-                          >
-                            <div className="px-3.5 xs:px-4 sm:px-6 pb-3.5 xs:pb-4 sm:pb-5">
-                              <p className="text-slate-500 text-[11px] xs:text-xs sm:text-sm leading-relaxed">
-                                {faq.answer}
-                              </p>
-                            </div>
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
-                    </motion.div>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
-        </section>
 
         {/* Bottom CTA banner */}
         <section className="bg-white pb-8 xs:pb-10 sm:pb-14 md:pb-20 lg:pb-24 xl:pb-28">
@@ -599,11 +468,10 @@ export default function FAQSection() {
                     GET STARTED
                   </p>
                   <h3 className="text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-2xl xl:text-3xl font-bold text-white leading-tight mb-1.5 xs:mb-2 sm:mb-3 break-words">
-                    Let's Build Your Financial Roadmap Together
+                     Let’s Turn Your Goals Into a Clear Strategy
                   </h3>
                   <p className="text-slate-300 text-[11px] xs:text-xs sm:text-sm leading-relaxed">
-                    Book a complimentary consultation with our advisory team and
-                    discover strategies tailored to your goals.
+                    Book a complimentary consultation with our expert team and discover strategies tailored to your goals.
                   </p>
                 </motion.div>
 
@@ -620,19 +488,22 @@ export default function FAQSection() {
                     whileTap={{ scale: 0.97 }}
                     className="inline-flex items-center gap-2 bg-white text-blue-900 font-semibold text-[11px] xs:text-xs sm:text-sm px-4 xs:px-5 sm:px-6 py-2 xs:py-2.5 sm:py-3 rounded-full hover:bg-slate-100 transition whitespace-nowrap"
                   >
-                    Talk to an Advisor <span aria-hidden="true">→</span>
+                    Get Expert Guidance <span aria-hidden="true">→</span>
                   </motion.button>
 
-                  <a
-                    href="tel:04440055781"
-                    className="inline-flex items-center gap-2 text-white font-semibold text-[11px] xs:text-xs sm:text-sm whitespace-nowrap"
-                  >
-                    <Phone
-                      size={11}
-                      className="text-orange-500 fill-orange-500 xs:w-3 xs:h-3 sm:w-[14px] sm:h-[14px]"
-                    />
-                    044 40055781
-                  </a>
+                 <span className="inline-flex items-center gap-2 text-white font-semibold text-[11px] xs:text-xs sm:text-sm whitespace-nowrap">
+  <Phone
+    size={11}
+    className="text-orange-500 fill-orange-500 xs:w-3 xs:h-3 sm:w-[14px] sm:h-[14px]"
+  />
+  <a href="tel:04440055781" className="hover:text-orange-400 transition-colors">
+    044 40055781
+  </a>
+  <span className="text-slate-400">/</span>
+  <a href="tel:02240040874" className="hover:text-orange-400 transition-colors">
+    022 40040874
+  </a>
+</span>
                 </motion.div>
               </div>
             </motion.div>

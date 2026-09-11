@@ -4,9 +4,10 @@ import Image from "next/image";
 import { useRef, useState } from "react";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import {
-  ShieldCheck,
-  LineChart,
-  Users,
+  BadgeCheck,
+  TrendingUp,
+  HeartHandshake,
+  Building2,
   Smartphone,
   Plus,
   X,
@@ -33,16 +34,20 @@ const notoSans = Noto_Sans({
 
 const features = [
   {
-    icon: ShieldCheck,
+    icon: BadgeCheck,
     text: "SEBI-registered, fully transparent advisory",
   },
   {
-    icon: LineChart,
+    icon: TrendingUp,
     text: "29+ years of research-driven guidance",
   },
   {
-    icon: Users,
-    text: "150+ happy investors across India",
+    icon: HeartHandshake,
+    text: "1 Lakh+ happy investors across India",
+  },
+  {
+    icon: Building2,
+    text: "13+ Company Listed",
   },
   {
     icon: Smartphone,
@@ -51,8 +56,8 @@ const features = [
 ];
 
 const serviceOptions = [
-  "IPO Consulting",
-  "Rights Issue Advisory",
+  "IPO",
+  "Rights Issue ",
   "Preferential Allotment",
   "Follow-on Public Offer",
   "Merchant Banking Services",
@@ -62,7 +67,7 @@ const serviceOptions = [
 const CONTACT_API_URL = "https://api.crazystory.in/api/contact";
 
 /* ---------------------------------------------------
-   Talk to an Advisor — Modal
+   Get Expert Guidance — Modal
 --------------------------------------------------- */
 function AdvisorModal({ open, onClose }) {
   const [form, setForm] = useState({
@@ -187,11 +192,10 @@ function AdvisorModal({ open, onClose }) {
                 GET STARTED
               </p>
               <h3 className="text-white text-xl sm:text-2xl font-bold leading-tight max-w-xs">
-                Talk to an Advisor
+                Get Expert Guidance
               </h3>
               <p className="text-slate-300 text-xs sm:text-sm mt-2 max-w-sm">
-                Share a few details and our advisory team will reach out to you
-                shortly.
+               Share a few details and our experts will reach out to you shortly.
               </p>
             </div>
 
@@ -303,15 +307,22 @@ function AdvisorModal({ open, onClose }) {
                         )}
                       </motion.button>
 
-                      <p className="text-center text-[11px] text-slate-400 pt-1">
-                        Or call us directly at{" "}
-                        <a
-                          href="tel:04440055781"
-                          className="text-orange-500 font-medium"
-                        >
-                          044 40055781
-                        </a>
-                      </p>
+                     <p className="text-center text-[11px] text-slate-400 pt-1">
+  Or call us directly at{" "}
+  <a
+    href="tel:04440055781"
+    className="text-orange-500 font-medium hover:text-orange-400 transition-colors"
+  >
+    044 40055781
+  </a>
+  <span className="text-slate-400"> / </span>
+  <a
+    href="tel:02240040874"
+    className="text-orange-500 font-medium hover:text-orange-400 transition-colors"
+  >
+    022 40040874
+  </a>
+</p>
                     </motion.form>
                   ) : (
                     <motion.div
@@ -392,7 +403,7 @@ export default function WhyAksan() {
         >
           {/* Left: Phone mockup — hidden on mobile, visible from md up */}
           <div className="relative order-2 lg:order-1 hidden md:block md:h-[280px] lg:h-full">
-            <div className="absolute -top-8 md:-top-10 lg:-top-62 left-1/2 -translate-x-1/2 lg:-left-16 lg:translate-x-0 w-[240px] sm:w-[300px] md:w-[360px] lg:w-[480px]">
+            <div className="absolute -top-8 md:-top-10 lg:-top-51 left-1/2 -translate-x-1/2 lg:-left-16 lg:translate-x-0 w-[240px] sm:w-[300px] md:w-[360px] lg:w-[480px]">
               <Image
                 src="/handd.png"
                 alt="AKSAN mobile app held in hand"
@@ -457,7 +468,7 @@ export default function WhyAksan() {
               whileTap={{ scale: 0.97 }}
               className="inline-flex items-center gap-2 bg-white text-blue-900 font-semibold text-xs sm:text-sm lg:text-sm px-5 sm:px-6 lg:px-6 py-2.5 sm:py-3 lg:py-3 rounded-md hover:bg-slate-100 transition"
             >
-              Talk to an Advisor <span aria-hidden="true">→</span>
+              Get Expert Guidance <span aria-hidden="true">→</span>
             </motion.button>
           </motion.div>
         </div>

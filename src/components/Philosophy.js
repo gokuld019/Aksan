@@ -67,10 +67,7 @@ export default function OurPhilosophy() {
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
           className="text-white text-base sm:text-lg md:text-xl lg:text-xl xl:text-2xl leading-relaxed mb-6 sm:mb-8 lg:mb-10"
         >
-          We aim to create a meaningful impact on your life with our holistic
-          financial solution. Our vision resonates with the idea of
-          simplifying and assuring ethical presence as a financial guide to
-          uplift financial awareness.
+          We aim to create a meaningful impact on your life with our holistic capital solutions. Our vision resonates with the idea of simplifying and assuring an ethical presence as a trusted capital guide to uplift financial awareness.
         </motion.p>
 
         {/* <motion.button

@@ -35,9 +35,8 @@ const offerDocuments = [
     drhpUrl: "/PhantomDigital_DRHP.pdf",
     rhpUrl: "/rhp/phantom.pdf",
     prospectusUrl: "/prospectus/Phantom_prospectus.pdf",
-    qipUrl: "#",
-    ncdUrl: "#",
-    ccdUrl: "#",
+    qipUrl: "/prefallotment/phantom.pdf",
+    preferentialAllotmentUrl: "",
   },
   {
     id: 2,
@@ -51,8 +50,7 @@ const offerDocuments = [
     rhpUrl: "/rhp/krishca.pdf",
     prospectusUrl: "/prospectus/krishca-rhp.pdf",
     qipUrl: "#",
-    ncdUrl: "#",
-    ccdUrl: "#",
+    preferentialAllotmentUrl: "#",
   },
   {
     id: 3,
@@ -66,8 +64,7 @@ const offerDocuments = [
     rhpUrl: "/rhp/basilic.pdf",
     prospectusUrl: "/prospectus/Basilic-prospectus.pdf",
     qipUrl: "#",
-    ncdUrl: "#",
-    ccdUrl: "#",
+    preferentialAllotmentUrl: "#",
   },
   {
     id: 4,
@@ -81,8 +78,7 @@ const offerDocuments = [
     rhpUrl: "/rhp/rox.pdf",
     prospectusUrl: "/prospectus/Rox Hi-Tech - Prospectus.pdf",
     qipUrl: "#",
-    ncdUrl: "#",
-    ccdUrl: "#",
+    preferentialAllotmentUrl: "#",
   },
   {
     id: 5,
@@ -96,8 +92,7 @@ const offerDocuments = [
     rhpUrl: "/rhp/supreme.pdf",
     prospectusUrl: "/prospectus/Supreme_Prospectus.pdf",
     qipUrl: "#",
-    ncdUrl: "#",
-    ccdUrl: "#",
+    preferentialAllotmentUrl: "#",
   },
   {
     id: 6,
@@ -111,8 +106,7 @@ const offerDocuments = [
     rhpUrl: "/rhp/thaaicasting.pdf",
     prospectusUrl: "/prospectus/Thaai csting_prospectus.pdf",
     qipUrl: "#",
-    ncdUrl: "#",
-    ccdUrl: "#",
+    preferentialAllotmentUrl: "/prefallotment/thaaicasting.pdf",
   },
   {
     id: 7,
@@ -126,8 +120,7 @@ const offerDocuments = [
     rhpUrl: "/rhp/avp.pdf",
     prospectusUrl: "/prospectus/Prospectus_AVP-Infracon.pdf",
     qipUrl: "#",
-    ncdUrl: "#",
-    ccdUrl: "#",
+    preferentialAllotmentUrl: "/prefallotment/avp.pdf",
   },
   {
     id: 8,
@@ -141,8 +134,7 @@ const offerDocuments = [
     rhpUrl: "/rhp/abs.pdf",
     prospectusUrl: "/prospectus/ABS_prospectus.pdf",
     qipUrl: "#",
-    ncdUrl: "#",
-    ccdUrl: "#",
+    preferentialAllotmentUrl: "#",
   },
   {
     id: 9,
@@ -156,8 +148,7 @@ const offerDocuments = [
     rhpUrl: "/rhp/sathlokar.pdf",
     prospectusUrl: "/prospectus/Sathlokar_prospectus.pdf",
     qipUrl: "#",
-    ncdUrl: "#",
-    ccdUrl: "#",
+    preferentialAllotmentUrl: "/prefallotment/sathlokar.pdf",
   },
   {
     id: 10,
@@ -171,8 +162,7 @@ const offerDocuments = [
     rhpUrl: "/rhp/afcom.pdf",
     prospectusUrl: "/prospectus/Afcom_Prospectus.pdf",
     qipUrl: "#",
-    ncdUrl: "#",
-    ccdUrl: "#",
+    preferentialAllotmentUrl: "#",
   },
   {
     id: 11,
@@ -186,8 +176,7 @@ const offerDocuments = [
     rhpUrl: "/rhp/freshara.pdf",
     prospectusUrl: "/prospectus/Freshara_prospectus.pdf",
     qipUrl: "#",
-    ncdUrl: "#",
-    ccdUrl: "#",
+    preferentialAllotmentUrl: "/prefallotment/freshara.pdf",
   },
   {
     id: 12,
@@ -201,8 +190,7 @@ const offerDocuments = [
     rhpUrl: "/rhp/emerald.pdf",
     prospectusUrl: "/prospectus/Emerald_Prospectus.pdf",
     qipUrl: "#",
-    ncdUrl: "#",
-    ccdUrl: "#",
+    preferentialAllotmentUrl: "#",
   },
   {
     id: 13,
@@ -216,8 +204,7 @@ const offerDocuments = [
     rhpUrl: "/rhp/happysquare.pdf",
     prospectusUrl: "/prospectus/HappySquare_prospectus.pdf",
     qipUrl: "#",
-    ncdUrl: "#",
-    ccdUrl: "#",
+    preferentialAllotmentUrl: "#",
   },
   {
     id: 14,
@@ -231,8 +218,7 @@ const offerDocuments = [
     rhpUrl: "#",
     prospectusUrl: "#",
     qipUrl: "#",
-    ncdUrl: "#",
-    ccdUrl: "#",
+    preferentialAllotmentUrl: "#",
   },
   {
     id: 15,
@@ -246,8 +232,7 @@ const offerDocuments = [
     rhpUrl: "/sprhp.pdf",
     prospectusUrl: "#",
     qipUrl: "#",
-    ncdUrl: "#",
-    ccdUrl: "#",
+    preferentialAllotmentUrl: "#",
   },
   {
     id: 16,
@@ -261,8 +246,7 @@ const offerDocuments = [
     rhpUrl: "#",
     prospectusUrl: "#",
     qipUrl: "#",
-    ncdUrl: "#",
-    ccdUrl: "#",
+    preferentialAllotmentUrl: "#",
     yetToFile: true,
   },
 ];
@@ -396,7 +380,7 @@ function DocButton({ href, label }) {
   );
 }
 
-// COMPACT VARIANT — used for the 3-across QIP / NCD / CCD row where
+// COMPACT VARIANT — used for the 2-across QIP / Preferential Allotment row where
 // space is tighter than the full-width buttons above it.
 function DocButtonCompact({ href, label }) {
   return (
@@ -404,7 +388,7 @@ function DocButtonCompact({ href, label }) {
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="group/btn relative flex flex-col items-center justify-center gap-1 overflow-hidden rounded-lg border border-slate-200 bg-slate-50/60 px-2 py-2.5 text-[10px] font-semibold uppercase tracking-wide text-slate-600 transition-all duration-300 hover:bg-[#0B1B3A] hover:border-[#0B1B3A] hover:text-white"
+      className="group/btn relative flex flex-col items-center justify-center gap-1 overflow-hidden rounded-lg border border-slate-200 bg-slate-50/60 px-2 py-2.5 text-center text-[10px] font-semibold uppercase leading-tight tracking-wide text-slate-600 transition-all duration-300 hover:bg-[#0B1B3A] hover:border-[#0B1B3A] hover:text-white"
     >
       <FileText size={13} className="relative z-10 flex-none opacity-70 transition-opacity duration-300 group-hover/btn:opacity-100" />
       <span className="relative z-10">{label}</span>
@@ -467,15 +451,14 @@ function DocumentCard({ doc, index }) {
         View Documents
       </div>
 
-      {/* Main doc buttons stacked, QIP/NCD/CCD split into 3 buttons in one row */}
+      {/* Main doc buttons stacked, QIP / Preferential Allotment split into 2 equal buttons in one row */}
       <div className="flex flex-col gap-1.5">
         <DocButton href={doc.drhpUrl} label="DRHP" />
         <DocButton href={doc.rhpUrl} label="RHP" />
         <DocButton href={doc.prospectusUrl} label="Prospectus" />
-        <div className="grid grid-cols-3 gap-1.5">
+        <div className="grid grid-cols-2 gap-1.5">
           <DocButtonCompact href={doc.qipUrl || "#"} label="QIP" />
-          <DocButtonCompact href={doc.ncdUrl || "#"} label="NCD" />
-          <DocButtonCompact href={doc.ccdUrl || "#"} label="CCD" />
+          <DocButtonCompact href={doc.preferentialAllotmentUrl || "#"} label="Preferential Allotment" />
         </div>
       </div>
     </motion.div>

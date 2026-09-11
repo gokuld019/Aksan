@@ -13,7 +13,6 @@ const notoSans = Noto_Sans({
 });
 
 const partners = [
-
   { name: "PhantomFX", logo: "/client/phantom.jpg" },
   { name: "Krishca", logo: "/client/krishca.jpg" },
   { name: "Basilic Fly", logo: "/client/basilicfly.jpg" },
@@ -30,12 +29,6 @@ const partners = [
   // { name: "Taiyo Feed Mill Limited", logo: "/client/taiyo.jpg" },
   // { name: "Sri Priyanka Enterprises Limited", logo: "/client/spgcl.jpg" },
   // { name: "RK Steel & Infrastructure Limited", logo: "/client/rksteel.jpg" },
-  
-  
-  
-  
-  
-  
 ];
 
 const testimonials = [
@@ -45,7 +38,7 @@ const testimonials = [
       "I wholeheartedly endorse AKSAN Capital Advisory for their expertise, professionalism, and commitment to their clients' financial success. Their dedication and guidance have been pivotal in our journey towards financial stability and business growth.",
     name: "Bala Manikandan",
     role: "MD, Krishca Strapping",
-    image: "/bggg.avif",
+    logo: "/client/krishca.jpg",
   },
   {
     tag: "Workflow Flexibility..",
@@ -53,7 +46,7 @@ const testimonials = [
       "Their Audit & Assurance services have also provided us with the peace of mind that our financial and operational processes are robust and reliable. This has not only built trust with our stakeholders but has also enhanced our transparency and credibility.",
     name: "Bejoy Arputharaj",
     role: "Founder, Phantom VFX",
-    image: "/bggg.avif",
+    logo: "/client/phantom.jpg",
   },
   {
     tag: "Adaptive and Creative Collaboration..",
@@ -61,7 +54,7 @@ const testimonials = [
       "What stood out with AKSAN was their ability to adapt to our creative workflows. They didn't just offer solutions - they listened, understood the pulse of a creative studio, and ensured all their processes aligned with our timelines and industry rhythm.",
     name: "Balakrishnan",
     role: "Founder, MD & CEO - Basilic Fly Studio Limited",
-    image: "/bggg.avif",
+    logo: "/client/basilicfly.jpg",
   },
   {
     tag: "Seamless Financial Guidance..",
@@ -69,7 +62,7 @@ const testimonials = [
       "Their insights into financial controls and compliance requirements gave us the confidence to pursue long-term expansion goals.",
     name: "Anandan Sriramulu",
     role: "Chairman & Managing Director - Thaai Casting Limited",
-    image: "/bggg.avif",
+    logo: "/client/thaicasting.jpg",
   },
   {
     tag: "Infrastructure-Focused Expertise..",
@@ -77,7 +70,7 @@ const testimonials = [
       "In infrastructure, where precision and pace define success, AKSAN stood out with their deep sector insights and proactive approach. Their support enhanced our execution capabilities, streamlined stakeholder coordination, and ensured we were strategically positioned for a successful IPO journey.",
     name: "D. Prasanna",
     role: "Chairman, Managing Director & CEO - AVP Infracon Limited",
-    image: "/bggg.avif",
+    logo: "/client/avp.jpg",
   },
   {
     tag: "Strategic Support..",
@@ -85,7 +78,7 @@ const testimonials = [
       "Their strategic support during our IPO process was invaluable. From documentation to regulatory compliance, the team ensured everything was seamless, instilling confidence among our investors and internal teams.",
     name: "G Thiyagu",
     role: "Chairman, Managing Director & CEO - Sathlokhar Synergys E&C Global Limited",
-    image: "/bggg.avif",
+    logo: "/client/sathlokar.jpg",
   },
   {
     tag: "Strategic Alignment, Seamless Execution..",
@@ -93,7 +86,7 @@ const testimonials = [
       "In the specialized off-highway tire industry, AKSAN brought clarity, structure, and sector understanding. Their seamless collaboration with our team ensured we stayed aligned internally while preparing confidently for our IPO journey.",
     name: "Chandhrasekharan Thirupathi Venkatachalam",
     role: "Chairman & Managing Director - Emerald Tyre Manufacturers Limited",
-    image: "/bggg.avif",
+    logo: "/client/emerald.jpg",
   },
   {
     tag: "Practical and Timely Advice..",
@@ -101,7 +94,7 @@ const testimonials = [
       "From financial hygiene to governance alignment, their team played a critical role in getting us IPO-ready. Their advice was practical, timely, and always aligned with our growth objectives.",
     name: "Junaid Ahmed",
     role: "Chairman & Managing Director - Freshara Agro Exports Limited",
-    image: "/bggg.avif",
+    logo: "/client/freshara.jpg",
   },
   {
     tag: "People-Centric Financial Expertise..",
@@ -109,7 +102,7 @@ const testimonials = [
       "As an HR services company, understanding workforce-linked compliance is vital. AKSAN's customized financial advice and risk management framework supported our scalability.",
     name: "Shraddha Rajpal",
     role: "Promoter - Happy Square Outsourcing Services Limited",
-    image: "/bggg.avif",
+    logo: "/client/whiteforce.jpg",
   },
   {
     tag: "Strategic Support..",
@@ -117,7 +110,7 @@ const testimonials = [
       "AKSAN's involvement brought efficiency and precision to our IPO process. Through timely follow-ups, well-organized documentation, and expert compliance handling, they ensured a seamless and hassle-free experience for both our management and our investors.",
     name: "Capt. Deepak Parasuraman",
     role: "Chairman & Managing Director - AFCOM Holdings Limited",
-    image: "/bggg.avif",
+    logo: "/client/afcom.jpg",
   },
 ];
 
@@ -146,6 +139,12 @@ export default function PartnersAndTestimonial() {
   };
 
   const testimonial = testimonials[active];
+
+  const initials = testimonial.name
+    .split(" ")
+    .map((w) => w[0])
+    .slice(0, 2)
+    .join("");
 
   return (
     <section
@@ -243,10 +242,6 @@ export default function PartnersAndTestimonial() {
               }}
             />
 
-            <span className="relative flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-orange-500/15 ring-1 ring-orange-400/30 mx-auto mb-3 sm:mb-3.5">
-              <Quote className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-orange-400" fill="currentColor" />
-            </span>
-
             <AnimatePresence mode="wait" custom={direction}>
               <motion.div
                 key={active}
@@ -265,13 +260,21 @@ export default function PartnersAndTestimonial() {
                 </p>
 
                 <div className="mt-4 sm:mt-5 flex flex-col items-center gap-1.5 sm:gap-2">
-                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center text-white font-bold text-xs sm:text-sm ring-4 ring-white/10">
-                    {testimonial.name
-                      .split(" ")
-                      .map((w) => w[0])
-                      .slice(0, 2)
-                      .join("")}
-                  </div>
+                 <div className="w-16 h-16 sm:w-18 sm:h-18 rounded-full ring-4 ring-white/10 overflow-hidden flex items-center justify-center shrink-0 bg-white">
+  {testimonial.logo ? (
+    <Image
+      src={testimonial.logo}
+      alt={testimonial.name}
+      width={88}
+      height={88}
+      className="w-full h-full object-contain"
+    />
+  ) : (
+    <div className="w-full h-full bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center text-white font-bold text-sm">
+      {initials}
+    </div>
+  )}
+</div>
                   <div>
                     <p className="text-white font-bold text-sm sm:text-base">
                       {testimonial.name}

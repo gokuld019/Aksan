@@ -28,7 +28,7 @@ const navLinks = [
     ],
   },
   { label: "Gallery", href: "/Gallery" },
-  { label: "Blogs", href: "/BlogsPage" },
+  // { label: "Blogs", href: "/BlogsPage" },
   { label: "Contact Us", href: "/contactus" },
 ];
 
@@ -70,7 +70,8 @@ export default function Navbar() {
   const isAwardSlugPage = pathname.startsWith("/awards/");
   const isprivacypolicy = pathname === "/Privacypolicy";
   const terms = pathname === "/Termsandcondition";
-  const showSolidBg = scrolled || isAboutPage || isGalleryPage || isAwardSlugPage || isprivacypolicy || terms;
+  const events = pathname === "/events"
+  const showSolidBg = scrolled || isAboutPage || isGalleryPage || isAwardSlugPage || isprivacypolicy || terms || events;
 
   // Determine which logo to show
   const logoSrc = showSolidBg ? "/aksanlogod.png" : "/White-logo.png";
