@@ -286,8 +286,7 @@ export default function InvestorCharterPage() {
               Your trust inspires us to excel. Your success is our success.
             </p>
             <p className="text-slate-600 text-sm leading-relaxed mt-1" style={{ fontFamily: "'Noto Sans', sans-serif" }}>
-              At Aksan Capital Venture, we are dedicated to creating sustainable value for our
-              investors and building a future of shared growth and prosperity.
+              At Aksan Capital, we create enduring value through responsible growth, trusted partnerships, and a shared vision for a prosperous future.
             </p>
           </div>
         </motion.div>

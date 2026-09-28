@@ -37,7 +37,7 @@ export const awards = [
   {
     id: 3,
     slug: "rox-hi-tech",
-    company: "ROX-Hi Tech limited",
+    company: "Rox Hi-Tech limited",
     date: "Listing Ceremony: 16 November 2023",
     image: "/gallery/aksangallery3.webp",
     gallery: [
@@ -50,9 +50,9 @@ export const awards = [
   },
   {
     id: 4,
-    slug: "basilio-fly-studio",
-    company: "Basilio Fly Studio Ltd",
-    date: "Listing Ceremony: September 2023",
+    slug: "basilic-fly-studio",
+    company: "Basilic Fly Studio Ltd",
+    date: "Listing Ceremony: 11 September 2023",
     image: "/gallery/aksangallery4.webp",
     gallery: [
         "/Awards/Basilicfly1.webp",

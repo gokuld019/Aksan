@@ -76,7 +76,7 @@ const leadership = [
   {
     name: "Rajinikanth E S",
     role: "MD/CEO/PO",
-    bio: "Visionary leader with deep expertise in capital markets and strategic advisory. Driving responsible growth and long-term value creation for our clients and stakeholders.",
+    bio: "Visionary leader with deep expertise in capital markets and strategic advisory. Driving responsible growth and long-term value creation for our clients and stakeholders",
     tags: leadershipTags,
     linkedin: "#",
     photo: "/team/md.jpeg",
@@ -84,7 +84,7 @@ const leadership = [
   {
     name: "Savitha",
     role: "Director",
-    bio: "Add a short bio describing this leader's expertise, focus areas, and the value they bring to AKSAN.",
+    bio: "Shaping meaningful progress through thoughtful leadership, trusted relationships, and a steadfast commitment to long-term value",
     tags: leadershipTags,
     linkedin: "#",
     photo: "/team/savitha.webp",
