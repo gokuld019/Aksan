@@ -87,7 +87,7 @@ const leadership = [
     bio: "Shaping meaningful progress through thoughtful leadership, trusted relationships, and a steadfast commitment to long-term value",
     tags: leadershipTags,
     linkedin: "#",
-    photo: "/team/savitha.webp",
+    photo: "/team/saveetha-2.jpeg",
   },
 ];
 

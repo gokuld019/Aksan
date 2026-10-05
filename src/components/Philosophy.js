@@ -35,7 +35,7 @@ export default function OurPhilosophy() {
         style={{ y: videoY, scale: videoScale }}
         className="absolute inset-0 w-full h-full object-cover"
       >
-        <source src="/phil.mp4" type="video/mp4" />
+        <source src="/phil1.mp4" type="video/mp4" />
       </motion.video>
 
       <div

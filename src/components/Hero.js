@@ -65,7 +65,7 @@ export default function Hero() {
         style={{ y: videoY }}
         className="hidden md:block absolute inset-0 w-full h-full object-cover object-center -z-20 scale-110 "
       >
-        <source src="/webbanner.mp4" type="video/mp4" />
+        <source src="/video.mp4" type="video/mp4" />
       </motion.video>
 
       {/* BLUE OVERLAY */}

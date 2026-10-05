@@ -21,7 +21,7 @@ const directors = [
   {
     name: "Savitha R",
     role: "DIRECTOR",
-    image: "/team1.webp",
+    image: "/team/Saveetha-1.jpeg",
     accent: "border-blue-800 bg-[#0F3A66]/90",
   },
 ];
