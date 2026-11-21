@@ -37,36 +37,33 @@ export default function Hero() {
 
   const textY = useTransform(scrollYProgress, [0, 1], [0, -100]);
   const textOpacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
-  const videoY = useTransform(scrollYProgress, [0, 1], [0, 60]);
 
   return (
     <section
       ref={sectionRef}
-      className="relative w-full h-[700px] xs:h-[600px] sm:h-[680px] md:h-[780px] lg:h-[870px] flex flex-col justify-center overflow-hidden"
+      className="relative w-full overflow-hidden"
     >
       {/* BACKGROUND VIDEO - MOBILE (below md) */}
-      <motion.video
+      <video
         autoPlay
         loop
         muted
         playsInline
-        style={{ y: videoY }}
-        className="md:hidden absolute inset-0 w-full h-full object-cover object-center -z-20 scale-110 brightness-[0.75]"
+        className="md:hidden block w-full h-auto"
       >
-        <source src="/mobbanner.mp4" type="video/mp4" />
-      </motion.video>
+        <source src="/mobvideo.mp4" type="video/mp4" />
+      </video>
 
       {/* BACKGROUND VIDEO - WEB (md and up) */}
-      <motion.video
+      <video
         autoPlay
         loop
         muted
         playsInline
-        style={{ y: videoY }}
-        className="hidden md:block absolute inset-0 w-full h-full object-cover object-center -z-20 scale-110 "
+        className="hidden md:block w-full h-auto"
       >
-        <source src="/video.mp4" type="video/mp4" />
-      </motion.video>
+        <source src="/desktopvideo.mp4" type="video/mp4" />
+      </video>
 
       {/* BLUE OVERLAY */}
       {/* <div
@@ -81,7 +78,7 @@ export default function Hero() {
         variants={container}
         initial="hidden"
         animate="show"
-        className="w-full max-w-[1400px] mx-auto pt-0 xs:pt-24 sm:pt-28 md:pt-32 pb-10 xs:pb-12 sm:pb-16 px-4 xs:px-5 sm:px-6 md:px-8 lg:px-10 relative z-10"
+        className="absolute inset-0 flex flex-col justify-center w-full max-w-[1400px] mx-auto pt-0 xs:pt-24 sm:pt-28 md:pt-32 pb-10 xs:pb-12 sm:pb-16 px-4 xs:px-5 sm:px-6 md:px-8 lg:px-10 z-10"
       >
         <motion.p
           variants={item}

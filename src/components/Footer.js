@@ -168,7 +168,7 @@ export default function Footer() {
                 <card.icon size={14} strokeWidth={2} className="xs:w-4 xs:h-4" />
               </span>
               <div className="min-w-0 text-left">
-                <h3 className="text-white font-semibold text-[12.5px] xs:text-sm sm:text-[15px] mb-1 xs:mb-1.5 leading-tight">
+                <h3 className="text-white font-bold text-[13px] xs:text-[15px] sm:text-[17px] mb-1.5 xs:mb-2 leading-tight">
                   {card.title}
                 </h3>
                 {card.lines.map((line, idx) =>
@@ -176,7 +176,7 @@ export default function Footer() {
                     <a
                       key={idx}
                       href={line.href}
-                      className="block text-orange-400 font-medium text-[11px] xs:text-xs sm:text-sm break-all hover:text-orange-300 transition-colors"
+                      className="block text-orange-300 font-semibold text-[11px] xs:text-xs sm:text-sm break-all hover:text-orange-200 transition-colors"
                     >
                       {line.text}
                     </a>
@@ -184,14 +184,14 @@ export default function Footer() {
                     <a
                       key={idx}
                       href={line.href}
-                      className="block text-slate-400 hover:text-orange-400 text-[11px] xs:text-[11.5px] sm:text-[13px] leading-[1.55] transition-colors"
+                      className="block text-slate-200 font-medium hover:text-orange-300 text-[11px] xs:text-[11.5px] sm:text-[13px] leading-[1.55] transition-colors"
                     >
                       {line.text}
                     </a>
                   ) : (
                     <p
                       key={idx}
-                      className="text-slate-400 text-[11px] xs:text-[11.5px] sm:text-[13px] leading-[1.55] break-words"
+                      className="text-slate-200 font-medium text-[11px] xs:text-[11.5px] sm:text-[13px] leading-[1.55] break-words"
                     >
                       {line.text}
                     </p>
@@ -215,7 +215,7 @@ export default function Footer() {
               priority
             />
             <p className="text-slate-300 text-[11.5px] xs:text-xs sm:text-sm leading-[1.7] mb-5 xs:mb-6 max-w-xs">
-              AKSAN Capital Advisory Private Limited is a SEBI-registered Merchant Banker committed to independent, research-driven
+              AKSAN Capital Advisory Private Limited is a Merchant Banker committed to independent, research-driven
               guidance and long-term client partnerships.
             </p>
             <div className="flex items-center gap-2.5 sm:gap-3 flex-wrap">
@@ -251,9 +251,9 @@ export default function Footer() {
                 </span>
                 <div>
                   <p className="text-slate-300 text-[11.5px] xs:text-xs sm:text-sm leading-snug">
-                    <span className="font-semibold text-white">10 AM – 8 PM</span>
+                    <span className="font-semibold text-white">10 AM – 7 PM</span>
                     <br />
-                    Monday – Saturday
+                    Monday – Friday
                   </p>
                 </div>
               </div>

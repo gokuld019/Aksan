@@ -31,6 +31,8 @@ const partners = [
   // { name: "RK Steel & Infrastructure Limited", logo: "/client/rksteel.jpg" },
 ];
 
+// `photo` = founder image (put files in /public/founders/). `logo` = company logo (shown as small badge).
+// If a photo is missing or fails to load, initials are shown automatically.
 const testimonials = [
   {
     tag: "Best Corporating..",
@@ -38,6 +40,7 @@ const testimonials = [
       "I wholeheartedly endorse AKSAN Capital Advisory for their expertise, professionalism, and commitment to their clients' financial success. Their dedication and guidance have been pivotal in our journey towards financial stability and business growth.",
     name: "Bala Manikandan",
     role: "MD, Krishca Strapping",
+    photo: "/founders/bala-manikandan.jpg",
     logo: "/client/krishca.jpg",
   },
   {
@@ -46,6 +49,7 @@ const testimonials = [
       "Their Audit & Assurance services have also provided us with the peace of mind that our financial and operational processes are robust and reliable. This has not only built trust with our stakeholders but has also enhanced our transparency and credibility.",
     name: "Bejoy Arputharaj",
     role: "Founder, Phantom VFX",
+    photo: "/founders/bejoy-arputharaj.jpg",
     logo: "/client/phantom.jpg",
   },
   {
@@ -54,6 +58,7 @@ const testimonials = [
       "What stood out with AKSAN was their ability to adapt to our creative workflows. They didn't just offer solutions - they listened, understood the pulse of a creative studio, and ensured all their processes aligned with our timelines and industry rhythm.",
     name: "Balakrishnan",
     role: "Founder, MD & CEO - Basilic Fly Studio Limited",
+    photo: "/founders/balakrishnan.jpg",
     logo: "/client/basilicfly.jpg",
   },
   {
@@ -62,6 +67,7 @@ const testimonials = [
       "Their insights into financial controls and compliance requirements gave us the confidence to pursue long-term expansion goals.",
     name: "Anandan Sriramulu",
     role: "Chairman & Managing Director - Thaai Casting Limited",
+    photo: "/founders/anandan-sriramulu.jpg",
     logo: "/client/thaicasting.jpg",
   },
   {
@@ -70,6 +76,7 @@ const testimonials = [
       "In infrastructure, where precision and pace define success, AKSAN stood out with their deep sector insights and proactive approach. Their support enhanced our execution capabilities, streamlined stakeholder coordination, and ensured we were strategically positioned for a successful IPO journey.",
     name: "D. Prasanna",
     role: "Chairman, Managing Director & CEO - AVP Infracon Limited",
+    photo: "/founders/d-prasanna.jpg",
     logo: "/client/avp.jpg",
   },
   {
@@ -78,6 +85,7 @@ const testimonials = [
       "Their strategic support during our IPO process was invaluable. From documentation to regulatory compliance, the team ensured everything was seamless, instilling confidence among our investors and internal teams.",
     name: "G Thiyagu",
     role: "Chairman, Managing Director & CEO - Sathlokhar Synergys E&C Global Limited",
+    photo: "/founders/g-thiyagu.jpg",
     logo: "/client/sathlokar.jpg",
   },
   {
@@ -86,6 +94,7 @@ const testimonials = [
       "In the specialized off-highway tire industry, AKSAN brought clarity, structure, and sector understanding. Their seamless collaboration with our team ensured we stayed aligned internally while preparing confidently for our IPO journey.",
     name: "Chandhrasekharan Thirupathi Venkatachalam",
     role: "Chairman & Managing Director - Emerald Tyre Manufacturers Limited",
+    photo: "/founders/chandhrasekharan.jpg",
     logo: "/client/emerald.jpg",
   },
   {
@@ -94,6 +103,7 @@ const testimonials = [
       "From financial hygiene to governance alignment, their team played a critical role in getting us IPO-ready. Their advice was practical, timely, and always aligned with our growth objectives.",
     name: "Junaid Ahmed",
     role: "Chairman & Managing Director - Freshara Agro Exports Limited",
+    photo: "/founders/junaid-ahmed.jpg",
     logo: "/client/freshara.jpg",
   },
   {
@@ -102,6 +112,7 @@ const testimonials = [
       "As an HR services company, understanding workforce-linked compliance is vital. AKSAN's customized financial advice and risk management framework supported our scalability.",
     name: "Shraddha Rajpal",
     role: "Promoter - Happy Square Outsourcing Services Limited",
+    photo: "/founders/shraddha-rajpal.jpg",
     logo: "/client/whiteforce.jpg",
   },
   {
@@ -110,9 +121,44 @@ const testimonials = [
       "AKSAN's involvement brought efficiency and precision to our IPO process. Through timely follow-ups, well-organized documentation, and expert compliance handling, they ensured a seamless and hassle-free experience for both our management and our investors.",
     name: "Capt. Deepak Parasuraman",
     role: "Chairman & Managing Director - AFCOM Holdings Limited",
+    photo: "/founders/deepak-parasuraman.jpg",
     logo: "/client/afcom.jpg",
   },
 ];
+
+// Fills its (relative) parent with the founder photo; falls back to initials if missing/broken.
+function FounderImage({ testimonial, sizes, textClass = "text-2xl" }) {
+  const [failed, setFailed] = useState(false);
+
+  const initials = testimonial.name
+    .replace(/^(Capt\.|Dr\.|Mr\.|Ms\.)\s*/i, "")
+    .split(" ")
+    .map((w) => w[0])
+    .slice(0, 2)
+    .join("")
+    .toUpperCase();
+
+  if (!testimonial.photo || failed) {
+    return (
+      <div
+        className={`absolute inset-0 bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center text-white font-extrabold ${textClass}`}
+      >
+        {initials}
+      </div>
+    );
+  }
+
+  return (
+    <Image
+      src={testimonial.photo}
+      alt={testimonial.name}
+      fill
+      sizes={sizes}
+      onError={() => setFailed(true)}
+      className="object-cover object-top"
+    />
+  );
+}
 
 export default function PartnersAndTestimonial() {
   const [active, setActive] = useState(0);
@@ -133,18 +179,8 @@ export default function PartnersAndTestimonial() {
     setDirection(1);
     setActive((p) => (p === testimonials.length - 1 ? 0 : p + 1));
   };
-  const goTo = (i) => {
-    setDirection(i > active ? 1 : -1);
-    setActive(i);
-  };
 
   const testimonial = testimonials[active];
-
-  const initials = testimonial.name
-    .split(" ")
-    .map((w) => w[0])
-    .slice(0, 2)
-    .join("");
 
   return (
     <section
@@ -215,33 +251,16 @@ export default function PartnersAndTestimonial() {
           ))}
         </motion.div>
 
-        {/* Testimonial spotlight — compact & responsive */}
+        {/* Testimonial spotlight — centered company logo, full-bleed founder image */}
         <motion.div
           style={{ opacity: fade }}
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.6 }}
-          className="relative max-w-[760px] mx-auto"
+          className="relative lg:-mx-8"
         >
-          <div className="relative rounded-2xl sm:rounded-[24px] bg-gradient-to-br from-[#0b2a4d] to-[#081b32] px-5 sm:px-9 lg:px-12 py-5 sm:py-6 lg:py-7 overflow-hidden shadow-[0_20px_50px_-20px_rgba(11,42,77,0.45)]">
-            <div
-              className="pointer-events-none absolute -top-12 -left-12 w-40 h-40 rounded-full opacity-25 blur-3xl"
-              style={{ background: "radial-gradient(circle, #f2622e, transparent 70%)" }}
-            />
-            <div
-              className="pointer-events-none absolute -bottom-12 -right-12 w-40 h-40 rounded-full opacity-20 blur-3xl"
-              style={{ background: "radial-gradient(circle, #38bdf8, transparent 70%)" }}
-            />
-            <div
-              className="pointer-events-none absolute inset-0 opacity-[0.05]"
-              style={{
-                backgroundImage:
-                  "linear-gradient(rgba(255,255,255,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.6) 1px, transparent 1px)",
-                backgroundSize: "22px 22px",
-              }}
-            />
-
+          <div className="relative rounded-3xl bg-white ring-1 ring-slate-200 overflow-hidden shadow-[0_30px_70px_-30px_rgba(11,42,77,0.35)]">
             <AnimatePresence mode="wait" custom={direction}>
               <motion.div
                 key={active}
@@ -250,78 +269,75 @@ export default function PartnersAndTestimonial() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: direction > 0 ? -24 : 24 }}
                 transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                className="relative text-center"
+                className="grid grid-cols-1 md:grid-cols-[minmax(0,6fr)_minmax(0,5fr)]"
               >
-                <p className="text-orange-400 font-bold text-xs sm:text-sm mb-2 sm:mb-2.5 tracking-wide">
-                  {testimonial.tag}
-                </p>
-                <p className="text-slate-100 text-sm sm:text-base leading-relaxed font-medium line-clamp-3 sm:line-clamp-3">
-                  &ldquo;{testimonial.quote}&rdquo;
-                </p>
+                {/* Text side — centered, large company logo */}
+                <div className="order-2 md:order-1 flex flex-col items-center justify-center text-center p-6 sm:p-8 lg:p-14 md:min-h-[500px]">
+                  {/* Company logo — large & centered */}
+                  <div className="flex items-center justify-center rounded-2xl bg-white ring-1 ring-slate-200 shadow-[0_12px_30px_-14px_rgba(11,42,77,0.25)] px-4 py-3 sm:px-6 sm:py-4">
+                    <Image
+                      src={testimonial.logo}
+                      alt={`${testimonial.name} company logo`}
+                      width={320}
+                      height={120}
+                      className="h-16 sm:h-24 lg:h-28 w-auto max-w-[240px] sm:max-w-[320px] lg:max-w-[360px] object-contain"
+                    />
+                  </div>
 
-                <div className="mt-4 sm:mt-5 flex flex-col items-center gap-1.5 sm:gap-2">
-                 <div className="w-16 h-16 sm:w-18 sm:h-18 rounded-full ring-4 ring-white/10 overflow-hidden flex items-center justify-center shrink-0 bg-white">
-  {testimonial.logo ? (
-    <Image
-      src={testimonial.logo}
-      alt={testimonial.name}
-      width={88}
-      height={88}
-      className="w-full h-full object-contain"
-    />
-  ) : (
-    <div className="w-full h-full bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center text-white font-bold text-sm">
-      {initials}
-    </div>
-  )}
-</div>
-                  <div>
-                    <p className="text-white font-bold text-sm sm:text-base">
+                  <span className="my-5 sm:my-6 h-px w-16 bg-gradient-to-r from-transparent via-slate-300 to-transparent" />
+
+                  <Quote className="w-6 h-6 sm:w-7 sm:h-7 text-orange-500" strokeWidth={1.5} />
+
+                  <p className="mt-3 text-[#0b2a4d] text-xs sm:text-sm font-bold tracking-wide">
+                    {testimonial.tag}
+                  </p>
+                  <p className="mt-2 max-w-[620px] text-slate-600 text-sm sm:text-[15px] lg:text-base leading-relaxed">
+                    {testimonial.quote}
+                  </p>
+
+                  <div className="mt-5 sm:mt-6">
+                    <p className="text-[#0b2a4d] font-bold text-base sm:text-lg tracking-tight">
                       {testimonial.name}
                     </p>
-                    <p className="text-slate-300 text-xs sm:text-sm mt-0.5">
+                    <p className="text-slate-500 text-xs sm:text-sm mt-1 leading-snug max-w-[420px] mx-auto">
                       {testimonial.role}
                     </p>
                   </div>
                 </div>
+
+                {/* Photo side — full-bleed founder image */}
+                <div className="order-1 md:order-2 relative min-h-[300px] sm:min-h-[360px] md:min-h-full bg-slate-100">
+                  <FounderImage
+                    testimonial={testimonial}
+                    sizes="(max-width: 768px) 100vw, 46vw"
+                    textClass="text-7xl"
+                  />
+                </div>
               </motion.div>
             </AnimatePresence>
+          </div>
 
-            {/* Navigation */}
-            <div className="relative flex items-center justify-center gap-2.5 sm:gap-3.5 mt-5 sm:mt-6">
-              <motion.button
-                onClick={prev}
-                aria-label="Previous testimonial"
-                whileHover={{ scale: 1.08 }}
-                whileTap={{ scale: 0.94 }}
-                className="flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white/5 ring-1 ring-white/15 text-white hover:bg-white/10 transition shrink-0"
-              >
-                <ChevronLeft className="w-4 h-4" />
-              </motion.button>
+          {/* Navigation — arrows only */}
+          <div className="mt-6 sm:mt-8 flex items-center justify-center gap-3 sm:gap-4">
+            <motion.button
+              onClick={prev}
+              aria-label="Previous testimonial"
+              whileHover={{ scale: 1.08 }}
+              whileTap={{ scale: 0.94 }}
+              className="flex items-center justify-center w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-white ring-1 ring-slate-200 text-[#0b2a4d] hover:ring-orange-300 hover:text-orange-500 shadow-sm transition shrink-0"
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </motion.button>
 
-              <div className="flex items-center gap-1.5 overflow-x-auto max-w-[160px] sm:max-w-none px-1 [scrollbar-width:none]">
-                {testimonials.map((_, i) => (
-                  <button
-                    key={i}
-                    onClick={() => goTo(i)}
-                    aria-label={`Go to testimonial ${i + 1}`}
-                    className={`h-1.5 rounded-full transition-all shrink-0 ${
-                      i === active ? "w-6 bg-orange-500" : "w-1.5 bg-white/20 hover:bg-white/40"
-                    }`}
-                  />
-                ))}
-              </div>
-
-              <motion.button
-                onClick={next}
-                aria-label="Next testimonial"
-                whileHover={{ scale: 1.08 }}
-                whileTap={{ scale: 0.94 }}
-                className="flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-orange-500 text-white hover:bg-orange-600 shadow-[0_10px_24px_-8px_rgba(242,98,46,0.6)] transition shrink-0"
-              >
-                <ChevronRight className="w-4 h-4" />
-              </motion.button>
-            </div>
+            <motion.button
+              onClick={next}
+              aria-label="Next testimonial"
+              whileHover={{ scale: 1.08 }}
+              whileTap={{ scale: 0.94 }}
+              className="flex items-center justify-center w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-orange-500 text-white hover:bg-orange-600 shadow-[0_10px_24px_-8px_rgba(242,98,46,0.6)] transition shrink-0"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </motion.button>
           </div>
         </motion.div>
       </div>

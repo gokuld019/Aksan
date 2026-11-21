@@ -78,26 +78,26 @@ export default function Services() {
             background: "linear-gradient(135deg, #0B1A33 0%, #10254A 40%, #0F3A66 75%, #0E4A7A 100%)",
           }}
         >
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 p-5 sm:p-6 md:p-8">
-  {stats.map((stat) => (
-    <motion.div
-      key={stat.label}
-      variants={revealItem}
-      className="flex items-center justify-center gap-3 sm:border-r sm:last:border-r-0 border-white/10 px-2"
-    >
-      <span className="w-10 h-10 flex items-center justify-center rounded-full border border-orange-500 text-orange-500 shrink-0">
-        <stat.icon className="w-5 h-5" strokeWidth={2} />
-      </span>
-      <div className="min-w-0">
-        <p className="text-white font-bold text-base sm:text-lg md:text-xl leading-tight">
-          {stat.value}
-        </p>
-        <p className="text-slate-400 text-xs sm:text-sm leading-tight mt-0.5">
-          {stat.label}
-        </p>
-      </div>
-    </motion.div>
-  ))}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 sm:gap-4 p-5 sm:p-6 md:p-8">
+            {stats.map((stat) => (
+              <motion.div
+                key={stat.label}
+                variants={revealItem}
+                className="flex items-center justify-start sm:justify-center gap-3 w-full max-w-[240px] mx-auto sm:max-w-none sm:mx-0 sm:border-r sm:last:border-r-0 border-white/10 px-2"
+              >
+                <span className="w-10 h-10 flex items-center justify-center rounded-full border border-orange-500 text-orange-500 shrink-0">
+                  <stat.icon className="w-5 h-5" strokeWidth={2} />
+                </span>
+                <div className="min-w-0">
+                  <p className="text-white font-bold text-base sm:text-lg md:text-xl leading-tight">
+                    {stat.value}
+                  </p>
+                  <p className="text-slate-400 text-xs sm:text-sm leading-tight mt-0.5">
+                    {stat.label}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </motion.div>
       </div>
@@ -117,14 +117,15 @@ export default function Services() {
               <p className="text-orange-500 font-semibold text-xs sm:text-sm tracking-wide mb-2 sm:mb-3">
                 WHAT WE DO
               </p>
-              <h2
-                className="text-2xl sm:text-3xl md:text-4xl font-bold leading-tight mb-3 sm:mb-4"
-                style={{ color: "#1E2A5E" }}
-              >
-                Comprehensive Solutions Tailored for You
-              </h2>
+             <h2
+  className="font-bold leading-tight mb-3 sm:mb-4 text-[length:clamp(1.1rem,6vw,1.5rem)] sm:text-3xl md:text-4xl lg:text-[length:clamp(1.25rem,2vw,1.9rem)]"
+  style={{ color: "#1E2A5E" }}
+>
+  <span className="block whitespace-nowrap">Comprehensive Solutions</span>
+  <span className="block whitespace-nowrap">Tailored for You</span>
+</h2>
               <p className="text-slate-500 text-sm sm:text-base leading-relaxed mb-4 sm:mb-6 max-w-lg mx-auto lg:mx-0">
-                We offer a wide range of financial advisory services to help you
+                We offer a wide range of capital advisory services to help
                 achieve your financial goals with confidence.
               </p>
               {/* <button className=" hidden sm:inline-flex md:inline-flex items-center justify-center gap-2 border border-slate-300 font-semibold text-sm px-5 py-2.5 rounded-md hover:bg-slate-50 transition w-full sm:w-auto" style={{ color: "#1E2A5E" }}>

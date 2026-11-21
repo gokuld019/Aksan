@@ -386,7 +386,7 @@ export default function ContactUs() {
               <ContactItem
                 icon={Clock}
                 label="Business Hours"
-                lines={["Monday - Friday", "10 AM - 8 PM"]}
+                lines={["Monday - Friday", "10 AM - 7 PM"]}
               />
             </div>
           </motion.div>

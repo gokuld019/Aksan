@@ -171,7 +171,7 @@ export default function TrackRecord() {
               key={stat.label + stat.sub}
               variants={revealItem}
               whileHover={{ y: -6 }}
-              className="relative rounded-xl p-2 xs:p-5 sm:p-7 md:p-8 flex flex-col items-center justify-start text-center border border-slate-600/40 bg-white/5 transition-colors h-full w-full min-h-[140px] xs:min-h-[160px] sm:min-h-[190px] max-w-[220px] sm:max-w-[240px]"
+              className="relative rounded-xl p-2 xs:p-5 sm:p-7 md:p-8 flex flex-col items-center justify-center text-center border border-slate-600/40 bg-white/5 transition-colors h-full w-full min-h-[140px] xs:min-h-[160px] sm:min-h-[190px] max-w-[220px] sm:max-w-[240px]"
             >
               {/* Value with suffix */}
               <p className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-none mb-2 xs:mb-3 sm:mb-4 tabular-nums">

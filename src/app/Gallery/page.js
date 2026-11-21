@@ -33,7 +33,7 @@ export default function AwardsRecognition() {
           className="text-center text-xl sm:text-2xl md:text-[28px] lg:text-3xl font-bold text-[#132A5C] mb-2 sm:mb-3"
           style={{ fontFamily: "'Noto Sans', sans-serif" }}
         >
-          Celebrated Equity and IPO Advisors
+          Celebrated Equity and IPO Consultant
         </h2>
 
         <p

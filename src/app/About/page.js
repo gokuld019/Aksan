@@ -48,7 +48,7 @@ const values = [
     icon: Scale,
     title: "Integrity",
     description:
-      "We uphold the highest standards of integrity and transparency in every engagement, ensuring trust and long-term relationships.",
+      "Honesty and transparency guide every engagement we undertake. By acting with fairness and accountability, we earn the confidence of our clients and build relationships that endure.",
   },
   {
     icon: Target,
@@ -76,7 +76,7 @@ const leadership = [
   {
     name: "Rajinikanth E S",
     role: "MD/CEO/PO",
-    bio: "Visionary leader with deep expertise in capital markets and strategic advisory. Driving responsible growth and long-term value creation for our clients and stakeholders",
+    bio: "A strategic visionary in capital markets and financial advisory, advancing sustainable growth, unlocking opportunities, and fostering long-term value for clients and stakeholders.",
     tags: leadershipTags,
     linkedin: "#",
     photo: "/team/md.jpeg",
@@ -94,7 +94,7 @@ const leadership = [
 const coreTeam = [
   { name: "Khushboo Hanswal", role: "Cs Cum Compliance Officer", linkedin: "#", photo: "/team/kushh.jpeg" },
   { name: "Preeti Dedhiya", role: "Associate Vice President", linkedin: "#", photo: "/team/p.jpeg" },
-  { name: "Piyush Chandra", role: "Associate Vice President ", linkedin: "#", photo: "/team/piyush.png" },
+  { name: "Piyush Chandra", role: "Associate Vice President", linkedin: "#", photo: "/team/piyush.png" },
   { name: "Vidit Madhusudan Gupta", role: "Principal Consultant", linkedin: "#", photo: "/team/viddit.png" },
   { name: "Narayanan", role: "Sr. GM - Financial Analyst", linkedin: "#", photo: "/team/narayanaup.jpeg" },
   { name: "Pinky", role: "AGM - Financial Analyst", linkedin: "#", photo: "/team/pinky-naveen-h.png" },
@@ -108,16 +108,12 @@ const coreTeam = [
   { name: "Nirmal", role: "Sr. Financial Analyst", linkedin: "#", photo: "/team/nirmal-k.png" },
   { name: "Indira", role: "AGM - Accounts & Finance", linkedin: "#", photo: "/team/indira-ak.png" },
 
-// { name: "Natarajan", role: "Sr. Exe - CS", linkedin: "#", photo: "/team/natarajan-b.png" },
-// { name: "Badrinarayan", role: "Jr. Financial Analyst", linkedin: "#", photo: "/team/badrinarayan-s.png" },
-
-//   { name: "Jhanani", role: "Jr. Executive - CS - Trainee", linkedin: "#", photo: "/team/jhanani-m.png" },
-//   { name: "Sudarsana Rao", role: "Admin Assistant", linkedin: "#", photo: "/team/sudarsana-rao-k.png" },
-
-
-
-//   { name: "Narendran", role: "Sr. Exe - CS - Trainee", linkedin: "#", photo: "/team/narendran.png" },
-//   { name: "Santhosh Kumar", role: "Manager - IT & Admin", linkedin: "#", photo: "/team/santhosh.png" },
+  // { name: "Natarajan", role: "Sr. Exe - CS", linkedin: "#", photo: "/team/natarajan-b.png" },
+  // { name: "Badrinarayan", role: "Jr. Financial Analyst", linkedin: "#", photo: "/team/badrinarayan-s.png" },
+  // { name: "Jhanani", role: "Jr. Executive - CS - Trainee", linkedin: "#", photo: "/team/jhanani-m.png" },
+  // { name: "Sudarsana Rao", role: "Admin Assistant", linkedin: "#", photo: "/team/sudarsana-rao-k.png" },
+  // { name: "Narendran", role: "Sr. Exe - CS - Trainee", linkedin: "#", photo: "/team/narendran.png" },
+  // { name: "Santhosh Kumar", role: "Manager - IT & Admin", linkedin: "#", photo: "/team/santhosh.png" },
 ];
 
 // ---------- Animation variants ----------
@@ -179,13 +175,6 @@ export default function About() {
   const heroRef = useRef(null);
   const ctaRef = useRef(null);
 
-  const { scrollYProgress: heroProgress } = useScroll({
-    target: heroRef,
-    offset: ["start start", "end start"],
-  });
-  const heroImageY = useTransform(heroProgress, [0, 1], ["0%", "18%"]);
-  const heroImageScale = useTransform(heroProgress, [0, 1], [1, 1.08]);
-
   const { scrollYProgress: ctaProgress } = useScroll({
     target: ctaRef,
     offset: ["start end", "end start"],
@@ -197,149 +186,160 @@ export default function About() {
       {/* Section 1: About Hero */}
       <section
         ref={heroRef}
-        className="w-full bg-white min-h-[560px] sm:min-h-[600px] lg:min-h-[700px] flex items-stretch relative overflow-hidden mt-12 sm:mt-10"
+        className="w-full bg-white relative overflow-hidden mt-12 sm:mt-10"
       >
-        <div className="w-full flex items-stretch">
-          <div className="max-w-[1400px] mx-auto w-full flex items-stretch px-4 xs:px-5 sm:px-6 lg:px-8">
-            <div className="grid lg:grid-cols-2 gap-0 items-stretch w-full">
-              <div className="flex items-center py-10 xs:py-12 sm:py-16 lg:py-20 xl:py-24">
-                <div className="max-w-xl mx-auto lg:mx-0">
-                  <motion.div
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true, amount: 0.8 }}
-                    transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                    className="flex items-center gap-3 mb-4 sm:mb-5"
-                  >
-                    <span className="text-orange-600 font-semibold text-[11px] xs:text-xs sm:text-sm tracking-[0.1em] uppercase">
-                      About Aksan
-                    </span>
-                    <motion.span
-                      initial={{ width: 0 }}
-                      whileInView={{ width: 40 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
-                      className="h-px bg-orange-600"
-                    />
-                  </motion.div>
+        <div className="max-w-[1600px] mx-auto px-4 xs:px-5 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-[minmax(0,576px)_minmax(0,600px)] lg:justify-center gap-14 lg:gap-16 items-center py-10 xs:py-12 sm:py-16 lg:py-20">
+            {/* LEFT: text */}
+            <div className="max-w-xl mx-auto lg:mx-0">
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, amount: 0.8 }}
+                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                className="flex items-center gap-3 mb-4 sm:mb-5"
+              >
+                <span className="text-orange-600 font-semibold text-[11px] xs:text-xs sm:text-sm tracking-[0.1em] uppercase">
+                  About Aksan
+                </span>
+                <motion.span
+                  initial={{ width: 0 }}
+                  whileInView={{ width: 40 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+                  className="h-px bg-orange-600"
+                />
+              </motion.div>
 
-                  <h2 className="text-[24px] leading-[1.3] xs:text-[27px] xs:leading-[1.25] sm:text-4xl sm:leading-[1.18] lg:text-5xl lg:leading-[1.12] font-extrabold tracking-tight mb-5 sm:mb-6">
-                    <AnimatedWords
-                      text="Building Trust."
-                      className="text-[#152249]"
-                    />
-                    <br className="hidden xs:block" />
-                    <AnimatedWords
-                      text="Driving Capital Growth."
-                      className="text-orange-600"
-                    />
-                  </h2>
+              <h2 className="text-[24px] leading-[1.3] xs:text-[27px] xs:leading-[1.25] sm:text-4xl sm:leading-[1.18] lg:text-5xl lg:leading-[1.12] font-extrabold tracking-tight mb-5 sm:mb-6">
+                <AnimatedWords
+                  text="Building Trust."
+                  className="text-[#152249]"
+                />
+                <br className="hidden xs:block" />
+                <AnimatedWords
+                  text="Driving Capital Growth."
+                  className="text-orange-600"
+                />
+              </h2>
 
-                 <motion.div
-  variants={staggerContainer}
-  initial="hidden"
-  whileInView="visible"
-  viewport={{ once: true, amount: 0.3 }}
-  className="space-y-3.5 xs:space-y-4 text-gray-600 text-[13.5px] xs:text-[14px] sm:text-[15px] leading-[1.7] xs:leading-[1.75] sm:leading-[1.8] tracking-[0.005em] text-left sm:text-justify"
->
+              <motion.div
+                variants={staggerContainer}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.3 }}
+                className="space-y-3.5 xs:space-y-4 text-gray-600 text-[13.5px] xs:text-[14px] sm:text-[15px] leading-[1.7] xs:leading-[1.75] sm:leading-[1.8] tracking-[0.005em] text-left sm:text-justify"
+              >
   <motion.p variants={fadeUp} custom={0}>
-    At AKSAN, we are a{" "}
-    
-      SEBI Registered Category-II Merchant Banker
-    
-    committed to delivering strategic, compliant, and execution-focused
-    solutions across the capital markets.
+    At AKSAN, we are a SEBI-registered Category II Merchant Banker,
+    specialising in bespoke financial advisory and capital market
+    solutions that empower enterprises to navigate complex financial
+    landscapes with confidence, precision, and regulatory assurance.
   </motion.p>
 
   <motion.p variants={fadeUp} custom={1}>
-    Built on{" "}
-   
-      integrity, precision, and regulatory excellence
-    
-    , we offer comprehensive merchant banking services spanning issue
-    management, capital structuring, mergers &amp; acquisitions, valuation
-    advisory, and regulatory support.
+    Anchored in fiduciary integrity, analytical rigour, and uncompromising
+    regulatory adherence, our comprehensive service portfolio encompasses
+    capital issuance and issue management, sophisticated capital
+    structuring, mergers and acquisitions, independent valuation advisory,
+    and end-to-end regulatory compliance.
   </motion.p>
 
   <motion.p variants={fadeUp} custom={2}>
-    Every business follows a distinct growth trajectory. Our approach is
-    therefore{" "}
-    
-      tailored, insight-driven, and detail-oriented
-    
-    , enabling us to navigate complex requirements while maintaining the
-    highest standards of governance and compliance.
+    Recognising the distinct strategic imperatives and evolving growth
+    trajectories of every enterprise, we deliver meticulously tailored,
+    insight-driven solutions that reconcile commercial ambition with
+    financial prudence, regulatory obligations, and the highest standards
+    of corporate governance.
   </motion.p>
 
   <motion.p variants={fadeUp} custom={3}>
-    Backed by a dynamic team and experienced industry professionals, we
-    combine{" "}
-    
-      strategic perspective with technical expertise
-    
-    to create lasting value and support informed capital market decisions.
+    Our multidisciplinary team of accomplished professionals combines
+    strategic acumen, technical proficiency, and nuanced market
+    intelligence to unlock latent value, optimise capital allocation, and
+    facilitate judicious, data-informed capital market decisions.
   </motion.p>
 
   <motion.p variants={fadeUp} custom={4}>
-    At AKSAN, we serve as a{" "}
-    
-      trusted strategic partner for businesses seeking sustainable growth,
-      efficient capital solutions, and long-term value creation
-    
-    .
+    At AKSAN, we transcend the conventional advisory relationship,
+    positioning ourselves as a steadfast strategic partner to enterprises
+    pursuing sustainable expansion, capital optimisation, and enduring
+    shareholder value.
   </motion.p>
 </motion.div>
 
-                  <motion.div
-                    variants={staggerContainer}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, amount: 0.3 }}
-                    className="grid grid-cols-2 gap-2.5 xs:gap-3 sm:gap-4 mt-7 xs:mt-8 sm:mt-10"
-                  >
-                    {features.map(({ icon: Icon, label }, i) => (
-                      <motion.div
-                        key={label}
-                        variants={fadeUp}
-                        custom={i}
-                        whileHover={{ y: -4, transition: { duration: 0.2 } }}
-                        className="flex items-center gap-2 xs:gap-2.5 sm:gap-3 border border-gray-200 rounded-xl px-3 xs:px-3.5 sm:px-4 py-2.5 sm:py-3 min-w-0"
-                      >
-                        <span className="flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 shrink-0 rounded-full bg-orange-50 text-orange-600">
-                          <Icon size={16} className="sm:hidden" strokeWidth={2} />
-                          <Icon size={18} className="hidden sm:block" strokeWidth={2} />
-                        </span>
-                        <span className="text-[12px] xs:text-[13px] sm:text-sm font-semibold text-gray-900 leading-snug">
-                          {label}
-                        </span>
-                      </motion.div>
-                    ))}
-                  </motion.div>
-                </div>
-              </div>
-
               <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                variants={staggerContainer}
+                initial="hidden"
+                whileInView="visible"
                 viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                className="relative w-full min-h-[220px] xs:min-h-[260px] sm:min-h-[360px] lg:min-h-full overflow-hidden rounded-2xl lg:rounded-none mb-7 xs:mb-8 lg:mb-0 lg:absolute lg:right-0 lg:top-0 lg:w-1/2 lg:h-full"
+                className="grid grid-cols-2 gap-2.5 xs:gap-3 sm:gap-4 mt-7 xs:mt-8 sm:mt-10"
               >
-                <motion.div
-                  style={{ y: heroImageY, scale: heroImageScale }}
-                  className="absolute inset-0"
-                >
+                {features.map(({ icon: Icon, label }, i) => (
+                  <motion.div
+                    key={label}
+                    variants={fadeUp}
+                    custom={i}
+                    whileHover={{ y: -4, transition: { duration: 0.2 } }}
+                    className="flex items-center gap-2 xs:gap-2.5 sm:gap-3 border border-gray-200 rounded-xl px-3 xs:px-3.5 sm:px-4 py-2.5 sm:py-3 min-w-0"
+                  >
+                    <span className="flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 shrink-0 rounded-full bg-orange-50 text-orange-600">
+                      <Icon size={16} className="sm:hidden" strokeWidth={2} />
+                      <Icon size={18} className="hidden sm:block" strokeWidth={2} />
+                    </span>
+                    <span className="text-[12px] xs:text-[13px] sm:text-sm font-semibold text-gray-900 leading-snug">
+                      {label}
+                    </span>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </div>
+
+            {/* RIGHT: sleek image card */}
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+              className="relative w-full max-w-[440px] sm:max-w-[520px] lg:max-w-[600px] mx-auto lg:mx-0 mb-6 lg:mb-0"
+            >
+              {/* Offset accent frame */}
+              <div className="hidden sm:block absolute top-4 -right-4 w-full h-full rounded-[28px] border-2 border-orange-500/40" />
+
+              {/* Image */}
+              <div className="relative aspect-[988/1592] overflow-hidden rounded-[28px] shadow-[0_30px_60px_-20px_rgba(21,34,73,0.35)]">
+                <div className="absolute inset-0">
                   <Image
-                    src="/aiff.png"
+                    src="/about.png"
                     alt="Modern skyscrapers representing AKSAN's capital market expertise"
                     fill
+                    sizes="(max-width: 1024px) 90vw, 600px"
                     className="object-cover"
                     priority
                   />
-                </motion.div>
-                <div className="absolute inset-0 bg-gradient-to-t from-white/20 to-transparent lg:bg-gradient-to-l lg:from-white/10 lg:to-transparent pointer-events-none" />
+                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0b1a3a]/40 via-transparent to-transparent pointer-events-none" />
+              </div>
+
+              {/* Floating badge */}
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.5 }}
+                className="absolute -bottom-5 -left-3 sm:-left-8 flex items-center gap-3 bg-white rounded-2xl px-4 py-3 shadow-[0_15px_40px_-10px_rgba(21,34,73,0.25)] border border-gray-100"
+              >
+                <span className="flex items-center justify-center w-10 h-10 rounded-full bg-[#152249]">
+                  <ShieldCheck size={18} className="text-orange-500" strokeWidth={2} />
+                </span>
+                <div className="leading-tight">
+                  <p className="text-sm font-bold text-[#152249]">SEBI Registered</p>
+                  <p className="text-[11px] text-gray-500 font-medium">
+                    Category-II Merchant Banker
+                  </p>
+                </div>
               </motion.div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -412,7 +412,6 @@ export default function About() {
       {/* Section 3: Meet Our Leadership */}
       <section className="w-full bg-slate-50 py-12 xs:py-14 sm:py-20 px-4 xs:px-5 sm:px-6 lg:px-8">
         <div className="max-w-[1400px] mx-auto">
-
           {/* Heading */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -474,7 +473,6 @@ export default function About() {
                   <p className="text-orange-600 font-semibold text-[12.5px] xs:text-[13.5px] sm:text-sm mb-4 leading-snug">
                     {person.role}
                   </p>
-                  {/* <span className="block h-px w-14 bg-orange-500/60 mb-5" /> */}
                   <p className="text-gray-600 text-[13px] xs:text-[13.5px] sm:text-sm leading-[1.65] xs:leading-[1.7] mb-6 xs:mb-7 max-w-xs">
                     {person.bio}
                   </p>
@@ -537,8 +535,12 @@ export default function About() {
                 )}
                 <Icon size={20} className="text-orange-500 mb-1 xs:hidden" strokeWidth={1.8} />
                 <Icon size={22} className="text-orange-500 mb-1 hidden xs:block" strokeWidth={1.8} />
-                <span className="text-xl xs:text-2xl sm:text-3xl font-extrabold text-white leading-tight">{value}</span>
-                <span className="text-[10px] xs:text-[11px] sm:text-xs text-slate-400 font-medium tracking-wide leading-snug">{label}</span>
+                <span className="text-xl xs:text-2xl sm:text-3xl font-extrabold text-white leading-tight">
+                  {value}
+                </span>
+                <span className="text-[10px] xs:text-[11px] sm:text-xs text-slate-400 font-medium tracking-wide leading-snug">
+                  {label}
+                </span>
               </div>
             ))}
           </motion.div>
@@ -620,7 +622,6 @@ export default function About() {
               </motion.div>
             ))}
           </motion.div>
-
         </div>
       </section>
 

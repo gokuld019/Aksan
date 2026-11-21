@@ -581,7 +581,7 @@ export default function OfferDocumentsPage() {
             </h2>
             <span className="mx-auto mt-3 block h-1 w-14 rounded-full bg-orange-500" />
             <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-slate-500 sm:text-base">
-              Browse and download the DRHP, RHP, and Prospectus documents
+              Browse and download the DRHP, RHP, QIP, Prefertial Allotmant and Prospectus documents
               of companies advised by AKSAN Capital.
             </p>
           </div>

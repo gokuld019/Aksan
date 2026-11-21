@@ -16,13 +16,11 @@ const directors = [
     name: "Rajinikanth ES",
     role: "MD/CEO/PO",
     image: "/team/md.jpeg",
-    accent: "border-orange-500 bg-slate-900/90",
   },
   {
     name: "Savitha R",
     role: "DIRECTOR",
     image: "/team/Saveetha.jpeg",
-    accent: "border-blue-800 bg-[#0F3A66]/90",
   },
 ];
 
@@ -41,7 +39,7 @@ export default function BoardOfDirectors() {
       ref={sectionRef}
       className={`relative bg-slate-50 py-8 xs:py-10 sm:py-14 md:py-20 lg:py-24 xl:py-28 overflow-hidden ${notoSans.className}`}
     >
-      <div className="w-full max-w-[1400px] mx-auto px-4 xs:px-5 sm:px-6 md:px-8 lg:px-10 xl:px-8 grid grid-cols-1 lg:grid-cols-2 gap-6 xs:gap-8 sm:gap-10 md:gap-12 lg:gap-16 xl:gap-20 items-center">
+      <div className="w-full max-w-[1400px] mx-auto px-4 xs:px-5 sm:px-6 md:px-8 lg:px-10 xl:px-8 grid grid-cols-1 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] gap-6 xs:gap-8 sm:gap-10 md:gap-12 lg:gap-14 xl:gap-16 items-center">
         {/* Left: Text content */}
         <motion.div style={{ y: textY }} className="text-center lg:text-left w-full">
           <motion.div
@@ -157,11 +155,14 @@ export default function BoardOfDirectors() {
             </span>
             Great things in business are never done by one person. They&apos;re
             done by a team of people.
+             <span className="text-orange-500 text-lg xs:text-xl sm:text-2xl align-top mr-1">
+              &ldquo;
+            </span>
           </motion.blockquote>
         </motion.div>
 
-        {/* Right: Director photo cards */}
-        <div className="grid grid-cols-2 gap-3 xs:gap-4 sm:gap-5 md:gap-6 w-full max-w-[380px] sm:max-w-none mx-auto lg:mx-0">
+        {/* Right: Director photo + info card below */}
+        <div className="grid grid-cols-2 gap-3 xs:gap-4 sm:gap-5 md:gap-6 lg:gap-7 w-full max-w-[460px] sm:max-w-none mx-auto lg:mx-0">
           {directors.map((director, i) => (
             <motion.div
               key={director.name}
@@ -169,25 +170,28 @@ export default function BoardOfDirectors() {
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: i * 0.15 }}
-              whileHover={{ y: -6 }}
-              className="group relative rounded-lg xs:rounded-xl sm:rounded-2xl overflow-hidden shadow-md xs:shadow-lg sm:shadow-xl hover:shadow-2xl bg-white aspect-[3/4] transition-shadow duration-300"
+              className="group flex flex-col"
             >
-              <div className="absolute inset-0 overflow-hidden">
+              {/* Photo (image only) */}
+              <motion.div
+                whileHover={{ y: -6 }}
+                className="relative w-full rounded-lg xs:rounded-xl sm:rounded-2xl overflow-hidden shadow-md xs:shadow-lg sm:shadow-xl group-hover:shadow-2xl bg-white aspect-[3/4] transition-shadow duration-300"
+              >
                 <Image
                   src={director.image}
                   alt={director.name}
                   fill
-                  sizes="(max-width: 480px) 45vw, (max-width: 1024px) 50vw, 25vw"
+                  sizes="(max-width: 480px) 45vw, (max-width: 1024px) 50vw, 35vw"
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
-              </div>
-              <div
-                className={`absolute left-1.5 xs:left-2 sm:left-3 md:left-4 bottom-1.5 xs:bottom-2 sm:bottom-3 md:bottom-4 right-1.5 xs:right-2 sm:right-3 md:right-4 border-l-4 rounded-md px-2 xs:px-3 sm:px-4 py-1.5 xs:py-2 sm:py-3 backdrop-blur-sm ${director.accent}`}
-              >
-                <p className="text-white font-bold text-[11px] xs:text-xs sm:text-sm md:text-base leading-tight break-words">
+              </motion.div>
+
+              {/* Info card below the photo */}
+              <div className="relative mt-3 xs:mt-3.5 sm:mt-4 flex-1 overflow-hidden rounded-lg xs:rounded-xl sm:rounded-2xl bg-white ring-1 ring-slate-200/80 shadow-[0_10px_30px_-14px_rgba(15,23,42,0.25)] group-hover:ring-orange-200 group-hover:shadow-[0_18px_40px_-16px_rgba(242,98,46,0.35)] transition-all duration-300 px-3 xs:px-4 sm:px-5 py-3 xs:py-3.5 sm:py-4 text-center">
+                <h3 className="text-blue-950 font-bold text-[13px] xs:text-sm sm:text-base md:text-lg leading-tight tracking-tight break-words">
                   {director.name}
-                </p>
-                <p className="text-orange-400 text-[8px] xs:text-[9px] sm:text-[10px] md:text-xs font-semibold tracking-wide mt-0.5">
+                </h3>
+                <p className="mt-1.5 inline-block rounded-full bg-orange-50 px-2.5 xs:px-3 py-0.5 text-orange-600 text-[8px] xs:text-[9px] sm:text-[10px] md:text-xs font-semibold tracking-[0.12em] uppercase">
                   {director.role}
                 </p>
               </div>

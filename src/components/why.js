@@ -4,17 +4,14 @@ import Image from "next/image";
 import { useRef, useState } from "react";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import {
-  BadgeCheck,
-  TrendingUp,
-  HeartHandshake,
+  Landmark,
+  Eye,
+  BarChart3,
+  Users,
   Building2,
-  Smartphone,
-  Plus,
+  PieChart,
   X,
   User,
-  Target,
-  BarChart3,
-  Repeat,
   Phone,
   Mail,
   MessageSquare,
@@ -32,25 +29,30 @@ const notoSans = Noto_Sans({
   display: "swap",
 });
 
+// Each icon now matches its text
 const features = [
   {
-    icon: BadgeCheck,
-    text: "SEBI-registered, fully transparent advisory",
+    icon: Landmark, // banking institution
+    text: "Merchant Banker",
   },
   {
-    icon: TrendingUp,
+    icon: Eye, // transparency / clear visibility
+    text: "Transparent Advisory",
+  },
+  {
+    icon: BarChart3, // research & analysis
     text: "29+ years of research-driven guidance",
   },
   {
-    icon: HeartHandshake,
+    icon: Users, // investors / people
     text: "1 Lakh+ happy investors across India",
   },
   {
-    icon: Building2,
+    icon: Building2, // listed companies
     text: "13+ Company Listed",
   },
   {
-    icon: Smartphone,
+    icon: PieChart, // portfolio tracking
     text: "Track your portfolio anytime, anywhere",
   },
 ];
@@ -195,7 +197,7 @@ function AdvisorModal({ open, onClose }) {
                 Get Expert Guidance
               </h3>
               <p className="text-slate-300 text-xs sm:text-sm mt-2 max-w-sm">
-               Share a few details and our experts will reach out to you shortly.
+                Share a few details and our experts will reach out to you shortly.
               </p>
             </div>
 
@@ -307,22 +309,22 @@ function AdvisorModal({ open, onClose }) {
                         )}
                       </motion.button>
 
-                     <p className="text-center text-[11px] text-slate-400 pt-1">
-  Or call us directly at{" "}
-  <a
-    href="tel:04440055781"
-    className="text-orange-500 font-medium hover:text-orange-400 transition-colors"
-  >
-    044 40055781
-  </a>
-  <span className="text-slate-400"> / </span>
-  <a
-    href="tel:02240040874"
-    className="text-orange-500 font-medium hover:text-orange-400 transition-colors"
-  >
-    022 40040874
-  </a>
-</p>
+                      <p className="text-center text-[11px] text-slate-400 pt-1">
+                        Or call us directly at{" "}
+                        <a
+                          href="tel:04440055781"
+                          className="text-orange-500 font-medium hover:text-orange-400 transition-colors"
+                        >
+                          044 40055781
+                        </a>
+                        <span className="text-slate-400"> / </span>
+                        <a
+                          href="tel:02240040874"
+                          className="text-orange-500 font-medium hover:text-orange-400 transition-colors"
+                        >
+                          022 40040874
+                        </a>
+                      </p>
                     </motion.form>
                   ) : (
                     <motion.div
@@ -403,7 +405,8 @@ export default function WhyAksan() {
         >
           {/* Left: Phone mockup — hidden on mobile, visible from md up */}
           <div className="relative order-2 lg:order-1 hidden md:block md:h-[280px] lg:h-full">
-            <div className="absolute -top-8 md:-top-10 lg:-top-51 left-1/2 -translate-x-1/2 lg:-left-16 lg:translate-x-0 w-[240px] sm:w-[300px] md:w-[360px] lg:w-[480px]">
+            {/* On large screens the image is anchored to the card's bottom border */}
+            <div className="absolute -top-18 md:-top-6 lg:top-auto lg:-bottom-20 left-1/2 -translate-x-1/2 lg:-left-16 lg:translate-x-0 w-[240px] sm:w-[300px] md:w-[360px] lg:w-[480px]">
               <Image
                 src="/handd.png"
                 alt="AKSAN mobile app held in hand"
@@ -415,16 +418,19 @@ export default function WhyAksan() {
             </div>
           </div>
 
-          {/* Right: Text content */}
-          <motion.div style={{ y: textY }} className="relative z-10 order-1 lg:order-2 md:col-span-1 col-span-1">
+          {/* Right: Text content — professionally aligned left column */}
+          <motion.div
+            style={{ y: textY }}
+            className="relative z-10 order-1 lg:order-2 md:col-span-1 col-span-1 flex flex-col items-start text-left"
+          >
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.4 }}
               transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-              className="text-orange-500 font-semibold text-[10px] xs:text-xs sm:text-xs lg:text-xs tracking-widest mb-3"
+              className="text-orange-500 font-semibold text-[10px] xs:text-xs sm:text-xs lg:text-xs tracking-[0.18em] uppercase mb-3"
             >
-              WHY AKSAN
+              Why AKSAN
             </motion.p>
 
             <motion.h2
@@ -432,28 +438,36 @@ export default function WhyAksan() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.4 }}
               transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
-              className="text-2xl xs:text-3xl sm:text-3xl md:text-4xl lg:text-3xl xl:text-4xl font-bold text-white leading-tight mb-6 sm:mb-8 lg:mb-8"
+              className="text-2xl xs:text-3xl sm:text-3xl md:text-4xl lg:text-3xl xl:text-4xl font-bold text-white leading-[1.15] tracking-tight mb-6 sm:mb-8 lg:mb-8 max-w-md"
             >
-              Why People Choose{" "}<br />
-              <span className="text-orange-500">AKSAN Capital</span>
+              Why People Choose{" "}
+              <span className="text-orange-500 whitespace-nowrap">
+                AKSAN Capital
+              </span>
             </motion.h2>
 
-            <ul className="space-y-3 sm:space-y-4 lg:space-y-5 mb-8 sm:mb-10 lg:mb-10">
+            <ul className="w-full space-y-3.5 sm:space-y-4 lg:space-y-4 mb-7 sm:mb-8 lg:mb-9">
               {features.map((feature, i) => (
                 <motion.li
                   key={feature.text}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.4 }}
-                  transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.15 + i * 0.1 }}
-                  className="flex items-center gap-2 sm:gap-3 lg:gap-3"
+                  transition={{
+                    duration: 0.6,
+                    ease: [0.22, 1, 0.36, 1],
+                    delay: 0.15 + i * 0.1,
+                  }}
+                  className="flex items-start gap-3 lg:gap-3.5"
                 >
                   <feature.icon
                     size={18}
                     strokeWidth={2}
-                    className="text-orange-500 shrink-0 sm:w-[20px] sm:h-[20px] lg:w-[20px] lg:h-[20px]"
+                    className="text-orange-500 shrink-0 mt-0.5 sm:w-[20px] sm:h-[20px] lg:w-[20px] lg:h-[20px]"
                   />
-                  <span className="text-slate-200 text-sm sm:text-base lg:text-base">{feature.text}</span>
+                  <span className="text-slate-200 text-sm sm:text-base lg:text-base leading-snug">
+                    {feature.text}
+                  </span>
                 </motion.li>
               ))}
             </ul>
@@ -466,7 +480,7 @@ export default function WhyAksan() {
               transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.6 }}
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
-              className="inline-flex items-center gap-2 bg-white text-blue-900 font-semibold text-xs sm:text-sm lg:text-sm px-5 sm:px-6 lg:px-6 py-2.5 sm:py-3 lg:py-3 rounded-md hover:bg-slate-100 transition"
+              className="inline-flex items-center gap-2 bg-white text-blue-900 font-semibold text-xs sm:text-sm lg:text-sm px-5 sm:px-6 lg:px-6 py-2.5 sm:py-3 lg:py-3 rounded-md hover:bg-slate-100 transition self-start"
             >
               Get Expert Guidance <span aria-hidden="true">→</span>
             </motion.button>
