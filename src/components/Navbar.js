@@ -84,6 +84,9 @@ export default function Navbar() {
     backgroundClip: "text",
   };
 
+  // Navy gradient shown behind the navbar while at the top of the page (same palette as the mobile panel)
+  const topGradient = "linear-gradient(180deg, rgba(10,28,68,0.94) 0%, rgba(15,68,117,0.88) 100%)";
+
   // Check if current path is a service subpage
   const isServiceSubpage = pathname.startsWith("/services/");
 
@@ -92,12 +95,24 @@ export default function Navbar() {
       className={`fixed top-0 left-0 w-full z-30 transition-all duration-300 ${
         showSolidBg ? "shadow-md" : ""
       }`}
-      style={{
-        backgroundColor: showSolidBg ? "#ffffff" : "transparent",
-        fontFamily: "Whitney, sans-serif",
-      }}
+      style={{ fontFamily: "Whitney, sans-serif" }}
     >
-      <nav className="max-w-[1400px] mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-6 py-2.5 sm:py-3 lg:py-3.5">
+      {/* Background layers: gradient at the top, white once scrolled (cross-fade) */}
+      <div
+        aria-hidden="true"
+        className={`pointer-events-none absolute inset-0 transition-opacity duration-300 ${
+          showSolidBg ? "opacity-0" : "opacity-100"
+        }`}
+        style={{ background: topGradient, backdropFilter: "blur(6px)", WebkitBackdropFilter: "blur(6px)" }}
+      />
+      <div
+        aria-hidden="true"
+        className={`pointer-events-none absolute inset-0 bg-white transition-opacity duration-300 ${
+          showSolidBg ? "opacity-100" : "opacity-0"
+        }`}
+      />
+
+      <nav className="relative max-w-[1400px] mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-6 py-2.5 sm:py-3 lg:py-3.5">
         <Link href="/" className="flex items-center gap-2 shrink-0">
           <Image
             src={logoSrc}

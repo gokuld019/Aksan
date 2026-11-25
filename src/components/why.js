@@ -408,7 +408,7 @@ export default function WhyAksan() {
             {/* On large screens the image is anchored to the card's bottom border */}
             <div className="absolute -top-18 md:-top-6 lg:top-auto lg:-bottom-20 left-1/2 -translate-x-1/2 lg:-left-16 lg:translate-x-0 w-[240px] sm:w-[300px] md:w-[360px] lg:w-[480px]">
               <Image
-                src="/handd.png"
+                src="/handdd.webp"
                 alt="AKSAN mobile app held in hand"
                 width={840}
                 height={1040}
