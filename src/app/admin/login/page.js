@@ -61,7 +61,7 @@ export default function AdminLoginPage() {
         <div className="relative">
           <Image
             src="/bluelogo.webp"
-            alt="AKSAN Capital Advisory"
+            alt="AKSAN Capital Advisors"
             width={200}
             height={70}
             className="h-14 w-auto"
@@ -71,7 +71,7 @@ export default function AdminLoginPage() {
 
         <div className="relative">
           <p className="text-[#8a6d2f] text-xs font-semibold uppercase tracking-[0.2em] mb-4">
-            Capital Advisory Private Limited
+            Capital Advisors Private Limited
           </p>
           <h1 className="font-serif text-[#0b1220] text-[42px] leading-[1.15] max-w-md mb-10">
             Guidance that grows wealth.
@@ -116,7 +116,7 @@ export default function AdminLoginPage() {
           <div className="flex lg:hidden mb-10">
             <Image
               src="/bluelogo.webp"
-              alt="AKSAN Capital Advisory"
+              alt="AKSAN Capital Advisors"
               width={160}
               height={56}
               className="h-11 w-auto"
@@ -201,7 +201,7 @@ export default function AdminLoginPage() {
           </form>
 
           <p className="text-[#a3a7b3] text-xs text-center mt-10">
-            © {new Date().getFullYear()} AKSAN Capital Advisory Private Limited
+            © {new Date().getFullYear()} AKSAN Capital Advisors Private Limited
           </p>
         </div>
       </div>

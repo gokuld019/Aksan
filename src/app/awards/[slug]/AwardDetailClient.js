@@ -43,7 +43,7 @@ export default function AwardDetailClient({ award, prevAward, nextAward }) {
             </div>
             <div>
               <p className="text-[#0f4475]/50 text-[10px] font-semibold tracking-[0.15em] uppercase mb-1">Advisor</p>
-              <p className="text-[#0f4475] text-sm font-medium">AKSAN Capital Advisory</p>
+              <p className="text-[#0f4475] text-sm font-medium">AKSAN Capital Advisors</p>
             </div>
             <div>
               <p className="text-[#0f4475]/50 text-[10px] font-semibold tracking-[0.15em] uppercase mb-1">Photos</p>

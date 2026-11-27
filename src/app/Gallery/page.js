@@ -77,7 +77,7 @@ function AksanEventsCard() {
       {/* Photo Container — wider, shorter ratio than the standard award cards */}
       <div className="relative w-full" style={{ paddingBottom: "40%" }}>
         <Image
-          src="/gallery/aksangallery1.webp"
+          src="/aksanevents.png"
           alt="AKSAN Events"
           fill
           sizes="(max-width: 640px) 100vw, 560px"

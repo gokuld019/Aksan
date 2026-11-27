@@ -14,7 +14,7 @@ export async function generateMetadata({ params }) {
   const service = coreServices.find((s) => s.slug === slug);
   if (!service) return {};
   return {
-    title: `${service.title} | AKSAN Capital Advisory`,
+    title: `${service.title} | AKSAN Capital Advisors`,
     description: service.description,
   };
 }
@@ -41,8 +41,9 @@ export default async function ServiceDetailPage({ params }) {
         />
         <div className="absolute inset-0 bg-gradient-to-r from-[#0b1a3a] via-[#0b1a3a]/85 to-[#0b1a3a]/20" />
 
-           <div className="relative z-10 w-full max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-8 pt-16 sm:pt-0 pb-10 sm:pb-16"> 
-            <div className="max-w-2xl">
+        {/* Top padding clears the fixed navbar so the text sits centered in the visible banner area */}
+        <div className="relative z-10 w-full max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-8 pt-24 sm:pt-28 lg:pt-36 pb-10 sm:pb-14 lg:pb-16">
+          <div className="max-w-2xl">
             <span className="text-orange-500 font-semibold text-[11px] sm:text-sm tracking-[0.15em] uppercase block mb-2.5 sm:mb-3">
               {banner.tag || "Our Services"}
             </span>

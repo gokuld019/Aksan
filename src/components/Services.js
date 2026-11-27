@@ -28,12 +28,12 @@ const stats = [
 ];
 
 const services = [
-  { icon: Target, title: "IPO", desc: "We guide SME companies through every stage of the IPO journey — from assessing readiness and structuring the offering to due diligence, regulatory compliance, and post-listing advisory." },
-  { icon: TrendingUp, title: "Rights Issue Advisory", desc: "We help listed companies raise capital through Rights Issues with regulatory precision — from strategic planning and SEBI documentation to underwriting and compliance management." },
-  { icon: Shield, title: "Preferential Allotment", desc: "We guide listed companies through Preferential Allotments — from valuation and investor identification to due diligence, documentation, and post-allotment compliance." },
-  { icon: PieChart, title: "Follow-on Public Offer", desc: "We support listed companies raising capital through FPOs — covering business assessment, due diligence, capital structuring, DRHP documentation, and investor outreach." },
+  { icon: Target, title: "IPO", desc: "We guide companies through every stage of the IPO journey from assessing readiness and structuring the offering to due diligence, regulatory compliance,post-listing compliance/advisory." },
+  { icon: TrendingUp, title: "Rights Issue Advisory", desc: "We help companies raise capital through Rights Issues with regulatory precision from strategic planning, documentation and compliance management." },
+  { icon: Shield, title: "Preferential Allotment", desc: "We guide companies, including unlisted entities through Preferential Allotments from valuation and investor identification, due diligence, documentation, and post-allotment compliance." },
+  { icon: PieChart, title: "Follow-on Public Offer", desc: "We support listed companies raising capital through FPOs covering business assessment, due diligence, capital structuring, documentation, and investor outreach." },
   { icon: BarChart3, title: "Merchant Banking Services", desc: "One of our core areas of expertise, covering end-to-end capital markets execution for SME and Main Board companies across India." },
-  { icon: Building2, title: "Corporate Advisory", desc: "Advisory support across mergers and acquisitions, business valuation, fund raising, and takeover advisory for growing companies." },
+  { icon: Building2, title: "Corporate Advisory", desc: "Advisory support across Mergers and Acquisitions, Business Valuation, Fund raising, and takeover advisory for growing companies." },
 ];
 
 const usps = [
@@ -125,7 +125,7 @@ export default function Services() {
   <span className="block whitespace-nowrap">Tailored for You</span>
 </h2>
               <p className="text-slate-500 text-sm sm:text-base leading-relaxed mb-4 sm:mb-6 max-w-lg mx-auto lg:mx-0">
-                We offer a wide range of capital advisory services to help
+                We offer a wide range of capital advisors services to help
                 achieve your financial goals with confidence.
               </p>
               {/* <button className=" hidden sm:inline-flex md:inline-flex items-center justify-center gap-2 border border-slate-300 font-semibold text-sm px-5 py-2.5 rounded-md hover:bg-slate-50 transition w-full sm:w-auto" style={{ color: "#1E2A5E" }}>
@@ -150,14 +150,16 @@ export default function Services() {
                   whileHover={{ y: -6, boxShadow: "0 20px 40px rgba(15,23,42,0.08)" }}
                   className="border border-slate-200 rounded-xl p-5 sm:p-6 transition-all flex flex-col h-full"
                 >
-                  <div className="flex flex-col items-center sm:items-start text-center sm:text-left">
-                    <span className="w-11 h-11 flex items-center justify-center rounded-lg bg-slate-100 text-blue-900 mb-3 sm:mb-4">
+                  {/* Icon, title and description share one left edge at every breakpoint */}
+                  <div className="flex flex-col items-start text-left h-full">
+                    <span className="w-11 h-11 flex items-center justify-center rounded-lg bg-slate-100 text-blue-900 mb-4">
                       <service.icon className="w-5 h-5" strokeWidth={2} />
                     </span>
-                    <h3 className="font-semibold text-sm sm:text-base mb-1.5 sm:mb-2" style={{ color: "#1E2A5E" }}>
+                    <h3 className="font-semibold text-sm sm:text-base mb-2 leading-snug" style={{ color: "#1E2A5E" }}>
                       {service.title}
                     </h3>
-                    <p className="text-slate-500 text-xs sm:text-sm leading-relaxed mb-3 sm:mb-4 flex-1">
+                    {/* Left-aligned, no hyphenation: even word spacing and whole words on every line */}
+                    <p className="text-slate-500 text-xs sm:text-sm leading-[1.7] text-left [text-wrap:pretty] flex-1">
                       {service.desc}
                     </p>
                     {/* <a href="#" className="text-orange-500 text-[10px] sm:text-xs font-semibold tracking-wide inline-flex items-center gap-1 hover:text-orange-600 transition mt-auto">
@@ -215,7 +217,7 @@ export default function Services() {
                   Your Trusted Partner in Financial Growth
                 </motion.h3>
                 <motion.p variants={revealItem} className="text-slate-200 text-sm leading-relaxed mb-4 sm:mb-6 max-w-md mx-auto lg:mx-0">
-                  AKSAN Capital Advisory Private Limited is a dedicated team of
+                  AKSAN Capital Advisors Private Limited is a dedicated team of
                   finance and capital market professionals providing
                   comprehensive advisory services across Merchant Banking,
                   Corporate Advisory, and Investment Banking solutions.

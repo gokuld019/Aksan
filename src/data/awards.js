@@ -13,7 +13,7 @@ export const awards = [
         "/Awards/phantom-awards4.webp"
     ],
     description:
-      "AKSAN Capital Advisory played a pivotal role in the successful listing of Phantom Digital Effects Limited, guiding the company through every stage of its IPO journey with strategic advisory and regulatory expertise.",
+      "AKSAN Capital Advisors played a pivotal role in the successful listing of Phantom Digital Effects Limited, guiding the company through every stage of its IPO journey with strategic advisory and regulatory expertise.",
   },
   {
     id: 2,
@@ -34,20 +34,7 @@ export const awards = [
     description:
       "A landmark listing ceremony celebrating Krischa Strapping Solutions Limited's successful entry into the capital markets, backed by AKSAN's end-to-end advisory support.",
   },
-  {
-    id: 3,
-    slug: "rox-hi-tech",
-    company: "Rox Hi-Tech limited",
-    date: "Listing Ceremony: 16 November 2023",
-    image: "/gallery/aksangallery3.webp",
-    gallery: [
-        "/Awards/Rox1.webp",
-        "/Awards/Rox2.webp",
-        "/Awards/Rox3.webp"
-    ],
-    description:
-      "ROX-Hi Tech Limited's listing marked another milestone in AKSAN's track record of delivering seamless IPO execution for emerging businesses.",
-  },
+ 
   {
     id: 4,
     slug: "basilic-fly-studio",
@@ -63,6 +50,20 @@ export const awards = [
     ],
     description:
       "Basilio Fly Studio Ltd's successful listing showcases AKSAN's commitment to guiding creative and media-sector businesses through capital markets.",
+  },
+   {
+    id: 3,
+    slug: "rox-hi-tech",
+    company: "ROX Hi-Tech limited",
+    date: "Listing Ceremony: 16 November 2023",
+    image: "/gallery/aksangallery3.webp",
+    gallery: [
+        "/Awards/Rox1.webp",
+        "/Awards/Rox2.webp",
+        "/Awards/Rox3.webp"
+    ],
+    description:
+      "ROX-Hi Tech Limited's listing marked another milestone in AKSAN's track record of delivering seamless IPO execution for emerging businesses.",
   },
   {
     id: 5,
@@ -149,7 +150,7 @@ export const awards = [
         
     ],
     description:
-      "Sathlokhar Synergys E&C Global Ltd's IPO highlights AKSAN's advisory strength in engineering and construction sectors.",
+      "Sathlokhar Synergys E&C Global Ltd's IPO highlights AKSAN's advisors strength in engineering and construction sectors.",
   },
   {
     id: 10,

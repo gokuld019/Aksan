@@ -31,10 +31,7 @@ const notoSans = Noto_Sans({
 
 // Each icon now matches its text
 const features = [
-  {
-    icon: Landmark, // banking institution
-    text: "Merchant Banker",
-  },
+ 
   {
     icon: Eye, // transparency / clear visibility
     text: "Transparent Advisory",

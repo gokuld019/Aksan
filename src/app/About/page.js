@@ -48,7 +48,7 @@ const values = [
     icon: Scale,
     title: "Integrity",
     description:
-      "Honesty and transparency guide every engagement we undertake. By acting with fairness and accountability, we earn the confidence of our clients and build relationships that endure.",
+      "Honesty and transparency define our approach, building trust through fairness, accountability, and lasting relationships with every client.",
   },
   {
     icon: Target,
@@ -76,7 +76,7 @@ const leadership = [
   {
     name: "Rajinikanth E S",
     role: "MD/CEO/PO",
-    bio: "A strategic visionary in capital markets and financial advisory, advancing sustainable growth, unlocking opportunities, and fostering long-term value for clients and stakeholders.",
+    bio: "A strategic visionary in capital markets and financial advisors, advancing sustainable growth, unlocking opportunities, and fostering long-term value for clients and stakeholders.",
     tags: leadershipTags,
     linkedin: "#",
     photo: "/team/md.jpeg",
@@ -100,11 +100,9 @@ const coreTeam = [
   { name: "Pinky", role: "AGM - Financial Analyst", linkedin: "#", photo: "/team/pinky-naveen-h.png" },
   { name: "Nesapriyan", role: "Chief financial officer", linkedin: "#", photo: "/team/nesapriyan.png" },
   { name: "Aishwarya", role: "Executive Assistant - MD", linkedin: "#", photo: "/team/aishu.png" },
-  { name: "Sai Krishna", role: "AGM - Company Secretary", linkedin: "#", photo: "/team/sai-krishna.png" },
   { name: "Shajathali", role: "Associate Company Secretary", linkedin: "#", photo: "/team/shajathali-s.png" },
   { name: "Viduthalai", role: "GM - Financial Analyst", linkedin: "#", photo: "/team/vidu.png" },
   { name: "Pugazhendhi", role: "Sr. Financial Analyst", linkedin: "#", photo: "/team/pugazhendhi-p.png" },
-  { name: "Satheesh", role: "Jr. Financial Analyst", linkedin: "#", photo: "/team/satheesh.jpeg" },
   { name: "Nirmal", role: "Sr. Financial Analyst", linkedin: "#", photo: "/team/nirmal-k.png" },
   { name: "Indira", role: "AGM - Accounts & Finance", linkedin: "#", photo: "/team/indira-ak.png" },
 
@@ -186,7 +184,7 @@ export default function About() {
       {/* Section 1: About Hero */}
       <section
         ref={heroRef}
-        className="w-full bg-white relative overflow-hidden mt-12 sm:mt-10"
+        className="w-full bg-white relative overflow-hidden mt-16 sm:mt-20 lg:mt-24"
       >
         <div className="max-w-[1600px] mx-auto px-4 xs:px-5 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-[minmax(0,576px)_minmax(0,600px)] lg:justify-center gap-14 lg:gap-16 items-center py-10 xs:py-12 sm:py-16 lg:py-20">
@@ -202,13 +200,13 @@ export default function About() {
                 <span className="text-orange-600 font-semibold text-[11px] xs:text-xs sm:text-sm tracking-[0.1em] uppercase">
                   About Aksan
                 </span>
-                <motion.span
+                {/* <motion.span
                   initial={{ width: 0 }}
                   whileInView={{ width: 40 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
                   className="h-px bg-orange-600"
-                />
+                /> */}
               </motion.div>
 
               <h2 className="text-[24px] leading-[1.3] xs:text-[27px] xs:leading-[1.25] sm:text-4xl sm:leading-[1.18] lg:text-5xl lg:leading-[1.12] font-extrabold tracking-tight mb-5 sm:mb-6">
@@ -232,7 +230,7 @@ export default function About() {
               >
   <motion.p variants={fadeUp} custom={0}>
     At AKSAN, we are a SEBI-registered Category II Merchant Banker,
-    specialising in bespoke financial advisory and capital market
+    specialising in bespoke financial advisors and capital market
     solutions that empower enterprises to navigate complex financial
     landscapes with confidence, precision, and regulatory assurance.
   </motion.p>
@@ -241,7 +239,7 @@ export default function About() {
     Anchored in fiduciary integrity, analytical rigour, and uncompromising
     regulatory adherence, our comprehensive service portfolio encompasses
     capital issuance and issue management, sophisticated capital
-    structuring, mergers and acquisitions, independent valuation advisory,
+    structuring, mergers and acquisitions, independent valuation advisors,
     and end-to-end regulatory compliance.
   </motion.p>
 
@@ -261,7 +259,7 @@ export default function About() {
   </motion.p>
 
   <motion.p variants={fadeUp} custom={4}>
-    At AKSAN, we transcend the conventional advisory relationship,
+    At AKSAN, we transcend the conventional advisors relationship,
     positioning ourselves as a steadfast strategic partner to enterprises
     pursuing sustainable expansion, capital optimisation, and enduring
     shareholder value.
@@ -360,13 +358,13 @@ export default function About() {
             <h2 className="text-[22px] leading-[1.3] xs:text-[26px] xs:leading-[1.25] sm:text-4xl sm:leading-tight font-extrabold text-[#152249] mt-3 mb-4 px-2 xs:px-4">
               <AnimatedWords text="The Principles Behind Our Success" />
             </h2>
-            <motion.span
+            {/* <motion.span
               initial={{ width: 0 }}
               whileInView={{ width: 56 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
               className="block h-1 bg-orange-600 mx-auto rounded-full"
-            />
+            /> */}
           </motion.div>
 
           <motion.div
@@ -402,7 +400,6 @@ export default function About() {
                 <p className="text-[13px] xs:text-[13.5px] sm:text-sm text-gray-500 leading-[1.65] xs:leading-[1.7]">
                   {description}
                 </p>
-                <span className="block h-0.5 w-8 bg-orange-600 rounded-full mt-5 sm:mt-6" />
               </motion.div>
             ))}
           </motion.div>
@@ -426,13 +423,13 @@ export default function About() {
             <h2 className="text-[22px] leading-[1.3] xs:text-[26px] xs:leading-[1.25] sm:text-4xl sm:leading-tight font-extrabold text-[#152249] mt-3 mb-4 px-2 xs:px-4">
               <AnimatedWords text="Experience. Expertise. Responsible Growth." />
             </h2>
-            <motion.span
+            {/* <motion.span
               initial={{ width: 0 }}
               whileInView={{ width: 56 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
               className="block h-1 bg-orange-600 mx-auto rounded-full"
-            />
+            /> */}
           </motion.div>
 
           {/* Leadership Cards */}
@@ -559,22 +556,28 @@ export default function About() {
             <h2 className="text-[22px] leading-[1.3] xs:text-[26px] xs:leading-[1.25] sm:text-4xl sm:leading-tight font-extrabold text-[#152249] mt-3 mb-4 px-2 xs:px-4">
               <AnimatedWords text="Driven by Expertise. United by Purpose." />
             </h2>
-            <motion.span
+            {/* <motion.span
               initial={{ width: 0 }}
               whileInView={{ width: 56 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
               className="block h-1 bg-orange-600 mx-auto rounded-full"
-            />
+            /> */}
           </motion.div>
 
-          {/* Core Team Grid */}
+          {/* Core Team Grid
+              Flex-wrap + justify-center so an incomplete last row (13 members)
+              is centered instead of left-stranded. Card widths are calculated
+              from the gap so columns stay perfectly even:
+                2 cols → gap-3.5 (0.875rem)  | xs: gap-4 (1rem)
+                3 cols → gap-6   (1.5rem)    → 2 gaps = 3rem
+                4 cols → gap-6   (1.5rem)    → 3 gaps = 4.5rem */}
           <motion.div
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.1 }}
-            className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3.5 xs:gap-4 sm:gap-6"
+            className="flex flex-wrap justify-center gap-3.5 xs:gap-4 sm:gap-6"
           >
             {coreTeam.map(({ name, role, linkedin, photo }, i) => (
               <motion.div
@@ -586,26 +589,26 @@ export default function About() {
                   boxShadow: "0 20px 40px -12px rgba(21,34,73,0.15)",
                   transition: { duration: 0.25 },
                 }}
-                className="group bg-white border border-gray-100 rounded-xl xs:rounded-2xl overflow-hidden shadow-sm flex flex-col"
+                className="group bg-white border border-gray-100 rounded-xl xs:rounded-2xl overflow-hidden shadow-sm flex flex-col w-[calc((100%-0.875rem)/2)] xs:w-[calc((100%-1rem)/2)] sm:w-[calc((100%-3rem)/3)] lg:w-[calc((100%-4.5rem)/4)]"
               >
                 <div className="relative w-full aspect-square bg-gray-100 overflow-hidden">
                   <Image
                     src={photo}
                     alt={name}
                     fill
+                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 290px"
                     className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0b1a3a]/25 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
 
-                <div className="px-3 xs:px-3.5 sm:px-4 py-3 xs:py-3.5 sm:py-4 flex flex-col flex-1">
+                <div className="px-3 xs:px-3.5 sm:px-4 py-3 xs:py-3.5 sm:py-4 flex flex-col flex-1 items-center text-center">
                   <h3 className="text-[12.5px] xs:text-[13px] sm:text-[15px] font-bold text-[#152249] leading-[1.35] break-words mb-1">
                     {name}
                   </h3>
-                  <p className="text-orange-600 text-[10.5px] xs:text-[11px] sm:text-xs font-semibold leading-snug mb-2.5 min-h-[2.2em]">
+                  <p className="text-orange-600 text-[10.5px] xs:text-[11px] sm:text-xs font-semibold leading-snug min-h-[2.2em]">
                     {role}
                   </p>
-                  <span className="block h-px w-6 bg-gray-200 mb-2.5 mt-auto" />
 
                   {/* <a
                     href={linkedin}

@@ -31,7 +31,7 @@ export default function EventsGalleryPage() {
 
           <p className="text-sm sm:text-[15px] leading-relaxed text-[#3A4A6B] max-w-2xl mb-6">
             A look back at the listing ceremonies and milestone moments AKSAN
-            Capital Advisory has been proud to be part of — captured across
+            Capital Advisors has been proud to be part of — captured across
             every IPO we have advised.
           </p>
 
@@ -46,7 +46,7 @@ export default function EventsGalleryPage() {
               <p className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-wide text-slate-400 mb-1">
                 Advisor
               </p>
-              <p className="text-sm font-semibold text-[#132A5C]">AKSAN Capital Advisory</p>
+              <p className="text-sm font-semibold text-[#132A5C]">AKSAN Capital Advisors</p>
             </div>
             <div>
               <p className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-wide text-slate-400 mb-1">

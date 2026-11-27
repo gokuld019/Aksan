@@ -11,7 +11,7 @@ export async function generateMetadata({ params }) {
   const award = getAwardBySlug(slug);
   if (!award) return {};
   return {
-    title: `${award.company} — Listing Ceremony | AKSAN Capital Advisory`,
+    title: `${award.company} — Listing Ceremony | AKSAN Capital Advisors`,
     description: award.description,
   };
 }

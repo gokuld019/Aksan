@@ -64,7 +64,7 @@ export default function AdminLayout({ children }) {
         <div className="mb-9">
           <Image
             src="/bluelogo.webp"
-            alt="AKSAN Capital Advisory"
+            alt="AKSAN Capital Advisors"
             width={160}
             height={56}
             className="h-10 w-auto"

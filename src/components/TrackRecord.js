@@ -191,7 +191,7 @@ export default function TrackRecord() {
 
               {/* Note slot — reserved on all cards so heights & baselines match */}
               <p className="text-white text-[10px] xs:text-[11px] font-bold mt-1 whitespace-nowrap min-h-[14px] xs:min-h-[16px]">
-                {stat.note || "\u00A0"}
+               
               </p>
             </motion.div>
           ))}

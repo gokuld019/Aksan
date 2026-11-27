@@ -22,6 +22,7 @@ const navLinks = [
     label: "Investor relations",
     href: "/investor-relations",
     children: [
+      { label: "Merchant Banking License", href: "" },
       { label: "Code and Policies", href: "/investor-relations/code-and-policies" },
       { label: "Investor Charter", href: "/investor-relations/investor-charter" },
       { label: "Investor Grievance Redressal", href: "/investor-relations/investor-grievance-redressal" },
@@ -64,17 +65,26 @@ export default function Navbar() {
     };
   }, [mobileOpen]);
 
-  // Add Gallery to pages with static blue background
-  const isAboutPage = pathname === "/About";
-  const isGalleryPage = pathname === "/Gallery";
-  const isAwardSlugPage = pathname.startsWith("/awards/");
-  const isprivacypolicy = pathname === "/Privacypolicy";
-  const terms = pathname === "/Termsandcondition";
-  const events = pathname === "/events"
-  const showSolidBg = scrolled || isAboutPage || isGalleryPage || isAwardSlugPage || isprivacypolicy || terms || events;
+  // Pages that get the blue navbar while at the top
+  const isBluePage = pathname === "/" || pathname === "/About";
 
-  // Determine which logo to show
-  const logoSrc = showSolidBg ? "/aksanlogod.png" : "/White-logo.png";
+  // Pages whose top area is white/light, so the navbar needs dark text + coloured logo
+  // even while transparent. Add more routes here if needed.
+  const isLightTopPage =
+    pathname === "/Gallery" ||
+    pathname.startsWith("/awards/") ||
+    pathname === "/Privacypolicy" ||
+    pathname === "/Termsandcondition" ||
+    pathname === "/events";
+
+  // White background bar: only after scrolling (all pages)
+  const showWhiteBg = scrolled;
+
+  // Dark text + coloured logo: when scrolled, or on light-top pages
+  const showSolidBg = scrolled || isLightTopPage;
+
+  // Which logo to show
+  const logoSrc = showSolidBg ? "/akblue.jpeg" : "/akwhite.png";
 
   // Gradient style for text
   const gradientStyle = {
@@ -84,31 +94,29 @@ export default function Navbar() {
     backgroundClip: "text",
   };
 
-  // Navy gradient shown behind the navbar while at the top of the page (same palette as the mobile panel)
+  // Navy gradient shown behind the navbar on the home page while at the top
   const topGradient = "linear-gradient(180deg, rgba(10,28,68,0.94) 0%, rgba(15,68,117,0.88) 100%)";
-
-  // Check if current path is a service subpage
-  const isServiceSubpage = pathname.startsWith("/services/");
 
   return (
     <header
       className={`fixed top-0 left-0 w-full z-30 transition-all duration-300 ${
-        showSolidBg ? "shadow-md" : ""
+        showWhiteBg ? "shadow-md" : ""
       }`}
       style={{ fontFamily: "Whitney, sans-serif" }}
     >
-      {/* Background layers: gradient at the top, white once scrolled (cross-fade) */}
+      {/* Blue gradient: Home and About pages only, while at the top */}
       <div
         aria-hidden="true"
         className={`pointer-events-none absolute inset-0 transition-opacity duration-300 ${
-          showSolidBg ? "opacity-0" : "opacity-100"
+          isBluePage && !scrolled ? "opacity-100" : "opacity-0"
         }`}
         style={{ background: topGradient, backdropFilter: "blur(6px)", WebkitBackdropFilter: "blur(6px)" }}
       />
+      {/* White: after scroll, on every page */}
       <div
         aria-hidden="true"
         className={`pointer-events-none absolute inset-0 bg-white transition-opacity duration-300 ${
-          showSolidBg ? "opacity-100" : "opacity-0"
+          showWhiteBg ? "opacity-100" : "opacity-0"
         }`}
       />
 
@@ -116,7 +124,7 @@ export default function Navbar() {
         <Link href="/" className="flex items-center gap-2 shrink-0">
           <Image
             src={logoSrc}
-            alt="AKSAN Capital Advisory Private Limited — Guidance that Grows Wealth"
+            alt="AKSAN Capital Advisors Private Limited — Guidance that Grows Wealth"
             width={320}
             height={100}
             className="w-auto h-10 sm:h-12 lg:h-20"
@@ -285,7 +293,7 @@ export default function Navbar() {
           <div className="flex items-center justify-between px-5 pt-5 pb-4 border-b border-white/10">
             <Image
               src="/White-logo.png"
-              alt="AKSAN Capital Advisory"
+              alt="AKSAN Capital Advisors"
               width={314}
               height={100}
               className="w-auto h-9"

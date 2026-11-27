@@ -258,10 +258,10 @@ export default function Services() {
           >
             {[
               { icon: Landmark, title: "Merchant Banking", desc: "End-to-end merchant banking solutions including issue management and advisory." },
-              { icon: TrendingUp, title: "Capital Advisory", desc: "Strategic capital raising solutions tailored to your business goals." },
+              { icon: TrendingUp, title: "Capital Advisors", desc: "Strategic capital raising solutions tailored to your business goals." },
               { icon: Handshake, title: "M&A Advisory", desc: "Expert guidance on mergers, acquisitions, and strategic partnerships." },
               { icon: PieChart, title: "Debt Syndication", desc: "Access to diverse funding sources through structured debt solutions." },
-              { icon: ClipboardList, title: "Corporate Advisory", desc: "Comprehensive advisory for corporate restructuring and financial optimization." },
+              { icon: ClipboardList, title: "Corporate Advisors", desc: "Comprehensive advisory for corporate restructuring and financial optimization." },
               { icon: ShieldCheck, title: "Compliance & Risk", desc: "Ensuring regulatory compliance and effective risk management." },
             ].map(({ icon: Icon, title, desc }, i) => (
               <motion.div

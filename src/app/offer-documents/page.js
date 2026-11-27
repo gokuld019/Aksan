@@ -521,7 +521,7 @@ export default function OfferDocumentsPage() {
                 Offer Documents provide detailed information about a company and its proposed public offering. They help investors understand the company's business, financial performance, offer structure, risk factors, and the proposed use of funds.
               </p>
               <p className="mt-4 text-sm leading-[1.8] text-slate-500 sm:text-[15px]">
-                AKSAN Capital Advisory provides access to relevant offer documents of companies advised by us, enabling investors and stakeholders to review important information associated with each offering.
+                AKSAN Capital Advisors provides access to relevant offer documents of companies advised by us, enabling investors and stakeholders to review important information associated with each offering.
               </p>
               <p className="mt-4 text-sm leading-[1.8] text-slate-500 sm:text-[15px]">
                 These documents are made available for informational purposes and should be reviewed carefully before making any investment decision.

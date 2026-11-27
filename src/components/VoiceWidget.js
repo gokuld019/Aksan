@@ -789,14 +789,14 @@ const BOT_FLOWS = {
   "Our services": {
     text: [
       { bold: true, text: "Here's what I can help you with:" },
-      { text: "Pick a topic below, or ask me anything about Aksan Capital Advisory." },
+      { text: "Pick a topic below, or ask me anything about Aksan Capital Advisors." },
     ],
     replies: TOPICS,
   },
   default: {
     text: [
       { bold: true, text: "Here's what I can help you with:" },
-      { text: "Pick a topic below, or ask me anything about Aksan Capital Advisory." },
+      { text: "Pick a topic below, or ask me anything about Aksan Capital Advisors." },
     ],
     replies: TOPICS,
   },
@@ -804,7 +804,7 @@ const BOT_FLOWS = {
   "About Aksan": {
     text: [{ text: "Select a question:" }],
     replies: [
-      "What is Aksan Capital Advisory?",
+      "What is Aksan Capital Advisors?",
       "What industries do you serve?",
       "Why should I choose Aksan?",
       "Where are you located?",
@@ -812,10 +812,10 @@ const BOT_FLOWS = {
       "Our services",
     ],
   },
-  "What is Aksan Capital Advisory?": {
+  "What is Aksan Capital Advisors?": {
     text: [
       {
-        text: "Aksan Capital Advisory is a Category II Merchant Banker offering capital markets, corporate advisory, valuation, due diligence and transaction support. For more information, write to us at info@aksan.in.",
+        text: "Aksan Capital Advisors is a Category II Merchant Banker offering capital markets, corporate advisory, valuation, due diligence and transaction support. For more information, write to us at info@aksan.in.",
       },
     ],
     replies: ["About Aksan", "Our services"],
@@ -890,7 +890,7 @@ const BOT_FLOWS = {
   },
   "Can you help with an IPO?": {
     text: [{ text: "Yes. Contact info@aksan.in to schedule an IPO readiness discussion." }],
-    replies: ["IPO Advisory", "Our services"],
+    replies: ["IPO Advisors", "Our services"],
   },
   "What is an SME IPO?": {
     text: [{ text: "It enables eligible SMEs to raise capital through SME exchanges. For guidance, email info@aksan.in." }],

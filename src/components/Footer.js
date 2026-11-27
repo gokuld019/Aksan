@@ -208,14 +208,14 @@ export default function Footer() {
           <div className="sm:col-span-2 lg:col-span-1 text-left">
             <Image
               src="/aksan-logo.webp"
-              alt="AKSAN Capital Advisory Private Limited"
+              alt="AKSAN Capital Advisors Private Limited"
               width={180}
               height={50}
               className="h-8 xs:h-9 sm:h-11 w-auto mb-4 xs:mb-5"
               priority
             />
             <p className="text-slate-300 text-[11.5px] xs:text-xs sm:text-sm leading-[1.7] mb-5 xs:mb-6 max-w-xs">
-              AKSAN Capital Advisory Private Limited is a Merchant Banker committed to independent, research-driven
+              AKSAN Capital Advisors Private Limited is a Merchant Banker committed to independent, research-driven
               guidance and long-term client partnerships.
             </p>
             <div className="flex items-center gap-2.5 sm:gap-3 flex-wrap">
@@ -326,7 +326,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-3 xs:gap-4 py-5 xs:py-6 text-[11px] xs:text-xs sm:text-sm">
           <p className="text-slate-400 text-center sm:text-left order-2 sm:order-1">
-            © Copyright {new Date().getFullYear()} AKSAN Capital Advisory Private Limited. All Rights Reserved.
+            © Copyright {new Date().getFullYear()} AKSAN Capital Advisors Private Limited. All Rights Reserved.
           </p>
           <div className="flex items-center gap-3 xs:gap-4 sm:gap-5 flex-wrap justify-center order-1 sm:order-2">
             <Link href="/Privacypolicy" className="text-slate-400 hover:text-orange-400 transition-colors">

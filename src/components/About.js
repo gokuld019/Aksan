@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 export const metadata = {
-  title: "Our Blogs | AKSAN Capital Advisory",
+  title: "Our Blogs | AKSAN Capital Advisors",
   description:
     "Stay informed with our expert perspectives on capital markets, IPOs, regulatory updates, and strategic finance.",
 };

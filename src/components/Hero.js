@@ -62,7 +62,7 @@ export default function Hero() {
         playsInline
         className="hidden md:block w-full h-auto"
       >
-        <source src="/desktopvideo.mp4" type="video/mp4" />
+        <source src="/Sequence.mp4" type="video/mp4" />
       </video>
 
       {/* BLUE OVERLAY */}

@@ -32,12 +32,12 @@ const partners = [
 ];
 
 // `photo` = founder image (put files in /public/founders/). `logo` = company logo (shown as small badge).
-// If a photo is missing or fails to load, initials are shown automatically.
+// If a photo is missing or fails to load, initials are shown on a neutral background.
 const testimonials = [
   {
     tag: "Best Corporating..",
     quote:
-      "I wholeheartedly endorse AKSAN Capital Advisory for their expertise, professionalism, and commitment to their clients' financial success. Their dedication and guidance have been pivotal in our journey towards financial stability and business growth.",
+      "I wholeheartedly endorse AKSAN Capital Advisors for their expertise, professionalism, and commitment to their clients' financial success. Their dedication and guidance have been pivotal in our journey towards financial stability and business growth.",
     name: "Bala Manikandan",
     role: "MD, Krishca Strapping",
     photo: "/founders/bala-manikandan.jpg",
@@ -49,7 +49,7 @@ const testimonials = [
       "Their Audit & Assurance services have also provided us with the peace of mind that our financial and operational processes are robust and reliable. This has not only built trust with our stakeholders but has also enhanced our transparency and credibility.",
     name: "Bejoy Arputharaj",
     role: "Founder, Phantom VFX",
-    photo: "/founders/bejoy-arputharaj.jpg",
+    photo: "/founders/phantom.png",
     logo: "/client/phantom.jpg",
   },
   {
@@ -58,7 +58,7 @@ const testimonials = [
       "What stood out with AKSAN was their ability to adapt to our creative workflows. They didn't just offer solutions - they listened, understood the pulse of a creative studio, and ensured all their processes aligned with our timelines and industry rhythm.",
     name: "Balakrishnan",
     role: "Founder, MD & CEO - Basilic Fly Studio Limited",
-    photo: "/founders/balakrishnan.jpg",
+    photo: "/founders/basilic.png",
     logo: "/client/basilicfly.jpg",
   },
   {
@@ -67,7 +67,7 @@ const testimonials = [
       "Their insights into financial controls and compliance requirements gave us the confidence to pursue long-term expansion goals.",
     name: "Anandan Sriramulu",
     role: "Chairman & Managing Director - Thaai Casting Limited",
-    photo: "/founders/anandan-sriramulu.jpg",
+    photo: "/founders/thaai-casting.png",
     logo: "/client/thaicasting.jpg",
   },
   {
@@ -76,7 +76,7 @@ const testimonials = [
       "In infrastructure, where precision and pace define success, AKSAN stood out with their deep sector insights and proactive approach. Their support enhanced our execution capabilities, streamlined stakeholder coordination, and ensured we were strategically positioned for a successful IPO journey.",
     name: "D. Prasanna",
     role: "Chairman, Managing Director & CEO - AVP Infracon Limited",
-    photo: "/founders/d-prasanna.jpg",
+    photo: "/founders/avp.jpeg",
     logo: "/client/avp.jpg",
   },
   {
@@ -85,7 +85,7 @@ const testimonials = [
       "Their strategic support during our IPO process was invaluable. From documentation to regulatory compliance, the team ensured everything was seamless, instilling confidence among our investors and internal teams.",
     name: "G Thiyagu",
     role: "Chairman, Managing Director & CEO - Sathlokhar Synergys E&C Global Limited",
-    photo: "/founders/g-thiyagu.jpg",
+    photo: "/founders/sathlokar.png",
     logo: "/client/sathlokar.jpg",
   },
   {
@@ -94,7 +94,7 @@ const testimonials = [
       "In the specialized off-highway tire industry, AKSAN brought clarity, structure, and sector understanding. Their seamless collaboration with our team ensured we stayed aligned internally while preparing confidently for our IPO journey.",
     name: "Chandhrasekharan Thirupathi Venkatachalam",
     role: "Chairman & Managing Director - Emerald Tyre Manufacturers Limited",
-    photo: "/founders/chandhrasekharan.jpg",
+    photo: "/founders/emerald.png",
     logo: "/client/emerald.jpg",
   },
   {
@@ -103,7 +103,7 @@ const testimonials = [
       "From financial hygiene to governance alignment, their team played a critical role in getting us IPO-ready. Their advice was practical, timely, and always aligned with our growth objectives.",
     name: "Junaid Ahmed",
     role: "Chairman & Managing Director - Freshara Agro Exports Limited",
-    photo: "/founders/junaid-ahmed.jpg",
+    photo: "/founders/freshara.png",
     logo: "/client/freshara.jpg",
   },
   {
@@ -112,7 +112,7 @@ const testimonials = [
       "As an HR services company, understanding workforce-linked compliance is vital. AKSAN's customized financial advice and risk management framework supported our scalability.",
     name: "Shraddha Rajpal",
     role: "Promoter - Happy Square Outsourcing Services Limited",
-    photo: "/founders/shraddha-rajpal.jpg",
+    photo: "/founders/happy-square.png",
     logo: "/client/whiteforce.jpg",
   },
   {
@@ -121,12 +121,12 @@ const testimonials = [
       "AKSAN's involvement brought efficiency and precision to our IPO process. Through timely follow-ups, well-organized documentation, and expert compliance handling, they ensured a seamless and hassle-free experience for both our management and our investors.",
     name: "Capt. Deepak Parasuraman",
     role: "Chairman & Managing Director - AFCOM Holdings Limited",
-    photo: "/founders/deepak-parasuraman.jpg",
+    photo: "/founders/afcom.png",
     logo: "/client/afcom.jpg",
   },
 ];
 
-// Fills its (relative) parent with the founder photo; falls back to initials if missing/broken.
+// Fills its (relative) parent edge to edge; falls back to navy initials on a neutral background if the photo is missing/broken.
 function FounderImage({ testimonial, sizes, textClass = "text-2xl" }) {
   const [failed, setFailed] = useState(false);
 
@@ -141,7 +141,7 @@ function FounderImage({ testimonial, sizes, textClass = "text-2xl" }) {
   if (!testimonial.photo || failed) {
     return (
       <div
-        className={`absolute inset-0 bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center text-white font-extrabold ${textClass}`}
+        className={`absolute inset-0 flex items-center justify-center text-[#0b2a4d]/70 font-extrabold ${textClass}`}
       >
         {initials}
       </div>
@@ -251,7 +251,7 @@ export default function PartnersAndTestimonial() {
           ))}
         </motion.div>
 
-        {/* Testimonial spotlight — centered company logo, full-bleed founder image */}
+        {/* Testimonial spotlight — centered company logo, founder image on neutral background */}
         <motion.div
           style={{ opacity: fade }}
           initial={{ opacity: 0, y: 24 }}
@@ -274,13 +274,13 @@ export default function PartnersAndTestimonial() {
                 {/* Text side — centered, large company logo */}
                 <div className="order-2 md:order-1 flex flex-col items-center justify-center text-center p-6 sm:p-8 lg:p-14 md:min-h-[500px]">
                   {/* Company logo — large & centered */}
-                  <div className="flex items-center justify-center rounded-2xl bg-white ring-1 ring-slate-200 shadow-[0_12px_30px_-14px_rgba(11,42,77,0.25)] px-4 py-3 sm:px-6 sm:py-4">
+                  <div className="flex items-center justify-center rounded-2xl bg-white ring-1 ring-slate-200 shadow-[0_12px_30px_-14px_rgba(11,42,77,0.25)] px-5 py-4 sm:px-8 sm:py-5 lg:px-10 lg:py-6">
                     <Image
                       src={testimonial.logo}
                       alt={`${testimonial.name} company logo`}
-                      width={320}
-                      height={120}
-                      className="h-16 sm:h-24 lg:h-28 w-auto max-w-[240px] sm:max-w-[320px] lg:max-w-[360px] object-contain"
+                      width={560}
+                      height={240}
+                      className="h-24 sm:h-32 lg:h-40 w-auto max-w-[260px] sm:max-w-[360px] lg:max-w-[440px] object-contain"
                     />
                   </div>
 
@@ -305,8 +305,8 @@ export default function PartnersAndTestimonial() {
                   </div>
                 </div>
 
-                {/* Photo side — full-bleed founder image */}
-                <div className="order-1 md:order-2 relative min-h-[300px] sm:min-h-[360px] md:min-h-full bg-slate-100">
+                {/* Photo side — full-bleed founder image (neutral background, no orange) */}
+                <div className="order-1 md:order-2 relative overflow-hidden min-h-[300px] sm:min-h-[360px] md:min-h-full bg-gradient-to-br from-slate-100 to-slate-200">
                   <FounderImage
                     testimonial={testimonial}
                     sizes="(max-width: 768px) 100vw, 46vw"

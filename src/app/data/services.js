@@ -41,7 +41,8 @@ export const coreServices = [
       {
         title: "IPO Management",
         description:
-          "We provide end-to-end advisory for SME and Mainboard IPOs and FPOs, managing the entire process from structuring and due diligence to regulatory filings, investor outreach, and successful listing.",
+          "We provide end-to-end advisory for IPOs and FPOs, managing the entire process from structuring and due diligence to regulatory filings, investor outreach, and successful listing.Our team ensures regulatory compliance and continues to support clients with post-listing advisory and strategic financial solutions.",
+
         extra:
           "Our team ensures regulatory compliance and continues to support clients with post-listing advisory and strategic financial solutions.",
         image: "/IPO.png",
@@ -49,7 +50,8 @@ export const coreServices = [
       {
         title: "Rights Issue",
         description:
-          "We act as Lead Manager to Rights Issues, handling structuring, documentation, regulatory filings, and coordination to ensure maximum shareholder participation and successful completion.",
+          "We act as Lead Manager to Rights Issues, handling structuring, documentation, regulatory filings, and coordination to ensure maximum shareholder participation and successful completion.Our focus is on regulatory compliance and achieving the company's capital-raising objectives efficiently",
+
         extra:
           "Our focus is on regulatory compliance and achieving the company's capital-raising objectives efficiently.",
         image: "/RightsIssue.png",
@@ -57,7 +59,7 @@ export const coreServices = [
       {
         title: "Private Placement Consulting",
         description:
-          "We assist in structuring and executing private placements, including preferential allotments and institutional issuances, ensuring timely capital infusion and compliance with regulatory requirements.",
+          "We assist in structuring and executing private placements, including preferential allotments and institutional issuances, ensuring timely capital infusion and compliance with regulatory requirements.Our process covers documentation, approvals, filings, allotment, and post-issue compliances.",
         extra:
           "Our process covers documentation, approvals, filings, allotment, and post-issue compliances.",
         image: "/Private.png",
@@ -65,7 +67,7 @@ export const coreServices = [
       {
         title: "Qualified Institutional Placement (QIP) Support",
         description:
-          "We act as Lead Manager to QIPs, overseeing structuring, pricing, documentation, and regulatory filings to facilitate efficient capital mobilization from QIBs.",
+          "We act as Lead Manager to QIPs, overseeing structuring, pricing, documentation, and regulatory filings to facilitate efficient capital mobilization from QIBs. Our approach ensures streamlined execution, compliance, and strengthening of the company's institutional investor base.",
         extra:
           "Our approach ensures streamlined execution, compliance, and strengthening of the company's institutional investor base.",
         image: "/QIP.png",
@@ -73,7 +75,7 @@ export const coreServices = [
       {
         title: "Debt Syndication",
         description:
-          "We help companies raise structured debt through term loans, working capital facilities, and credit instruments, aligned with their business and financial goals.",
+          "We help companies raise structured debt through term loans, working capital facilities, foreign currency loans and credit instruments, aligned with their business and financial goals.Our services include structuring, lender engagement, negotiation, and documentation for seamless disbursement.",
         extra:
           "Our services include structuring, lender engagement, negotiation, and documentation for seamless disbursement.",
         image: "/DebtSyndication.png",
@@ -81,7 +83,7 @@ export const coreServices = [
       {
         title: "Delisting",
         description:
-          "We advise and execute voluntary delisting in compliance with SEBI regulations, ensuring fair price discovery, shareholder approval, and smooth settlement.",
+          "We advise and execute voluntary delisting in compliance with SEBI regulations, ensuring fair price discovery, shareholder approval, and smooth settlement.Our expertise ensures a transparent process that protects shareholder interests and supports strategic business realignment.",
         extra:
           "Our expertise ensures a transparent process that protects shareholder interests and supports strategic business realignment.",
         image: "/Delisting.png",
@@ -112,9 +114,9 @@ export const coreServices = [
     ],
     subServices: [
       {
-        title: "Merger & Acquisition Planning",
+        title: "Merger, Reverse Merger & Acquisition Planning",
         description:
-          "Our M&A practice is built on deep expertise in executing exclusive mandates across acquisitions, divestitures, mergers, joint ventures, strategic alliances, and takeover advisory.",
+          "Our M&A practice is built on deep expertise in executing exclusive mandates across acquisitions, divestitures, mergers, joint ventures, strategic alliances, and takeover advisory.We provide end-to-end transaction support, combining strategic insight with robust execution capabilities.",
         extra:
           "We provide end-to-end transaction support, combining strategic insight with robust execution capabilities.",
         image: "/Merger.png",
@@ -122,7 +124,7 @@ export const coreServices = [
       {
         title: "Buybacks",
         description:
-          "As a SEBI Registered Category I Merchant Banker, we act as Manager to Buyback offers through tender offer or open market routes, providing complete advisory and execution support in compliance with SEBI regulations and the Companies Act.",
+          "As a SEBI Registered Merchant Banker, we act as Manager to Buyback offers through tender offer or open market routes, providing complete advisory and execution support in compliance with SEBI regulations and the Companies Act.",
         image: "/BuyBacks.png",
       },
       {
