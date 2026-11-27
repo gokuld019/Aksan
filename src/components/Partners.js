@@ -76,7 +76,7 @@ const testimonials = [
       "In infrastructure, where precision and pace define success, AKSAN stood out with their deep sector insights and proactive approach. Their support enhanced our execution capabilities, streamlined stakeholder coordination, and ensured we were strategically positioned for a successful IPO journey.",
     name: "D. Prasanna",
     role: "Chairman, Managing Director & CEO - AVP Infracon Limited",
-    photo: "/founders/avp.jpeg",
+    photo: "/founders/Avp.png",
     logo: "/client/avp.jpg",
   },
   {
