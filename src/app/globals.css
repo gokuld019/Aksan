@@ -205,3 +205,6 @@ body {
   height: 1px !important;
 }
 
+.font-noto {
+  font-family: "Noto Sans", sans-serif;
+}

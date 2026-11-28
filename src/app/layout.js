@@ -1,21 +1,25 @@
 import "./globals.css";
-import { Noto_Sans } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import VoiceWidget from "@/components/VoiceWidget";
 import GoogleTranslate from "@/components/GoogleTranslate";
 import TranslateDomGuard from "@/components/TranslateDomGuard";
 
-const notoSans = Noto_Sans({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  variable: "--font-noto-sans",
-  display: "swap",
-});
-
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={notoSans.variable}>
+    <html lang="en">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&display=swap"
+        />
+      </head>
       <body>
         <TranslateDomGuard />
         <div suppressHydrationWarning>
