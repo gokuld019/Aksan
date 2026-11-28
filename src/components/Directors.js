@@ -20,7 +20,7 @@ const directors = [
   {
     name: "Savitha R",
     role: "DIRECTOR",
-    image: "/team/Saveetha.jpeg",
+    image: "/team/Savitha.jpeg",
   },
 ];
 

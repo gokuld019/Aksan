@@ -40,7 +40,7 @@ const testimonials = [
       "I wholeheartedly endorse AKSAN Capital Advisors for their expertise, professionalism, and commitment to their clients' financial success. Their dedication and guidance have been pivotal in our journey towards financial stability and business growth.",
     name: "Bala Manikandan",
     role: "MD, Krishca Strapping",
-    photo: "/founders/bala-manikandan.jpg",
+    photo: "/founders/Krishca.png",
     logo: "/client/krishca.jpg",
   },
   {
