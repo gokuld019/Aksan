@@ -15,7 +15,7 @@ const directors = [
   {
     name: "Rajinikanth ES",
     role: "MD/CEO/PO",
-    image: "/team/md.jpeg",
+    image: "/team/rajini.png",
   },
   {
     name: "Savitha R",

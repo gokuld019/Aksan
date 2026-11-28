@@ -2,19 +2,70 @@
 
 import { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ClipboardList, Target, Rocket, Gauge, Sprout } from "lucide-react";
-import { Noto_Sans } from "next/font/google";
+import { ClipboardList, Target, Gauge, Sprout } from "lucide-react";
 
-const notoSans = Noto_Sans({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  display: "swap",
-});
+/* ------------------------------------------------------------------ */
+/* Custom "Implementation" icon: light bulb + gear with circular arrows */
+/* Uses currentColor, so it follows the same colour as the other icons  */
+/* ------------------------------------------------------------------ */
+function ImplementationIcon({ className = "" }) {
+  const teeth = Array.from({ length: 8 }, (_, i) => {
+    const a = (i * Math.PI) / 4;
+    return {
+      x1: 46 + 8.5 * Math.cos(a),
+      y1: 32 + 8.5 * Math.sin(a),
+      x2: 46 + 12 * Math.cos(a),
+      y2: 32 + 12 * Math.sin(a),
+    };
+  });
+
+  return (
+    <svg
+      viewBox="0 0 64 64"
+      fill="none"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+      aria-hidden="true"
+    >
+      {/* Light bulb */}
+      <path
+        d="M13 33c-3-2-5-5-5-9a11 11 0 0 1 22 0c0 4-2 7-5 9v3H13z"
+        strokeWidth="2.6"
+      />
+      <path d="M14 40h10M16 44h6" strokeWidth="2.6" />
+      <path d="M15.5 27.5l3.5 3.5 3.5-3.5M19 31v5" strokeWidth="2.2" />
+
+      {/* Gear */}
+      <circle cx="46" cy="32" r="8" strokeWidth="2.6" />
+      <circle cx="46" cy="32" r="3" strokeWidth="2.2" />
+      {teeth.map((t, i) => (
+        <line
+          key={i}
+          x1={t.x1}
+          y1={t.y1}
+          x2={t.x2}
+          y2={t.y2}
+          strokeWidth="4"
+        />
+      ))}
+
+      {/* Top arrow (bulb → gear) */}
+      <path d="M17 8C28 2 44 4 47 17" strokeWidth="2.2" />
+      <path d="M42.5 12.5L47 17.5L51 12.5" strokeWidth="2.2" />
+
+      {/* Bottom arrow (gear → bulb) */}
+      <path d="M48 52C40 62 24 62 18 52" strokeWidth="2.2" />
+      <path d="M17.6 57L18 52L22.6 54" strokeWidth="2.2" />
+    </svg>
+  );
+}
 
 const steps = [
   { icon: ClipboardList, number: "01", title: "Understand", desc: "We assess your business & IPO plans" },
   { icon: Target, number: "02", title: "Strategize", desc: "We develop your tailored IPO strategy." },
-  { icon: Rocket, number: "03", title: "Implement", desc: "We coordinate key steps toward IPO." },
+  { icon: ImplementationIcon, number: "03", title: "Implement", desc: "We coordinate key steps toward IPO." },
   { icon: Gauge, number: "04", title: "Monitor", desc: "We continuously track and optimise." },
   { icon: Sprout, number: "05", title: "Grow", desc: "We help you achieve sustainable growth." },
 ];
@@ -66,7 +117,7 @@ export default function OurProcess() {
   return (
     <section
       ref={sectionRef}
-      className={`relative py-12 sm:py-16 md:py-20 lg:py-24 overflow-hidden ${notoSans.className}`}
+      className="font-noto relative py-12 sm:py-16 md:py-20 lg:py-24 overflow-hidden"
       style={{
         background: "linear-gradient(135deg, #F0F4F8 0%, #E3EAF2 35%, #D6E2EE 65%, #C9D9E8 100%)",
       }}
@@ -121,7 +172,7 @@ export default function OurProcess() {
 
                   <div className="relative z-10">
                     <span className="inline-flex w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-br from-blue-900 to-blue-700 shadow-md items-center justify-center text-white mb-5">
-                      <step.icon className="w-5 h-5 sm:w-6 sm:h-6" strokeWidth={1.75} />
+                      <step.icon className="w-6 h-6 sm:w-7 sm:h-7" strokeWidth={1.75} />
                     </span>
 
                     <div className="flex items-baseline gap-2 mb-2">
@@ -180,7 +231,7 @@ export default function OurProcess() {
                 className="flex flex-col items-center w-[130px] xl:w-[150px]"
               >
                 <span className="w-14 h-14 min-w-[56px] min-h-[56px] rounded-full bg-white border border-blue-900/20 shadow-sm flex items-center justify-center text-blue-900 mb-3 transition-shadow duration-300 hover:shadow-lg hover:border-blue-300">
-                  <step.icon className="w-6 h-6 min-w-[22px] min-h-[22px]" strokeWidth={1.75} />
+                  <step.icon className="w-7 h-7 min-w-[24px] min-h-[24px]" strokeWidth={1.75} />
                 </span>
                 <h3 className="text-blue-900 font-bold text-base mb-1.5 whitespace-nowrap">
                   <span className="text-blue-500">{step.number}.</span> {step.title}
